@@ -26,7 +26,9 @@ export function Navbar() {
           </nav>
 
           <LanguageSwitcher />
-          <MobileMenu />
+          <div className="lg:hidden">
+            <MobileMenu />
+          </div>
         </div>
       </div>
     </header>

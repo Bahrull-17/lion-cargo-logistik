@@ -78,7 +78,7 @@ export function PhotoMarquee() {
               Tarif dihitung <span className="font-semibold text-charcoal bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/60">per kilogram</span> dan bisa dicek lebih dulu, sehingga biaya kirim jelas transparan sebelum Anda
               memesan.
             </p>
-            <p className="pb-2">Cocok untuk kebutuhan pribadi, toko online, maupun usaha yang rutin mengirim barang antarpulau, dengan layanan pelanggan yang responsif lewat WhatsApp.</p>
+            <p className="pb-2">Cocok untuk kebutuhan pribadi, toko online, maupun usaha yang rutin mengirim barang antar kota, dengan layanan pelanggan yang responsif lewat WhatsApp.</p>
           </div>
 
           {/* Feature Badge Ringkas */}
@@ -102,7 +102,7 @@ export function PhotoMarquee() {
           </span>
 
           <h3 className="text-balance text-2xl font-extrabold leading-tight text-charcoal sm:text-3xl lg:text-4xl">
-            Kirim Barang Antarpulau Lebih <span className="text-red-600">Mudah dan Jelas</span>
+            Kirim Barang Antar Kota Lebih <span className="text-red-600">Mudah dan Jelas</span>
           </h3>
 
           <div className="mt-4 space-y-3 text-base leading-relaxed text-muted-foreground sm:text-lg">

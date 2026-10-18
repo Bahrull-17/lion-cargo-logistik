@@ -1,170 +1,277 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ShieldCheck, Eye, Target, CheckCircle2, Award, Clock, Plane, Sparkles, ArrowRight, HeartHandshake, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { waLink } from "@/utils/wa-link";
 
 export const metadata: Metadata = {
-  title: "Tentang Kami",
-  description: "Lion Cargo Logistik adalah agen cargo udara untuk pengiriman barang dan dokumen dari Bandara Soekarno-Hatta ke berbagai kota di Indonesia.",
+  title: "Tentang Kami | Lion Cargo Logistik Bandara Soetta",
+  description: "Profil lengkap Lion Cargo Logistik, agen cargo udara resmi & profesional untuk pengiriman cepat dari Bandara Soekarno-Hatta (CGK) ke seluruh Indonesia.",
 };
 
+const stats = [
+  { value: "113+", label: "Kota & Bandara Tujuan", icon: Plane },
+  { value: "24/7", label: "Dukungan Tim CS", icon: Headphones },
+  { value: "100%", label: "Transparansi Tarif", icon: ShieldCheck },
+  { value: "Same-Day", label: "Penerbangan Pertama", icon: Clock },
+];
+
 const misi = [
-  "Menyediakan layanan pengiriman cargo udara dari Bandara Soekarno-Hatta ke berbagai kota tujuan di Indonesia.",
-  "Menyampaikan tarif per kg dan biaya layanan secara terbuka sebelum pengiriman dipesan.",
-  "Menangani setiap barang dengan hati-hati, dari penerimaan sampai tujuan.",
-  "Menjaga komunikasi yang jelas dan mudah dihubungi lewat WhatsApp.",
+  "Menyediakan layanan pengiriman cargo udara terintegrasi dari Bandara Soekarno-Hatta ke seluruh jaringan bandara Indonesia.",
+  "Menyampaikan tarif per kg dan biaya operasional secara terbuka sejak awal tanpa biaya terselubung.",
+  "Menangani setiap kargo, dokumen, dan barang bernilai tinggi dengan standar keselamatan & kehati-hatian ketat.",
+  "Menyediakan layanan respons cepat dan komunikasi intensif lewat WhatsApp untuk setiap status pengiriman.",
 ];
 
 const nilai = [
   {
-    title: "Transparan",
-    text: "Tarif dan biaya penanganan disampaikan sejak awal, tanpa kejutan di belakang.",
+    title: "Transparan & Jujur",
+    text: "Tarif dan biaya penanganan disampaikan secara rinci sejak awal, tanpa ada kejutan biaya tak terduga di akhir.",
+    icon: ShieldCheck,
+    color: "text-emerald-600 bg-emerald-50 border-emerald-100",
   },
   {
-    title: "Hati-hati",
-    text: "Barang pelanggan diperlakukan seperti barang sendiri, dari awal sampai tujuan.",
+    title: "Penanganan Ekstra Hati-hati",
+    text: "Barang pelanggan kami perlakukan sebagai prioritas utama dengan protokol penanganan khusus di terminal kargo.",
+    icon: HeartHandshake,
+    color: "text-brand bg-brand/10 border-brand/20",
   },
   {
-    title: "Bertanggung jawab",
-    text: "Setiap pengiriman dicatat dan diurus sampai tuntas.",
+    title: "Tanggung Jawab Penuh",
+    text: "Setiap paket dicatat, dipantau, dan diurus secara profesional dari penerimaan awal hingga tiba di bandara tujuan.",
+    icon: Award,
+    color: "text-blue-600 bg-blue-50 border-blue-100",
   },
   {
-    title: "Mudah dihubungi",
-    text: "Pelanggan bisa bertanya dan memesan langsung lewat WhatsApp.",
+    title: "Aksesibilitas Mudah",
+    text: "Layanan konsultasi, pemesanan slot penerbangan, dan cek status kargo dapat diakses instan melalui WhatsApp.",
+    icon: MessageCircle,
+    color: "text-amber-600 bg-amber-50 border-amber-100",
   },
 ];
 
 const komitmen = [
-  "Memberi informasi tarif yang jelas sebelum pengiriman dipesan.",
-  "Menjelaskan proses pengiriman dengan bahasa yang mudah dipahami.",
-  "Menangani barang dan dokumen dengan hati-hati.",
-  "Membantu pelanggan yang membutuhkan informasi tambahan lewat WhatsApp.",
+  "Kepastian tarif per Kg yang jelas dan jujur sebelum barang diproses.",
+  "Prosedur pengiriman kargo yang simpel, cepat, tanpa birokrasi rumit.",
+  "Pengawasan intensif terhadap paket dan dokumen penting Anda.",
+  "Layanan konsultasi ramah & responsif dari tim spesialis kargo udara kami.",
 ];
 
 export default function TentangKamiPage() {
   return (
-    <>
-      <section className="bg-charcoal text-white">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:py-20 lg:px-8">
-          <nav aria-label="Breadcrumb" className="text-sm text-white/60">
-            <Link href="/" className="hover:text-white">
+    <div className="bg-slate-50/50 min-h-screen">
+      {/* 1. HERO SECTION (Cerah & Segar dengan Gradien Merah-Putih) */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-red-50/60 via-slate-50 to-white pt-10 pb-16 sm:pt-14 sm:pb-24 border-b border-slate-200/60">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="inline-flex items-center gap-2 text-xs sm:text-sm text-slate-600 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-2xs mb-6">
+            <Link href="/" className="hover:text-brand transition-colors font-medium">
               Beranda
             </Link>
-            <span className="mx-2" aria-hidden="true">
-              /
-            </span>
-            <span aria-current="page" className="text-white">
+            <span className="text-slate-300">/</span>
+            <span aria-current="page" className="text-brand font-bold">
               Tentang Kami
             </span>
           </nav>
 
-          <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.1] sm:text-5xl">Tentang Lion Cargo Logistik</h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">Agen cargo udara yang membantu pengiriman barang dan dokumen dari Bandara Soekarno-Hatta ke berbagai kota di Indonesia.</p>
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs sm:text-sm font-bold uppercase tracking-wider mb-4 border border-brand/20">
+              <Sparkles className="size-3.5" /> Mitra Kargo Udara Terpercaya
+            </span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-900">
+              Solusi Kargo Udara Cepat, Transparan & <span className="text-brand">Handal</span>
+            </h1>
+            <p className="mt-5 text-base sm:text-xl leading-relaxed text-slate-600 font-normal">
+              Agen resmi kargo udara yang didedikasikan untuk memastikan barang dan dokumen penting Anda terbang lebih cepat dan aman dari Bandara Soekarno-Hatta (CGK) ke seluruh penjuru Nusantara.
+            </p>
+          </div>
+
+          {/* GRID STATISTIK IKONIK */}
+          <div className="mt-12 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {stats.map((stat) => {
+              const Icon = stat.icon;
+              return (
+                <div key={stat.label} className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/80 shadow-2xs hover:border-brand/40 transition-all group">
+                  <Icon className="size-6 text-brand mb-3 group-hover:scale-110 transition-transform" />
+                  <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{stat.value}</div>
+                  <div className="text-xs sm:text-sm text-slate-500 font-medium mt-1">{stat.label}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      <section aria-labelledby="profil-heading" className="bg-white">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-14 sm:px-6 md:grid-cols-2 md:gap-12 lg:px-8 lg:py-20">
-          <div>
-            <h2 id="profil-heading" className="text-2xl font-extrabold leading-tight text-charcoal sm:text-4xl">
-              Profil Perusahaan
-            </h2>
-            <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              <p>Lion Cargo Logistik adalah agen cargo udara yang melayani pengiriman barang dan dokumen lewat pesawat dari Bandara Soekarno-Hatta, Jakarta, ke bandara tujuan di berbagai kota di Indonesia.</p>
-              <p>Kami fokus pada hal yang paling dibutuhkan pengirim: tarif per kg yang jelas, proses yang sederhana, dan barang yang ditangani dengan hati-hati sampai tujuan.</p>
+      {/* 2. PROFIL PERUSAHAAN + VISUAL PHOTO */}
+      <section aria-labelledby="profil-heading" className="py-16 sm:py-24 bg-white border-b border-slate-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Teks Profil */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 px-3 py-1 rounded-full border border-brand/20">Profil Perusahaan</div>
+              <h2 id="profil-heading" className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                Menghubungkan Bisnis & Kebutuhan Pengiriman Anda Lewat Jalur Udara
+              </h2>
+              <div className="space-y-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+                <p>
+                  <strong className="text-slate-900 font-semibold">Lion Cargo Logistik</strong> merupakan agen spesialis kargo udara yang beroperasi langsung di pusat logistik penerbangan Bandara Soekarno-Hatta, Tangerang/Jakarta.
+                </p>
+                <p>Kami lahir dari pemahaman mendalam atas kebutuhan para pelaku usaha, perusahaan, dan perorangan yang membutuhkan kepastian waktu, keamanan ekstra, serta transparansi tarif tanpa biaya terselubung.</p>
+                <p>Dengan konektivitas langsung ke jaringan penerbangan komersial harian, kami menjamin keberangkatan barang Anda secara prioritas, cepat, dan terukur.</p>
+              </div>
+            </div>
+
+            {/* Gambar Visual Berkelas */}
+            <div className="lg:col-span-6">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 bg-slate-100 group">
+                <div className="aspect-4/3 relative">
+                  <Image
+                    src="/images/hero.jpg"
+                    alt="Operasional Logistik Kargo Udara Bandara Soekarno-Hatta"
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
+                </div>
+
+                {/* Floating Badge di Atas Foto */}
+                <div className="absolute bottom-6 left-6 right-6 p-4 sm:p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-lg flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-brand text-white shrink-0">
+                    <Plane className="size-6 rotate-45" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-extrabold text-slate-900">Hub Utama Terminal Kargo CGK</h4>
+                    <p className="text-xs text-slate-600 mt-0.5">Penanganan langsung di area bandara keberangkatan utama.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="relative aspect-4/3 overflow-hidden rounded-lg bg-secondary">
-            <Image src="/images/hero.jpg" alt="Pesawat cargo dan barang kiriman di bandara" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+      {/* 3. VISI & MISI */}
+      <section aria-labelledby="visi-heading" className="py-16 sm:py-24 bg-slate-50/70 border-b border-slate-200/60">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+            {/* Kartu Visi */}
+            <div className="lg:col-span-5 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-2xs relative overflow-hidden">
+              <div className="inline-flex items-center gap-2 p-3 rounded-2xl bg-brand/10 text-brand mb-6">
+                <Eye className="size-6" />
+              </div>
+              <h2 id="visi-heading" className="text-xs font-extrabold uppercase tracking-widest text-brand mb-2">
+                Visi Kami
+              </h2>
+              <p className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug">
+                &ldquo;Menjadi agen kargo udara paling terpercaya di Indonesia yang dikenal atas kecepatan, kejelasan biaya, serta kemudahan akses layanan bagi seluruh masyarakat.&rdquo;
+              </p>
+            </div>
+
+            {/* Daftar Misi */}
+            <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-2xs">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 rounded-2xl bg-brand/10 text-brand">
+                  <Target className="size-6" />
+                </div>
+                <div>
+                  <h2 className="text-xs font-extrabold uppercase tracking-widest text-brand">Misi Utama</h2>
+                  <h3 className="text-lg font-extrabold text-slate-900">Langkah Nyata Kami</h3>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {misi.map((item, index) => (
+                  <div key={item} className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/60 hover:border-brand/30 transition-colors">
+                    <span className="flex items-center justify-center size-8 rounded-xl bg-brand text-white font-extrabold text-sm shrink-0 mt-0.5">{String(index + 1).padStart(2, "0")}</span>
+                    <p className="text-sm sm:text-base font-medium text-slate-700 leading-relaxed pt-0.5">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section aria-labelledby="visi-heading" className="bg-secondary">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-5 lg:gap-16 lg:px-8 lg:py-20">
-          <div className="lg:col-span-2">
-            <h2 id="visi-heading" className="text-sm font-semibold text-brand">
-              Visi
+      {/* 4. NILAI-NILAI UTAMA (VALUES) */}
+      <section aria-labelledby="nilai-heading" className="py-16 sm:py-24 bg-white border-b border-slate-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-brand bg-brand/10 px-3 py-1 rounded-full border border-brand/20">Prinsip Kerja</span>
+            <h2 id="nilai-heading" className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
+              Nilai Fondasi yang Kami Pegang
             </h2>
-            <p className="mt-3 text-2xl font-extrabold leading-snug text-charcoal sm:text-3xl">Menjadi agen cargo udara yang dipercaya pelanggan di seluruh Indonesia lewat layanan yang jelas, aman, dan mudah dijangkau.</p>
+            <p className="text-slate-500 text-sm sm:text-base mt-2">Setiap keputusan dan standar pelayanan kami berlandaskan pada 4 pilar utama ini.</p>
           </div>
 
-          <div className="lg:col-span-3">
-            <h2 className="text-sm font-semibold text-brand">Misi</h2>
-            <ol className="mt-3 border-t border-charcoal/10">
-              {misi.map((item, index) => (
-                <li key={item} className="flex gap-5 border-b border-charcoal/10 py-5">
-                  <span aria-hidden="true" className="w-8 shrink-0 font-heading text-2xl font-extrabold leading-none text-brand">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <p className="text-base leading-relaxed text-charcoal">{item}</p>
-                </li>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {nilai.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.title} className="p-6 sm:p-7 rounded-3xl bg-slate-50/80 border border-slate-200/70 hover:border-brand/40 hover:bg-white hover:shadow-xl hover:shadow-slate-100 transition-all duration-300 group">
+                  <div className={`p-3.5 rounded-2xl border w-fit mb-5 ${item.color} group-hover:scale-110 transition-transform`}>
+                    <Icon className="size-6" />
+                  </div>
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">{item.text}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. KOMITMEN PELAYANAN (Aksen Merah Brand Lembut) */}
+      <section aria-labelledby="komitmen-heading" className="py-16 sm:py-20 bg-red-50/50 border-b border-red-100/80 relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-5 space-y-4">
+              <span className="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 px-3 py-1 rounded-full border border-brand/20">Jaminan Kualitas</span>
+              <h2 id="komitmen-heading" className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                Komitmen Nyata Lion Cargo Logistik
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">Kepercayaan jangka panjang pelanggan adalah aset terbesar kami. Oleh karena itu, kami memberikan komitmen pelayanan tanpa kompromi.</p>
+            </div>
+
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {komitmen.map((item) => (
+                <div key={item} className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs flex items-start gap-3">
+                  <CheckCircle2 className="size-5 text-brand shrink-0 mt-0.5" />
+                  <p className="text-xs sm:text-sm font-medium text-slate-700 leading-relaxed">{item}</p>
+                </div>
               ))}
-            </ol>
+            </div>
           </div>
         </div>
       </section>
 
-      <section aria-labelledby="nilai-heading" className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-          <h2 id="nilai-heading" className="max-w-xl text-2xl font-extrabold leading-tight text-charcoal sm:text-4xl">
-            Nilai yang Kami Pegang
-          </h2>
-
-          <ul className="mt-10 grid border-t sm:grid-cols-2">
-            {nilai.map((item) => (
-              <li key={item.title} className="border-b py-6 sm:px-0 sm:py-8 sm:odd:border-r sm:odd:pr-8 sm:even:pl-8">
-                <h3 className="text-lg font-bold text-charcoal">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">{item.text}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section aria-labelledby="komitmen-heading" className="bg-secondary">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-5 lg:gap-16 lg:px-8 lg:py-20">
-          <div className="lg:col-span-2">
-            <h2 id="komitmen-heading" className="text-2xl font-extrabold leading-tight text-charcoal sm:text-4xl">
-              Komitmen Pelayanan
+      {/* 6. CALL TO ACTION (CTA) */}
+      <section aria-labelledby="cta-heading" className="py-16 sm:py-24 bg-white text-center">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="p-8 sm:p-14 rounded-3xl bg-slate-50 border border-slate-200/80 shadow-xs relative overflow-hidden">
+            <h2 id="cta-heading" className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Siap Mengirimkan Paket & Cargo Udara Anda?
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">Kepercayaan dibangun dari hal-hal sederhana yang dilakukan dengan konsisten.</p>
-          </div>
+            <p className="mt-3 text-sm sm:text-lg text-slate-600 max-w-2xl mx-auto font-normal">Hitung estimasi ongkir secara instan lewat kalkulator online kami atau langsung hubungi tim penanganan kargo via WhatsApp.</p>
 
-          <ul className="space-y-4 lg:col-span-3">
-            {komitmen.map((item) => (
-              <li key={item} className="flex gap-4">
-                <span aria-hidden="true" className="mt-2.5 size-2 shrink-0 rounded-sm bg-brand" />
-                <p className="text-base leading-relaxed text-charcoal sm:text-lg">{item}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button asChild size="lg" className="h-13 w-full sm:w-auto rounded-xl bg-brand hover:bg-brand/90 px-8 text-sm font-bold text-white shadow-md shadow-brand/20 active:scale-95 transition-all">
+                <Link href="/cek-ongkir" className="flex items-center gap-2">
+                  <Plane className="size-4" /> Cek Tarif Ongkir <ArrowRight className="size-4" />
+                </Link>
+              </Button>
 
-      <section aria-labelledby="cta-heading" className="bg-charcoal text-white">
-        <div className="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6 lg:py-20">
-          <h2 id="cta-heading" className="text-2xl font-extrabold leading-tight sm:text-4xl">
-            Ada barang yang ingin dikirim?
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-white/75 sm:text-lg">Cek tarif ke kota tujuan Anda, atau tanyakan langsung lewat WhatsApp.</p>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button asChild size="lg" className="h-14 w-full rounded-lg px-8 text-base font-semibold sm:w-auto">
-              <Link href="/cek-ongkir">Cek Ongkir</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="h-14 w-full rounded-lg border-white/40 bg-transparent px-8 text-base font-semibold text-white hover:bg-white hover:text-charcoal sm:w-auto">
-              <a href={waLink("Halo Lion Cargo Logistik, saya ingin bertanya tentang pengiriman cargo.")} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="size-5" />
-                Hubungi Kami
-              </a>
-            </Button>
+              <Button asChild size="lg" variant="outline" className="h-13 w-full sm:w-auto rounded-xl border-slate-300 bg-white px-8 text-sm font-bold text-slate-800 hover:bg-slate-100 active:scale-95 transition-all">
+                <a href={waLink("Halo Lion Cargo Logistik, saya ingin bertanya tentang prosedur dan tarif kargo udara.")} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <MessageCircle className="size-4 text-emerald-600" /> Hubungi Customer Service
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

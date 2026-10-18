@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Info, Plane, MapPin, FileText, HelpCircle, PhoneCall, MessageCircle, X } from "lucide-react";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Home, Info, Plane, MapPin, FileText, HelpCircle, PhoneCall, MessageCircle } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Logo } from "@/components/shared/logo";
 import { waLink } from "@/utils/wa-link";
 
@@ -23,25 +23,19 @@ export function MobileMenu() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        {/* Tombol Hamburger di Navbar */}
-        <button aria-label="Buka Menu Navigasi" className="p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 active:scale-95 transition-all">
+        {/* Tombol Hamburger di Navbar HP */}
+        <button aria-label="Buka Menu Navigasi" className="p-2 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 active:scale-95 transition-all">
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </SheetTrigger>
 
-      {/* Kontainer Sheet Menu Mobile (Tinggi Menyesuaikan Konten) */}
-      <SheetContent side="top" className="w-full bg-white p-0 rounded-b-3xl border-b border-slate-200 shadow-xl max-h-[90vh] overflow-y-auto">
-        {/* Header Drawer dengan Logo Asli Proyek & Tombol X Merah Polos */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-100">
-          {/* Logo Utama Asli Proyek */}
+      {/* Sheet Content (Tombol X Bawaan Diubah Warna Merah) */}
+      <SheetContent side="top" className="w-full bg-white p-0 rounded-b-3xl border-b border-slate-200 shadow-xl max-h-[90vh] overflow-y-auto [&>button]:text-brand [&>button]:hover:opacity-70 [&>button]:top-4 [&>button]:right-4">
+        {/* Header Drawer dengan Logo Asli */}
+        <div className="flex items-center justify-between p-4 border-b border-slate-100 pr-12">
           <Logo />
-
-          {/* Tombol Close (X) Merah Polos Tanpa Lingkaran Background */}
-          <SheetClose className="p-1 text-brand hover:opacity-70 transition-opacity focus:outline-none">
-            <X className="w-6 h-6" />
-          </SheetClose>
         </div>
 
         {/* Daftar Navigasi */}
@@ -64,7 +58,7 @@ export function MobileMenu() {
           })}
         </div>
 
-        {/* Tombol Chat WhatsApp (Menempel Dekat di Bawah Navigasi) */}
+        {/* Tombol Chat WhatsApp */}
         <div className="p-4 pt-2 border-t border-slate-100 bg-slate-50/50 rounded-b-3xl">
           <a
             href={waLink("Halo Lion Cargo Logistik, saya ingin bertanya seputar pengiriman kargo.")}

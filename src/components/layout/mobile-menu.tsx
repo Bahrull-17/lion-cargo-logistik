@@ -2,80 +2,79 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CircleHelp, House, Info, MapPinned, Menu, MessageCircle, Newspaper, Phone, Plane, type LucideIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Home, Info, Plane, MapPin, FileText, HelpCircle, PhoneCall, MessageCircle, X } from "lucide-react";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Logo } from "@/components/shared/logo";
-import { navItems } from "@/lib/constants/site";
-import { cn } from "@/lib/utils";
 import { waLink } from "@/utils/wa-link";
 
-const icons: Record<string, LucideIcon> = {
-  "/": House,
-  "/tentang-kami": Info,
-  "/layanan": Plane,
-  "/kota-tujuan": MapPinned,
-  "/artikel": Newspaper,
-  "/faq": CircleHelp,
-  "/kontak": Phone,
-};
+const navLinks = [
+  { name: "Beranda", href: "/", icon: Home },
+  { name: "Tentang Kami", href: "/tentang-kami", icon: Info },
+  { name: "Layanan", href: "/layanan", icon: Plane },
+  { name: "Kota Tujuan", href: "/kota-tujuan", icon: MapPin },
+  { name: "Artikel", href: "/artikel", icon: FileText },
+  { name: "FAQ", href: "/faq", icon: HelpCircle },
+  { name: "Kontak", href: "/kontak", icon: PhoneCall },
+];
 
 export function MobileMenu() {
   const pathname = usePathname();
 
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
-
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="size-11 lg:hidden" aria-label="Buka menu">
-          <Menu className="size-6" />
-        </Button>
+        {/* Tombol Hamburger di Navbar */}
+        <button aria-label="Buka Menu Navigasi" className="p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 active:scale-95 transition-all">
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </SheetTrigger>
 
-      <SheetContent side="right" className="flex w-[85%] max-w-xs flex-col gap-0 bg-white p-0">
-        <SheetHeader className="h-16 shrink-0 justify-center border-b px-4 py-0 text-left">
-          <SheetTitle className="sr-only">Menu navigasi</SheetTitle>
-          <SheetDescription className="sr-only">Daftar halaman Lion Cargo Logistik</SheetDescription>
-          <SheetClose asChild>
-            <span className="inline-flex w-fit">
-              <Logo />
-            </span>
+      {/* Kontainer Sheet Menu Mobile (Tinggi Menyesuaikan Konten) */}
+      <SheetContent side="top" className="w-full bg-white p-0 rounded-b-3xl border-b border-slate-200 shadow-xl max-h-[90vh] overflow-y-auto">
+        {/* Header Drawer dengan Logo Asli Proyek & Tombol X Merah Polos */}
+        <div className="flex items-center justify-between p-4 border-b border-slate-100">
+          {/* Logo Utama Asli Proyek */}
+          <Logo />
+
+          {/* Tombol Close (X) Merah Polos Tanpa Lingkaran Background */}
+          <SheetClose className="p-1 text-brand hover:opacity-70 transition-opacity focus:outline-none">
+            <X className="w-6 h-6" />
           </SheetClose>
-        </SheetHeader>
+        </div>
 
-        <nav aria-label="Menu seluler" className="flex-1 overflow-y-auto px-3 py-3 scrollbar-none [&::-webkit-scrollbar]:hidden">
-          <ul className="space-y-0.5">
-            {navItems.map((item) => {
-              const Icon = icons[item.href] ?? House;
-              const active = isActive(item.href);
+        {/* Daftar Navigasi */}
+        <div className="p-4 space-y-1">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            const isActive = pathname === link.href;
 
-              return (
-                <li key={item.href}>
-                  <SheetClose asChild>
-                    <Link
-                      href={item.href}
-                      aria-current={active ? "page" : undefined}
-                      className={cn("relative flex h-12 items-center gap-4 rounded-lg px-4 text-[15px] font-medium transition-colors", active ? "bg-accent text-brand" : "text-charcoal active:bg-secondary")}
-                    >
-                      {active && <span aria-hidden="true" className="absolute inset-y-2.5 left-0 w-1 rounded-r-full bg-brand" />}
-                      <Icon className={cn("size-5 shrink-0", active ? "text-brand" : "text-muted-foreground")} aria-hidden="true" />
-                      {item.label}
-                    </Link>
-                  </SheetClose>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+            return (
+              <SheetClose asChild key={link.href}>
+                <Link
+                  href={link.href}
+                  className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all ${isActive ? "bg-brand/10 text-brand border-l-4 border-brand" : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"}`}
+                >
+                  <Icon className={`w-4 h-4 ${isActive ? "text-brand" : "text-slate-500"}`} />
+                  <span>{link.name}</span>
+                </Link>
+              </SheetClose>
+            );
+          })}
+        </div>
 
-        <div className="shrink-0 border-t p-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
-          <Button asChild size="lg" className="h-12 w-full text-[15px]">
-            <a href={waLink("Halo Lion Cargo Logistik, saya ingin bertanya tentang pengiriman cargo.")} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="size-5" />
-              Chat WhatsApp
-            </a>
-          </Button>
+        {/* Tombol Chat WhatsApp (Menempel Dekat di Bawah Navigasi) */}
+        <div className="p-4 pt-2 border-t border-slate-100 bg-slate-50/50 rounded-b-3xl">
+          <a
+            href={waLink("Halo Lion Cargo Logistik, saya ingin bertanya seputar pengiriman kargo.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2.5 w-full bg-brand text-white font-bold py-3 px-4 rounded-xl text-sm shadow-sm hover:bg-brand/90 transition-all active:scale-[0.98]"
+          >
+            <MessageCircle className="w-4 h-4" />
+            <span>Chat WhatsApp</span>
+          </a>
         </div>
       </SheetContent>
     </Sheet>

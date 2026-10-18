@@ -8,12 +8,11 @@ import { waLink } from "@/utils/wa-link";
 
 interface ItemLayanan {
   id: string;
-  no: string;
   nama: string;
   badge: string;
   estimasi: string;
   tagline: string;
-  deskripsi: string;
+  deskripsiSeo: string[];
   imageSrc: string;
   imageAlt: string;
   ctaText: string;
@@ -24,54 +23,63 @@ interface ItemLayanan {
 const daftarLayanan: ItemLayanan[] = [
   {
     id: "reguler",
-    no: "01",
     nama: "Cargo Reguler",
-    badge: "Paling Hemat",
-    estimasi: "2 - 4 Hari",
+    badge: "PALING HEMAT",
+    estimasi: "Estimasi: 2 - 3 Hari",
     tagline: "Pengiriman Rutin Antarpulau Hemat & Terjadwal",
-    deskripsi: "Pengiriman barang umum via penerbangan berjadwal dari Bandara Soekarno-Hatta (CGK) ke berbagai kota tujuan di Indonesia. Cocok untuk paket toko online, suku cadang, hingga pengiriman berkala.",
-    imageSrc: "/images/hero-5.jpg", // Ganti dengan foto kargo umum/kardus
-    imageAlt: "Foto Cargo Reguler",
+    deskripsiSeo: [
+      "Pengiriman barang umum via penerbangan berjadwal dari Terminal Kargo Bandara Soekarno-Hatta (CGK) ke berbagai bandara tujuan di seluruh Indonesia.",
+      "Layanan eksekusi ekspedisi kargo udara hemat ini sangat cocok untuk pengiriman paket toko online, suku cadang, komoditas daerah, hingga kirim barang pindahan antarpulau dengan perhitungan tarif per kilogram yang transparan.",
+      "Mendukung opsi layanan Port to Port maupun Port to Door dengan jaminan penanganan muatan yang aman, teratur, dan mudah dipantau.",
+    ],
+    imageSrc: "/images/hero-5.jpg",
+    imageAlt: "Foto Cargo Reguler Lion Cargo Logistik Bandara Soekarno Hatta",
     ctaText: "Cek Tarif Reguler",
     ctaHref: "/cek-ongkir",
   },
   {
     id: "express",
-    no: "02",
     nama: "Cargo Express",
-    badge: "Prioritas Slot",
-    estimasi: "1 - 2 Hari",
+    badge: "PRIORITAS SLOT",
+    estimasi: "Estimasi: 1 - 2 Hari",
     tagline: "Prioritas Muat Penerbangan Pertama dari CGK",
-    deskripsi: "Layanan kargo berkecepatan tinggi yang mendapatkan slot prioritas muatan pesawat. Sangat pas untuk makanan/produk segar dan barang berharga yang mengejar waktu.",
-    imageSrc: "/images/hero-4.png", // Ganti dengan foto kargo express/pesawat
-    imageAlt: "Foto Cargo Express",
+    deskripsiSeo: [
+      "Layanan kargo udara berkecepatan tinggi yang mendapatkan kepastian slot prioritas muatan pada jadwal penerbangan paling awal dari Bandara Internasional Soekarno-Hatta.",
+      "Sangat direkomendasikan untuk pengiriman barang berharga, sampel industri mendesak, hingga produk makanan segar (perishable goods) yang membutuhkan waktu penanganan minim di perjalanan.",
+      "Proses clearance kargo dilakukan secara cepat di terminal pengiriman sehingga paket Anda tiba di kota tujuan dengan estimasi waktu yang efisien dan aman.",
+    ],
+    imageSrc: "/images/hero-4.png",
+    imageAlt: "Foto Cargo Express Prioritas Pesawat Bandara Soetta",
     ctaText: "Tanyakan Express via WA",
-    ctaHref: waLink("Halo Lion Cargo Logistik, saya ingin bertanya layanan Cargo Express."),
+    ctaHref: waLink("Halo Lion Cargo Logistik, saya ingin bertanya pengiriman cepat via Cargo Express."),
     isExternal: true,
   },
   {
     id: "sameday",
-    no: "03",
     nama: "Same Day Service",
-    badge: "Terbang Hari Ini",
-    estimasi: "Tiba Hari Ini*",
+    badge: "TERBANG HARI INI",
+    estimasi: "Estimasi: Tiba Hari Ini*",
     tagline: "Kirim Pagi, Tiba di Kota Tujuan Hari Ini Juga",
-    deskripsi: "Layanan kilat khusus untuk dokumen atau paket yang sangat mendesak. Paket diantar pagi ke Terminal Kargo Soekarno-Hatta dan langsung diterbangkan di penerbangan harian paling awal.",
-    imageSrc: "/images/hero-6.jpg", // Ganti dengan foto kargo kilat/dokumen
-    imageAlt: "Foto Same Day Service",
+    deskripsiSeo: [
+      "Layanan kilat khusus untuk pengiriman dokumen penting dan paket super mendesak dari Jakarta langsung terbang ke kota tujuan di hari yang sama.",
+      "Paket diantar pada pagi hari ke agen kargo Bandara Soekarno-Hatta dan diproses langsung pada jadwal penerbangan komersial harian paling pagi.",
+      "Solusi terbaik bagi Anda yang membutuhkan kecepatan waktu pengiriman ekstrem antarpulau tanpa penundaan transit.",
+    ],
+    imageSrc: "/images/hero-6.jpg",
+    imageAlt: "Foto Same Day Service Kargo Udara Kilat",
     ctaText: "Konsultasi Same Day",
-    ctaHref: waLink("Halo Lion Cargo Logistik, saya butuh layanan Same Day hari ini."),
+    ctaHref: waLink("Halo Lion Cargo Logistik, saya butuh layanan kilat Same Day Service hari ini."),
     isExternal: true,
   },
 ];
 
-// Animasi Meluncur Halus dari Bawah ke Atas
+// Animasi Meluncur Halus
 const slideUp: Variants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -79,67 +87,85 @@ export function Layanan() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section aria-labelledby="layanan-heading" className="bg-white py-16 sm:py-24 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <motion.div className="max-w-3xl" initial={reduceMotion ? false : "hidden"} whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={slideUp}>
-          <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand">Layanan Cargo Udara Soetta</span>
-          <h2 id="layanan-heading" className="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-charcoal leading-tight">
-            Pilihan Layanan Sesuai Kebutuhan Anda
+    <section aria-labelledby="layanan-heading" className="bg-white pt-2 pb-12 sm:pt-4 sm:pb-16 overflow-hidden">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        {/* Header Section (Lebih Dekat ke Marquee) */}
+        <motion.div className="max-w-3xl mb-8 sm:mb-10" initial={reduceMotion ? false : "hidden"} whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={slideUp}>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-600 border border-red-100">
+            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+            Layanan Cargo Udara Soekarno-Hatta
+          </span>
+          <h2 id="layanan-heading" className="mt-1 text-2xl sm:text-3xl font-extrabold tracking-tight text-charcoal leading-tight">
+            Pilihan Layanan Sesuai <span className="text-brand">Kebutuhan Anda</span>
           </h2>
-          <p className="mt-3 text-base sm:text-lg leading-relaxed text-muted-foreground">Pengiriman langsung dari Bandara Soekarno-Hatta (CGK) dengan estimasi waktu yang jelas dan tarif dihitung per kilogram.</p>
+
+          <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
+            Pengiriman langsung dari Terminal Kargo Bandara Soekarno-Hatta (CGK) dengan kepastian penerbangan harian, estimasi waktu yang jelas, serta tarif dihitung transparan per kilogram.
+          </p>
         </motion.div>
 
-        {/* List Layanan (Gambar Ekstra Kecil) */}
-        <div className="mt-14 sm:mt-20 space-y-12 sm:space-y-20">
+        {/* List 3 Layanan (Jarak Antar Item Dirapatkan) */}
+        <div className="space-y-8 sm:space-y-12">
           {daftarLayanan.map((item) => (
-            <motion.div key={item.id} initial={reduceMotion ? false : "hidden"} whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideUp} className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-              {/* Kolom GAMBAR (Ekstra Kecil: col-span-3, max-w-[280px]) */}
-              <div className="lg:col-span-3 flex justify-start">
+            <motion.div
+              key={item.id}
+              initial={reduceMotion ? false : "hidden"}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+              variants={slideUp}
+              className="space-y-3 border-b border-slate-100 pb-6 sm:pb-8 last:border-b-0 last:pb-0"
+            >
+              {/* 1. BADGE & JUDUL */}
+              <div className="space-y-1.5">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-brand bg-brand/10 px-2.5 py-0.5 rounded-full">{item.badge}</span>
+                  <span className="text-[11px] sm:text-xs font-bold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-full">{item.estimasi}</span>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-extrabold text-charcoal tracking-tight pt-0.5">{item.nama}</h3>
+
+                <p className="text-sm sm:text-base font-bold text-brand">{item.tagline}</p>
+              </div>
+
+              {/* 2. FOTO LAYANAN */}
+              <div>
                 <div className="relative aspect-4/3 w-full max-w-[280px] overflow-hidden rounded-xl bg-secondary shadow-2xs">
-                  <Image src={item.imageSrc} alt={item.imageAlt} fill sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover transition-transform duration-500 hover:scale-105" />
+                  <Image src={item.imageSrc} alt={item.imageAlt} fill sizes="(min-width: 1024px) 280px, 100vw" className="object-cover transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
 
-              {/* Kolom TEKS (Dominan: col-span-9) */}
-              <div className="lg:col-span-9 space-y-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-brand bg-brand/10 px-3 py-1 rounded-full">{item.badge}</span>
-                  <span className="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full">Estimasi: {item.estimasi}</span>
-                </div>
+              {/* 3. KETERANGAN / DESKRIPSI SEO */}
+              <div className="space-y-2 text-sm leading-relaxed text-muted-foreground max-w-3xl pt-0.5">
+                {item.deskripsiSeo.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
 
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-charcoal tracking-tight">{item.nama}</h3>
-
-                <p className="text-base sm:text-lg font-bold text-brand">{item.tagline}</p>
-
-                <p className="text-sm sm:text-base leading-relaxed text-muted-foreground max-w-3xl">{item.deskripsi}</p>
-
-                {/* Tombol Aksi */}
-                <div className="pt-2">
-                  {item.isExternal ? (
-                    <a
-                      href={item.ctaHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-brand text-white font-bold px-5 py-3 rounded-xl text-sm shadow-2xs hover:bg-brand/90 transition-all active:scale-[0.98]"
-                    >
-                      <MessageCircle className="size-4" />
-                      <span>{item.ctaText}</span>
-                    </a>
-                  ) : (
-                    <Link href={item.ctaHref} className="inline-flex items-center gap-2 bg-brand text-white font-bold px-5 py-3 rounded-xl text-sm shadow-2xs hover:bg-brand/90 transition-all active:scale-[0.98]">
-                      <span>{item.ctaText}</span>
-                      <ArrowRight className="size-4" />
-                    </Link>
-                  )}
-                </div>
+              {/* 4. BUTTON CHAT / CTA */}
+              <div className="pt-1.5">
+                {item.isExternal ? (
+                  <a
+                    href={item.ctaHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-brand text-white font-bold px-5 py-2.5 rounded-xl text-sm shadow-2xs hover:bg-brand/90 transition-all active:scale-[0.98]"
+                  >
+                    <MessageCircle className="size-4" />
+                    <span>{item.ctaText}</span>
+                  </a>
+                ) : (
+                  <Link href={item.ctaHref} className="inline-flex items-center gap-2 bg-brand text-white font-bold px-5 py-2.5 rounded-xl text-sm shadow-2xs hover:bg-brand/90 transition-all active:scale-[0.98]">
+                    <span>{item.ctaText}</span>
+                    <ArrowRight className="size-4" />
+                  </Link>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
 
         {/* Link Footer */}
-        <motion.div className="mt-16 text-center" initial={reduceMotion ? false : "hidden"} whileInView="visible" viewport={{ once: true }} variants={slideUp}>
+        <motion.div className="mt-10 text-center" initial={reduceMotion ? false : "hidden"} whileInView="visible" viewport={{ once: true }} variants={slideUp}>
           <Link href="/layanan" className="inline-flex items-center gap-2 text-sm font-bold text-charcoal hover:text-brand transition-colors">
             Lihat daftar rute & semua layanan lengkap &rarr;
           </Link>

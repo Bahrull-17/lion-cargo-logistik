@@ -19,7 +19,9 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
   const weightInputId = useId();
 
   const [selectedDestination, setSelectedDestination] = useState(destinations[0]?.slug ?? "");
-  const [beratKg, setBeratKg] = useState<number>(10);
+
+  // SOLUSI BUG BERAT: Menggunakan string agar leluasa dihapus & diketik ulang di HP
+  const [beratInputStr, setBeratInputStr] = useState<string>("10");
 
   // State pengontrol hasil kalkulasi setelah klik 'Cek Ongkir'
   const [hasCalculated, setHasCalculated] = useState<boolean>(false);
@@ -36,7 +38,8 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
   const BIAYA_HANDLING = 30000; // Rp 30.000
 
   // Perhitungan Tarif
-  const beratFinal = Math.max(beratKg, MINIMUM_WEIGHT_KG);
+  const parsedBerat = beratInputStr === "" ? 0 : Number(beratInputStr);
+  const beratFinal = Math.max(parsedBerat, MINIMUM_WEIGHT_KG);
   const pricePerKg = currentCity?.pricePerKg ?? 0;
   const subtotalBiaya = pricePerKg * beratFinal;
   const totalBiaya = subtotalBiaya > 0 ? subtotalBiaya + BIAYA_HANDLING : 0;
@@ -61,7 +64,7 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
   return (
     <div className="bg-[#f8fafc] text-slate-800 min-h-screen pb-20 sm:pb-28 overflow-hidden relative">
       {/* ==========================================
-          1. HERO BANNER: BERGERAK DARI ATAS KE BAWAH
+          1. HERO BANNER: UKURAN SESUAI PERMINTAAN
       ========================================== */}
       <motion.div
         className="w-full bg-white border-b border-slate-200/80 pt-2 pb-4 sm:pb-8 px-3 sm:px-6 lg:px-8"
@@ -86,7 +89,7 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
       </motion.div>
 
       {/* ==========================================
-          2. HEADER JUDUL: BERGERAK DARI ATAS TURUN KE BAWAH
+          2. HEADER JUDUL
       ========================================== */}
       <div className="relative pt-8 sm:pt-12 pb-6 px-4 sm:px-6">
         <div className="absolute inset-0 bg-linear-to-b from-red-50/50 via-slate-50/30 to-transparent pointer-events-none" />
@@ -132,7 +135,7 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
       </div>
 
       {/* ==========================================
-          3. FORM KALKULATOR: BERGERAK DARI BAWAH NAIK KE TENGAH
+          3. FORM KALKULATOR
       ========================================== */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20 relative z-10">
         <motion.div
@@ -160,7 +163,7 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
 
           <form onSubmit={handleCalculate} className="space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              {/* Select Kota Tujuan (Tinggi Seragam h-14) */}
+              {/* Select Kota Tujuan */}
               <div>
                 <label htmlFor={selectId} className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                   Kota / Bandara Tujuan
@@ -185,7 +188,7 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
                 </div>
               </div>
 
-              {/* Input Berat Barang (Tinggi Seragam h-14) */}
+              {/* Input Berat Barang (FIXED: string-based agar mudah dihapus di HP) */}
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label htmlFor={weightInputId} className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
@@ -198,9 +201,9 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
                     id={weightInputId}
                     type="number"
                     min={1}
-                    value={beratKg}
+                    value={beratInputStr}
                     onChange={(e) => {
-                      setBeratKg(Math.max(1, Number(e.target.value)));
+                      setBeratInputStr(e.target.value);
                       setHasCalculated(false);
                     }}
                     className="w-full h-14 pl-4 pr-12 rounded-xl sm:rounded-2xl border-2 border-slate-200 bg-slate-50 text-base sm:text-lg font-mono font-bold text-slate-900 focus:outline-none focus:border-red-600 focus:bg-white transition-all shadow-xs"
@@ -256,7 +259,7 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
                     </div>
                     <div className="text-left sm:text-right">
                       <span className="text-[10px] text-slate-500 font-mono block">ESTIMASI TIBA</span>
-                      <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-lg border border-emerald-200 inline-block mt-0.5">1 - 2 Hari Kerja</span>
+                      <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-lg border border-emerald-200 inline-block mt-0.5">1 - 3 Hari Kerja</span>
                     </div>
                   </div>
 
@@ -286,7 +289,7 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
                   </div>
 
                   {/* Breakdown Rincian Biaya */}
-                  <div className="space-y-2 py-3 text-xs font-mono border-b border-red-100 text-slate-700">
+                  <div className="space-y-2.5 py-3 text-xs font-mono border-b border-red-100 text-slate-700">
                     <div className="flex justify-between items-center">
                       <span>Tarif per Kg</span>
                       <span className="font-bold text-slate-900">Rp {formatRupiah(pricePerKg)}</span>
@@ -304,23 +307,26 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
 
                     <div className="flex justify-between items-center bg-white p-2.5 rounded-xl border border-red-200 text-red-900 font-sans">
                       <span className="font-bold text-xs flex items-center gap-1.5">
-                        <ShieldCheck className="size-4 text-red-600 shrink-0" /> Biaya Penanganan Admin Bandara
+                        <ShieldCheck className="size-4 text-red-600 shrink-0" /> Biaya Penanganan Admin
                       </span>
                       <span className="font-mono font-bold text-xs text-slate-900">Rp {formatRupiah(BIAYA_HANDLING)}</span>
                     </div>
                   </div>
 
-                  {/* Total All-In Price */}
-                  <div className="pt-3.5 pb-2">
-                    <div className="flex items-end justify-between">
+                  {/* Total All-In Price (FIXED: Rapih satu baris fleksibel tanpa terpotong di HP) */}
+                  <div className="pt-4 pb-2">
+                    <div className="flex flex-row items-center justify-between gap-2">
                       <div>
                         <span className="text-[10px] font-mono text-slate-500 uppercase font-bold block">TOTAL ESTIMASI ALL-IN</span>
-                        <span className="text-[11px] text-slate-500">Termasuk penanganan admin CGK</span>
+                        <span className="text-[11px] text-slate-500 block">Termasuk penanganan admin CGK</span>
                       </div>
 
-                      <div className="text-right">
+                      <div className="text-right shrink-0">
                         {pricePerKg > 0 ? (
-                          <span className="text-2xl sm:text-3xl font-heading font-black text-red-600 ">Rp {formatRupiah(totalBiaya)}</span>
+                          <div className="text-lg sm:text-2xl lg:text-3xl font-heading font-black text-red-600 tracking-tight flex items-center justify-end gap-1.5">
+                            <span className="text-xs sm:text-base font-bold text-red-600">Rp</span>
+                            <span>{formatRupiah(totalBiaya)}</span>
+                          </div>
                         ) : (
                           <span className="text-xs sm:text-sm font-bold text-amber-600">Hubungi WA untuk Tarif</span>
                         )}
@@ -380,7 +386,7 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
             </div>
           </div>
 
-          {/* DESKTOP TABLE VIEW (KOLOM NOMOR DIHAPUS) */}
+          {/* DESKTOP TABLE VIEW */}
           <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
@@ -424,7 +430,7 @@ export function CekOngkirSection({ destinations }: CekOngkirSectionProps) {
             </table>
           </div>
 
-          {/* MOBILE CARDS VIEW (ANGKA # NOMOR DIHAPUS) */}
+          {/* MOBILE CARDS VIEW */}
           <div className="block md:hidden space-y-3">
             {paginatedDestinations.length > 0 ? (
               paginatedDestinations.map((kota) => (

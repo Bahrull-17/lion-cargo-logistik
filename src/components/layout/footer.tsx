@@ -10,6 +10,7 @@ export function Footer() {
     <footer className="bg-charcoal text-white/80">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3 lg:px-8">
         <div className="space-y-4">
+          {/* Mengirimkan prop light agar menggunakan logo versi dark mode di background gelap */}
           <Logo light />
           <p className="max-w-xs text-sm leading-relaxed">{siteConfig.description}</p>
         </div>
@@ -19,7 +20,7 @@ export function Footer() {
           <ul className="space-y-2 text-sm">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="hover:text-white">
+                <Link href={item.href} className="hover:text-white transition-colors">
                   {item.label}
                 </Link>
               </li>

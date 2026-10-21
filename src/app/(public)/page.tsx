@@ -34,16 +34,16 @@ export default function HomePage() {
     <>
       <section className="relative isolate flex min-h-136 items-center justify-center overflow-hidden bg-charcoal lg:min-h-168">
         <Image src="/images/hero.jpg" alt="" aria-hidden="true" fill priority sizes="100vw" className="object-cover" />
-        <div aria-hidden="true" className="absolute inset-0 bg-charcoal/70" />
 
         <div className="relative mx-auto max-w-3xl px-4 py-20 text-center text-white sm:px-6">
-          <h1 className="text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
-            Solusi Pengiriman Cargo Udara <span className="text-[#B10E29]">Cepat dan Terpercaya</span>
+          <h1 className="text-4xl font-extrabold leading-[1.1] drop-shadow-md sm:text-5xl lg:text-6xl">
+            Solusi Pengiriman Cargo Udara <span className="text-[#ff1a3c] drop-shadow-md">Cepat dan Terpercaya</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/80">
+          <p className="mx-auto mt-6 max-w-xl text-lg font-medium leading-relaxed text-white drop-shadow">
             Jasa pengiriman cargo udara Jakarta ke seluruh Indonesia lewat Bandara Soekarno-Hatta. Tarif cargo per kg transparan, proses mudah, barang dan dokumen sampai dengan aman.
           </p>
+
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button
               asChild
@@ -60,7 +60,7 @@ export default function HomePage() {
               asChild
               size="lg"
               variant="outline"
-              className="h-14 w-full rounded-lg border-white/50 bg-white/10 px-8 text-base font-semibold tracking-wide text-white backdrop-blur transition-all duration-300 hover:bg-white hover:text-charcoal active:scale-[0.98] sm:w-auto"
+              className="h-14 w-full rounded-lg border-white/50 bg-white/10 px-8 text-base font-semibold tracking-wide text-white transition-all duration-300 hover:bg-white hover:text-charcoal active:scale-[0.98] sm:w-auto"
             >
               <a href={waLink("Halo Lion Cargo Logistik, saya ingin bertanya tentang pengiriman cargo.")} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="size-5" />

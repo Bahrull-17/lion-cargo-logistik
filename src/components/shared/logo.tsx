@@ -1,17 +1,13 @@
 import Link from "next/link";
-import { Plane } from "lucide-react";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 
-export function Logo({ light = false }: { light?: boolean }) {
+export function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-2.5" aria-label="Lion Cargo Logistik, ke beranda">
-      <span className="flex size-9 items-center justify-center rounded-lg bg-brand text-white">
-        <Plane className="size-5" aria-hidden="true" />
-      </span>
-      <span className={cn("font-heading text-lg font-extrabold leading-none tracking-tight", light ? "text-white" : "text-charcoal")}>
-        Lion Cargo
-        <span className={cn("mt-1 block text-[0.65rem] font-semibold uppercase tracking-[0.22em]", light ? "text-white/60" : "text-muted-foreground")}>Logistik</span>
-      </span>
+    <Link href="/" className="flex items-center" aria-label="Lion Cargo Logistik, ke beranda">
+      {/* Diperkecil lagi ke ukuran medium h-9 di HP, h-10 di tablet, dan h-11 di laptop/desktop */}
+      <div className="relative h-15 w-auto sm:h-12 md:h-17">
+        <Image src="/images/hero-1.png" alt="Lion Cargo Logistik" width={180} height={50} priority className="h-full w-auto object-contain" />
+      </div>
     </Link>
   );
 }

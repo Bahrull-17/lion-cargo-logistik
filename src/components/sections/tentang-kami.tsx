@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { Plane, Box, Zap, FileCheck, ChevronRight, ArrowUpRight, Navigation, Radio } from "lucide-react";
+import { Plane, Box, Zap, FileCheck, ChevronRight, ArrowUpRight, Navigation, Radio, HeartHandshake, Layers, PhoneCall, Clock, ShieldCheck, Users } from "lucide-react";
 
 const waLink = (message: string) => {
   return `https://wa.me/6282121213025?text=${encodeURIComponent(message)}`;
@@ -24,7 +24,6 @@ const heroImages = [
   },
 ];
 
-// Node rute ekspedisi kargo udara ramai & beragam
 const routeNodes = [
   { code: "KNO", city: "Medan", left: "6%", top: "12%", delay: 0 },
   { code: "PLM", city: "Palembang", left: "8%", top: "36%", delay: 0.4 },
@@ -54,7 +53,7 @@ export function TentangKamiSection() {
       {/* ==========================================
           1. HERO SLIDER FOTO
       ========================================== */}
-      <section className="w-full pt-0 pb-4">
+      <section className="w-full pt-0 pb-2">
         <div className="w-full">
           <div className="relative w-full h-48 sm:h-72 lg:h-80 overflow-hidden bg-slate-900 shadow-sm">
             <AnimatePresence mode="wait">
@@ -88,16 +87,14 @@ export function TentangKamiSection() {
       {/* ==========================================
           2. SEKSI PENGENALAN BRAND & KINETIC NODE MAP
       ========================================== */}
-      <div className="relative pt-2 sm:pt-4 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
-        {/* Pattern Akses Garis Latar */}
+      <div className="relative pt-2 sm:pt-4 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-linear-to-b from-red-50/40 via-slate-50/10 to-transparent pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-size-[3rem_3rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30 pointer-events-none" />
 
         <div className="max-w-6xl mx-auto relative z-10">
-          {/* Breadcrumb Navigasi (MASUK DARI ATAS) */}
           <motion.nav
             aria-label="Breadcrumb"
-            className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-6 sm:mb-8"
+            className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-4 sm:mb-6"
             initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -109,11 +106,9 @@ export function TentangKamiSection() {
             <span className="text-red-600 font-bold">Tentang Kami</span>
           </motion.nav>
 
-          {/* EDITORIAL CUSTOM HEADING & KINETIC NODE MAP */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* KIRI: HEADING & PARAGRAF PENJELASAN */}
-            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
-              {/* Running Tag Header (MASUK DARI ATAS) */}
+            <div className="lg:col-span-7 space-y-4 sm:space-y-5">
               <motion.div
                 className="flex items-center gap-3"
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -20 }}
@@ -125,7 +120,6 @@ export function TentangKamiSection() {
                 <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-widest text-red-600">PROFILE // LION CARGO LOGISTIK</span>
               </motion.div>
 
-              {/* HEADING EDITORIAL (MASUK DARI KIRI KE TENGAH) */}
               <motion.div
                 className="space-y-2 sm:space-y-3"
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -40 }}
@@ -140,7 +134,6 @@ export function TentangKamiSection() {
                 </h1>
               </motion.div>
 
-              {/* PARAGRAF PENJELASAN (MASUK DARI BAWAH KE ATAS) */}
               <motion.div
                 className="pl-4 sm:pl-5 border-l-2 border-red-500 space-y-3"
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 30 }}
@@ -158,7 +151,6 @@ export function TentangKamiSection() {
                 </p>
               </motion.div>
 
-              {/* BADGE HIGHLIGHT (NONGCUL DARI BAWAH BERGANTIAN) */}
               <motion.div
                 className="pt-1 flex flex-wrap gap-2.5 sm:gap-3 text-xs font-bold text-slate-800"
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
@@ -177,7 +169,7 @@ export function TentangKamiSection() {
               </motion.div>
             </div>
 
-            {/* KANAN: ELEMEN KINETIC FLIGHT DISPATCH NODE MAP (MASUK DARI KANAN KE TENGAH + FLOATING ANIMATION) */}
+            {/* KANAN: ELEMEN KINETIC FLIGHT DISPATCH NODE MAP */}
             <motion.div
               className="lg:col-span-5 relative h-96 sm:h-112.5 w-full flex items-center justify-center select-none"
               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: 50 }}
@@ -185,16 +177,12 @@ export function TentangKamiSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Tipografi Raksasa "CGK" Transparan & Responsif */}
               <span className="absolute text-[26vw] lg:text-[160px] font-black text-slate-200/60 font-mono tracking-tighter select-none pointer-events-none -z-10 leading-none">CGK</span>
 
-              {/* Radar Sweeper Circle Effect */}
               <div className="absolute size-52 sm:size-72 rounded-full border border-dashed border-red-300/40 pointer-events-none -z-10 animate-spin-slow" />
               <div className="absolute size-80 sm:size-96 rounded-full border border-slate-200/60 pointer-events-none -z-10" />
 
-              {/* Canvas SVG Garis Lintasan Terhubung */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-red-500/50" viewBox="0 0 400 300" fill="none" strokeWidth="1.8" strokeDasharray="4 4">
-                {/* Lintasan Garis ke Berbagai Kota */}
                 <path d="M 130 150 Q 70 60 30 40" />
                 <path d="M 130 150 Q 70 120 35 110" />
                 <path d="M 130 150 Q 170 200 200 235" />
@@ -205,7 +193,6 @@ export function TentangKamiSection() {
                 <path d="M 130 150 Q 260 170 310 170" />
               </svg>
 
-              {/* MINI BADGE LIVE DISPATCH (DARI ATAS) */}
               <motion.div
                 className="absolute top-1 left-1 flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-200/90 shadow-xs text-[10px] font-mono font-bold text-slate-800 z-30"
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -15 }}
@@ -217,7 +204,6 @@ export function TentangKamiSection() {
                 <span>CGK LIVE DISPATCH</span>
               </motion.div>
 
-              {/* MINI BADGE KECEPATAN (DARI KANAN) */}
               <motion.div
                 className="absolute top-1 right-1 bg-linear-to-r from-red-600 to-red-700 text-white px-2.5 py-1 rounded-xl shadow-md text-[10px] font-bold z-30 flex items-center gap-1"
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: 20 }}
@@ -229,7 +215,6 @@ export function TentangKamiSection() {
                 <span>1-2 HARI PORT TO PORT</span>
               </motion.div>
 
-              {/* PUSAT UTAMA CGK: TERMINAL KARGO SOEKARNO-HATTA */}
               <div className="absolute left-[32%] top-[50%] transform -translate-x-1/2 -translate-y-1/2 z-20 group">
                 <div className="relative flex items-center justify-center">
                   <span className="absolute size-14 sm:size-16 rounded-full bg-red-500/20 animate-ping"></span>
@@ -238,14 +223,12 @@ export function TentangKamiSection() {
                   </div>
                 </div>
 
-                {/* Badge CGK Label */}
                 <div className="absolute top-14 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-red-200 text-[10px] sm:text-[11px] font-black text-slate-900 shadow-md flex items-center gap-1.5">
                   <span className="size-2 rounded-full bg-red-600 animate-pulse"></span>
                   <span>TERMINAL KARGO CGK</span>
                 </div>
               </div>
 
-              {/* NODE RUTE TUJUAN KOTA BANYAK (FLOAT LOOP ANIMATION) */}
               {routeNodes.map((node, i) => (
                 <motion.div key={i} className="absolute z-10" style={{ left: node.left, top: node.top }} animate={{ y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity, delay: node.delay, ease: "easeInOut" }}>
                   <div className="flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-xl border border-slate-200/90 shadow-sm hover:border-red-500 hover:shadow-md transition-all cursor-pointer group whitespace-nowrap">
@@ -257,7 +240,6 @@ export function TentangKamiSection() {
                 </motion.div>
               ))}
 
-              {/* BADGE MINIMUM WEIGHT KARGO (BAWAH KIRI DARI BAWAH) */}
               <motion.div
                 className="absolute bottom-2 left-1 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-xl border border-slate-200/80 shadow-xs flex items-center gap-1.5 text-[10px] font-bold text-slate-800 z-30"
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
@@ -269,7 +251,6 @@ export function TentangKamiSection() {
                 <span>MIN. 10 KG</span>
               </motion.div>
 
-              {/* FLOATING ACTION BUTTON UNTUK CEK RUTE (BAWAH KANAN DARI KANAN) */}
               <motion.div
                 className="absolute bottom-1 right-1 z-30"
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: 20 }}
@@ -288,6 +269,211 @@ export function TentangKamiSection() {
                 </a>
               </motion.div>
             </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* ==========================================
+          4. SEKSI IKATAN TULUS LAYAKNYA SAHABAT
+      ========================================== */}
+      <div className="pt-4 sm:pt-6 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200/60 relative z-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* KIRI: HUMANISE HEADING (H2 SAHABAT) */}
+            <motion.div className="lg:col-span-6 space-y-3.5" initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -35 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+              <div className="flex items-center gap-3 text-[10px] sm:text-xs font-mono font-bold text-red-600 uppercase tracking-widest">
+                <span className="h-px w-8 sm:w-10 bg-red-600"></span>
+                <div className="flex items-center gap-1.5">
+                  <HeartHandshake className="size-4 text-red-600" />
+                  <span>PARTNERSHIP // NILAI UTAMA KAMI</span>
+                </div>
+              </div>
+
+              <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+                Melayani dan Membangun Ikatan yang <span className="text-red-600">Tulus Layaknya Sahabat</span>
+              </h2>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium pt-0.5">
+                Di industri <strong className="text-slate-900">ekspedisi</strong> yang serba cepat, kami menyadari bahwa <strong className="text-slate-900">Terminal kargo</strong> Anda bukan sekadar paket berbobot kilogram, tetapi merupakan
+                komitmen bisnis, reputasi usaha, dan harapan yang harus tiba tepat waktu.
+              </p>
+            </motion.div>
+
+            {/* KANAN: TEKS EDITORIAL PENDAMPING */}
+            <motion.div
+              className="lg:col-span-6 space-y-3 pl-4 sm:pl-6 border-l-2 border-red-600"
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: 35 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                Karena itulah, <strong className="text-slate-900">Lion Cargo Logistik</strong> tidak pernah memosisikan diri hanya sebagai vendor ekspedisi biasa. Kami hadir sebagai mitra strategis yang mendengarkan, memahami dinamika
+                kebutuhan pengiriman Anda, serta memberikan solusi terbaik dengan pendekatan transparan dan kekeluargaan.
+              </p>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Dari koordinasi di pintu penerimaan <strong className="text-slate-900">Terminal Kargo Soekarno-Hatta (CGK)</strong>, pengurusan dokumen Surat Muatan Udara (SMU), hingga konfirmasi kargo tiba di bandara tujuan, tim kami siap
+                mendampingi setiap langkah pengiriman Anda secara responsif layaknya seorang sahabat yang selalu dapat diandalkan.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* ==========================================
+          5. SEKSI SHOWCASE HERO-11.PNG
+      ========================================== */}
+      <div className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200/60 bg-white relative overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* EDITORIAL DESKRIPSI EMOSIONAL & AMANAH */}
+            <motion.div
+              className="lg:col-span-5 space-y-4 order-2 lg:order-1"
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="flex items-center gap-3 text-[10px] sm:text-xs font-mono font-bold text-red-600 uppercase tracking-widest">
+                <span className="h-px w-8 sm:w-10 bg-red-600"></span>
+                <div className="flex items-center gap-1.5">
+                  <Layers className="size-4 text-red-600" />
+                  <span>RAGAM AMANAH // SATU INTEGRITAS</span>
+                </div>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+                Memahami Setiap <span className="text-red-600">Karakter Pengiriman Anda</span>
+              </h2>
+
+              {/* GARIS LURUS MERAH HANYA PADA TULISAN PARAGRAF KECIL */}
+              <div className="pl-4 sm:pl-5 border-l-2 border-red-500 space-y-3">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Di balik setiap muatan <strong className="text-slate-900">Kargo</strong> mulai dari dus produksi usaha kecil, pasokan garmen antarpulau, suku cadang vital, hingga dokumen berharga terdapat cerita perjuangan dan
+                  kepercayaaan yang Anda titipkan.
+                </p>
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Tim operasional kami di <strong className="text-slate-900">Kargo Bandara Soekarno-Hatta Tangerang</strong> hadir untuk memastikan bahwa apapun bentuk dan kebutuhan muatan Anda, perlakuan yang kami berikan tetap sama: penuh
+                  rasa tanggung jawab, cermat, dan berdedikasi tinggi.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* FOTO HERO-11 DENGAN EFEK KINETIC PERSPECTIVE 3D UNFOLD */}
+            <div className="lg:col-span-7 order-1 lg:order-2 perspective-1000">
+              <motion.div
+                className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100 group transform-gpu"
+                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.85, rotateX: 18, rotateY: -12, y: 50 }}
+                whileInView={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{
+                  duration: 1.1,
+                  ease: [0.16, 1, 0.3, 1],
+                  scale: { duration: 0.9, ease: "easeOut" },
+                }}
+                whileHover={{ scale: 1.02, rotateY: 2, transition: { duration: 0.3 } }}
+              >
+                {/* GLOW AKSEN MERAH DIBELAKANG FOTO */}
+                <div className="absolute -inset-1 bg-linear-to-r from-red-600/20 to-amber-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
+
+                {/* GAMBAR FOTO KOMODITAS HERO-11 */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/hero-11.png"
+                  alt="Ragam Amanah Pengiriman - Lion Cargo Logistik"
+                  className="w-full h-auto max-h-112.5 object-cover object-center transform group-hover:scale-103 transition-transform duration-700 ease-out"
+                />
+
+                {/* OVERLAY BADGE ATAS KIRI */}
+                <div className="absolute inset-0 p-3 sm:p-5 flex flex-col justify-between pointer-events-none">
+                  <motion.div
+                    className="self-start bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-xl border border-slate-200/80 shadow-md text-[10px] font-mono font-bold text-slate-900 flex items-center gap-1.5 pointer-events-auto"
+                    initial={{ opacity: 0, scale: 0.5, y: -20 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.5, type: "spring", stiffness: 200 }}
+                  ></motion.div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ==========================================
+          6. SEKSI PENUTUP (POSISI NAIK, TANPA GARIS KEBAWAH, ICON TEPAT, 100% TERANG & BERSIH)
+      ========================================== */}
+      <div className="pt-10 sm:pt-14 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto space-y-12">
+          {/* HEADER PENUTUP */}
+          <div className="text-center space-y-4">
+            <div className="inline-flex items-center gap-3 text-[10px] sm:text-xs font-mono font-bold text-red-600 uppercase tracking-widest">
+              <span className="h-px w-8 sm:w-12 bg-red-600"></span>
+              <span>KOMITMEN PENUTUP</span>
+              <span className="h-px w-8 sm:w-12 bg-red-600"></span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+              Siap Mengirim Kargo Anda <span className="text-red-600">Tanpa Ragu</span>
+            </h2>
+            <p className="text-xs sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              Setiap tahapan pengiriman kargo udara dari Terminal <strong className="text-slate-900">Kargo Bandara Soekarno-Hatta Tangerang</strong> dikelola secara transparan, aman, dan profesional untuk memastikan paket serta barang Anda
+              tiba tepat waktu di kota tujuan
+            </p>
+          </div>
+
+          {/* DAFTAR ALUR KOMITMEN (DENGAN ICON PALING TEPAT, TANPA GARIS VERTIKAL KIRI & TANPA KOTAK) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2">
+            <motion.div className="space-y-3 text-center md:text-left" initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+              <div className="inline-flex size-11 items-center justify-center rounded-2xl bg-red-50 text-red-600 border border-red-100 shadow-xs mx-auto md:mx-0">
+                <Clock className="size-5" />
+              </div>
+              <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">Respon Operasional 24/7</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">Tim siaga kami memastikan dokumen Surat Muatan Udara (SMU) dan penjadwalan penerbangan langsung tertangani cepat tanpa penundaan waktu.</p>
+            </motion.div>
+
+            <motion.div
+              className="space-y-3 text-center md:text-left"
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="inline-flex size-11 items-center justify-center rounded-2xl bg-red-50 text-red-600 border border-red-100 shadow-xs mx-auto md:mx-0">
+                <ShieldCheck className="size-5" />
+              </div>
+              <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">Keamanan Fisik Muatan</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">Perlindungan menyeluruh pada setiap kilogram barang Anda dari titik penimbangan awal hingga tiba di bandara kota tujuan.</p>
+            </motion.div>
+
+            <motion.div
+              className="space-y-3 text-center md:text-left"
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="inline-flex size-11 items-center justify-center rounded-2xl bg-red-50 text-red-600 border border-red-100 shadow-xs mx-auto md:mx-0">
+                <Users className="size-5" />
+              </div>
+              <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">Pendampingan Sahabat</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">Hubungi kami kapan saja untuk konsultasi tarif, estimasi rute penerbangan, dan solusi terbaik bagi kelancaran bisnis Anda.</p>
+            </motion.div>
+          </div>
+
+          {/* TOMBOL AKSI BERSIH TERANG */}
+          <div className="pt-6 text-center flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={waLink("Halo Lion Cargo Logistik (+6282121213025), saya ingin berkonsultasi mengenai pengiriman kargo udara.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-7 py-3.5 rounded-2xl text-xs sm:text-sm transition-all shadow-lg shadow-red-600/20 group cursor-pointer"
+            >
+              <PhoneCall className="size-4" />
+              <span>Konsultasi Langsung via WhatsApp</span>
+              <ArrowUpRight className="size-4 text-red-200 group-hover:text-white transition-colors" />
+            </a>
           </div>
         </div>
       </div>

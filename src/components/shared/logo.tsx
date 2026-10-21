@@ -12,7 +12,7 @@ export function Logo({ light = false }: LogoProps) {
 
   return (
     <Link href="/" className="flex items-center" aria-label="Lion Cargo Logistik, ke beranda">
-      <div className="relative h-15 w-auto sm:h-15 md:h-17">
+      <div className="relative h-10 w-auto sm:h-11 md:h-11">
         <Image src={logoSrc} alt="Lion Cargo Logistik" width={180} height={50} priority={!light} className="h-full w-auto object-contain" />
       </div>
     </Link>

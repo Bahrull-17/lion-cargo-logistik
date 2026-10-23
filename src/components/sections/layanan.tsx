@@ -26,7 +26,7 @@ const daftarLayanan: ItemLayanan[] = [
     id: "reguler",
     nama: "Cargo Reguler",
     badge: "PALING HEMAT",
-    estimasi: "Estimasi: 2 - 4 Hari",
+    estimasi: "Estimasi: 2 - 3 Hari",
     tagline: "Pengiriman Rutin Antarpulau Hemat & Terjadwal",
     deskripsiSeo: [
       "Pengiriman barang umum via penerbangan berjadwal dari Terminal Kargo Bandara Soekarno-Hatta (CGK) ke berbagai bandara tujuan di seluruh Indonesia.",

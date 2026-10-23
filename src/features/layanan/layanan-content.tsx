@@ -3,7 +3,27 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MessageCircle, Plane, Package, ChevronDown, Scale, MapPin, ChevronRight, Calculator, CheckCircle2, ShieldCheck, Clock, Navigation, PlaneTakeoff, Layers, Cpu, ShieldAlert, Sparkles } from "lucide-react";
+import {
+  Workflow,
+  ArrowRight,
+  MessageCircle,
+  Plane,
+  Package,
+  ChevronDown,
+  Scale,
+  MapPin,
+  ChevronRight,
+  Calculator,
+  CheckCircle2,
+  ShieldCheck,
+  Clock,
+  Navigation,
+  PlaneTakeoff,
+  Layers,
+  ListOrdered,
+  ShieldAlert,
+  Sparkles,
+} from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion, Variants } from "framer-motion";
 import { waLink } from "@/utils/wa-link";
 
@@ -32,7 +52,7 @@ const daftarLayanan: ItemLayanan[] = [
     id: "reguler",
     nama: "Cargo Reguler",
     badge: "PALING HEMAT",
-    estimasi: "Estimasi: 2 - 4 Hari",
+    estimasi: "Estimasi: 2 - 3 Hari",
     tagline: "Pengiriman Rutin Antarpulau Hemat & Terjadwal",
     deskripsi: [
       "Pengiriman barang umum via penerbangan berjadwal dari Terminal Kargo Bandara Soekarno-Hatta (CGK) ke berbagai bandara tujuan di seluruh Indonesia.",
@@ -43,7 +63,7 @@ const daftarLayanan: ItemLayanan[] = [
     imageAlt: "Foto Cargo Reguler Lion Cargo Logistik Bandara Soekarno Hatta",
     ctaText: "Cek Tarif Reguler",
     ctaHref: "/cek-ongkir",
-    features: ["Tarif per Kg Transparan", "Port to Port / Door", "Jadwal Terbang Rutin"],
+    features: ["⚖️ Tarif per Kg Transparan", "📦 Port to Port / Door", "✈️ Jadwal Terbang Rutin"],
     peruntukan: "Rekomendasi: Toko Online, Distributor, Sparepart, Garmen, & Pindahan.",
   },
   {
@@ -62,7 +82,7 @@ const daftarLayanan: ItemLayanan[] = [
     ctaText: "Tanyakan Express via WA",
     ctaHref: waLink("Halo Lion Cargo Logistik, saya ingin bertanya pengiriman cepat via Cargo Express."),
     isExternal: true,
-    features: ["Flight Slot Pertama", "Produk Segar & Berharga", "Fast Track Clearance"],
+    features: ["⚡ Flight Slot Pertama", "🍎 Produk Segar & Berharga", "🚀 Fast Track Clearance"],
     peruntukan: "Rekomendasi: Seafood, Makanan Segar, Sampel Pabrik, & Barang Mahal.",
   },
   {
@@ -81,32 +101,28 @@ const daftarLayanan: ItemLayanan[] = [
     ctaText: "Konsultasi Same Day",
     ctaHref: waLink("Halo Lion Cargo Logistik, saya butuh layanan kilat Same Day Service hari ini."),
     isExternal: true,
-    features: ["Tiba Dalam 24 Jam", "Dokumen & Paket Urgent", "Direct Flight Priority"],
+    features: ["⏱️ Tiba Dalam 24 Jam", "📄 Dokumen & Paket Urgent", "🎯 Direct Flight Priority"],
     peruntukan: "Rekomendasi: Dokumen Tender, Medis/Obat Urgent, & Paspor/Surat Vital.",
   },
 ];
 
 const alurPengiriman = [
   {
-    step: "01",
     title: "Konsultasi & Cek Tarif",
-    desc: "Cek estimasi ongkir via sistem online atau diskusikan detail muatan barang Anda langsung dengan tim sales.",
+    desc: "Hitung estimasi tarif kargo udara secara akurat dan transparan melalui kalkulator ongkir online kami, atau hubungi tim profesional Lion Cargo Logistik secara langsung untuk mendiskusikan spesifikasi muatan, jadwal penerbangan dari Bandara Soekarno-Hatta (CGK), hingga penawaran harga terbaik untuk pengiriman bisnis Anda.",
     icon: Scale,
   },
   {
-    step: "02",
     title: "Penyerahan & Penimbangan",
-    desc: "Barang diantar ke agen/terminal kargo CGK atau dijemput oleh armada operasional Lion Cargo.",
+    desc: "Serahkan muatan barang Anda langsung ke lokasi agen resmi Lion Cargo Logistik di kawasan Bandara Internasional Soekarno-Hatta (CGK), di mana setiap paket akan ditimbang secara presisi, diukur berat volumetriknya sesuai standar, serta diverifikasi kelayakan pakingnya demi kelancaran proses pengiriman.",
     icon: Package,
   },
   {
-    step: "03",
     title: "Clearance & Flight Slot",
-    desc: "Pemeriksaan X-Ray, penerbitan Surat Muatan Udara (SMU/Resi), dan pemuatan ke lambung pesawat.",
+    desc: "Muatan barang diproses melalui verifikasi kelayakan penerbangan di terminal kargo Bandara Soekarno-Hatta, diterbitkan Surat Muatan Udara (SMU/Resi Resmi), dan langsung mendapatkan slot prioritas di lambung pesawat untuk diberangkatkan ke kota tujuan",
     icon: Plane,
   },
   {
-    step: "04",
     title: "Tiba & Handover",
     desc: "Barang dijemput di bandara tujuan (Port) atau diantar langsung ke alamat penerima (Door).",
     icon: MapPin,
@@ -128,21 +144,6 @@ const specialCargoList = [
     category: "Valuable Cargo (Barang Berharga Tinggi)",
     desc: "Perangkat elektronik premium, perhiasan, dokumen resmi negara, & aset bernilai tinggi.",
     note: "Disertai skema asuransi pengiriman penuh & pengawalan ekstra dari agen.",
-  },
-];
-
-const faqLayanan = [
-  {
-    q: "Bagaimana cara perhitungan berat volume (volumetrik) kargo udara?",
-    a: "Untuk pengiriman kargo udara, jika fisik barang besar tetapi ringan, berat dihitung memakai rumus Volumetrik Standar IATA: (Panjang x Lebar x Tinggi dalam cm) / 6.000. Nilai volumetrik ini akan dibandingkan dengan berat timbangan asli, dan tarif akan dihitung dari angka tertinggi.",
-  },
-  {
-    q: "Berapa batas minimal berat (minimum charge) untuk kargo udara?",
-    a: "Batas minimal pengiriman kargo udara standar dari Bandara Soekarno-Hatta adalah 10 kg. Jika paket Anda memiliki berat di bawah 10 kg, biaya pengiriman tetap dihitung berdasarkan ketentuan batas minimum 10 kg.",
-  },
-  {
-    q: "Apakah Lion Cargo Logistik melayani paking tambahan (wood packing/wrapping)?",
-    a: "Ya, kami menyediakan layanan penambahan paking kayu (wooden crate), wrapping plastik anti-air, hingga penguatan kardus di agen kargo Soetta untuk menjamin keamanan barang pecah belah atau produk bernilai tinggi.",
   },
 ];
 
@@ -206,7 +207,7 @@ function JudulHero({ reduceMotion }: { reduceMotion: boolean | null }) {
 
   return (
     <div className="tracking-tight text-slate-700 space-y-0.5 sm:space-y-1">
-      <TechSubheading text="SERVICES // LION CARGO LOGISTIK" icon={PlaneTakeoff} />
+      <TechSubheading text="SERVICES // LION CARGO LOGISTIK" />
 
       <span className="block overflow-hidden">
         <motion.span className={`block leading-tight ${ukuranNormal}`} initial={reduceMotion ? false : { y: "108%" }} animate={{ y: 0 }} transition={{ duration: 1.1, delay: 0.1, ease: easeMasuk }}>
@@ -335,7 +336,7 @@ export function LayananContent() {
 
                 <p className="text-xs sm:text-sm leading-relaxed text-slate-600">
                   <strong className="font-semibold text-slate-900">Lion Cargo Logistik</strong> menyediakan jaringan pengiriman kargo udara terpadu yang memprioritaskan kepastian slot penerbangan harian, kecepatan distribusi antarpulau,
-                  serta transparansi tarif per kilogram langsung dari Terminal Kargo Bandara Internasional Soekarno-Hatta (CGK).
+                  serta transparansi tarif per kilogram langsung dari <strong className="font-semibold text-slate-900">Terminal Kargo Bandara Internasional Soekarno-Hatta (CGK)</strong>
                 </p>
               </div>
 
@@ -421,14 +422,18 @@ export function LayananContent() {
       </section>
 
       {/* ================= 3 LAYANAN MODE ZIG-ZAG ================= */}
-      <section className="py-10 sm:py-16 bg-slate-50/60">
+      <section className="-mt-2 sm:-mt-4 pt-0 pb-10 sm:pb-16 bg-slate-50/60 relative z-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideUpSmooth}>
             <TechSubheading text="OPTIONS // PILIHAN EKSPEDISI" icon={Layers} />
             <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
               Opsi Ekspedisi Udara <span className="text-red-600">Sesuai Kebutuhan</span>
             </h2>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600">Pilih fleksibilitas kecepatan dan estimasi waktu penerbangan yang dirancang untuk efisiensi bisnis Anda.</p>
+            <p className="mt-2 text-xs sm:text-sm text-slate-600 text-left leading-relaxed">
+              Tingkatkan efisiensi rantai pasok bisnis Anda dengan memilih fleksibilitas kecepatan dan kepastian estimasi waktu penerbangan terbaik. Baik untuk pengiriman{" "}
+              <strong className="font-semibold text-slate-900">kargo reguler</strong> yang ekonomis, prioritas kilat harian, hingga layanan darurat yang tiba hari ini juga, kami siap memastikan setiap paket muatan Anda mendarat tepat waktu
+              dengan jaminan keamanan profesional langsung dari <strong className="font-semibold text-slate-900">Bandara Soekarno-Hatta</strong> ke seluruh penjuru Nusantara.
+            </p>
           </motion.div>
 
           <div className="space-y-8 sm:space-y-12">
@@ -528,15 +533,21 @@ export function LayananContent() {
       </section>
 
       {/* ================= ALUR PENGIRIMAN ================= */}
-      <section className="py-10 sm:py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div className="text-center max-w-2xl mx-auto mb-10" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideUpSmooth}>
-            <TechSubheading text="PROCEDURE // ALUR CARGO" icon={Cpu} />
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">Bagaimana Paket Anda Diproses?</h2>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600">Tahapan terstruktur untuk kelancaran & keamanan penerbangan kargo udara Anda.</p>
+      <section className="-mt-6 sm:-mt-10 py-6 sm:py-12 bg-white relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideUpSmooth}>
+            <TechSubheading text="PROCEDURE // ALUR CARGO" icon={Workflow} />
+            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight text-center">
+              Bagaimana Paket <span className="text-red-600">Anda Diproses?</span>
+            </h2>
+            <p className="mt-3 text-xs sm:text-sm text-slate-600 text-center leading-relaxed max-w-2xl mx-auto">
+              Pahami setiap tahapan operasional ekspedisi <strong classname="font-semibold text-slate-900">kargo</strong> udara kami yang dirancang secara terstruktur, sistematis, dan aman. Mulai dari proses penimbangan muatan di{" "}
+              <strong classname="font-semibold text-slate-900">terminal kargo Bandara Soekarno-Hatta (CGK)</strong> , pemeriksaan keamanan X-Ray, penerbitan Surat Muatan Udara (SMU), hingga pengelolaan slot penerbangan harian antar pulau
+              untuk menjamin paket Anda mendarat tepat waktu di kota tujuan.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6">
             {alurPengiriman.map((step, idx) => {
               const Icon = step.icon;
               return (
@@ -547,31 +558,39 @@ export function LayananContent() {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
                   variants={slideUpSmooth}
-                  className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 space-y-3 relative hover:border-red-300 hover:bg-white hover:shadow-xl transition-all duration-300 group"
+                  className="group relative flex flex-col items-center text-center p-6 sm:p-7 rounded-3xl bg-linear-to-b from-slate-50 via-white to-slate-50/50 border border-slate-200/80 shadow-xs hover:shadow-2xl hover:border-red-300 transition-all duration-500 overflow-hidden"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-xl bg-red-100 text-red-600 flex items-center justify-center font-bold">
-                      <Icon className="size-5 group-hover:scale-110 transition-transform" />
+                  {/* Accent Line Atas saat Hover */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-linear-to-r from-red-600 to-rose-500 group-hover:w-full transition-all duration-500" />
+
+                  {/* Icon Container di Tengah dengan Glow Effect */}
+                  <div className="relative mb-5 flex items-center justify-center">
+                    <div className="absolute inset-0 rounded-2xl bg-red-500/10 blur-xl group-hover:bg-red-500/25 transition-all duration-500" />
+                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-red-100 shadow-md flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      <Icon className="size-6 sm:size-7 transition-colors duration-500" />
                     </div>
-                    <span className="text-2xl font-black text-slate-300 group-hover:text-red-500 transition-colors">{step.step}</span>
                   </div>
 
-                  <h3 className="text-base font-black text-slate-900">{step.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">{step.desc}</p>
+                  {/* Judul Tahapan */}
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 tracking-tight mb-2 group-hover:text-red-600 transition-colors">{step.title}</h3>
+
+                  {/* Deskripsi Tahapan */}
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{step.desc}</p>
                 </motion.div>
               );
             })}
           </div>
         </div>
       </section>
-
       {/* ================= SPECIAL CARGO ================= */}
       <section className="py-10 sm:py-16 bg-slate-50 border-t border-slate-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <motion.div className="lg:col-span-5 space-y-3" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideFromLeft}>
               <TechSubheading text="COMPLIANCE // SPECIAL CARGO" icon={ShieldAlert} />
-              <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">Penanganan Special Cargo</h2>
+              <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                Penanganan <span className="text-red-600">Special Cargo</span>
+              </h2>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">Pengalaman profesional menangani jenis muatan khusus yang membutuhkan sertifikasi karantina, standar kemasan ekstra, maupun izin penerbangan berjadwal.</p>
             </motion.div>
 
@@ -594,69 +613,6 @@ export function LayananContent() {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= FAQ SECTION ================= */}
-      <section className="py-10 sm:py-16 bg-white border-t border-slate-100">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <motion.div className="text-center max-w-2xl mx-auto mb-10" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideUpSmooth}>
-            <TechSubheading text="FAQ // TANYA JAWAB" icon={Sparkles} />
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">Pertanyaan Sering Diajukan</h2>
-          </motion.div>
-
-          <div className="space-y-3">
-            {faqLayanan.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <motion.div
-                  key={idx}
-                  custom={idx}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  variants={slideUpSmooth}
-                  className="rounded-2xl bg-slate-50 border border-slate-200/80 overflow-hidden transition-all shadow-2xs"
-                >
-                  <button onClick={() => setOpenFaq(isOpen ? null : idx)} className="w-full p-4 text-left flex items-center justify-between gap-3 font-bold text-xs sm:text-sm text-slate-900 hover:text-red-600 transition-colors">
-                    <span>{faq.q}</span>
-                    <ChevronDown className={`size-4 shrink-0 text-slate-400 transition-transform duration-300 ${isOpen ? "rotate-180 text-red-600" : ""}`} />
-                  </button>
-
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}>
-                        <div className="px-4 pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">{faq.a}</div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= CALL TO ACTION BANNER ================= */}
-      <section className="py-12 sm:py-16 bg-red-600 text-white text-center relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-4 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-black tracking-tight">Siap Mengirim Barang Hari Ini?</h2>
-          <p className="text-xs sm:text-base text-red-100 max-w-xl mx-auto leading-relaxed">Hubungi agen kargo kami di Bandara Soekarno-Hatta untuk konsultasi tarif dan kepastian jadwal penerbangan harian.</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-3">
-            <a
-              href={waLink("Halo Lion Cargo Logistik, saya mau kirim kargo udara hari ini.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-white text-red-600 hover:bg-slate-100 font-extrabold px-6 py-3.5 rounded-xl shadow-lg transition-all active:scale-[0.98] text-xs sm:text-sm"
-            >
-              Hubungi Tim Sales WA
-            </a>
-            <Link href="/cek-ongkir" className="w-full sm:w-auto bg-red-700 hover:bg-red-800 text-white font-bold px-6 py-3.5 rounded-xl border border-red-500 transition-all active:scale-[0.98] text-xs sm:text-sm">
-              Cek Tarif Online
-            </Link>
           </div>
         </div>
       </section>

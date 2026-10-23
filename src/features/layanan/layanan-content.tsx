@@ -9,7 +9,6 @@ import {
   MessageCircle,
   Plane,
   Package,
-  ChevronDown,
   Scale,
   MapPin,
   ChevronRight,
@@ -541,8 +540,8 @@ export function LayananContent() {
               Bagaimana Paket <span className="text-red-600">Anda Diproses?</span>
             </h2>
             <p className="mt-3 text-xs sm:text-sm text-slate-600 text-center leading-relaxed max-w-2xl mx-auto">
-              Pahami setiap tahapan operasional ekspedisi <strong classname="font-semibold text-slate-900">kargo</strong> udara kami yang dirancang secara terstruktur, sistematis, dan aman. Mulai dari proses penimbangan muatan di{" "}
-              <strong classname="font-semibold text-slate-900">terminal kargo Bandara Soekarno-Hatta (CGK)</strong> , pemeriksaan keamanan X-Ray, penerbitan Surat Muatan Udara (SMU), hingga pengelolaan slot penerbangan harian antar pulau
+              Pahami setiap tahapan operasional ekspedisi <strong className="font-semibold text-slate-900">kargo</strong> udara kami yang dirancang secara terstruktur, sistematis, dan aman. Mulai dari proses penimbangan muatan di{" "}
+              <strong className="font-semibold text-slate-900">terminal kargo Bandara Soekarno-Hatta (CGK)</strong> , pemeriksaan keamanan X-Ray, penerbitan Surat Muatan Udara (SMU), hingga pengelolaan slot penerbangan harian antar pulau
               untuk menjamin paket Anda mendarat tepat waktu di kota tujuan.
             </p>
           </motion.div>

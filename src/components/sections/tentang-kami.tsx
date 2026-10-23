@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { Plane, Box, Zap, FileCheck, ChevronRight, ArrowUpRight, Navigation, Radio, HeartHandshake, Layers, PhoneCall, Clock, ShieldCheck, Users } from "lucide-react";
+import Image from "next/image";
+import { Plane, Box, Zap, FileCheck, ChevronRight, ArrowUpRight, Navigation, Radio, HeartHandshake, Layers } from "lucide-react";
 
 const waLink = (message: string) => {
   return `https://wa.me/6282121213025?text=${encodeURIComponent(message)}`;
@@ -24,6 +25,21 @@ const heroImages = [
   },
 ];
 
+const fiturUnggulan = [
+  {
+    image: "/images/respon.jpg",
+    alt: "Respon Operasional 24/7",
+  },
+  {
+    image: "/images/keamanan.jpg",
+    alt: "Keamanan Fisik Muatan",
+  },
+  {
+    image: "/images/konsultasi.jpg",
+    alt: "Pendampingan Sahabat & Konsultasi",
+  },
+];
+
 const routeNodes = [
   { code: "KNO", city: "Medan", left: "6%", top: "12%", delay: 0 },
   { code: "PLM", city: "Palembang", left: "8%", top: "36%", delay: 0.4 },
@@ -39,6 +55,8 @@ export function TentangKamiSection() {
   const shouldReduceMotion = useReducedMotion();
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const whatsappUrl = waLink("Halo Lion Cargo Logistik (+6282121213025), saya ingin berkonsultasi mengenai pengiriman kargo udara.");
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % heroImages.length);
@@ -46,10 +64,11 @@ export function TentangKamiSection() {
     return () => clearInterval(timer);
   }, []);
 
-  const currentImage = heroImages[currentIndex] ?? heroImages[0];
+  // Menggunakan fallback non-null assertion (!) atau pengaman agar TypeScript tidak warning undefined
+  const currentImage = heroImages[currentIndex] ?? heroImages[0]!;
 
   return (
-    <div className="bg-[#f8fafc] text-slate-800 min-h-screen pb-20 sm:pb-28 overflow-hidden relative">
+    <div className="bg-[#f8fafc] text-slate-800 min-h-screen pb-12 sm:pb-16 overflow-hidden relative">
       {/* ==========================================
           1. HERO SLIDER FOTO
       ========================================== */}
@@ -65,8 +84,7 @@ export function TentangKamiSection() {
                 exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={currentImage?.src} alt={currentImage?.alt} className="w-full h-full object-cover object-[center_35%]" />
+                <Image src={currentImage.src} alt={currentImage.alt} fill priority sizes="100vw" className="object-cover object-[center_35%]" />
               </motion.div>
             </AnimatePresence>
 
@@ -125,7 +143,11 @@ export function TentangKamiSection() {
                 initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
               >
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.12]">
                   Solusi Ekspedisi <br />
@@ -175,7 +197,11 @@ export function TentangKamiSection() {
               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.8,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
               <span className="absolute text-[26vw] lg:text-[160px] font-black text-slate-200/60 font-mono tracking-tighter select-none pointer-events-none -z-10 leading-none">CGK</span>
 
@@ -230,7 +256,18 @@ export function TentangKamiSection() {
               </div>
 
               {routeNodes.map((node, i) => (
-                <motion.div key={i} className="absolute z-10" style={{ left: node.left, top: node.top }} animate={{ y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity, delay: node.delay, ease: "easeInOut" }}>
+                <motion.div
+                  key={i}
+                  className="absolute z-10"
+                  style={{ left: node.left, top: node.top }}
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{
+                    duration: 3.5,
+                    repeat: Infinity,
+                    delay: node.delay,
+                    ease: "easeInOut",
+                  }}
+                >
                   <div className="flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-xl border border-slate-200/90 shadow-sm hover:border-red-500 hover:shadow-md transition-all cursor-pointer group whitespace-nowrap">
                     <span className="size-2 rounded-full bg-emerald-500 shrink-0"></span>
                     <span className="text-[10px] sm:text-[11px] font-mono font-bold text-slate-900">{node.code}</span>
@@ -259,7 +296,7 @@ export function TentangKamiSection() {
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
                 <a
-                  href={waLink("Halo Lion Cargo Logistik (+6282121213025), saya ingin berkonsultasi mengenai pengiriman kargo udara.")}
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-slate-900 hover:bg-red-600 text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl text-xs font-bold transition-all shadow-lg group cursor-pointer"
@@ -347,7 +384,6 @@ export function TentangKamiSection() {
                 Memahami Setiap <span className="text-red-600">Karakter Pengiriman Anda</span>
               </h2>
 
-              {/* GARIS LURUS MERAH HANYA PADA TULISAN PARAGRAF KECIL */}
               <div className="pl-4 sm:pl-5 border-l-2 border-red-500 space-y-3">
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Di balik setiap muatan <strong className="text-slate-900">Kargo</strong> mulai dari dus produksi usaha kecil, pasokan garmen antarpulau, suku cadang vital, hingga dokumen berharga terdapat cerita perjuangan dan
@@ -365,37 +401,45 @@ export function TentangKamiSection() {
             <div className="lg:col-span-7 order-1 lg:order-2 perspective-1000">
               <motion.div
                 className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100 group transform-gpu"
-                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.85, rotateX: 18, rotateY: -12, y: 50 }}
-                whileInView={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0, y: 0 }}
+                initial={
+                  shouldReduceMotion
+                    ? { opacity: 1 }
+                    : {
+                        opacity: 0,
+                        scale: 0.85,
+                        rotateX: 18,
+                        rotateY: -12,
+                        y: 50,
+                      }
+                }
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                  rotateX: 0,
+                  rotateY: 0,
+                  y: 0,
+                }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{
                   duration: 1.1,
                   ease: [0.16, 1, 0.3, 1],
                   scale: { duration: 0.9, ease: "easeOut" },
                 }}
-                whileHover={{ scale: 1.02, rotateY: 2, transition: { duration: 0.3 } }}
+                whileHover={{
+                  scale: 1.02,
+                  rotateY: 2,
+                  transition: { duration: 0.3 },
+                }}
               >
-                {/* GLOW AKSEN MERAH DIBELAKANG FOTO */}
                 <div className="absolute -inset-1 bg-linear-to-r from-red-600/20 to-amber-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
 
-                {/* GAMBAR FOTO KOMODITAS HERO-11 */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/images/hero-11.png"
                   alt="Ragam Amanah Pengiriman - Lion Cargo Logistik"
+                  width={800}
+                  height={500}
                   className="w-full h-auto max-h-112.5 object-cover object-center transform group-hover:scale-103 transition-transform duration-700 ease-out"
                 />
-
-                {/* OVERLAY BADGE ATAS KIRI */}
-                <div className="absolute inset-0 p-3 sm:p-5 flex flex-col justify-between pointer-events-none">
-                  <motion.div
-                    className="self-start bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-xl border border-slate-200/80 shadow-md text-[10px] font-mono font-bold text-slate-900 flex items-center gap-1.5 pointer-events-auto"
-                    initial={{ opacity: 0, scale: 0.5, y: -20 }}
-                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.5, type: "spring", stiffness: 200 }}
-                  ></motion.div>
-                </div>
               </motion.div>
             </div>
           </div>
@@ -403,10 +447,10 @@ export function TentangKamiSection() {
       </div>
 
       {/* ==========================================
-          6. SEKSI PENUTUP (POSISI NAIK, TANPA GARIS KEBAWAH, ICON TEPAT, 100% TERANG & BERSIH)
+          6. SEKSI PENUTUP & CTA
       ========================================== */}
-      <div className="pt-10 sm:pt-14 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
-        <div className="max-w-4xl mx-auto space-y-12">
+      <div className="pt-8 sm:pt-12 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto space-y-8 sm:space-y-10">
           {/* HEADER PENUTUP */}
           <div className="text-center space-y-4">
             <div className="inline-flex items-center gap-3 text-[10px] sm:text-xs font-mono font-bold text-red-600 uppercase tracking-widest">
@@ -419,62 +463,73 @@ export function TentangKamiSection() {
             </h2>
             <p className="text-xs sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
               Setiap tahapan pengiriman kargo udara dari Terminal <strong className="text-slate-900">Kargo Bandara Soekarno-Hatta Tangerang</strong> dikelola secara transparan, aman, dan profesional untuk memastikan paket serta barang Anda
-              tiba tepat waktu di kota tujuan
+              tiba tepat waktu di kota tujuan.
             </p>
           </div>
 
-          {/* DAFTAR ALUR KOMITMEN (DENGAN ICON PALING TEPAT, TANPA GARIS VERTIKAL KIRI & TANPA KOTAK) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2">
-            <motion.div className="space-y-3 text-center md:text-left" initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-              <div className="inline-flex size-11 items-center justify-center rounded-2xl bg-red-50 text-red-600 border border-red-100 shadow-xs mx-auto md:mx-0">
-                <Clock className="size-5" />
-              </div>
-              <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">Respon Operasional 24/7</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">Tim siaga kami memastikan dokumen Surat Muatan Udara (SMU) dan penjadwalan penerbangan langsung tertangani cepat tanpa penundaan waktu.</p>
-            </motion.div>
+          {/* DAFTAR FITUR UNGGULAN GAMBAR */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 pt-2">
+            {fiturUnggulan.map((item, idx) => (
+              <motion.div
+                key={idx}
+                className="group relative flex flex-col items-center md:items-start p-4 sm:p-5 rounded-3xl bg-linear-to-b from-slate-50 via-white to-slate-50/50 border border-slate-200/80 shadow-xs hover:shadow-xl hover:border-red-300 transition-all duration-500 overflow-hidden"
+                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-linear-to-r from-red-600 to-rose-500 group-hover:w-full transition-all duration-500" />
 
-            <motion.div
-              className="space-y-3 text-center md:text-left"
-              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <div className="inline-flex size-11 items-center justify-center rounded-2xl bg-red-50 text-red-600 border border-red-100 shadow-xs mx-auto md:mx-0">
-                <ShieldCheck className="size-5" />
-              </div>
-              <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">Keamanan Fisik Muatan</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">Perlindungan menyeluruh pada setiap kilogram barang Anda dari titik penimbangan awal hingga tiba di bandara kota tujuan.</p>
-            </motion.div>
-
-            <motion.div
-              className="space-y-3 text-center md:text-left"
-              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="inline-flex size-11 items-center justify-center rounded-2xl bg-red-50 text-red-600 border border-red-100 shadow-xs mx-auto md:mx-0">
-                <Users className="size-5" />
-              </div>
-              <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">Pendampingan Sahabat</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">Hubungi kami kapan saja untuk konsultasi tarif, estimasi rute penerbangan, dan solusi terbaik bagi kelancaran bisnis Anda.</p>
-            </motion.div>
+                {/* Diperbarui dari max-w-[220px] menjadi max-w-55 sesuai saran Tailwind */}
+                <div className="relative w-full max-w-55 md:max-w-none rounded-2xl overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
+                  <Image src={item.image} alt={item.alt} width={400} height={300} className="w-full h-auto object-contain block rounded-2xl" />
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* TOMBOL AKSI BERSIH TERANG */}
-          <div className="pt-6 text-center flex flex-wrap items-center justify-center gap-4">
-            <a
-              href={waLink("Halo Lion Cargo Logistik (+6282121213025), saya ingin berkonsultasi mengenai pengiriman kargo udara.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-7 py-3.5 rounded-2xl text-xs sm:text-sm transition-all shadow-lg shadow-red-600/20 group cursor-pointer"
-            >
-              <PhoneCall className="size-4" />
-              <span>Konsultasi Langsung via WhatsApp</span>
-              <ArrowUpRight className="size-4 text-red-200 group-hover:text-white transition-colors" />
-            </a>
-          </div>
+          {/* CALL TO ACTION (CTA) - Rapat tanpa space kosong bawah */}
+          <section className="-mt-4 sm:-mt-6 pb-2 pt-2 bg-white relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="flex flex-col items-center text-center">
+                <motion.h2
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight mb-4"
+                >
+                  Kirim barang <span className="text-red-600">sekarang !</span>
+                </motion.h2>
+
+                <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }} className="flex items-center justify-center gap-3 mb-4">
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 rounded-full bg-red-600 text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md shadow-red-600/20 hover:bg-red-700 hover:shadow-red-600/40 hover:scale-105 active:scale-95 transition-all duration-300"
+                  >
+                    HUBUNGI KAMI
+                  </a>
+
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Hubungi kami melalui WhatsApp"
+                    className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-600 text-white shadow-md shadow-red-600/20 hover:bg-red-700 hover:shadow-red-600/40 hover:scale-110 hover:rotate-12 active:scale-95 transition-all duration-300"
+                  >
+                    <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </a>
+                </motion.div>
+
+                <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="text-xs sm:text-sm text-slate-600 font-medium max-w-2xl">
+                  <span className="font-bold text-slate-900">Lion Cargo Logistik</span>, <span className="text-red-600 font-semibold">#KirimAmanSampaiTujuan</span> – Solusi logistik kargo udara lengkap & terpercaya dari Bandara
+                  Soekarno-Hatta!
+                </motion.p>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>

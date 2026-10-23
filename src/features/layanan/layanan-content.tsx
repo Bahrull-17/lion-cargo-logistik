@@ -22,6 +22,7 @@ import {
   ListOrdered,
   ShieldAlert,
   Sparkles,
+  ArrowUpRight,
 } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion, Variants } from "framer-motion";
 import { waLink } from "@/utils/wa-link";
@@ -107,24 +108,20 @@ const daftarLayanan: ItemLayanan[] = [
 
 const alurPengiriman = [
   {
-    title: "Konsultasi & Cek Tarif",
-    desc: "Hitung estimasi tarif kargo udara secara akurat dan transparan melalui kalkulator ongkir online kami, atau hubungi tim profesional Lion Cargo Logistik secara langsung untuk mendiskusikan spesifikasi muatan, jadwal penerbangan dari Bandara Soekarno-Hatta (CGK), hingga penawaran harga terbaik untuk pengiriman bisnis Anda.",
-    icon: Scale,
+    image: "/images/tarif.png",
+    alt: "Konsultasi & Cek Tarif",
   },
   {
-    title: "Penyerahan & Penimbangan",
-    desc: "Serahkan muatan barang Anda langsung ke lokasi agen resmi Lion Cargo Logistik di kawasan Bandara Internasional Soekarno-Hatta (CGK), di mana setiap paket akan ditimbang secara presisi, diukur berat volumetriknya sesuai standar, serta diverifikasi kelayakan pakingnya demi kelancaran proses pengiriman.",
-    icon: Package,
+    image: "/images/penyerahan.png",
+    alt: "Penyerahan & Penimbangan",
   },
   {
-    title: "Clearance & Flight Slot",
-    desc: "Muatan barang diproses melalui verifikasi kelayakan penerbangan di terminal kargo Bandara Soekarno-Hatta, diterbitkan Surat Muatan Udara (SMU/Resi Resmi), dan langsung mendapatkan slot prioritas di lambung pesawat untuk diberangkatkan ke kota tujuan",
-    icon: Plane,
+    image: "/images/otorisasi.jpg",
+    alt: "Clearance & Flight Slot",
   },
   {
-    title: "Tiba & Handover",
-    desc: "Barang dijemput di bandara tujuan (Port) atau diantar langsung ke alamat penerima (Door).",
-    icon: MapPin,
+    image: "/images/tiba.jpg",
+    alt: "Tiba & Handover",
   },
 ];
 
@@ -292,7 +289,7 @@ function KotaBergulir({ reduceMotion }: { reduceMotion: boolean | null }) {
 
 export function LayananContent() {
   const reduceMotion = useReducedMotion();
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const whatsappUrl = waLink("Halo Lion Cargo Logistik, saya ingin kirim barang sekarang.");
 
   return (
     <div className="bg-white text-slate-800 selection:bg-red-600 selection:text-white overflow-x-hidden">
@@ -545,10 +542,8 @@ export function LayananContent() {
               untuk menjamin paket Anda mendarat tepat waktu di kota tujuan.
             </p>
           </motion.div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6">
             {alurPengiriman.map((step, idx) => {
-              const Icon = step.icon;
               return (
                 <motion.div
                   key={idx}
@@ -557,30 +552,22 @@ export function LayananContent() {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
                   variants={slideUpSmooth}
-                  className="group relative flex flex-col items-center text-center p-6 sm:p-7 rounded-3xl bg-linear-to-b from-slate-50 via-white to-slate-50/50 border border-slate-200/80 shadow-xs hover:shadow-2xl hover:border-red-300 transition-all duration-500 overflow-hidden"
+                  className="group relative flex items-center justify-center p-3 sm:p-4 rounded-3xl bg-linear-to-b from-slate-50 via-white to-slate-50/50 border border-slate-200/80 shadow-xs hover:shadow-2xl hover:border-red-300 transition-all duration-500 overflow-hidden"
                 >
                   {/* Accent Line Atas saat Hover */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-linear-to-r from-red-600 to-rose-500 group-hover:w-full transition-all duration-500" />
 
-                  {/* Icon Container di Tengah dengan Glow Effect */}
-                  <div className="relative mb-5 flex items-center justify-center">
-                    <div className="absolute inset-0 rounded-2xl bg-red-500/10 blur-xl group-hover:bg-red-500/25 transition-all duration-500" />
-                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-red-100 shadow-md flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                      <Icon className="size-6 sm:size-7 transition-colors duration-500" />
-                    </div>
+                  {/* Container Gambar Responsif */}
+                  <div className="relative w-full max-w-[210px] sm:max-w-none rounded-2xl overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
+                    <img src={step.image} alt={step.alt} className="w-full h-auto object-contain block rounded-2xl" />
                   </div>
-
-                  {/* Judul Tahapan */}
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 tracking-tight mb-2 group-hover:text-red-600 transition-colors">{step.title}</h3>
-
-                  {/* Deskripsi Tahapan */}
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{step.desc}</p>
                 </motion.div>
               );
             })}
           </div>
         </div>
       </section>
+
       {/* ================= SPECIAL CARGO ================= */}
       <section className="py-10 sm:py-16 bg-slate-50 border-t border-slate-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -612,6 +599,47 @@ export function LayananContent() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CALL TO ACTION (CTA) REVISI ================= */}
+      <section className="-mt-4 sm:-mt-8 py-6 sm:py-10 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col items-center text-center">
+            {/* Headline h2 pas di tengah */}
+            <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight mb-5">
+              Kirim barang <span className="text-red-600">sekarang !</span>
+            </motion.h2>
+
+            {/* Group Tombol CTA Rata Tengah */}
+            <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }} className="flex items-center justify-center gap-3 mb-5">
+              {/* Tombol Utama */}
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 rounded-full bg-red-600 text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md shadow-red-600/20 hover:bg-red-700 hover:shadow-red-600/40 hover:scale-105 active:scale-95 transition-all duration-300"
+              >
+                HUBUNGI KAMI
+              </a>
+
+              {/* Tombol Icon Panah */}
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Hubungi kami melalui WhatsApp"
+                className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-600 text-white shadow-md shadow-red-600/20 hover:bg-red-700 hover:shadow-red-600/40 hover:scale-110 hover:rotate-12 active:scale-95 transition-all duration-300"
+              >
+                <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6" />
+              </a>
+            </motion.div>
+
+            {/* Tagline Footer Section */}
+            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="text-xs sm:text-sm text-slate-600 font-medium max-w-2xl">
+              <span className="font-bold text-slate-900">Lion Cargo Logistik</span>, <span className="text-red-600 font-semibold">#KirimAmanSampaiTujuan</span> – Solusi logistik kargo udara lengkap & terpercaya dari Bandara Soekarno-Hatta!
+            </motion.p>
           </div>
         </div>
       </section>

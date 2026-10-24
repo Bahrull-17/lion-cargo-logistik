@@ -13,11 +13,6 @@ const TarifRowSchema = z.object({
   min_weight: z.coerce.number().positive(),
 });
 
-/**
- * Semua kota tujuan layanan Reguler beserta tarif per kg.
- * RLS sudah membatasi hasil ke baris berstatus "active", jadi tidak ada filter status di sini.
- * Di database, kombinasi (origin, destination, service) bersifat unik, jadi satu baris = satu kota.
- */
 export async function getDestinations(): Promise<Destination[]> {
   "use cache";
   cacheLife("hours");
@@ -34,4 +29,36 @@ export async function getDestinations(): Promise<Destination[]> {
     const { route_slug, destination, dest_code, price, min_weight } = row.data;
     return [{ slug: route_slug, name: destination, code: dest_code, pricePerKg: price, minWeight: min_weight }];
   });
+}
+
+export async function getAllDestinations(): Promise<Destination[]> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("tarifs-all");
+
+  const { data, error } = await createPublicClient().from("tarifs").select("route_slug, destination, dest_code, price, min_weight").order("destination");
+
+  if (error) throw new Error(`Gagal memuat semua destinasi: ${error.message}`);
+
+  const uniqueMap = new Map<string, Destination>();
+
+  (data ?? []).forEach((raw) => {
+    const row = TarifRowSchema.safeParse(raw);
+    if (!row.success) return;
+
+    const { route_slug, destination, dest_code, price, min_weight } = row.data;
+    const key = destination.trim().toLowerCase();
+
+    if (!uniqueMap.has(key)) {
+      uniqueMap.set(key, {
+        slug: route_slug,
+        name: destination,
+        code: dest_code,
+        pricePerKg: price,
+        minWeight: min_weight,
+      });
+    }
+  });
+
+  return Array.from(uniqueMap.values());
 }

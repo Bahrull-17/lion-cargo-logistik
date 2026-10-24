@@ -3,27 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Workflow,
-  ArrowRight,
-  MessageCircle,
-  Plane,
-  Package,
-  Scale,
-  MapPin,
-  ChevronRight,
-  Calculator,
-  CheckCircle2,
-  ShieldCheck,
-  Clock,
-  Navigation,
-  PlaneTakeoff,
-  Layers,
-  ListOrdered,
-  ShieldAlert,
-  Sparkles,
-  ArrowUpRight,
-} from "lucide-react";
+import { Workflow, ArrowRight, MessageCircle, Plane, ChevronRight, Calculator, CheckCircle2, ShieldCheck, Clock, Navigation, Layers, ShieldAlert, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion, Variants } from "framer-motion";
 import { waLink } from "@/utils/wa-link";
 
@@ -531,7 +511,7 @@ export function LayananContent() {
       {/* ================= ALUR PENGIRIMAN ================= */}
       <section className="-mt-6 sm:-mt-10 py-6 sm:py-12 bg-white relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideUpSmooth}>
+          <motion.div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideUpSmooth}>
             <TechSubheading text="PROCEDURE // ALUR CARGO" icon={Workflow} />
             <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight text-center">
               Bagaimana Paket <span className="text-red-600">Anda Diproses?</span>
@@ -542,28 +522,56 @@ export function LayananContent() {
               untuk menjamin paket Anda mendarat tepat waktu di kota tujuan.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6">
-            {alurPengiriman.map((step, idx) => {
-              return (
-                <motion.div
-                  key={idx}
-                  custom={idx}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  variants={slideUpSmooth}
-                  className="group relative flex items-center justify-center p-3 sm:p-4 rounded-3xl bg-linear-to-b from-slate-50 via-white to-slate-50/50 border border-slate-200/80 shadow-xs hover:shadow-2xl hover:border-red-300 transition-all duration-500 overflow-hidden"
-                >
-                  {/* Accent Line Atas saat Hover */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-linear-to-r from-red-600 to-rose-500 group-hover:w-full transition-all duration-500" />
 
-                  {/* Container Gambar Responsif */}
-                  <div className="relative w-full max-w-[210px] sm:max-w-none rounded-2xl overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
-                    <img src={step.image} alt={step.alt} className="w-full h-auto object-contain block rounded-2xl" />
+          {/* ========================================================
+              1. TAMPILAN MOBILE (Vertical Connected Timeline ala Gojek/Tokopedia)
+                 Hanya tampil di Layar HP (block lg:hidden)
+          ======================================================== */}
+          <div className="block lg:hidden relative pl-6 sm:pl-8 space-y-4">
+            {/* Garis Vertikal Merah yang Menghubungkan Semua Step */}
+            <div className="absolute top-4 bottom-8 left-4.75 sm:-left-6.75 w-0.5 bg-linear-to-b from-red-600 via-red-400 to-rose-200" />
+
+            {alurPengiriman.map((step, idx) => (
+              <motion.div key={idx} custom={idx} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideUpSmooth} className="relative pl-6 sm:pl-8">
+                {/* Badge Nomor Bulat di Garis Alur */}
+                <div className="absolute -left-4.75 sm:-left-6.75 top-3 size-8 sm:size-10 rounded-full bg-red-600 text-white font-mono font-bold text-xs sm:text-sm flex items-center justify-center shadow-md shadow-red-600/30 z-10 border-2 border-white">
+                  0{idx + 1}
+                </div>
+
+                {/* Card Gambar Kualitas Penuh & Sangat Jelas */}
+                <div className="group relative flex items-center justify-center p-2.5 sm:p-3 rounded-2xl bg-linear-to-b from-slate-50 via-white to-slate-50/50 border border-slate-200/80 shadow-xs hover:border-red-300 transition-all duration-300 overflow-hidden">
+                  <div className="relative w-full rounded-xl overflow-hidden">
+                    <Image src={step.image} alt={step.alt} width={400} height={300} className="w-full h-auto object-contain block rounded-xl" />
                   </div>
-                </motion.div>
-              );
-            })}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* ========================================================
+              2. TAMPILAN DESKTOP (4 Kolom Berjejer Rapi)
+                 Tampil di Laptop/Tablet (hidden lg:grid)
+          ======================================================== */}
+          <div className="hidden lg:grid lg:grid-cols-4 gap-6">
+            {alurPengiriman.map((step, idx) => (
+              <motion.div
+                key={idx}
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={slideUpSmooth}
+                className="group relative flex items-center justify-center p-3 sm:p-4 rounded-3xl bg-linear-to-b from-slate-50 via-white to-slate-50/50 border border-slate-200/80 shadow-xs hover:shadow-2xl hover:border-red-300 transition-all duration-500 overflow-hidden"
+              >
+                {/* Accent Line Atas saat Hover */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-linear-to-r from-red-600 to-rose-500 group-hover:w-full transition-all duration-500" />
+
+                {/* Container Gambar Responsif Desktop */}
+                <div className="relative w-full max-w-52.5 sm:max-w-none rounded-2xl overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
+                  <Image src={step.image} alt={step.alt} width={400} height={300} className="w-full h-auto object-contain block rounded-2xl" />
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -603,17 +611,17 @@ export function LayananContent() {
         </div>
       </section>
 
-      {/* ================= CALL TO ACTION (CTA) REVISI ================= */}
-      <section className="-mt-4 sm:-mt-8 py-6 sm:py-10 bg-white relative overflow-hidden">
+      {/* ================= CALL TO ACTION (CTA) ================= */}
+      <section className="-mt-6 sm:-mt-10 pt-2 pb-6 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center">
-            {/* Headline h2 pas di tengah */}
-            <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight mb-5">
+            {/* Headline Besar */}
+            <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight mb-4">
               Kirim barang <span className="text-red-600">sekarang !</span>
             </motion.h2>
 
-            {/* Group Tombol CTA Rata Tengah */}
-            <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }} className="flex items-center justify-center gap-3 mb-5">
+            {/* Group Tombol CTA */}
+            <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }} className="flex items-center justify-center gap-3 mb-4">
               {/* Tombol Utama */}
               <a
                 href={whatsappUrl}
@@ -624,7 +632,7 @@ export function LayananContent() {
                 HUBUNGI KAMI
               </a>
 
-              {/* Tombol Icon Panah */}
+              {/* Tombol Icon Panah di Samping */}
               <a
                 href={whatsappUrl}
                 target="_blank"

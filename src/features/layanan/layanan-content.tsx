@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Workflow, ArrowRight, MessageCircle, Plane, ChevronRight, Calculator, CheckCircle2, ShieldCheck, Clock, Navigation, Layers, ShieldAlert, ArrowUpRight } from "lucide-react";
+import { ArrowRight, MessageCircle, Plane, ChevronRight, Calculator, CheckCircle2, ShieldCheck, Clock, Navigation, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion, Variants } from "framer-motion";
 import { waLink } from "@/utils/wa-link";
 
@@ -163,18 +163,6 @@ const bannerSlideFromRight: Variants = {
     transition: { duration: 1.3, ease: [0.16, 1, 0.3, 1] },
   },
 };
-
-/* Komponen Sub-heading: Garis Merah -> Ikon -> Teks */
-function TechSubheading({ text, icon: Icon }: { text: string; icon?: React.ElementType }) {
-  return (
-    <div className="inline-flex items-center gap-2 mb-2">
-      <span className="w-8 h-[1.5px] bg-red-600 block"></span>
-      {Icon && <Icon className="size-4 text-red-600 shrink-0" />}
-      <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-red-600 font-mono">{text}</span>
-    </div>
-  );
-}
-
 /* ================= JUDUL HERO ================= */
 function JudulHero({ reduceMotion }: { reduceMotion: boolean | null }) {
   const ukuranNormal = "text-2xl sm:text-4xl lg:text-5xl font-black";
@@ -183,8 +171,6 @@ function JudulHero({ reduceMotion }: { reduceMotion: boolean | null }) {
 
   return (
     <div className="tracking-tight text-slate-700 space-y-0.5 sm:space-y-1">
-      <TechSubheading text="SERVICES // LION CARGO LOGISTIK" />
-
       <span className="block overflow-hidden">
         <motion.span className={`block leading-tight ${ukuranNormal}`} initial={reduceMotion ? false : { y: "108%" }} animate={{ y: 0 }} transition={{ duration: 1.1, delay: 0.1, ease: easeMasuk }}>
           Layanan Kargo Udara
@@ -401,7 +387,6 @@ export function LayananContent() {
       <section className="-mt-2 sm:-mt-4 pt-0 pb-10 sm:pb-16 bg-slate-50/60 relative z-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideUpSmooth}>
-            <TechSubheading text="OPTIONS // PILIHAN EKSPEDISI" icon={Layers} />
             <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
               Opsi Ekspedisi Udara <span className="text-red-600">Sesuai Kebutuhan</span>
             </h2>
@@ -512,7 +497,6 @@ export function LayananContent() {
       <section className="-mt-6 sm:-mt-10 py-6 sm:py-12 bg-white relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideUpSmooth}>
-            <TechSubheading text="PROCEDURE // ALUR CARGO" icon={Workflow} />
             <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight text-center">
               Bagaimana Paket <span className="text-red-600">Anda Diproses?</span>
             </h2>
@@ -535,7 +519,7 @@ export function LayananContent() {
               <motion.div key={idx} custom={idx} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideUpSmooth} className="relative pl-6 sm:pl-8">
                 {/* Badge Nomor Bulat di Garis Alur */}
                 <div className="absolute -left-4.75 sm:-left-6.75 top-3 size-8 sm:size-10 rounded-full bg-red-600 text-white font-mono font-bold text-xs sm:text-sm flex items-center justify-center shadow-md shadow-red-600/30 z-10 border-2 border-white">
-                  0{idx + 1}
+                  {idx + 1}
                 </div>
 
                 {/* Card Gambar Kualitas Penuh & Sangat Jelas */}
@@ -581,7 +565,6 @@ export function LayananContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <motion.div className="lg:col-span-5 space-y-3" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideFromLeft}>
-              <TechSubheading text="COMPLIANCE // SPECIAL CARGO" icon={ShieldAlert} />
               <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
                 Penanganan <span className="text-red-600">Special Cargo</span>
               </h2>

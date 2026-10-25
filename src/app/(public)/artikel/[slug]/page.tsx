@@ -1,11 +1,18 @@
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, Calendar, Clock, User, MessageCircle, ArrowLeft } from "lucide-react";
 import { waLink } from "@/utils/wa-link";
-import { getArtikelBySlug } from "@/data/articles";
+import { getArtikelBySlug, daftarArtikel } from "@/data/articles";
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+type PageProps = { params: Promise<{ slug: string }> };
+
+export function generateStaticParams() {
+  return daftarArtikel.map((item) => ({ slug: item.slug }));
+}
+
+export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const artikel = getArtikelBySlug(slug);
 
@@ -19,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function DetailArtikelPage({ params }: { params: Promise<{ slug: string }> }) {
+async function ArtikelIsi({ params }: PageProps) {
   const { slug } = await params;
   const artikel = getArtikelBySlug(slug);
 
@@ -40,7 +47,7 @@ export default async function DetailArtikelPage({ params }: { params: Promise<{ 
               Artikel
             </Link>
             <ChevronRight className="size-3.5 text-slate-400" />
-            <span className="text-red-600 font-bold truncate max-w-[200px] sm:max-w-xs">{artikel.judul}</span>
+            <span className="text-red-600 font-bold truncate max-w-50 sm:max-w-xs">{artikel.judul}</span>
           </nav>
 
           <Link href="/artikel" className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-red-600 transition-colors mb-4">
@@ -72,8 +79,8 @@ export default async function DetailArtikelPage({ params }: { params: Promise<{ 
       </section>
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-8">
-        <div className="relative h-[250px] sm:h-[420px] rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 mb-8 bg-slate-100">
-          <Image src={artikel.gambar} alt={artikel.judul} fill priority className="object-cover" />
+        <div className="relative h-62.5 sm:h-105 rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 mb-8 bg-slate-100">
+          <Image src={artikel.gambar} alt={artikel.judul} fill priority sizes="(min-width: 896px) 896px, 100vw" className="object-cover" />
         </div>
 
         <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-10 shadow-xs">
@@ -97,5 +104,13 @@ export default async function DetailArtikelPage({ params }: { params: Promise<{ 
         </div>
       </section>
     </article>
+  );
+}
+
+export default function DetailArtikelPage({ params }: PageProps) {
+  return (
+    <Suspense fallback={null}>
+      <ArtikelIsi params={params} />
+    </Suspense>
   );
 }

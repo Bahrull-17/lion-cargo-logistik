@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Plane, Box, Zap, FileCheck, ChevronRight, ArrowUpRight, Navigation, Radio, HeartHandshake, Layers } from "lucide-react";
+import { Plane, Box, Zap, FileCheck, ChevronRight, ArrowUpRight, Navigation, Radio } from "lucide-react";
 
 const waLink = (message: string) => {
   return `https://wa.me/6282121213025?text=${encodeURIComponent(message)}`;
@@ -132,10 +132,7 @@ export function TentangKamiSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-              >
-                <span className="h-px w-8 sm:w-10 bg-red-600"></span>
-                <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-widest text-red-600">PROFILE // LION CARGO LOGISTIK</span>
-              </motion.div>
+              ></motion.div>
 
               <motion.div
                 className="space-y-2 sm:space-y-3"
@@ -317,14 +314,6 @@ export function TentangKamiSection() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* KIRI: HUMANISE HEADING (H2 SAHABAT) */}
             <motion.div className="lg:col-span-6 space-y-3.5" initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -35 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              <div className="flex items-center gap-3 text-[10px] sm:text-xs font-mono font-bold text-red-600 uppercase tracking-widest">
-                <span className="h-px w-8 sm:w-10 bg-red-600"></span>
-                <div className="flex items-center gap-1.5">
-                  <HeartHandshake className="size-4 text-red-600" />
-                  <span>PARTNERSHIP // NILAI UTAMA KAMI</span>
-                </div>
-              </div>
-
               <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
                 Melayani dan Membangun Ikatan yang <span className="text-red-600">Tulus Layaknya Sahabat</span>
               </h2>
@@ -371,14 +360,6 @@ export function TentangKamiSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex items-center gap-3 text-[10px] sm:text-xs font-mono font-bold text-red-600 uppercase tracking-widest">
-                <span className="h-px w-8 sm:w-10 bg-red-600"></span>
-                <div className="flex items-center gap-1.5">
-                  <Layers className="size-4 text-red-600" />
-                  <span>RAGAM AMANAH // SATU INTEGRITAS</span>
-                </div>
-              </div>
-
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight">
                 Memahami Setiap <span className="text-red-600">Karakter Pengiriman Anda</span>
               </h2>
@@ -452,11 +433,6 @@ export function TentangKamiSection() {
         <div className="max-w-4xl mx-auto space-y-8 sm:space-y-10">
           {/* HEADER PENUTUP */}
           <div className="text-center space-y-4">
-            <div className="inline-flex items-center gap-3 text-[10px] sm:text-xs font-mono font-bold text-red-600 uppercase tracking-widest">
-              <span className="h-px w-8 sm:w-12 bg-red-600"></span>
-              <span>KOMITMEN PENUTUP</span>
-              <span className="h-px w-8 sm:w-12 bg-red-600"></span>
-            </div>
             <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
               Siap Mengirim Kargo Anda <span className="text-red-600">Tanpa Ragu</span>
             </h2>

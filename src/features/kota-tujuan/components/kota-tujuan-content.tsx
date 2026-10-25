@@ -134,13 +134,6 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
           </nav>
 
           <div className="text-center max-w-3xl mx-auto space-y-3.5">
-            <div className="inline-flex items-center gap-2 text-red-600 text-xs font-extrabold uppercase tracking-widest font-mono">
-              <span className="w-8 h-0.5 bg-red-600 shrink-0" />
-              <Plane className="size-3.5 text-red-600 shrink-0 -rotate-45" />
-              <span>CGK DIRECT ROUTES // NUSANTARA</span>
-              <span className="w-8 h-0.5 bg-red-600 shrink-0" />
-            </div>
-
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
               Rute Penerbangan & <br className="hidden sm:inline" />
               <span className="inline-block mt-1 px-4 py-1 bg-red-600 text-white rounded-2xl shadow-lg shadow-red-600/20 transform -rotate-1">Kota Tujuan Kargo</span>

@@ -1,4 +1,4 @@
-import { TentangKamiSection } from "@/components/sections/tentang-kami";
+import { TentangKamiContent } from "@/features/tentang-kami/components/tentang-kami-content";
 
 export const metadata = {
   title: "Tentang Kami - Lion Cargo Logistik",
@@ -6,5 +6,5 @@ export const metadata = {
 };
 
 export default function TentangKamiPage() {
-  return <TentangKamiSection />;
+  return <TentangKamiContent />;
 }

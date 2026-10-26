@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { LayananContent } from "@/features/layanan/layanan-content";
+import { LayananContent } from "@/features/layanan/components/layanan-content";
 
 export const metadata: Metadata = {
   title: "Layanan Kargo Udara & Ekspedisi Antarpulau | Lion Cargo Logistik",

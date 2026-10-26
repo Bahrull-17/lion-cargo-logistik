@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ChevronRight, ChevronDown, MessageCircle, HelpCircle, ArrowUpRight } from "lucide-react";
-import { waLink } from "@/utils/wa-link";
+import { waLink } from "@/lib/wa-link";
 
 interface FaqItem {
   id: string;

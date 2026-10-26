@@ -3,15 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/ui/reveal";
-import { Layanan } from "@/components/sections/layanan";
-import { PhotoMarquee } from "@/components/sections/photo-marquee";
-import { StatsBar } from "@/components/sections/stats-bar";
-import { AirlinePartners } from "@/components/sections/airline-partners";
-import { FeatureGrid } from "@/components/sections/feature-grid";
-import { KeunggulanBar } from "@/components/sections/keunggulan-bar";
-import { Testimoni } from "@/components/sections/testimoni";
-import { waLink } from "@/utils/wa-link";
+import { Reveal } from "@/components/shared/reveal";
+import { Layanan } from "@/features/home/components/layanan-preview";
+import { PhotoMarquee } from "@/features/home/components/photo-marquee";
+import { StatsBar } from "@/features/home/components/stats-bar";
+import { AirlinePartners } from "@/features/home/components/airline-partners";
+import { FeatureGrid } from "@/features/home/components/feature-grid";
+import { KeunggulanBar } from "@/features/home/components/keunggulan-bar";
+import { Testimoni } from "@/features/home/components/testimoni";
+import { waLink } from "@/lib/wa-link";
 
 /* Teks putih: outline tipis + bayangan lembut */
 const headlineStyle: CSSProperties = {
@@ -38,7 +38,7 @@ export default function HomePage() {
     <>
       <section className="relative isolate flex min-h-152 items-end justify-center overflow-hidden bg-charcoal lg:min-h-176">
         {/* Gambar asli, tanpa overlay */}
-        <Image src="/images/hero.jpg" alt="" aria-hidden="true" fill priority quality={90} sizes="100vw" className="object-cover object-top" />
+        <Image src="/images/home/hero.jpg" alt="" aria-hidden="true" fill priority quality={90} sizes="100vw" className="object-cover object-top" />
 
         <div className="relative mx-auto max-w-3xl px-4 pb-10 pt-56 text-center text-white sm:px-6 lg:pb-14 lg:pt-72">
           <h1 style={headlineStyle} className="text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">

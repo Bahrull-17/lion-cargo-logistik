@@ -6,9 +6,9 @@ interface LogoProps {
 }
 
 export function Logo({ light = false }: LogoProps) {
-  // Jika light = true (untuk di Footer / latar gelap), gunakan logo dark mode
-  // Jika light = false (untuk di Navbar / latar terang), gunakan hero-1.png
-  const logoSrc = light ? "/images/hero-13.png" : "/images/hero-1.png";
+  // light = true  -> varian untuk footer (latar merah)
+  // light = false -> varian standar untuk navbar dan menu mobile (latar terang)
+  const logoSrc = light ? "/images/brand/logo-footer.png" : "/images/brand/logo.png";
 
   return (
     <Link href="/" className="flex items-center" aria-label="Lion Cargo Logistik, ke beranda">

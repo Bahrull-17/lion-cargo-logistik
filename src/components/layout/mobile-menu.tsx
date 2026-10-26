@@ -2,20 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Info, Plane, MapPin, FileText, HelpCircle, PhoneCall, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+import { navigation } from "@/config/navigation";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Logo } from "@/components/shared/logo";
-import { waLink } from "@/utils/wa-link";
-
-const navLinks = [
-  { name: "Beranda", href: "/", icon: Home },
-  { name: "Tentang Kami", href: "/tentang-kami", icon: Info },
-  { name: "Layanan", href: "/layanan", icon: Plane },
-  { name: "Kota Tujuan", href: "/kota-tujuan", icon: MapPin },
-  { name: "Artikel", href: "/artikel", icon: FileText },
-  { name: "FAQ", href: "/faq", icon: HelpCircle },
-  { name: "Kontak", href: "/kontak", icon: PhoneCall },
-];
+import { waLink } from "@/lib/wa-link";
 
 export function MobileMenu() {
   const pathname = usePathname();
@@ -40,7 +31,7 @@ export function MobileMenu() {
 
         {/* Daftar Navigasi */}
         <div className="p-4 space-y-1">
-          {navLinks.map((link) => {
+          {navigation.map((link) => {
             const Icon = link.icon;
             const isActive = pathname === link.href;
 
@@ -51,7 +42,7 @@ export function MobileMenu() {
                   className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all ${isActive ? "bg-brand/10 text-brand border-l-4 border-brand" : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"}`}
                 >
                   <Icon className={`w-4 h-4 ${isActive ? "text-brand" : "text-slate-500"}`} />
-                  <span>{link.name}</span>
+                  <span>{link.label}</span>
                 </Link>
               </SheetClose>
             );

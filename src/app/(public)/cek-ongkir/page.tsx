@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { CekOngkirContent } from "@/features/cek-ongkir/cek-ongkir-content";
-import { CekOngkirSkeleton } from "@/features/cek-ongkir/cek-ongkir-skeleton";
+import { CekOngkirContent } from "@/features/cek-ongkir/components/cek-ongkir-content";
+import { CekOngkirSkeleton } from "@/features/cek-ongkir/components/cek-ongkir-skeleton";
 
 export const metadata: Metadata = {
   title: "Cek Ongkir Cargo Udara",

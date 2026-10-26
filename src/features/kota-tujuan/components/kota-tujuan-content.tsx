@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Plane, ChevronRight, MessageCircle, ArrowUpRight, Sparkles, Clock, ChevronDown } from "lucide-react";
-import { waLink } from "@/utils/wa-link";
+import { waLink } from "@/lib/wa-link";
 import type { Destination } from "@/types/tarif";
 
 export interface KotaTujuanItem {
@@ -118,7 +118,7 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
       {/* 1. BANNER HERO */}
       <section className="w-full bg-white border-b border-slate-200/80 overflow-hidden">
         <div className="w-full relative">
-          <Image src="/images/peta.jpg" alt="Peta Rute Penerbangan Kargo Udara Lion Cargo Logistik Indonesia" width={1920} height={600} priority className="w-full h-auto object-cover block" />
+          <Image src="/images/kota-tujuan/peta-rute.jpg" alt="Peta Rute Penerbangan Kargo Udara Lion Cargo Logistik Indonesia" width={1920} height={600} priority className="w-full h-auto object-cover block" />
         </div>
       </section>
 

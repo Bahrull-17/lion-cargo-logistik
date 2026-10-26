@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Logo } from "@/components/shared/logo";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { MobileMenu } from "@/components/layout/mobile-menu";
-import { navItems } from "@/lib/constants/site";
+import { navigation } from "@/config/navigation";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -18,7 +18,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-1 lg:gap-2">
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Menu utama">
-            {navItems.map((item) => (
+            {navigation.map((item) => (
               <Link key={item.href} href={item.href} className={cn("rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-brand", pathname === item.href ? "text-brand" : "text-charcoal")}>
                 {item.label}
               </Link>

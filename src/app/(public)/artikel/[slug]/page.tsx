@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, Calendar, Clock, User, MessageCircle, ArrowLeft } from "lucide-react";
-import { waLink } from "@/utils/wa-link";
-import { getArtikelBySlug, daftarArtikel } from "@/data/articles";
+import { waLink } from "@/lib/wa-link";
+import { getArtikelBySlug, daftarArtikel } from "@/features/artikel/data/articles";
 
 type PageProps = { params: Promise<{ slug: string }> };
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ChevronRight, Phone, Mail, MapPin, Clock, Send, Building2, CheckCircle2, ArrowUpRight } from "lucide-react";
-import { waLink } from "@/utils/wa-link";
+import { waLink } from "@/lib/wa-link";
 
 export function KontakContent() {
   const [formData, setFormData] = useState({

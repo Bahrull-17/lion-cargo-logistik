@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "title": "Air Cargo Destination Cities",
+    "description": "List of flight routes and destination cities for trusted air cargo shipping from Soekarno-Hatta Airport (CGK) to all regions of Indonesia."
+  },
+  "hero": {
+    "bannerAlt": "Air Cargo Flight Route Map of Lion Cargo Logistik Indonesia",
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Destinations"
+    },
+    "title": {
+      "line1": "Flight Routes &",
+      "highlight": "Cargo Destinations"
+    },
+    "description": "Explore our network of <strong>official & trusted air cargo flight routes</strong> directly from the main hub at the <strong>Soekarno-Hatta Airport Cargo Terminal (CGK)</strong>. We provide express parcel, port-to-port, and door-to-door shipping to all destination cities across Indonesia with transparent rates, precise time estimates, and extra security guarantees for your business or personal needs.",
+    "searchPlaceholder": "Type a city name or airport code (e.g., Medan, KNO, Surabaya)...",
+    "clear": "Clear"
+  },
+  "content": {
+    "estimate": "1 - 2 Days",
+    "airportName": "{city} Airport",
+    "whatsappMessage": "Hello Lion Cargo Logistik, I would like to ship goods now."
+  },
+  "grid": {
+    "filters": {
+      "semua": "All Regions",
+      "sumatera": "Sumatra",
+      "jawa": "Java",
+      "kalimantan": "Kalimantan",
+      "sulawesi": "Sulawesi",
+      "bali-nusa": "Bali & Nusa",
+      "papua-maluku": "Papua & Maluku"
+    },
+    "showing": "SHOWING {shown} OF {total} CITIES",
+    "result": "Results: \"{query}\"",
+    "popular": "POPULAR",
+    "askRoute": "Ask About Route",
+    "whatsappRoute": "Hello Lion Cargo Logistik, I would like to ask about air cargo shipping from Soekarno-Hatta Airport (CGK) to {city} ({code}).",
+    "loadMore": "Show More Cities ({remaining} More Cities)",
+    "empty": {
+      "title": "City Not Found",
+      "description": "Sorry, the city or airport code you are looking for is not in the list. Please contact our operations team.",
+      "reset": "Show All Cities"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "title": "Frequently Asked Questions (FAQ)",
+    "description": "Find complete answers about air cargo shipping procedures, document requirements, how to track your shipment, prohibited goods rules, and rates from Soekarno-Hatta Airport (CGK)."
+  },
+  "hero": {
+    "breadcrumb": {
+      "home": "Home",
+      "current": "FAQ & Help"
+    },
+    "title": {
+      "line1": "Help Center &",
+      "highlight": "Frequently Asked Questions"
+    },
+    "description": "Find quick answers about air cargo shipping procedures, document requirements, pet shipping rules, and rate calculation with <strong>Lion Cargo Logistik CGK</strong>.",
+    "searchPlaceholder": "Search questions, e.g.: pet requirements, how to ship, etc...",
+    "clear": "Clear"
+  },
+  "content": {
+    "whatsappMessage": "Hello Lion Cargo Logistik, I would like to ask about cargo shipping information."
+  },
+  "list": {
+    "filters": {
+      "semua": "All Questions",
+      "umum": "General & Procedures",
+      "dokumen": "Documents & Requirements",
+      "barang": "Types of Goods",
+      "tarif": "Rates & Payment"
+    },
+    "showing": "SHOWING {count} QUESTIONS",
+    "search": "Search: \"{query}\"",
+    "empty": {
+      "title": "No Questions Found",
+      "description": "Sorry, the keyword you are looking for is not available in our help list. Please ask us directly via WhatsApp.",
+      "reset": "Reset Search"
+    }
+  },
+  "items": [
+    {
+      "id": "1",
+      "category": "umum",
+      "question": "How do I ship goods through Lion Cargo Logistik from Soekarno-Hatta Airport?",
+      "answer": "You can bring your goods directly to the airport cargo terminal (Port-to-Port service) or use our package pickup service (Door-to-Door) by contacting our marketing team via WhatsApp. Make sure the goods have been weighed and packed securely before handing them over."
+    },
+    {
+      "id": "2",
+      "category": "umum",
+      "question": "How long does air cargo shipping take?",
+      "answer": "For most destination cities in Indonesia (such as Sumatra, Kalimantan, Sulawesi, and even Papua), the estimated delivery time is 1 to 3 days from the aircraft's departure, depending on the airline's direct flight schedule."
+    },
+    {
+      "id": "3",
+      "category": "dokumen",
+      "question": "What documents are required to ship cargo?",
+      "answer": "The main required documents are a copy / photo of the sender's original ID card (KTP), an active phone number for the recipient, and a complete destination address. For large-scale commercial shipments, a sales invoice and a packing list are required."
+    },
+    {
+      "id": "4",
+      "category": "barang",
+      "question": "Can I ship pets (live animals) such as dogs or cats?",
+      "answer": "Yes! Shipping pets requires an official Animal Health Certificate (SKKH) from a veterinarian or the local quarantine office, as well as a special crate that meets IATA flight standards (with ventilation and a water container)."
+    },
+    {
+      "id": "5",
+      "category": "barang",
+      "question": "What goods are prohibited (Dangerous Goods) from being shipped by plane?",
+      "answer": "Prohibited goods include explosives, toxic chemicals, pressurized gas, flammable liquids (without special permits), firearms, and high-value items such as cash or gold bars without special cargo insurance."
+    },
+    {
+      "id": "6",
+      "category": "tarif",
+      "question": "How do I calculate the volumetric weight of light but bulky goods?",
+      "answer": "For air cargo, weight is calculated using the formula L x W x H (in cm) divided by 6,000 (for air freight). If the volumetric result is greater than the digital scale (actual) weight, the rate is calculated based on the volumetric weight."
+    },
+    {
+      "id": "7",
+      "category": "tarif",
+      "question": "When must cargo shipping fees be paid?",
+      "answer": "Payment is made upfront during the weighing process and the issuance of the Air Waybill (SMU) at the cargo terminal, or via official bank transfer for corporate customers with an existing partnership."
+    },
+    {
+      "id": "8",
+      "category": "umum",
+      "question": "How do I track my package?",
+      "answer": "You can use the receipt number or Air Waybill (SMU) number printed on your proof of shipment, then enter it into the airline's official tracking system, or ask directly through our customer service on WhatsApp."
+    },
+    {
+      "id": "9",
+      "category": "barang",
+      "question": "Is there a minimum shipping weight (Minimum Charge)?",
+      "answer": "Yes, air cargo has a minimum chargeable weight of 10 kg. Packages with an actual weight below 10 kg are still charged at the 10 kg minimum air cargo rate."
+    },
+    {
+      "id": "10",
+      "category": "barang",
+      "question": "Does Lion Cargo provide wooden crating and wrapping services at the terminal?",
+      "answer": "Yes, we provide flight-standard wooden crating, multi-layer bubble wrap, and security labels directly at the Soekarno-Hatta cargo terminal before the goods go through the X-Ray."
+    },
+    {
+      "id": "11",
+      "category": "tarif",
+      "question": "Can my shipment be covered by shipping insurance?",
+      "answer": "Absolutely. We offer cargo shipping insurance options to protect your goods from the risk of loss or total damage during the flight until they reach the destination."
+    }
+  ]
+}

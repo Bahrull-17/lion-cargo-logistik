@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "title": "Kota Tujuan Kargo Udara",
+    "description": "Daftar rute penerbangan dan kota tujuan pengiriman kargo udara terpercaya dari Bandara Soekarno-Hatta (CGK) ke seluruh wilayah Indonesia."
+  },
+  "hero": {
+    "bannerAlt": "Peta Rute Penerbangan Kargo Udara Lion Cargo Logistik Indonesia",
+    "breadcrumb": {
+      "home": "Beranda",
+      "current": "Kota Tujuan"
+    },
+    "title": {
+      "line1": "Rute Penerbangan &",
+      "highlight": "Kota Tujuan Kargo"
+    },
+    "description": "Jelajahi jaringan <strong>rute penerbangan kargo udara resmi & terpercaya</strong> langsung dari hub utama <strong>Terminal Kargo Bandara Soekarno-Hatta (CGK)</strong>. Kami melayani pengiriman paket kilat, port-to-port, hingga door-to-door ke seluruh rute kota tujuan di Indonesia dengan tarif transparan, estimasi waktu presisi, dan jaminan keamanan ekstra untuk bisnis maupun kebutuhan pribadi Anda.",
+    "searchPlaceholder": "Ketik nama kota atau kode bandara (misal: Medan, KNO, Surabaya)...",
+    "clear": "Hapus"
+  },
+  "content": {
+    "estimate": "1 - 2 Hari",
+    "airportName": "Bandara {city}",
+    "whatsappMessage": "Halo Lion Cargo Logistik, saya ingin kirim barang sekarang."
+  },
+  "grid": {
+    "filters": {
+      "semua": "Semua Wilayah",
+      "sumatera": "Sumatera",
+      "jawa": "Jawa",
+      "kalimantan": "Kalimantan",
+      "sulawesi": "Sulawesi",
+      "bali-nusa": "Bali & Nusa",
+      "papua-maluku": "Papua & Maluku"
+    },
+    "showing": "MENAMPILKAN {shown} DARI {total} KOTA",
+    "result": "Hasil: \"{query}\"",
+    "popular": "POPULER",
+    "askRoute": "Tanya Rute",
+    "whatsappRoute": "Halo Lion Cargo Logistik, saya ingin bertanya pengiriman kargo udara dari Bandara Soekarno-Hatta (CGK) ke {city} ({code}).",
+    "loadMore": "Tampilkan Kota Lainnya ({remaining} Kota Lagi)",
+    "empty": {
+      "title": "Kota Tidak Ditemukan",
+      "description": "Maaf, kota atau kode bandara yang Anda cari tidak ada di daftar. Silakan hubungi tim operasional kami.",
+      "reset": "Tampilkan Semua Kota"
+    }
+  }
+}

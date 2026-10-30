@@ -3,27 +3,26 @@ import { formatDestinationLabel } from "@/features/cek-ongkir/lib/destination";
 import { formatRupiah } from "@/features/cek-ongkir/lib/format-rupiah";
 import type { Quote } from "@/features/cek-ongkir/lib/calculate-quote";
 
-export function buildGeneralInquiryMessage(): string {
-  return `Halo ${COMPANY_NAME}, saya ingin menanyakan tarif cargo udara.`;
+/** Fungsi terjemahan yang sudah di-scope ke "pages.cekOngkir.whatsapp". */
+export type Translator = (key: string, values?: Record<string, string | number>) => string;
+
+export function buildGeneralInquiryMessage(t: Translator): string {
+  return t("general", { company: COMPANY_NAME });
 }
 
 /** Dipakai saat tarif tujuan belum tersedia di data. */
-export function buildPricingInquiryMessage(quote: Quote): string {
-  return [
-    `Halo ${COMPANY_NAME}, saya ingin menanyakan tarif Cargo Reguler Udara:`,
-    `- Rute: Jakarta (CGK) ke ${formatDestinationLabel(quote.destination)}`,
-    `- Berat Tagihan: ${quote.chargeableWeightKg} Kg`,
-  ].join("\n");
+export function buildPricingInquiryMessage(quote: Quote, t: Translator): string {
+  return [t("pricing.intro", { company: COMPANY_NAME }), t("pricing.route", { destination: formatDestinationLabel(quote.destination) }), t("pricing.weight", { weight: quote.chargeableWeightKg })].join("\n");
 }
 
-export function buildBookingMessage(quote: Quote): string {
+export function buildBookingMessage(quote: Quote, t: Translator, locale: string): string {
   return [
-    `Halo ${COMPANY_NAME}, saya berminat memesan Cargo Reguler Udara:`,
-    `- Rute: Jakarta (CGK) ke ${formatDestinationLabel(quote.destination)}`,
-    `- Berat Tagihan: ${quote.chargeableWeightKg} Kg`,
-    `- Subtotal Tarif: Rp ${formatRupiah(quote.subtotal)}`,
-    `- Biaya Penanganan Admin Bandara: Rp ${formatRupiah(quote.handlingFee)}`,
-    `- Total Estimasi All-In: Rp ${formatRupiah(quote.total)}`,
-    "Mohon info ketersediaan slot penerbangan.",
+    t("booking.intro", { company: COMPANY_NAME }),
+    t("booking.route", { destination: formatDestinationLabel(quote.destination) }),
+    t("booking.weight", { weight: quote.chargeableWeightKg }),
+    t("booking.subtotal", { amount: formatRupiah(quote.subtotal, locale) }),
+    t("booking.handling", { amount: formatRupiah(quote.handlingFee, locale) }),
+    t("booking.total", { amount: formatRupiah(quote.total, locale) }),
+    t("booking.closing"),
   ].join("\n");
 }

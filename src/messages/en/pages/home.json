@@ -1,0 +1,232 @@
+{
+  "hero": {
+    "title": "Send Air Cargo Across Indonesia",
+    "highlight": "Fast, Safe, Clear Rates",
+    "description": "Ship goods and documents from Jakarta through Soekarno-Hatta Airport to your destination with an easy process. Check rates per kg now, hassle-free."
+  },
+  "photoMarquee": {
+    "intro": {
+      "heading": "Air Cargo Agent from <highlight>Soekarno-Hatta Airport</highlight> for Delivery Across Indonesia",
+      "paragraph1": "<brand>Lion Cargo Logistik</brand> helps deliver goods and documents by air from Jakarta to destination airports across various cities in Indonesia.",
+      "rate": "The shipping rate is calculated <emphasis>per kilogram</emphasis> and can be checked beforehand, so the shipping cost remains clear and transparent before ordering.",
+      "paragraph3": "Suitable for personal needs, online stores, and businesses that regularly ship goods between cities, supported by responsive customer service via WhatsApp.",
+      "badges": {
+        "flight": "Daily Flights",
+        "rate": "Clear Rate Per Kg"
+      }
+    },
+    "guide": {
+      "heading": "Shipping Goods Between Cities Becomes <highlight>Easy and Clear</highlight>",
+      "paragraph1": "Sending goods by air does not have to be complicated. Choose the destination city and estimate the shipment weight, then calculate the shipping cost based on the available per kg rate.",
+      "paragraph2": "Once confirmed, contact us via WhatsApp to arrange your shipment from Soekarno-Hatta Airport.",
+      "paragraph3": "This way, you already know the cost from the beginning, and your goods are delivered safely through air transportation to the destination city.",
+      "badges": {
+        "response": "Fast Response via WA",
+        "port": "Port-to-Port / Door"
+      }
+    },
+    "images": {
+      "right": "Air cargo shipping activity at the airport",
+      "left": "Lion Cargo Logistik team handling cargo packages"
+    }
+  },
+  "advantages": {
+    "items": {
+      "price": {
+        "title": "Best Price",
+        "text": "We always provide the best price offers for every shipping service."
+      },
+      "guarantee": {
+        "title": "Guaranteed",
+        "text": "We provide security and reliability guarantees for every shipment."
+      },
+      "ontime": {
+        "title": "On Time",
+        "text": "On-time delivery is our priority for every service."
+      }
+    },
+    "headingBefore": "Directly Connected with",
+    "headingHighlight": "Daily Nusantara Flights",
+    "description1Before": "Supported by an integrated air cargo handling network directly from",
+    "description1Highlight": "Soekarno-Hatta International Airport Cargo Terminal (CGK)",
+    "description1After": ".",
+    "description2": "Every shipment is processed through strict inspection standards and flight slot management to ensure your business cargo arrives on schedule.",
+    "badgeHub": "🏢 CGK Airport Hub",
+    "badgeSecurity": "🔒 Security Inspection"
+  },
+  "statsBar": {
+    "headingBefore": "Real-time Achievement",
+    "headingHighlight": "Air Expedition",
+    "description": "Full dedication in maintaining flight punctuality and air cargo delivery satisfaction directly from Soekarno-Hatta Airport.",
+    "verified": "VERIFIED",
+    "stats": {
+      "customer": {
+        "label": "Customer Satisfaction",
+        "sublabel": "Positive cargo service reviews"
+      },
+      "shipment": {
+        "label": "Successful Shipments",
+        "sublabel": "Tons of cargo safely distributed"
+      },
+      "client": {
+        "label": "Total Clients",
+        "sublabel": "Active business & corporate partners"
+      },
+      "tracking": {
+        "label": "Tracking Service",
+        "sublabel": "Real-time status monitoring"
+      }
+    }
+  },
+  "layananPreview": {
+    "title": "Air Expedition Options",
+    "highlight": "According to Your Needs",
+    "description": {
+      "before": "Choose the flexibility of speed and the best flight schedule certainty directly from ",
+      "strong": "Soekarno-Hatta Airport",
+      "after": " to all destinations across Indonesia."
+    },
+    "services": {
+      "reguler": {
+        "name": "Regular Cargo",
+        "badge": "MOST ECONOMICAL",
+        "estimate": "Estimated: 2 - 3 Days",
+        "tagline": "Affordable & Scheduled Inter-Island Regular Shipping",
+        "description": [
+          "General cargo delivery through scheduled flights from Soekarno-Hatta Airport Cargo Terminal (CGK) to various destination airports throughout Indonesia.",
+          "This economical air cargo service is suitable for online store shipments, spare parts, regional commodities, and inter-island moving goods with transparent kilogram-based rates.",
+          "Supporting Port to Port and Port to Door services with safe, organized, and easy-to-monitor cargo handling."
+        ],
+        "cta": "Check Regular Rate",
+        "features": ["⚖️ Transparent Per Kg Rates", "📦 Port to Port / Door", "✈️ Regular Flight Schedule"],
+        "purpose": "Recommended for: Online Stores, Distributors, Spare Parts, Garments, & Moving Goods."
+      },
+      "express": {
+        "name": "Express Cargo",
+        "badge": "PRIORITY SLOT",
+        "estimate": "Estimated: 1 - 2 Days",
+        "tagline": "Priority Loading on the First Flight from CGK",
+        "description": [
+          "High-speed air cargo service with priority cargo slots on the earliest flight schedules from Soekarno-Hatta International Airport.",
+          "Highly recommended for valuable shipments, urgent industrial samples, and perishable goods that require minimal handling time during transportation.",
+          "Cargo clearance is processed quickly at the terminal to ensure your shipment arrives safely with efficient delivery estimates."
+        ],
+        "cta": "Ask Express via WhatsApp",
+        "features": ["⚡ First Flight Slot", "🍎 Fresh & Valuable Products", "🚀 Fast Track Clearance"],
+        "purpose": "Recommended for: Seafood, Fresh Food, Factory Samples, & Valuable Goods."
+      },
+      "sameday": {
+        "name": "Same Day Service",
+        "badge": "FLIGHT TODAY",
+        "estimate": "Estimated: Arrive Today",
+        "tagline": "Ship in the Morning, Arrive at Destination the Same Day",
+        "description": [
+          "Express service for important documents and urgent packages from Jakarta directly to destination cities on the same day.",
+          "Packages are delivered in the morning to Soekarno-Hatta Airport Cargo agents and processed directly on the earliest commercial flight schedule.",
+          "The best solution for customers who need extreme delivery speed between islands without transit delays."
+        ],
+        "cta": "Consult Same Day Service",
+        "features": ["⏱️ Arrive Within 24 Hours", "📄 Urgent Documents & Packages", "🎯 Direct Flight Priority"],
+        "purpose": "Recommended for: Tender Documents, Medical/Urgent Items, & Vital Letters/Passports."
+      }
+    },
+    "bottomButton": "View Complete Routes & All Services"
+  },
+  "airlinePartners": {
+    "title": "Domestic Flight Fleet &",
+    "highlight": "Trusted Air Cargo Expedition",
+    "description": {
+      "before": "Lion Cargo Logistik partners strategically with leading national airlines such as Lion Air, Garuda Indonesia, Citilink, and Batik Air. Providing fast cargo delivery services, airport-to-airport cargo (",
+      "italic": "port to port",
+      "after": "), as well as door-to-door logistics with affordable per kg rates and reliable daily flight schedules throughout Indonesia."
+    },
+    "alt": "Cargo Airline Logo"
+  },
+  "featureGrid": {
+    "priority": {
+      "badge": "Priority Service",
+      "title": {
+        "line1": "Fast",
+        "line2": "Delivery!"
+      },
+      "description": "We ensure the safety and speed of every air cargo shipment from Soekarno-Hatta International Airport.",
+      "button": "CONTACT US"
+    },
+    "location": {
+      "title": {
+        "line1": "Operational",
+        "line2": "Location"
+      },
+      "description": "Cargo Terminal, Soekarno-Hatta International Airport (CGK), Airport Cargo Commercial Building Area.",
+      "button": "OPEN MAPS"
+    }
+  },
+  "testimoni": {
+    "title": "What Our",
+    "highlight": "Customers Say",
+    "items": [
+      {
+        "id": 1,
+        "name": "Julio Salarupa",
+        "timeAgo": "4 months ago",
+        "initials": "JS",
+        "rating": 5,
+        "review": "Excellent Lion Cargo delivery from JAKARTA to POSO! Next time I will definitely use Lion Cargo service again for shipping goods from Jakarta.",
+        "source": "Google"
+      },
+      {
+        "id": 2,
+        "name": "Iqlima Pasaribu",
+        "timeAgo": "11 months ago",
+        "initials": "IP",
+        "rating": 5,
+        "review": "The delivery was fast and very safe. Highly recommended for anyone who needs air cargo shipping. The service was very satisfying!",
+        "source": "Google"
+      },
+      {
+        "id": 3,
+        "name": "Mohammad Fajri",
+        "timeAgo": "11 months ago",
+        "initials": "MF",
+        "rating": 5,
+        "review": "The goods arrived safely without any damage. The admin, pickup courier, and delivery service were very helpful and friendly. Any issues were solved quickly.",
+        "source": "Google"
+      },
+      {
+        "id": 4,
+        "name": "Andi Wijaya",
+        "timeAgo": "2 months ago",
+        "initials": "AW",
+        "rating": 5,
+        "review": "Very helpful for shipping important documents and business packages to Makassar. The process at Soekarno-Hatta was fast and the WhatsApp customer service responded quickly.",
+        "source": "Google"
+      },
+      {
+        "id": 5,
+        "name": "Siti Rahmawati",
+        "timeAgo": "3 months ago",
+        "initials": "SR",
+        "rating": 5,
+        "review": "My online store regularly ships clothing between islands using this service. The price per kilogram is clear, transparent, and daily flight schedules are always on time.",
+        "source": "Google"
+      },
+      {
+        "id": 6,
+        "name": "Budi Santoso",
+        "timeAgo": "5 months ago",
+        "initials": "BS",
+        "rating": 5,
+        "review": "Friendly service, neat packaging, and safe airport-standard delivery. Highly recommended for shipping heavy goods or important documents.",
+        "source": "Google"
+      }
+    ],
+    "cta": {
+      "titleBefore": "Ship your goods",
+      "titleHighlight": "now!",
+      "button": "CONTACT US",
+      "descriptionBefore": "Lion Cargo Logistik",
+      "hashtag": "#SafeDeliveryToDestination",
+      "descriptionAfter": "– Complete and trusted air cargo logistics solution from Soekarno-Hatta Airport!"
+    }
+  }
+}

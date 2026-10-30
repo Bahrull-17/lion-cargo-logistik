@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "title": "Pertanyaan Umum (FAQ)",
+    "description": "Temukan jawaban lengkap seputar prosedur pengiriman kargo udara, syarat dokumen, cara cek resi, ketentuan barang dilarang, dan tarif dari Bandara Soekarno-Hatta (CGK)."
+  },
+  "hero": {
+    "breadcrumb": {
+      "home": "Beranda",
+      "current": "FAQ & Bantuan"
+    },
+    "title": {
+      "line1": "Pusat Bantuan &",
+      "highlight": "Pertanyaan Umum"
+    },
+    "description": "Temukan jawaban cepat seputar prosedur pengiriman kargo udara, syarat dokumen, ketentuan hewan peliharaan, dan perhitungan tarif bersama <strong>Lion Cargo Logistik CGK</strong>.",
+    "searchPlaceholder": "Cari pertanyaan, misal: syarat hewan, cara kirim, dll...",
+    "clear": "Hapus"
+  },
+  "content": {
+    "whatsappMessage": "Halo Lion Cargo Logistik, saya ingin bertanya mengenai informasi pengiriman kargo."
+  },
+  "list": {
+    "filters": {
+      "semua": "Semua Pertanyaan",
+      "umum": "Umum & Prosedur",
+      "dokumen": "Dokumen & Syarat",
+      "barang": "Jenis Barang",
+      "tarif": "Tarif & Pembayaran"
+    },
+    "showing": "MENAMPILKAN {count} PERTANYAAN",
+    "search": "Pencarian: \"{query}\"",
+    "empty": {
+      "title": "Pertanyaan Tidak Ditemukan",
+      "description": "Maaf, kata kunci yang Anda cari tidak tersedia di daftar bantuan kami. Silakan tanyakan langsung melalui WhatsApp.",
+      "reset": "Reset Pencarian"
+    }
+  },
+  "items": [
+    {
+      "id": "1",
+      "category": "umum",
+      "question": "Bagaimana cara mengirim barang melalui Lion Cargo Logistik dari Bandara Soekarno-Hatta?",
+      "answer": "Anda dapat membawa langsung barang kiriman ke terminal kargo bandara (layanan Port-to-Port) atau menggunakan layanan jemput paket (Door-to-Door) dengan menghubungi tim marketing kami via WhatsApp. Pastikan barang sudah ditimbang dan dikemas dengan aman sebelum diserahkan."
+    },
+    {
+      "id": "2",
+      "category": "umum",
+      "question": "Berapa lama estimasi waktu pengiriman barang via kargo udara?",
+      "answer": "Untuk sebagian besar kota tujuan di Indonesia (seperti Sumatera, Kalimantan, Sulawesi, hingga Papua), estimasi waktu pengiriman berkisar antara 1 hingga 3 hari sejak pesawat diberangkatkan, tergantung pada jadwal penerbangan langsung (direct flight) maskapai."
+    },
+    {
+      "id": "3",
+      "category": "dokumen",
+      "question": "Apa saja dokumen yang diperlukan untuk mengirim barang kargo?",
+      "answer": "Dokumen utama yang wajib dilampirkan adalah Fotokopi / Foto KTP asli pengirim, nomor telepon penerima yang aktif, serta alamat tujuan yang lengkap. Untuk pengiriman komersial skala besar, diperlukan Nota Penjualan (Invoice) dan Packing List."
+    },
+    {
+      "id": "4",
+      "category": "barang",
+      "question": "Apakah bisa mengirim hewan peliharaan (live animal) seperti anjing atau kucing?",
+      "answer": "Ya, bisa! Pengiriman hewan peliharaan memerlukan Surat Keterangan Kesehatan Hewan (SKKH) resmi dari dokter hewan atau karantina setempat, serta kandang khusus yang memenuhi standar penerbangan IATA (ada ventilasi dan tempat minum)."
+    },
+    {
+      "id": "5",
+      "category": "barang",
+      "question": "Barang apa saja yang dilarang (Dangerous Goods) untuk dikirim via pesawat?",
+      "answer": "Barang yang dilarang meliputi bahan peledak, bahan kimia beracun, gas bertekanan, cairan mudah terbakar (tanpa izin khusus), senjata api, serta barang berharga tinggi seperti uang tunai atau emas batangan tanpa asuransi khusus kargo."
+    },
+    {
+      "id": "6",
+      "category": "tarif",
+      "question": "Bagaimana cara menghitung berat volumetrik barang ringan tapi memakan tempat?",
+      "answer": "Untuk kargo udara, perhitungan berat menggunakan rumus P x L x T (dalam cm) dibagi 6.000 (untuk via udara). Jika hasil volumetrik lebih besar daripada berat timbangan digital (aktual), maka tarif dihitung berdasarkan berat volumetrik tersebut."
+    },
+    {
+      "id": "7",
+      "category": "tarif",
+      "question": "Kapan pembayaran biaya pengiriman kargo harus dilakukan?",
+      "answer": "Pembayaran dilakukan di awal saat proses penimbangan dan penerbitan Surat Muatan Udara (SMU) di terminal kargo, atau melalui transfer bank resmi bagi pelanggan korporat yang telah bekerja sama."
+    },
+    {
+      "id": "8",
+      "category": "umum",
+      "question": "Bagaimana cara melacak posisi kiriman paket saya?",
+      "answer": "Anda dapat menggunakan nomor resi atau Nomor Surat Muatan Udara (SMU) yang tertera pada lembar bukti kirim, lalu masukkan ke dalam sistem pelacakan (tracking) resmi maskapai atau tanyakan langsung melalui WhatsApp customer service kami."
+    },
+    {
+      "id": "9",
+      "category": "barang",
+      "question": "Apakah ada batas minimal berat pengiriman (Minimum Charge)?",
+      "answer": "Ya, untuk kargo udara berlaku batas timbang minimal 10 kg. Paket dengan berat aktual di bawah 10 kg tetap dihitung sesuai tarif minimum kargo udara 10 kg."
+    },
+    {
+      "id": "10",
+      "category": "barang",
+      "question": "Apakah Lion Cargo menyediakan jasa packing kayu dan wrapping di terminal?",
+      "answer": "Ya, kami menyediakan layanan packing kayu standar penerbangan, bubble wrap berlapis, serta penambahan label pengaman langsung di terminal kargo Soekarno-Hatta sebelum barang masuk X-Ray."
+    },
+    {
+      "id": "11",
+      "category": "tarif",
+      "question": "Apakah barang kiriman bisa dilindungi asuransi pengiriman?",
+      "answer": "Sangat bisa. Kami menyediakan opsi asuransi pengiriman kargo untuk melindungi barang Anda dari risiko kehilangan atau kerusakan total selama proses penerbangan hingga sampai tujuan."
+    }
+  ]
+}

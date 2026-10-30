@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "title": "Air Cargo Shipping Rate Check",
+    "description": "Check air cargo rates from Soekarno-Hatta Airport (CGK) to 113 destination cities across Indonesia. Calculate the rate per kg and volumetric weight easily."
+  },
+  "hero": {
+    "bannerAlt": "Air Cargo Shipping Rates at Soekarno Hatta Airport - Lion Cargo Logistik",
+    "badgeTitle": "Air Cargo Service",
+    "badgeSubtitle": "CGK Soekarno-Hatta Cargo Terminal"
+  },
+  "header": {
+    "badge": "Direct Flight Hub Soekarno-Hatta (CGK)",
+    "title": {
+      "line1": "Air Cargo Rate Check",
+      "line2": "Fast Port to Port Shipping"
+    },
+    "description": "Calculate your air cargo shipping estimate accurately and transparently with Lion Cargo. Get a cost simulation for fast general cargo by air directly from the Soekarno-Hatta Airport Cargo Terminal (CGK) to all destination cities and airports in Indonesia, complete with a detailed breakdown of airport admin handling fees.",
+    "highlights": {
+      "flight": "Direct Flight Priority",
+      "minWeight": "Minimum Weight Per Destination",
+      "handling": "Admin Handling Fee Rp {fee}"
+    }
+  },
+  "calculator": {
+    "ariaLabel": "Rate calculator"
+  },
+  "form": {
+    "title": "Air Cargo Rate Calculator",
+    "subtitle": "Choose a destination city & enter the cargo weight",
+    "handlingBadge": "Admin Handling Fee {fee}",
+    "destinationLabel": "Destination City / Airport",
+    "weightLabel": "Total Weight of Goods (Kg)",
+    "minBadge": "Min. {min} Kg",
+    "weightPlaceholder": "Example: 15",
+    "formulaTitle": "Official Lion Cargo Rate Calculation Formula:",
+    "formula": "Total Cost = (Rate per Kg × Chargeable Weight) + Admin Handling Fee ({fee})",
+    "rule": "Requirement: minimum shipping weight is <strong>{min} Kg</strong>",
+    "submit": "Check Shipping Rate Now",
+    "errors": {
+      "empty": "Please enter the weight of your goods first.",
+      "invalid": "Weight must be a valid number.",
+      "belowMin": "Weight below {min} Kg cannot be processed. Please enter at least {min} Kg.",
+      "aboveMax": "Weight exceeds the calculator limit. Contact our team for large-volume shipments."
+    }
+  },
+  "quote": {
+    "badge": "Regular cargo rate estimate",
+    "arrival": "ESTIMATED ARRIVAL",
+    "directFlight": "DIRECT FLIGHT",
+    "pricePerKg": "Rate per Kg",
+    "itemWeight": "Goods Weight",
+    "chargeableWeight": "Chargeable Weight",
+    "subtotal": "Goods Rate Subtotal",
+    "adminFee": "Admin Handling Fee",
+    "totalLabel": "Total all-in estimate",
+    "totalNote": "Includes CGK admin handling",
+    "unpriced": "The rate for this destination is not yet available in the calculator. Contact our team via WhatsApp for the latest price.",
+    "bookButton": "Book Cargo via WhatsApp",
+    "askButton": "Ask for Rate via WhatsApp"
+  },
+  "table": {
+    "title": "Air Cargo Rate List from Jakarta (CGK)",
+    "subtitle": "Showing {count} airport and city destinations across Indonesia.",
+    "searchLabel": "Search city or airport",
+    "searchPlaceholder": "Search city / airport...",
+    "colCity": "Destination City",
+    "colCode": "Airport Code",
+    "colPrice": "Rate per Kg",
+    "colAction": "Action",
+    "selectCity": "Select City",
+    "select": "Select",
+    "selectAria": "Select {name}",
+    "contactAdmin": "Contact admin",
+    "perKg": " / Kg",
+    "notFound": "City or airport not found."
+  },
+  "pagination": {
+    "showing": "Showing <strong>{start}</strong> - <strong>{end}</strong> of <strong>{total}</strong> cities",
+    "nav": "Rate table pages",
+    "prev": "Previous page",
+    "next": "Next page",
+    "page": "Page {page}"
+  },
+  "skeleton": {
+    "loading": "Loading rate calculator"
+  },
+  "unavailable": {
+    "title": "Rates are being updated",
+    "description": "Rate data is not available at the moment. Contact our team to get the latest rates.",
+    "button": "Ask via WhatsApp"
+  },
+  "error": {
+    "title": "Rates could not be loaded",
+    "description": "A problem occurred while fetching the rate data. Please try again in a moment.",
+    "retry": "Try again"
+  },
+  "whatsapp": {
+    "general": "Hello {company}, I would like to ask about air cargo rates.",
+    "pricing": {
+      "intro": "Hello {company}, I would like to ask about the Regular Air Cargo rate:",
+      "route": "- Route: Jakarta (CGK) to {destination}",
+      "weight": "- Chargeable Weight: {weight} Kg"
+    },
+    "booking": {
+      "intro": "Hello {company}, I would like to book Regular Air Cargo:",
+      "route": "- Route: Jakarta (CGK) to {destination}",
+      "weight": "- Chargeable Weight: {weight} Kg",
+      "subtotal": "- Rate Subtotal: Rp {amount}",
+      "handling": "- Airport Admin Handling Fee: Rp {amount}",
+      "total": "- Total All-In Estimate: Rp {amount}",
+      "closing": "Please let me know the flight slot availability."
+    }
+  }
+}

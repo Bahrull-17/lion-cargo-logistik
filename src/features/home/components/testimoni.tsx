@@ -4,6 +4,8 @@ import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star, ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
+
 import { waLink } from "@/lib/wa-link";
 
 interface TestimonialItem {
@@ -14,65 +16,8 @@ interface TestimonialItem {
   initials?: string;
   rating: number;
   review: string;
-  source: "Google";
+  source: string;
 }
-
-const testimonialsData: TestimonialItem[] = [
-  {
-    id: 1,
-    name: "Julio Salarupa",
-    timeAgo: "4 bulan lalu",
-    initials: "JS",
-    rating: 5,
-    review: "Mantap Lion Cargo pengiriman JAKARTA - POSO terbaik! Next time pasti pakai jasa Lion Cargo lagi buat pengiriman barang dari Jakarta.",
-    source: "Google",
-  },
-  {
-    id: 2,
-    name: "Iqlima Pasaribu",
-    timeAgo: "11 bulan lalu",
-    initials: "IP",
-    rating: 5,
-    review: "Pengirimannya cepat dan aman banget, rekomendasi buat yang mau pakai pengiriman kargo udara. Pelayanan sangat memuaskan!",
-    source: "Google",
-  },
-  {
-    id: 3,
-    name: "Mohammad Fajri",
-    timeAgo: "11 bulan lalu",
-    initials: "MF",
-    rating: 5,
-    review: "Barang tiba dengan selamat, tidak ada rusak. Admin, kurir penjemputan dan pengantarannya juga sangat helpful dan ramah. Ada kendala sedikit bisa diselesaikan dengan cepat.",
-    source: "Google",
-  },
-  {
-    id: 4,
-    name: "Andi Wijaya",
-    timeAgo: "2 bulan lalu",
-    initials: "AW",
-    rating: 5,
-    review: "Sangat terbantu untuk pengiriman berkas penting dan paket usaha ke Makassar. Proses cepat di Soekarno-Hatta dan CS fast response di WA.",
-    source: "Google",
-  },
-  {
-    id: 5,
-    name: "Siti Rahmawati",
-    timeAgo: "3 bulan lalu",
-    initials: "SR",
-    rating: 5,
-    review: "Toko online saya rutin kirim pakaian antar pulau pakai layanan ini. Tarif per kg jelas, transparan, dan jadwal penerbangan harian sangat on time.",
-    source: "Google",
-  },
-  {
-    id: 6,
-    name: "Budi Santoso",
-    timeAgo: "5 bulan lalu",
-    initials: "BS",
-    rating: 5,
-    review: "Pelayanan ramah, packing kardus rapi dan aman berstandar bandara. Sangat recommended untuk kirim barang berat maupun dokumen penting.",
-    source: "Google",
-  },
-];
 
 function GoogleIcon() {
   return (
@@ -86,11 +31,13 @@ function GoogleIcon() {
 }
 
 export function Testimoni() {
+  const t = useTranslations("pages.home.testimoni");
   const scrollRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
+  const testimonialsData = t.raw("items") as TestimonialItem[];
   const whatsappUrl = waLink("Halo Lion Cargo Logistik, saya ingin kirim barang sekarang.");
 
-  // Efek Auto-Slide Otomatis Bergeser Pelan 1 per 1
+  // AUTO SLIDE
   useEffect(() => {
     if (reduceMotion) return;
 
@@ -122,10 +69,9 @@ export function Testimoni() {
 
   return (
     <>
-      {/* 1. SECTION TESTIMONI */}
       <section aria-label="Ulasan Pelanggan" className="bg-white py-12 sm:py-16 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
-          {/* HEADER SECTION TESTIMONI */}
+          {/* HEADER TESTIMONI */}
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -135,11 +81,11 @@ export function Testimoni() {
           >
             <div className="space-y-2">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
-                Apa Kata <span className="text-red-600">Pelanggan Kami</span>
+                {t("title")}
+                <span className="text-red-600"> {t("highlight")}</span>
               </h2>
             </div>
 
-            {/* TOMBOL NAVIGASI MANUAL */}
             <div className="flex items-center gap-3">
               <button
                 onClick={() => handleScroll("left")}
@@ -158,7 +104,7 @@ export function Testimoni() {
             </div>
           </motion.div>
 
-          {/* CAROUSEL TESTIMONI DENGAN AUTO-SLIDE */}
+          {/* CAROUSEL */}
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -174,32 +120,29 @@ export function Testimoni() {
                 className="snap-start shrink-0 w-72.5 sm:w-87.5 lg:w-95 p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="space-y-4">
-                  {/* HEAD REVIEWER */}
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      {item.avatar ? (
-                        <Image src={item.avatar} alt={item.name} width={44} height={44} className="rounded-full object-cover" />
-                      ) : (
-                        <div className="size-11 rounded-full bg-slate-700 text-white font-bold text-sm flex items-center justify-center shrink-0">{item.initials}</div>
-                      )}
-                      <div>
-                        <div className="flex items-center gap-1.5">
-                          <h3 className="font-extrabold text-slate-900 text-sm sm:text-base leading-snug">{item.name}</h3>
-                          <GoogleIcon />
-                        </div>
-                        <span className="text-xs text-slate-400 font-medium block">{item.timeAgo}</span>
+                  <div className="flex items-center gap-3">
+                    {item.avatar ? (
+                      <Image src={item.avatar} alt={item.name} width={44} height={44} className="rounded-full object-cover" />
+                    ) : (
+                      <div className="size-11 rounded-full bg-slate-700 text-white font-bold text-sm flex items-center justify-center">{item.initials}</div>
+                    )}
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <h3 className="font-extrabold text-slate-900 text-sm sm:text-base">{item.name}</h3>
+                        <GoogleIcon />
                       </div>
+                      <span className="text-xs text-slate-400 font-medium">{item.timeAgo}</span>
                     </div>
                   </div>
 
-                  {/* BINTANG RATING */}
+                  {/* RATING */}
                   <div className="flex items-center gap-1 text-amber-400">
                     {Array.from({ length: item.rating }).map((_, i) => (
                       <Star key={i} className="size-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
 
-                  {/* TEXT ULASAN */}
+                  {/* REVIEW */}
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium line-clamp-4">&ldquo;{item.review}&rdquo;</p>
                 </div>
               </div>
@@ -208,12 +151,13 @@ export function Testimoni() {
         </div>
       </section>
 
-      {/* 2. CALL TO ACTION (CTA) */}
+      {/* CTA SECTION */}
       <section className="-mt-4 sm:-mt-6 pb-6 pt-2 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center">
             <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight mb-4">
-              Kirim barang <span className="text-red-600">sekarang !</span>
+              {t("cta.titleBefore")}
+              <span className="text-red-600"> {t("cta.titleHighlight")}</span>
             </motion.h2>
 
             <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }} className="flex items-center justify-center gap-3 mb-4">
@@ -223,7 +167,7 @@ export function Testimoni() {
                 rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 rounded-full bg-red-600 text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md shadow-red-600/20 hover:bg-red-700 hover:shadow-red-600/40 hover:scale-105 active:scale-95 transition-all duration-300"
               >
-                HUBUNGI KAMI
+                {t("cta.button")}
               </a>
 
               <a
@@ -238,7 +182,7 @@ export function Testimoni() {
             </motion.div>
 
             <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="text-xs sm:text-sm text-slate-600 font-medium max-w-2xl">
-              <span className="font-bold text-slate-900">Lion Cargo Logistik</span>, <span className="text-red-600 font-semibold">#KirimAmanSampaiTujuan</span> – Solusi logistik kargo udara lengkap & terpercaya dari Bandara Soekarno-Hatta!
+              <span className="font-bold text-slate-900">{t("cta.descriptionBefore")}</span>, <span className="text-red-600 font-semibold">{t("cta.hashtag")}</span> {t("cta.descriptionAfter")}
             </motion.p>
           </div>
         </div>

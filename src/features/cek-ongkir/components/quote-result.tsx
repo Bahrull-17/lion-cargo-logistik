@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, MessageCircle, Plane, Send, ShieldCheck } from "lucide-react";
 import { CARGO_RULES } from "@/features/cek-ongkir/constants";
 import type { Quote } from "@/features/cek-ongkir/lib/calculate-quote";
@@ -9,6 +10,8 @@ import { buildBookingMessage, buildPricingInquiryMessage } from "@/features/cek-
 import { waLink } from "@/lib/wa-link";
 
 function RouteVisual({ destinationCode, destinationName }: { destinationCode: string; destinationName: string }) {
+  const t = useTranslations("pages.cekOngkir.quote");
+
   return (
     <div className="my-4 rounded-xl border border-red-100 bg-white p-3.5 shadow-xs sm:rounded-2xl">
       <div className="flex items-center justify-between">
@@ -24,7 +27,7 @@ function RouteVisual({ destinationCode, destinationName }: { destinationCode: st
               <Plane className="size-3 rotate-90 sm:size-3.5" aria-hidden="true" />
             </div>
           </div>
-          <span className="mt-1 block font-mono text-[9px] font-bold tracking-wider text-red-600">DIRECT FLIGHT</span>
+          <span className="mt-1 block font-mono text-[9px] font-bold tracking-wider text-red-600">{t("directFlight")}</span>
         </div>
 
         <div className="text-right">
@@ -46,32 +49,34 @@ function BreakdownRow({ label, value }: { label: string; value: string }) {
 }
 
 function PricedBreakdown({ quote }: { quote: Quote }) {
+  const t = useTranslations("pages.cekOngkir.quote");
+  const locale = useLocale();
   const weightWasAdjusted = quote.chargeableWeightKg !== quote.inputWeightKg;
 
   return (
     <>
       <div className="space-y-2.5 border-b border-red-100 py-3 font-mono text-xs text-slate-700">
-        <BreakdownRow label="Tarif per Kg" value={`Rp ${formatRupiah(quote.pricePerKg)}`} />
-        {weightWasAdjusted && <BreakdownRow label="Berat Barang" value={`${quote.inputWeightKg} Kg`} />}
-        <BreakdownRow label="Berat Tagihan (Chargeable Weight)" value={`${quote.chargeableWeightKg} Kg`} />
-        <BreakdownRow label="Subtotal Tarif Barang" value={`Rp ${formatRupiah(quote.subtotal)}`} />
+        <BreakdownRow label={t("pricePerKg")} value={`Rp ${formatRupiah(quote.pricePerKg, locale)}`} />
+        {weightWasAdjusted && <BreakdownRow label={t("itemWeight")} value={`${quote.inputWeightKg} Kg`} />}
+        <BreakdownRow label={t("chargeableWeight")} value={`${quote.chargeableWeightKg} Kg`} />
+        <BreakdownRow label={t("subtotal")} value={`Rp ${formatRupiah(quote.subtotal, locale)}`} />
 
         <div className="flex items-center justify-between rounded-xl border border-red-200 bg-white p-2.5 font-sans text-red-900">
           <span className="flex items-center gap-1.5 text-xs font-bold">
-            <ShieldCheck className="size-4 shrink-0 text-red-600" aria-hidden="true" /> Biaya Penanganan Admin
+            <ShieldCheck className="size-4 shrink-0 text-red-600" aria-hidden="true" /> {t("adminFee")}
           </span>
-          <span className="font-mono text-xs font-bold text-slate-900">Rp {formatRupiah(quote.handlingFee)}</span>
+          <span className="font-mono text-xs font-bold text-slate-900">Rp {formatRupiah(quote.handlingFee, locale)}</span>
         </div>
       </div>
 
       <div className="flex items-center justify-between gap-2 pb-2 pt-4">
         <div>
-          <span className="block font-mono text-[10px] font-bold uppercase text-slate-500">Total estimasi all-in</span>
-          <span className="block text-[11px] text-slate-500">Termasuk penanganan admin CGK</span>
+          <span className="block font-mono text-[10px] font-bold uppercase text-slate-500">{t("totalLabel")}</span>
+          <span className="block text-[11px] text-slate-500">{t("totalNote")}</span>
         </div>
         <div className="flex shrink-0 items-center justify-end gap-1.5 font-heading text-lg font-black tracking-tight text-red-600 sm:text-2xl lg:text-3xl">
           <span className="text-xs font-bold sm:text-base">Rp</span>
-          <span>{formatRupiah(quote.total)}</span>
+          <span>{formatRupiah(quote.total, locale)}</span>
         </div>
       </div>
     </>
@@ -79,11 +84,16 @@ function PricedBreakdown({ quote }: { quote: Quote }) {
 }
 
 function UnpricedNotice() {
-  return <p className="border-b border-red-100 py-4 text-sm font-semibold text-amber-700">Tarif untuk tujuan ini belum tersedia di kalkulator. Hubungi tim kami via WhatsApp untuk mendapatkan harga terbaru.</p>;
+  const t = useTranslations("pages.cekOngkir.quote");
+
+  return <p className="border-b border-red-100 py-4 text-sm font-semibold text-amber-700">{t("unpriced")}</p>;
 }
 
 function WhatsAppButton({ quote }: { quote: Quote }) {
-  const message = quote.isPriced ? buildBookingMessage(quote) : buildPricingInquiryMessage(quote);
+  const t = useTranslations("pages.cekOngkir.quote");
+  const tWhatsapp = useTranslations("pages.cekOngkir.whatsapp");
+  const locale = useLocale();
+  const message = quote.isPriced ? buildBookingMessage(quote, tWhatsapp, locale) : buildPricingInquiryMessage(quote, tWhatsapp);
   const Icon = quote.isPriced ? Send : MessageCircle;
 
   return (
@@ -94,7 +104,7 @@ function WhatsAppButton({ quote }: { quote: Quote }) {
       className="group mt-4 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3.5 text-xs font-bold text-white shadow-md shadow-emerald-600/20 transition-all hover:bg-emerald-700 sm:rounded-2xl sm:text-sm"
     >
       <Icon className="size-4" aria-hidden="true" />
-      <span>{quote.isPriced ? "Pesan Cargo via WhatsApp" : "Tanya Tarif via WhatsApp"}</span>
+      <span>{quote.isPriced ? t("bookButton") : t("askButton")}</span>
       <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
     </a>
   );
@@ -102,6 +112,7 @@ function WhatsAppButton({ quote }: { quote: Quote }) {
 
 /** Hasil perhitungan. Wrapper aria-live selalu ada agar pembaca layar mengumumkan hasil yang muncul. */
 export function QuoteResult({ quote }: { quote: Quote | null }) {
+  const t = useTranslations("pages.cekOngkir.quote");
   const reduceMotion = useReducedMotion();
 
   return (
@@ -118,11 +129,11 @@ export function QuoteResult({ quote }: { quote: Quote | null }) {
             <div className="rounded-2xl border-2 border-red-200 bg-linear-to-br from-red-50/60 via-white to-amber-50/40 p-5 text-slate-900 shadow-lg sm:rounded-3xl sm:p-7">
               <div className="flex flex-col justify-between gap-2 border-b border-red-100 pb-4 sm:flex-row sm:items-center">
                 <div>
-                  <span className="rounded-full border border-red-200 bg-red-100 px-2.5 py-0.5 font-mono text-[10px] font-extrabold uppercase tracking-widest text-red-700">Estimasi tarif cargo reguler</span>
+                  <span className="rounded-full border border-red-200 bg-red-100 px-2.5 py-0.5 font-mono text-[10px] font-extrabold uppercase tracking-widest text-red-700">{t("badge")}</span>
                   <h3 className="mt-1.5 font-heading text-xl font-black text-slate-900 sm:text-2xl">{quote.destination.name}</h3>
                 </div>
                 <div className="text-left sm:text-right">
-                  <span className="block font-mono text-[10px] text-slate-500">ESTIMASI TIBA</span>
+                  <span className="block font-mono text-[10px] text-slate-500">{t("arrival")}</span>
                   <span className="mt-0.5 inline-block rounded-lg border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-emerald-700">{CARGO_RULES.estimatedTransit}</span>
                 </div>
               </div>

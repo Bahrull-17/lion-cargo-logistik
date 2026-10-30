@@ -1,4 +1,5 @@
 import { useId, type FormEvent } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, Calculator, Info, MapPin, Scale, ShieldCheck } from "lucide-react";
 import { CARGO_RULES } from "@/features/cek-ongkir/constants";
 import { formatDestinationLabel } from "@/features/cek-ongkir/lib/destination";
@@ -20,6 +21,8 @@ interface CalculatorFormProps {
 const FIELD_BASE = "h-14 w-full rounded-xl border-2 bg-slate-50 text-slate-900 shadow-xs transition-all focus:bg-white focus:outline-none sm:rounded-2xl";
 
 export function CalculatorForm({ destinations, selectedSlug, minWeightKg, weightInput, weightError, onDestinationChange, onWeightChange, onSubmit }: CalculatorFormProps) {
+  const t = useTranslations("pages.cekOngkir.form");
+  const locale = useLocale();
   const selectId = useId();
   const weightId = useId();
   const weightHelpId = useId();
@@ -30,7 +33,7 @@ export function CalculatorForm({ destinations, selectedSlug, minWeightKg, weight
     onSubmit();
   };
 
-  const handlingFeeLabel = `Rp ${formatRupiah(CARGO_RULES.handlingFee)}`;
+  const handlingFeeLabel = `Rp ${formatRupiah(CARGO_RULES.handlingFee, locale)}`;
 
   return (
     <>
@@ -40,22 +43,22 @@ export function CalculatorForm({ destinations, selectedSlug, minWeightKg, weight
             <Calculator className="size-5 sm:size-6" aria-hidden="true" />
           </div>
           <div>
-            <h2 className="font-heading text-base font-extrabold text-slate-900 sm:text-xl">Kalkulator Tarif Cargo Udara</h2>
-            <p className="text-[11px] text-slate-500 sm:text-xs">Pilih kota tujuan &amp; masukkan berat kargo</p>
+            <h2 className="font-heading text-base font-extrabold text-slate-900 sm:text-xl">{t("title")}</h2>
+            <p className="text-[11px] text-slate-500 sm:text-xs">{t("subtitle")}</p>
           </div>
         </div>
 
         <span className="hidden items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-3.5 py-1.5 text-xs font-bold text-slate-700 md:inline-flex">
-          <ShieldCheck className="size-4 text-emerald-600" aria-hidden="true" /> Penanganan Admin {handlingFeeLabel}
+          <ShieldCheck className="size-4 text-emerald-600" aria-hidden="true" /> {t("handlingBadge", { fee: handlingFeeLabel })}
         </span>
       </div>
 
-      {/* noValidate: validasi ditangani sendiri agar pesan error konsisten & berbahasa Indonesia */}
+      {/* noValidate: validasi ditangani sendiri agar pesan error konsisten & mengikuti bahasa aktif */}
       <form onSubmit={handleSubmit} noValidate className="space-y-5">
         <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
           <div>
             <label htmlFor={selectId} className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-700">
-              Kota / Bandara Tujuan
+              {t("destinationLabel")}
             </label>
             <div className="relative">
               <select
@@ -77,10 +80,10 @@ export function CalculatorForm({ destinations, selectedSlug, minWeightKg, weight
           <div>
             <div className="mb-2 flex items-center justify-between">
               <label htmlFor={weightId} className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-700">
-                <Scale className="size-4 text-red-600" aria-hidden="true" /> Berat Total Barang (Kg)
+                <Scale className="size-4 text-red-600" aria-hidden="true" /> {t("weightLabel")}
               </label>
               <span id={weightHelpId} className="rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-[10px] font-extrabold text-red-600 sm:px-2.5 sm:text-[11px]">
-                Min. {minWeightKg} Kg
+                {t("minBadge", { min: minWeightKg })}
               </span>
             </div>
             <div className="relative flex items-center">
@@ -94,7 +97,7 @@ export function CalculatorForm({ destinations, selectedSlug, minWeightKg, weight
                 onChange={(event) => onWeightChange(event.target.value)}
                 aria-invalid={weightError ? true : undefined}
                 aria-describedby={weightError ? `${weightHelpId} ${weightErrorId}` : weightHelpId}
-                placeholder="Contoh: 15"
+                placeholder={t("weightPlaceholder")}
                 className={`${FIELD_BASE} pl-4 pr-12 font-mono text-base font-bold sm:text-lg ${weightError ? "border-red-500" : "border-slate-200 focus:border-red-600"}`}
               />
               <span className="absolute right-4 font-mono text-xs font-bold text-slate-400" aria-hidden="true">
@@ -112,13 +115,14 @@ export function CalculatorForm({ destinations, selectedSlug, minWeightKg, weight
         <div className="rounded-2xl border border-red-200/80 bg-red-50/60 p-4 text-xs leading-relaxed text-slate-800">
           <div className="mb-1.5 flex items-center gap-2 font-bold text-red-700">
             <Info className="size-4 shrink-0 text-red-600" aria-hidden="true" />
-            <span>Rumus Perhitungan Tarif Resmi Lion Cargo:</span>
+            <span>{t("formulaTitle")}</span>
           </div>
-          <div className="my-1.5 overflow-x-auto rounded-xl border border-red-200/90 bg-white p-2.5 font-mono text-[11px] font-extrabold text-slate-900 shadow-2xs sm:text-xs">
-            Total Biaya = (Tarif per Kg × Berat Tagihan) + Biaya Penanganan Admin ({handlingFeeLabel})
-          </div>
+          <div className="my-1.5 overflow-x-auto rounded-xl border border-red-200/90 bg-white p-2.5 font-mono text-[11px] font-extrabold text-slate-900 shadow-2xs sm:text-xs">{t("formula", { fee: handlingFeeLabel })}</div>
           <p className="mt-1 text-[11px] text-slate-600">
-            Ketentuan: berat minimal pengiriman adalah <strong className="text-slate-900">{minWeightKg} Kg</strong>
+            {t.rich("rule", {
+              min: minWeightKg,
+              strong: (chunks) => <strong className="text-slate-900">{chunks}</strong>,
+            })}
           </p>
         </div>
 
@@ -128,7 +132,7 @@ export function CalculatorForm({ destinations, selectedSlug, minWeightKg, weight
             className="group flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-red-600/25 transition-all hover:bg-red-700 sm:rounded-2xl sm:py-4 sm:text-base"
           >
             <Calculator className="size-5" aria-hidden="true" />
-            <span>Cek Ongkir Sekarang</span>
+            <span>{t("submit")}</span>
             <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </button>
         </div>

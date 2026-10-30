@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { waLink } from "@/lib/wa-link";
 import type { Destination } from "@/types/tarif";
 import { KotaTujuanHero } from "./kota-tujuan-hero";
@@ -24,6 +25,7 @@ function deteksiPulauDinamis(namaKota: string): "sumatera" | "jawa" | "kalimanta
 }
 
 export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentProps) {
+  const t = useTranslations("pages.destination.content");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPulau, setSelectedPulau] = useState("semua");
   const [displayLimit, setDisplayLimit] = useState(ITEMS_PER_PAGE);
@@ -52,17 +54,17 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
           id: key.replace(/\s+/g, "-"),
           nama: namaTujuan,
           kodeBandara: kode,
-          namaBandara: `Bandara ${namaTujuan}`,
+          namaBandara: t("airportName", { city: namaTujuan }),
           pulau: pulau,
           labelPulau: pulau.toUpperCase(),
-          estimasi: "1 - 2 Hari",
+          estimasi: t("estimate"),
           isPopular: ["medan", "surabaya", "balikpapan", "makassar", "denpasar", "jayapura"].some((k) => key.includes(k)),
         });
       }
     });
 
     return Array.from(uniqueMap.values());
-  }, [initialTarifData]);
+  }, [initialTarifData, t]);
 
   const filteredKotaTotal = useMemo(() => {
     return kotaList.filter((item) => {
@@ -93,7 +95,7 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
     setSelectedPulau("semua");
   };
 
-  const whatsappUrl = waLink("Halo Lion Cargo Logistik, saya ingin kirim barang sekarang.");
+  const whatsappUrl = waLink(t("whatsappMessage"));
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen pb-12 sm:pb-16 overflow-hidden relative">

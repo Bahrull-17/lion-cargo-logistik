@@ -2,16 +2,17 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Plane, Box, Navigation, Radio } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const routeNodes = [
-  { code: "KNO", city: "Medan", left: "6%", top: "12%", delay: 0 },
-  { code: "PLM", city: "Palembang", left: "8%", top: "36%", delay: 0.4 },
-  { code: "SUB", city: "Surabaya", left: "48%", top: "78%", delay: 0.8 },
-  { code: "BPN", city: "Balikpapan", left: "60%", top: "10%", delay: 1.2 },
-  { code: "PNK", city: "Pontianak", left: "40%", top: "28%", delay: 1.4 },
-  { code: "UPG", city: "Makassar", left: "78%", top: "32%", delay: 1.6 },
-  { code: "DPS", city: "Denpasar", left: "70%", top: "82%", delay: 2 },
-  { code: "DJJ", city: "Jayapura", left: "76%", top: "56%", delay: 2.4 },
+  { code: "KNO", cityKey: "Medan", left: "6%", top: "12%", delay: 0 },
+  { code: "PLM", cityKey: "Palembang", left: "8%", top: "36%", delay: 0.4 },
+  { code: "SUB", cityKey: "Surabaya", left: "48%", top: "78%", delay: 0.8 },
+  { code: "BPN", cityKey: "Balikpapan", left: "60%", top: "10%", delay: 1.2 },
+  { code: "PNK", cityKey: "Pontianak", left: "40%", top: "28%", delay: 1.4 },
+  { code: "UPG", cityKey: "Makassar", left: "78%", top: "32%", delay: 1.6 },
+  { code: "DPS", cityKey: "Denpasar", left: "70%", top: "82%", delay: 2 },
+  { code: "DJJ", cityKey: "Jayapura", left: "76%", top: "56%", delay: 2.4 },
 ];
 
 interface FlightMapProps {
@@ -20,6 +21,7 @@ interface FlightMapProps {
 
 export default function FlightMap({ whatsappUrl }: FlightMapProps) {
   const shouldReduceMotion = useReducedMotion();
+  const t = useTranslations("pages.services.flightMap");
 
   return (
     <motion.div
@@ -51,13 +53,13 @@ export default function FlightMap({ whatsappUrl }: FlightMapProps) {
       {/* Live Dispatch */}
       <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-2 py-1 sm:px-2.5 rounded-full border border-slate-200 shadow-sm text-[9px] sm:text-[10px] font-mono font-bold text-slate-800 z-20">
         <Radio className="size-2.5 sm:size-3 text-red-600 animate-pulse" />
-        CGK LIVE DISPATCH
+        {t("liveDispatch")}
       </div>
 
       {/* Speed Badge */}
       <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-red-600 text-white px-2 py-1 sm:px-2.5 rounded-xl shadow-md text-[9px] sm:text-[10px] font-bold flex items-center gap-1 z-20">
         <Plane className="size-2.5 sm:size-3 text-yellow-300" />
-        1-2 HARI PORT TO PORT
+        {t("speedBadge")}
       </div>
 
       {/* Central CGK */}
@@ -68,7 +70,7 @@ export default function FlightMap({ whatsappUrl }: FlightMapProps) {
         </div>
         <div className="absolute top-12 sm:top-14 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white/95 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-red-200 text-[9px] sm:text-[10px] font-black shadow-md">
           <span className="text-red-600 mr-1">●</span>
-          TERMINAL KARGO CGK
+          {t("terminalLabel")}
         </div>
       </div>
 
@@ -78,7 +80,7 @@ export default function FlightMap({ whatsappUrl }: FlightMapProps) {
           <div className="flex items-center gap-1 sm:gap-1.5 bg-white/95 backdrop-blur-md px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-xl border border-slate-200 shadow-sm whitespace-nowrap scale-[0.85] sm:scale-100 origin-top-left">
             <span className="size-1.5 sm:size-2 rounded-full bg-emerald-500" />
             <span className="text-[9px] sm:text-[10px] font-mono font-bold">{node.code}</span>
-            <span className="text-[8px] sm:text-[9px] text-slate-600 font-bold">· {node.city}</span>
+            <span className="text-[8px] sm:text-[9px] text-slate-600 font-bold">· {t(`cities.${node.cityKey}`)}</span>
             <Navigation className="size-2.5 sm:size-3 text-red-500 rotate-45" />
           </div>
         </motion.div>
@@ -87,7 +89,7 @@ export default function FlightMap({ whatsappUrl }: FlightMapProps) {
       {/* Minimum Weight */}
       <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 bg-white/90 backdrop-blur-sm px-2 py-1 sm:px-2.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[10px] font-bold z-20">
         <Box className="size-3 sm:size-3.5 text-red-600" />
-        MIN. 10 KG
+        {t("minWeight")}
       </div>
 
       {/* CTA */}
@@ -98,7 +100,7 @@ export default function FlightMap({ whatsappUrl }: FlightMapProps) {
           rel="noopener noreferrer"
           className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-slate-900 hover:bg-red-600 text-white px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl text-[10px] sm:text-xs font-bold shadow-lg transition z-20"
         >
-          Cek Rute Flight ↗
+          {t("cta")}
         </a>
       )}
     </motion.div>

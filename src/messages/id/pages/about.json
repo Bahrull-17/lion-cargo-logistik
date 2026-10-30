@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "images": [
+      {
+        "src": "/images/tentang-kami/terminal.jpg",
+        "alt": "Terminal Cargo Bandara Soekarno-Hatta - Lion Cargo Logistik"
+      },
+      {
+        "src": "/images/tentang-kami/armada.jpg",
+        "alt": "Armada dan Pesawat Kargo Udara - Lion Cargo Logistik"
+      },
+      {
+        "src": "/images/tentang-kami/penanganan.jpg",
+        "alt": "Penanganan Kargo Profesional - Lion Cargo Logistik"
+      }
+    ]
+  },
+  "content": {
+    "breadcrumb": {
+      "home": "Beranda",
+      "current": "Tentang Kami"
+    },
+    "intro": {
+      "titleLine1": "Solusi Ekspedisi",
+      "titleItalic": "Kargo Udara Cepat",
+      "titleBadge": "Langsung dari CGK",
+      "paragraph1": "Setiap pengiriman memiliki cerita dan tujuan yang berbeda. Bagi kami, <strong>Cargo</strong> bukan hanya tentang memindahkan barang dari satu tempat ke tempat lain, tetapi tentang menjaga kepercayaan yang diberikan oleh setiap pelanggan.",
+      "paragraph2": "<strong>Lion Cargo Logistik</strong> hadir sebagai penyedia jasa ekspedisi kargo udara resmi kargo udara <em>port-to-port</em> dengan operasional yang terhubung langsung melalui <strongSoft>Terminal Kargo Bandara Internasional Soekarno-Hatta (CGK)</strongSoft> untuk mendukung kebutuhan pengiriman ke berbagai kota tujuan di Indonesia.",
+      "badgeDirectFlight": "Penerbangan Langsung (Direct Flight)",
+      "badgeSmu": "Dokumen SMU Resmi"
+    },
+    "friendship": {
+      "title": "Melayani dan Membangun Ikatan yang <red>Tulus Layaknya Sahabat</red>",
+      "paragraph1": "Di industri <strong>ekspedisi</strong> yang serba cepat, kami menyadari bahwa <strong>Terminal kargo</strong> Anda bukan sekadar paket berbobot kilogram, tetapi merupakan komitmen bisnis, reputasi usaha, dan harapan yang harus tiba tepat waktu.",
+      "paragraph2": "Karena itulah, <strong>Lion Cargo Logistik</strong> tidak pernah memosisikan diri hanya sebagai vendor ekspedisi biasa. Kami hadir sebagai mitra strategis yang mendengarkan, memahami dinamika kebutuhan pengiriman Anda, serta memberikan solusi terbaik dengan pendekatan transparan dan kekeluargaan.",
+      "paragraph3": "Dari koordinasi di pintu penerimaan <strong>Terminal Kargo Soekarno-Hatta (CGK)</strong>, pengurusan dokumen Surat Muatan Udara (SMU), hingga konfirmasi kargo tiba di bandara tujuan, tim kami siap mendampingi setiap langkah pengiriman Anda secara responsif layaknya seorang sahabat yang selalu dapat diandalkan."
+    },
+    "showcase": {
+      "title": "Memahami Setiap <red>Karakter Pengiriman Anda</red>",
+      "paragraph1": "Di balik setiap muatan <strong>Kargo</strong> mulai dari dus produksi usaha kecil, pasokan garmen antarpulau, suku cadang vital, hingga dokumen berharga terdapat cerita perjuangan dan kepercayaaan yang Anda titipkan.",
+      "paragraph2": "Tim operasional kami di <strong>Kargo Bandara Soekarno-Hatta Tangerang</strong> hadir untuk memastikan bahwa apapun bentuk dan kebutuhan muatan Anda, perlakuan yang kami berikan tetap sama: penuh rasa tanggung jawab, cermat, dan berdedikasi tinggi.",
+      "imageAlt": "Ragam Amanah Pengiriman - Lion Cargo Logistik"
+    },
+    "closing": {
+      "title": "Siap Mengirim Kargo Anda <red>Tanpa Ragu</red>",
+      "description": "Setiap tahapan pengiriman kargo udara dari Terminal <strong>Kargo Bandara Soekarno-Hatta Tangerang</strong> dikelola secara transparan, aman, dan profesional untuk memastikan paket serta barang Anda tiba tepat waktu di kota tujuan."
+    },
+    "whatsappMessage": "Halo Lion Cargo Logistik, saya ingin berkonsultasi mengenai pengiriman kargo udara."
+  },
+  "flightMap": {
+    "liveDispatch": "CGK LIVE DISPATCH",
+    "speedBadge": "1-2 HARI PORT TO PORT",
+    "terminalLabel": "TERMINAL KARGO CGK",
+    "minWeight": "MIN. 10 KG",
+    "cta": "Cek Rute Flight ↗",
+    "cities": {
+      "Medan": "Medan",
+      "Palembang": "Palembang",
+      "Surabaya": "Surabaya",
+      "Balikpapan": "Balikpapan",
+      "Pontianak": "Pontianak",
+      "Makassar": "Makassar",
+      "Denpasar": "Denpasar",
+      "Jayapura": "Jayapura"
+    }
+  }
+}

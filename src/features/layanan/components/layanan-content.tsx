@@ -1,29 +1,18 @@
 "use client";
 
 import { useReducedMotion, motion, Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { LayananHero } from "./layanan-hero";
 import { LayananServiceList } from "./layanan-service-list";
 import { LayananPackageList } from "./layanan-package-list";
 import { CtaSection } from "@/components/shared/cta-section";
 import { waLink } from "@/lib/wa-link";
 
-const specialCargoList = [
-  {
-    category: "Perishable Goods (Barang Mudah Rusak)",
-    desc: "Pengiriman makanan segar, buah-buahan, sayur, hasil laut (seafood), & daging beku.",
-    note: "Wajib menggunakan paking styrofoam kedap air & es kering/cool pack standar IATA.",
-  },
-  {
-    category: "Dangerous Goods / DG (Barang Berbahaya)",
-    desc: "Baterai lithium, cairan kimia, aerosol, parfum, & bahan mudah terbakar.",
-    note: "Melalui proses pemeriksaan tim BTT, dokumen MSDS, & paking berlabel DG resmi.",
-  },
-  {
-    category: "Valuable Cargo (Barang Berharga Tinggi)",
-    desc: "Perangkat elektronik premium, perhiasan, dokumen resmi negara, & aset bernilai tinggi.",
-    note: "Disertai skema asuransi pengiriman penuh & pengawalan ekstra dari agen.",
-  },
-];
+type SpecialCargoItem = {
+  category: string;
+  desc: string;
+  note: string;
+};
 
 const slideUpSmooth: Variants = {
   hidden: { opacity: 0, y: 35 },
@@ -48,8 +37,11 @@ const slideFromLeft: Variants = {
 };
 
 export function LayananContent() {
+  // Sesuaikan namespace dengan cara kamu menggabungkan file pages/services.json
+  const t = useTranslations("pages.services");
   const reduceMotion = useReducedMotion() ?? false;
-  const whatsappUrl = waLink("Halo Lion Cargo Logistik, saya ingin berkonsultasi mengenai pengiriman kargo udara.");
+  const whatsappUrl = waLink(t("whatsappMessage"));
+  const specialCargoList = t.raw("special.items") as SpecialCargoItem[];
 
   return (
     <div className="bg-white text-slate-800 selection:bg-red-600 selection:text-white overflow-x-hidden">
@@ -68,9 +60,11 @@ export function LayananContent() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <motion.div className="lg:col-span-5 space-y-3" initial={reduceMotion ? false : "hidden"} whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={slideFromLeft}>
               <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-                Penanganan <span className="text-red-600">Special Cargo</span>
+                {t.rich("special.title", {
+                  highlight: (chunks) => <span className="text-red-600">{chunks}</span>,
+                })}
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">Pengalaman profesional menangani jenis muatan khusus yang membutuhkan sertifikasi karantina, standar kemasan ekstra, maupun izin penerbangan berjadwal.</p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{t("special.description")}</p>
             </motion.div>
 
             <div className="lg:col-span-7 space-y-3">
@@ -87,7 +81,7 @@ export function LayananContent() {
                   <h3 className="text-sm font-black text-slate-900">{item.category}</h3>
                   <p className="text-xs text-slate-600">{item.desc}</p>
                   <p className="text-xs font-bold text-red-600 pt-1">
-                    💡 Ketentuan: <span className="font-normal text-slate-600">{item.note}</span>
+                    💡 {t("special.termsLabel")}: <span className="font-normal text-slate-600">{item.note}</span>
                   </p>
                 </motion.div>
               ))}

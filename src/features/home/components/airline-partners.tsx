@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const airlineLogos = [
   { name: "Citilink", logo: "/images/airlines/citilink.png" },
@@ -16,6 +17,7 @@ const airlineLogos = [
 
 export function AirlinePartners() {
   const reduceMotion = useReducedMotion();
+  const t = useTranslations("pages.home.airlinePartners");
 
   // Duplikasi array agar pergerakan infinite marquee mulus tanpa patah
   const duplicatedLogos = [...airlineLogos, ...airlineLogos, ...airlineLogos];
@@ -26,29 +28,46 @@ export function AirlinePartners() {
         {/* HEADER & SEO KEYWORDS */}
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.8,
+            ease: [0.16, 1, 0.3, 1],
+          }}
           className="text-center space-y-3 max-w-3xl mx-auto"
         >
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 uppercase tracking-tight">
-            Armada Penerbangan Domestik & <span className="text-red-600">Ekspedisi Kargo Udara Terpercaya</span>
+            {t("title")} <span className="text-red-600">{t("highlight")}</span>
           </h2>
 
           <p className="text-xs sm:text-sm font-medium text-slate-600 leading-relaxed">
-            Lion Cargo Logistik bermitra strategis dengan maskapai penerbangan nasional terkemuka seperti Lion Air, Garuda Indonesia, Citilink, dan Batik Air. Melayani jasa pengiriman barang kilat, kargo bandara ke bandara (*port to port*),
-            serta logistik door-to-door dengan tarif per kg murah dan jadwal penerbangan harian tepat waktu ke seluruh wilayah Indonesia.
+            {t("description.before")}
+            <em className="italic">{t("description.italic")}</em>
+            {t("description.after")}
           </p>
         </motion.div>
 
-        {/* INFINITE MARQUEE CONTAINER (BERGERAK KIRI KE KANAN TERUS MENERUS) */}
+        {/* INFINITE MARQUEE CONTAINER */}
         <div className="relative w-full overflow-hidden mask-gradient py-4">
           {/* Efek gradasi pudar di sisi kiri dan kanan */}
           <div className="absolute left-0 inset-y-0 w-16 sm:w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
+
           <div className="absolute right-0 inset-y-0 w-16 sm:w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
 
           <motion.div
-            animate={reduceMotion ? {} : { x: ["0%", "-33.33%"] }}
+            animate={
+              reduceMotion
+                ? {}
+                : {
+                    x: ["0%", "-33.33%"],
+                  }
+            }
             transition={{
               duration: 25,
               ease: "linear",
@@ -63,7 +82,7 @@ export function AirlinePartners() {
                 title={item.name}
               >
                 <div className="relative h-8 sm:h-11 w-full">
-                  <Image src={item.logo} alt={`Logo Maskapai Kargo ${item.name}`} fill sizes="(min-width: 1024px) 180px, 120px" className="object-contain" />
+                  <Image src={item.logo} alt={`${t("alt")} ${item.name}`} fill sizes="(min-width: 1024px) 180px, 120px" className="object-contain" />
                 </div>
               </div>
             ))}

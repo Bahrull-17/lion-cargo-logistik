@@ -2,38 +2,38 @@ import { Home, Info, Plane, MapPin, FileText, HelpCircle, PhoneCall } from "luci
 
 export const navigation = [
   {
-    label: "Beranda",
+    key: "home",
     href: "/",
     icon: Home,
   },
   {
-    label: "Tentang Kami",
+    key: "about",
     href: "/tentang-kami",
     icon: Info,
   },
   {
-    label: "Layanan",
+    key: "services",
     href: "/layanan",
     icon: Plane,
   },
   {
-    label: "Kota Tujuan",
+    key: "destination",
     href: "/kota-tujuan",
     icon: MapPin,
   },
   {
-    label: "Artikel",
+    key: "article",
     href: "/artikel",
     icon: FileText,
   },
   {
-    label: "FAQ",
+    key: "faq",
     href: "/faq",
     icon: HelpCircle,
   },
   {
-    label: "Kontak",
+    key: "contact",
     href: "/kontak",
     icon: PhoneCall,
   },
-];
+] as const;

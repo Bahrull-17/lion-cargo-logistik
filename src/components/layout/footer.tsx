@@ -1,14 +1,22 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+
 import { Logo } from "@/components/shared/logo";
+import { AirportIllustration } from "@/components/illustrations/airport-illustration";
+
 import { siteConfig } from "@/config/site";
 import { navigation } from "@/config/navigation";
-import { AirportIllustration } from "@/components/illustrations/airport-illustration";
-export function Footer() {
+
+import { getTranslations } from "next-intl/server";
+
+export async function Footer() {
   const { contact } = siteConfig;
+
+  const t = await getTranslations("footer");
+  const nav = await getTranslations("navigation");
+
   return (
     <footer className="relative overflow-hidden bg-[#DC143C] text-white border-t border-red-700">
-      {/* Decorative Background */}
       <div
         className="
         pointer-events-none
@@ -21,7 +29,7 @@ export function Footer() {
         blur-3xl
         "
       />
-      {/* MAIN FOOTER */}
+
       <div
         className="
         relative
@@ -42,27 +50,13 @@ export function Footer() {
       >
         {/* BRAND */}
         <div className="space-y-4">
-          <div
-            className="
-            inline-block
-            origin-left
-            scale-[1.8]
-            "
-          >
+          <div className="inline-block origin-left scale-[1.8]">
             <Logo light />
           </div>
-          <p
-            className="
-            max-w-sm
-            pt-1
-            text-xs
-            leading-relaxed
-            text-white/90
-            "
-          >
-            {siteConfig.description}
-          </p>
+
+          <p className="max-w-sm pt-1 text-xs leading-relaxed text-white/90">{t("description")}</p>
         </div>
+
         {/* NAVIGATION */}
         <nav aria-label="Footer Navigation">
           <h2
@@ -77,11 +71,13 @@ export function Footer() {
             tracking-wide
             "
           >
-            Navigasi Menu
+            {t("navigation")}
           </h2>
+
           <ul className="space-y-2.5">
             {navigation.map((item) => {
               const Icon = item.icon;
+
               return (
                 <li key={item.href}>
                   <Link
@@ -106,13 +102,15 @@ export function Footer() {
                       group-hover:scale-110
                       "
                     />
-                    <span>{item.label}</span>
+
+                    <span>{nav(item.key)}</span>
                   </Link>
                 </li>
               );
             })}
           </ul>
         </nav>
+
         {/* CONTACT */}
         <div>
           <h2
@@ -127,71 +125,29 @@ export function Footer() {
             tracking-wide
             "
           >
-            Kontak Operasional
+            {t("contact")}
           </h2>
-          <ul
-            className="
-            space-y-1
-            text-sm
-            text-white/90
-            "
-          >
-            <li
-              className="
-              flex
-              items-start
-              gap-3
-              "
-            >
-              <MapPin
-                className="
-                mt-1
-                size-4
-                shrink-0
-                "
-              />
-              <a
-                href={contact.maps}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                font-semibold
-                hover:text-white
-                "
-              >
-                {contact.address}
+
+          <ul className="space-y-1 text-sm text-white/90">
+            <li className="flex items-start gap-3">
+              <MapPin className="mt-1 size-4 shrink-0" />
+
+              <a href={contact.maps} target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-white">
+                {t("address")}
               </a>
             </li>
-            <li
-              className="
-              flex
-              items-center
-              gap-3
-              "
-            >
-              <Phone
-                className="
-                size-4
-                shrink-0
-                "
-              />
+
+            <li className="flex items-center gap-3">
+              <Phone className="size-4 shrink-0" />
+
               <a href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`} className="font-semibold hover:text-white">
                 {contact.phone}
               </a>
             </li>
-            <li
-              className="
-              flex
-              items-center
-              gap-3
-              "
-            >
-              <Mail
-                className="
-                size-4
-                shrink-0
-                "
-              />
+
+            <li className="flex items-center gap-3">
+              <Mail className="size-4 shrink-0" />
+
               <a
                 href={`mailto:${contact.email}`}
                 className="
@@ -203,24 +159,16 @@ export function Footer() {
                 {contact.email}
               </a>
             </li>
-            <li
-              className="
-              flex
-              items-center
-              gap-3
-              "
-            >
-              <Clock
-                className="
-                size-4
-                shrink-0
-                "
-              />
+
+            <li className="flex items-center gap-3">
+              <Clock className="size-4 shrink-0" />
+
               <span className="font-semibold">{contact.openingHours}</span>
             </li>
           </ul>
         </div>
       </div>
+
       {/* AIRPORT ILLUSTRATION */}
       <div
         aria-hidden="true"
@@ -230,15 +178,13 @@ export function Footer() {
         mt-2
         overflow-hidden
         px-2
-
         sm:px-4
-
         "
       >
         <AirportIllustration />
       </div>
-      {/* COPYRIGHT */}
 
+      {/* COPYRIGHT */}
       <div
         className="
         relative
@@ -254,7 +200,7 @@ export function Footer() {
         text-white/90
         "
       >
-        © 2026 {siteConfig.name}. Hak cipta dilindungi.
+        © 2026 {t("company")}. {t("copyright")}
       </div>
     </footer>
   );

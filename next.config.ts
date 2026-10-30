@@ -1,7 +1,11 @@
+import createNextIntlPlugin from "next-intl/plugin";
 import type { NextConfig } from "next";
 
+const withNextIntl = createNextIntlPlugin();
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  cacheComponents: true,
+
   images: {
     remotePatterns: [
       {
@@ -10,11 +14,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
   experimental: {
     agentFeedback: true,
   },
-  cacheComponents: true,
-  partialPrefetching: true,
+
   turbopack: {
     rules: {
       "*.css": {
@@ -25,4 +29,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

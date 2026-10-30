@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "title": "Air Cargo & Inter-Island Shipping Services | Lion Cargo Logistik",
+    "description": "Choose the best air cargo service from Soekarno-Hatta Airport (CGK) to all of Indonesia. Regular Cargo, Priority Express, and Same Day available."
+  },
+  "hero": {
+    "bannerAlt": "Main Banner of Lion Cargo Logistik Air Cargo Services",
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Services"
+    },
+    "title": {
+      "line1": "Trusted Air Cargo Services",
+      "line2": "Across",
+      "highlight": "All of Indonesia"
+    },
+    "offer": {
+      "prefix": "Ship from CGK to ",
+      "suffix": ", every day."
+    },
+    "description": {
+      "brand": "Lion Cargo Logistik",
+      "text1": " provides an integrated air cargo shipping network that prioritizes daily flight slot certainty, fast inter-island distribution, and transparent per-kilogram rates directly from the ",
+      "location": "Cargo Terminal of Soekarno-Hatta International Airport (CGK)"
+    },
+    "cta": {
+      "checkRate": "Check Shipping Rates Now",
+      "whatsapp": "Ask via WhatsApp"
+    },
+    "liveHub": {
+      "badge": "LIVE STATUS",
+      "title": "Scheduled Daily Departures",
+      "subtitle": "Priority loading directly from the Soekarno-Hatta Cargo Terminal to airports across the archipelago.",
+      "slotLabel": "Flight Slot",
+      "slotValue": "First Flight",
+      "securityLabel": "Security",
+      "securityValue": "IATA Standard",
+      "location": "Soekarno-Hatta (CGK)",
+      "tag": "Fast Track"
+    }
+  },
+  "special": {
+    "title": "<highlight>Special Cargo</highlight> Handling",
+    "description": "Professional experience handling special types of cargo that require quarantine certification, extra packaging standards, or scheduled flight permits.",
+    "termsLabel": "Requirements",
+    "items": [
+      {
+        "category": "Perishable Goods",
+        "desc": "Shipping of fresh food, fruits, vegetables, seafood, & frozen meat.",
+        "note": "Waterproof styrofoam packaging & IATA-standard dry ice/cool packs are required."
+      },
+      {
+        "category": "Dangerous Goods / DG",
+        "desc": "Lithium batteries, chemical liquids, aerosols, perfumes, & flammable materials.",
+        "note": "Goes through inspection by the BTT team, MSDS documents, & official DG-labeled packaging."
+      },
+      {
+        "category": "Valuable Cargo",
+        "desc": "Premium electronic devices, jewelry, official state documents, & high-value assets.",
+        "note": "Comes with a full shipping insurance scheme & extra escort from the agent."
+      }
+    ]
+  },
+  "serviceList": {
+    "title": "Air Freight Options <highlight>Tailored to Your Needs</highlight>",
+    "intro": "Improve your business supply chain efficiency by choosing the best flexibility in speed and certainty of flight time estimates. Whether for economical <strong>regular cargo</strong> shipping, daily express priority, or emergency services that arrive today, we are ready to ensure every one of your shipments lands on time with professional security guarantees directly from <strong>Soekarno-Hatta Airport</strong> to all corners of the archipelago.",
+    "items": {
+      "reguler": {
+        "name": "Regular Cargo",
+        "badge": "MOST ECONOMICAL",
+        "estimate": "Estimate: 2 - 3 Days",
+        "tagline": "Economical & Scheduled Routine Inter-Island Shipping",
+        "description": [
+          "General cargo shipping via scheduled flights from the Soekarno-Hatta Airport Cargo Terminal (CGK) to various destination airports across Indonesia.",
+          "This economical air cargo service is perfect for shipping online store parcels, spare parts, regional commodities, and even inter-island moving goods, with transparent per-kilogram rate calculation.",
+          "Supports both Port to Port and Port to Door service options with a guarantee of safe, orderly, and easily tracked cargo handling."
+        ],
+        "imageAlt": "Photo of Regular Cargo by Lion Cargo Logistik at Soekarno Hatta Airport",
+        "ctaText": "Check Regular Rates",
+        "features": ["⚖️ Transparent Rate per Kg", "📦 Port to Port / Door", "✈️ Regular Flight Schedule"],
+        "recommendation": "Recommended for: Online Stores, Distributors, Spare Parts, Garments, & Relocation."
+      },
+      "express": {
+        "name": "Cargo Express",
+        "badge": "SLOT PRIORITY",
+        "estimate": "Estimate: 1 - 2 Days",
+        "tagline": "First Flight Loading Priority from CGK",
+        "description": [
+          "A high-speed air cargo service that gets guaranteed priority loading slots on the earliest flight schedule from Soekarno-Hatta International Airport.",
+          "Highly recommended for shipping valuable goods, urgent industrial samples, and fresh food products (perishable goods) that require minimal handling time during transit.",
+          "Cargo clearance is processed quickly at the shipping terminal so your package arrives at the destination city within an efficient and safe time estimate."
+        ],
+        "imageAlt": "Photo of Cargo Express priority aircraft at Soetta Airport",
+        "ctaText": "Ask About Express via WA",
+        "waMessage": "Hello Lion Cargo Logistik, I would like to ask about fast shipping via Cargo Express.",
+        "features": ["⚡ First Flight Slot", "🍎 Fresh & Valuable Goods", "🚀 Fast Track Clearance"],
+        "recommendation": "Recommended for: Seafood, Fresh Food, Factory Samples, & Expensive Goods."
+      },
+      "sameday": {
+        "name": "Same Day Service",
+        "badge": "FLIES TODAY",
+        "estimate": "Estimate: Arrives Today",
+        "tagline": "Send in the Morning, Arrive at Your Destination City Today",
+        "description": [
+          "An express service for important documents and super urgent parcels flown directly from Jakarta to the destination city on the same day.",
+          "Packages are delivered in the morning to the cargo agent at Soekarno-Hatta Airport and processed straight away on the earliest daily commercial flight.",
+          "The best solution for those who need extreme inter-island delivery speed without transit delays."
+        ],
+        "imageAlt": "Photo of Same Day Service express air cargo",
+        "ctaText": "Consult Same Day",
+        "waMessage": "Hello Lion Cargo Logistik, I need the Same Day Service express service today.",
+        "features": ["⏱️ Arrives Within 24 Hours", "📄 Urgent Documents & Parcels", "🎯 Direct Flight Priority"],
+        "recommendation": "Recommended for: Tender Documents, Urgent Medical/Medicine, & Passports/Vital Letters."
+      }
+    }
+  },
+  "whatsappMessage": "Hello Lion Cargo Logistik, I would like to consult about air cargo shipping."
+}

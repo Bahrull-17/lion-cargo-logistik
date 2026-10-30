@@ -2,7 +2,15 @@ import type { Destination } from "@/types/tarif";
 import { CARGO_RULES } from "@/features/cek-ongkir/constants";
 import { hasTariff } from "@/features/cek-ongkir/lib/destination";
 
-export type WeightParseResult = { ok: true; weightKg: number } | { ok: false; error: string };
+export type WeightErrorCode = "empty" | "invalid" | "belowMin" | "aboveMax";
+
+/** Kode error + data pendukung; teks pesannya diterjemahkan di komponen. */
+export interface WeightError {
+  code: WeightErrorCode;
+  minWeightKg: number;
+}
+
+export type WeightParseResult = { ok: true; weightKg: number } | { ok: false; error: WeightError };
 
 export interface Quote {
   destination: Destination;
@@ -19,22 +27,22 @@ export interface Quote {
 }
 
 /**
- * Validasi input berat dari form. Mengembalikan pesan error yang siap ditampilkan.
+ * Validasi input berat dari form. Mengembalikan kode error (diterjemahkan di UI).
  * Berat di bawah minimum DITOLAK (tidak otomatis dinaikkan): pengguna harus mengetik minimum itu sendiri.
  */
 export function parseWeight(input: string, minWeightKg: number): WeightParseResult {
   const trimmed = input.trim();
-  if (trimmed === "") return { ok: false, error: "Masukkan berat barang terlebih dahulu." };
+  if (trimmed === "") return { ok: false, error: { code: "empty", minWeightKg } };
 
   const weightKg = Number(trimmed);
   if (!Number.isFinite(weightKg)) {
-    return { ok: false, error: "Berat harus berupa angka yang valid." };
+    return { ok: false, error: { code: "invalid", minWeightKg } };
   }
   if (weightKg < minWeightKg) {
-    return { ok: false, error: `Berat di bawah ${minWeightKg} Kg tidak dapat diproses. Masukkan minimal ${minWeightKg} Kg.` };
+    return { ok: false, error: { code: "belowMin", minWeightKg } };
   }
   if (weightKg > CARGO_RULES.maximumWeightKg) {
-    return { ok: false, error: "Berat melebihi batas kalkulator. Hubungi tim kami untuk pengiriman partai besar." };
+    return { ok: false, error: { code: "aboveMax", minWeightKg } };
   }
   return { ok: true, weightKg };
 }

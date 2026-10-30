@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "images": [
+      {
+        "src": "/images/tentang-kami/terminal.jpg",
+        "alt": "Soekarno-Hatta Airport Cargo Terminal - Lion Cargo Logistik"
+      },
+      {
+        "src": "/images/tentang-kami/armada.jpg",
+        "alt": "Air Cargo Fleet and Aircraft - Lion Cargo Logistik"
+      },
+      {
+        "src": "/images/tentang-kami/penanganan.jpg",
+        "alt": "Professional Cargo Handling - Lion Cargo Logistik"
+      }
+    ]
+  },
+  "content": {
+    "breadcrumb": {
+      "home": "Home",
+      "current": "About Us"
+    },
+    "intro": {
+      "titleLine1": "Shipping Solutions",
+      "titleItalic": "Fast Air Cargo",
+      "titleBadge": "Direct from CGK",
+      "paragraph1": "Every shipment has a different story and purpose. To us, <strong>Cargo</strong> is not just about moving goods from one place to another, but about safeguarding the trust that every customer places in us.",
+      "paragraph2": "<strong>Lion Cargo Logistik</strong> is an official air cargo forwarding service provider offering <em>port-to-port</em> air cargo, with operations directly connected through the <strongSoft>Soekarno-Hatta International Airport Cargo Terminal (CGK)</strongSoft> to support shipments to various destination cities across Indonesia.",
+      "badgeDirectFlight": "Direct Flights",
+      "badgeSmu": "Official SMU (Air Waybill) Documents"
+    },
+    "friendship": {
+      "title": "Serving and Building Genuine Relationships <red>Like True Friends</red>",
+      "paragraph1": "In the fast-paced <strong>freight forwarding</strong> industry, we understand that your <strong>cargo</strong> is not just a parcel measured in kilograms, but a business commitment, a company reputation, and a promise that must arrive on time.",
+      "paragraph2": "That is why <strong>Lion Cargo Logistik</strong> never positions itself as just another forwarding vendor. We are a strategic partner who listens, understands the dynamics of your shipping needs, and delivers the best solutions through a transparent, family-like approach.",
+      "paragraph3": "From coordination at the reception gate of the <strong>Soekarno-Hatta Cargo Terminal (CGK)</strong> and handling Air Waybill (SMU) documents, to confirming that your cargo has arrived at the destination airport, our team is ready to accompany every step of your shipment, responsively, like a friend you can always rely on."
+    },
+    "showcase": {
+      "title": "Understanding Every <red>Character of Your Shipment</red>",
+      "paragraph1": "Behind every <strong>cargo</strong> load, from small-business production boxes and inter-island garment supplies to vital spare parts and valuable documents, lies a story of hard work and trust that you entrust to us.",
+      "paragraph2": "Our operations team at the <strong>Soekarno-Hatta Airport Cargo, Tangerang</strong> is here to ensure that whatever the form and needs of your cargo, the treatment we give remains the same: full of responsibility, careful, and highly dedicated.",
+      "imageAlt": "The Range of Cargo Entrusted to Us - Lion Cargo Logistik"
+    },
+    "closing": {
+      "title": "Ready to Ship Your Cargo <red>Without Hesitation</red>",
+      "description": "Every stage of air cargo shipping from the <strong>Soekarno-Hatta Airport Cargo Terminal, Tangerang</strong> is managed transparently, safely, and professionally to ensure your parcels and goods arrive on time at the destination city."
+    },
+    "whatsappMessage": "Hello Lion Cargo Logistik, I would like to consult about air cargo shipping."
+  },
+  "flightMap": {
+    "liveDispatch": "CGK LIVE DISPATCH",
+    "speedBadge": "1-2 DAYS PORT TO PORT",
+    "terminalLabel": "CGK CARGO TERMINAL",
+    "minWeight": "MIN. 10 KG",
+    "cta": "Check Flight Route ↗",
+    "cities": {
+      "Medan": "Medan",
+      "Palembang": "Palembang",
+      "Surabaya": "Surabaya",
+      "Balikpapan": "Balikpapan",
+      "Pontianak": "Pontianak",
+      "Makassar": "Makassar",
+      "Denpasar": "Denpasar",
+      "Jayapura": "Jayapura"
+    }
+  }
+}

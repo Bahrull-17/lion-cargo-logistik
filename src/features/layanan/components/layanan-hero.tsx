@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MessageCircle, Plane, ChevronRight, Calculator, ShieldCheck, Clock, Navigation } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion, Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { waLink } from "@/lib/wa-link";
 
 /* Kota tujuan yang bergulir di kalimat penawaran hero. */
@@ -22,6 +23,7 @@ const bannerSlideFromRight: Variants = {
 
 /* ================= JUDUL HERO ================= */
 function JudulHero({ reduceMotion }: { reduceMotion: boolean | null }) {
+  const t = awaitUseTranslations("pages.services.hero.title");
   const ukuranNormal = "text-2xl sm:text-4xl lg:text-5xl font-black";
   const easeMasuk = [0.16, 1, 0.3, 1] as const;
   const easeTerbang = [0.65, 0, 0.35, 1] as const;
@@ -30,14 +32,14 @@ function JudulHero({ reduceMotion }: { reduceMotion: boolean | null }) {
     <div className="tracking-tight text-slate-700 space-y-0.5 sm:space-y-1">
       <span className="block overflow-hidden">
         <motion.span className={`block leading-tight ${ukuranNormal}`} initial={reduceMotion ? false : { y: "108%" }} animate={{ y: 0 }} transition={{ duration: 1.1, delay: 0.1, ease: easeMasuk }}>
-          Layanan Kargo Udara
+          {t("line1")}
         </motion.span>
       </span>
 
       <span className="block overflow-hidden py-0.5">
         <motion.span className="block w-fit" initial={reduceMotion ? false : { y: "108%" }} animate={{ y: 0 }} transition={{ duration: 1.1, delay: 0.25, ease: easeMasuk }}>
           <span className="relative block w-fit">
-            <span className={`block leading-tight text-slate-200 ${ukuranNormal}`}>Terpercaya</span>
+            <span className={`block leading-tight text-slate-200 ${ukuranNormal}`}>{t("line2")}</span>
 
             <motion.span
               aria-hidden="true"
@@ -46,7 +48,7 @@ function JudulHero({ reduceMotion }: { reduceMotion: boolean | null }) {
               animate={{ clipPath: "inset(0 0% 0 0)" }}
               transition={{ duration: 1.6, delay: 0.9, ease: easeTerbang }}
             >
-              Terpercaya
+              {t("line2")}
             </motion.span>
 
             {!reduceMotion && (
@@ -71,12 +73,17 @@ function JudulHero({ reduceMotion }: { reduceMotion: boolean | null }) {
       <div className="pt-1">
         <motion.div initial={reduceMotion ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.45, ease: easeMasuk }} className="inline-block">
           <span className="inline-block px-3.5 sm:px-5 py-1 sm:py-1.5 bg-red-600 text-white text-xl sm:text-3xl lg:text-4xl rounded-xl sm:rounded-2xl shadow-lg shadow-red-600/25 font-black tracking-tight transform -rotate-1">
-            Seluruh Indonesia
+            {t("highlight")}
           </span>
         </motion.div>
       </div>
     </div>
   );
+}
+
+// Helper sinkron untuk komponen komponen kecil di dalam
+function awaitUseTranslations(namespace: string) {
+  return useTranslations(namespace);
 }
 
 /* ================= NAMA KOTA YANG BERGULIR ================= */
@@ -112,13 +119,14 @@ function KotaBergulir({ reduceMotion }: { reduceMotion: boolean | null }) {
 
 export function LayananHero() {
   const reduceMotion = useReducedMotion() ?? false;
+  const t = useTranslations("pages.services.hero");
 
   return (
     <>
       {/* ================= BANNER HERO ================= */}
       <section className="w-full bg-white border-b border-slate-100 overflow-hidden">
         <motion.div initial={reduceMotion ? false : "hidden"} animate="visible" variants={bannerSlideFromRight} className="w-full relative">
-          <Image src="/images/layanan/layanan.jpg" alt="Banner Utama Layanan Kargo Udara Lion Cargo Logistik" width={1920} height={800} priority className="w-full h-auto object-cover block" />
+          <Image src="/images/layanan/layanan.jpg" alt={t("bannerAlt")} width={1920} height={800} priority className="w-full h-auto object-cover block" />
         </motion.div>
       </section>
 
@@ -130,10 +138,10 @@ export function LayananHero() {
           {/* Breadcrumb */}
           <nav className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-slate-500 sm:mb-4 sm:text-sm">
             <Link href="/" className="transition-colors hover:text-red-600">
-              Beranda
+              {t("breadcrumb.home")}
             </Link>
             <ChevronRight className="size-3.5 text-slate-400" />
-            <span className="font-bold text-red-600">Layanan</span>
+            <span className="font-bold text-red-600">{t("breadcrumb.current")}</span>
           </nav>
 
           <JudulHero reduceMotion={reduceMotion} />
@@ -149,12 +157,15 @@ export function LayananHero() {
             <div className="space-y-5 lg:col-span-7">
               <div className="space-y-3">
                 <p className="text-lg font-bold leading-snug tracking-tight text-slate-700 sm:text-xl">
-                  Kirim dari CGK ke <KotaBergulir reduceMotion={reduceMotion} />, setiap hari.
+                  {t("offer.prefix")}
+                  <KotaBergulir reduceMotion={reduceMotion} />
+                  {t("offer.suffix")}
                 </p>
 
                 <p className="text-xs sm:text-sm leading-relaxed text-slate-600">
-                  <strong className="font-semibold text-slate-900">Lion Cargo Logistik</strong> menyediakan jaringan pengiriman kargo udara terpadu yang memprioritaskan kepastian slot penerbangan harian, kecepatan distribusi antarpulau,
-                  serta transparansi tarif per kilogram langsung dari <strong className="font-semibold text-slate-900">Terminal Kargo Bandara Internasional Soekarno-Hatta (CGK)</strong>
+                  <strong className="font-semibold text-slate-900">{t("description.brand")}</strong>
+                  {t("description.text1")}
+                  <strong className="font-semibold text-slate-900">{t("description.location")}</strong>
                 </p>
               </div>
 
@@ -171,7 +182,7 @@ export function LayananHero() {
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-xl bg-red-600 px-7 py-3.5 text-xs font-black text-white shadow-lg shadow-red-600/20 transition-all hover:bg-red-700 hover:scale-[1.02] active:scale-[0.98] sm:text-sm"
                 >
                   <Calculator className="size-4 shrink-0" />
-                  <span>Cek Ongkir Sekarang</span>
+                  <span>{t("cta.checkRate")}</span>
                   <ArrowRight className="size-4 shrink-0" />
                 </Link>
 
@@ -182,7 +193,7 @@ export function LayananHero() {
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 px-7 py-3.5 text-xs font-bold text-slate-800 transition-all hover:scale-[1.02] active:scale-[0.98] sm:text-sm"
                 >
                   <MessageCircle className="size-4 shrink-0 text-emerald-600" />
-                  <span>Tanya via WhatsApp</span>
+                  <span>{t("cta.whatsapp")}</span>
                 </a>
               </motion.div>
             </div>
@@ -209,35 +220,35 @@ export function LayananHero() {
                     </span>
                     <span className="text-xs font-black uppercase tracking-wider text-slate-900">CGK Direct Hub</span>
                   </div>
-                  <span className="text-[10px] font-extrabold text-red-600 bg-red-50 px-3 py-1 rounded-full border border-red-200">LIVE STATUS</span>
+                  <span className="text-[10px] font-extrabold text-red-600 bg-red-50 px-3 py-1 rounded-full border border-red-200">{t("liveHub.badge")}</span>
                 </div>
 
                 <div className="space-y-1 relative z-10">
-                  <h3 className="text-sm sm:text-base font-black text-slate-900">Pemberangkatan Harian Terjadwal</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">Prioritas muat langsung dari Terminal Kargo Soekarno-Hatta ke seluruh bandara Nusantara.</p>
+                  <h3 className="text-sm sm:text-base font-black text-slate-900">{t("liveHub.title")}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">{t("liveHub.subtitle")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2.5 sm:gap-3 relative z-10">
                   <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-red-100 shadow-xs space-y-1">
                     <div className="flex items-center gap-1.5 text-red-600 text-[10px] font-bold uppercase tracking-wider">
-                      <Clock className="size-3.5" /> Slot Terbang
+                      <Clock className="size-3.5" /> {t("liveHub.slotLabel")}
                     </div>
-                    <p className="text-xs font-black text-slate-900">Flight Pertama</p>
+                    <p className="text-xs font-black text-slate-900">{t("liveHub.slotValue")}</p>
                   </div>
 
                   <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-red-100 shadow-xs space-y-1">
                     <div className="flex items-center gap-1.5 text-red-600 text-[10px] font-bold uppercase tracking-wider">
-                      <ShieldCheck className="size-3.5" /> Keamanan
+                      <ShieldCheck className="size-3.5" /> {t("liveHub.securityLabel")}
                     </div>
-                    <p className="text-xs font-black text-slate-900">Standar IATA</p>
+                    <p className="text-xs font-black text-slate-900">{t("liveHub.securityValue")}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between pt-2 border-t border-red-100 text-[11px] text-slate-500 relative z-10">
                   <span className="flex items-center gap-1.5 font-bold text-slate-700">
-                    <Navigation className="size-3.5 text-red-600" /> Soekarno-Hatta (CGK)
+                    <Navigation className="size-3.5 text-red-600" /> {t("liveHub.location")}
                   </span>
-                  <span className="font-extrabold text-red-600 bg-red-50 px-2.5 py-0.5 rounded-md border border-red-200">Fast Track</span>
+                  <span className="font-extrabold text-red-600 bg-red-50 px-2.5 py-0.5 rounded-md border border-red-200">{t("liveHub.tag")}</span>
                 </div>
               </div>
             </motion.div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useId } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { Search } from "lucide-react";
 import { TablePagination } from "@/features/cek-ongkir/components/table-pagination";
 import { useDestinationTable } from "@/features/cek-ongkir/hooks/use-destination-table";
@@ -13,14 +14,16 @@ interface DestinationTableProps {
   onSelect: (slug: string) => void;
 }
 
-const NOT_FOUND_MESSAGE = "Kota atau bandara tidak ditemukan.";
-
 function PricePerKg({ destination }: { destination: Destination }) {
-  if (!hasTariff(destination)) return <span className="font-sans text-xs font-bold text-amber-600">Hubungi admin</span>;
-  return <>Rp {formatRupiah(destination.pricePerKg)}</>;
+  const t = useTranslations("pages.cekOngkir.table");
+  const locale = useLocale();
+
+  if (!hasTariff(destination)) return <span className="font-sans text-xs font-bold text-amber-600">{t("contactAdmin")}</span>;
+  return <>Rp {formatRupiah(destination.pricePerKg, locale)}</>;
 }
 
 export function DestinationTable({ destinations, onSelect }: DestinationTableProps) {
+  const t = useTranslations("pages.cekOngkir.table");
   const searchId = useId();
   const { query, updateQuery, pageItems, totalItems, currentPage, totalPages, rangeStart, rangeEnd, goToPage } = useDestinationTable(destinations);
 
@@ -30,19 +33,19 @@ export function DestinationTable({ destinations, onSelect }: DestinationTablePro
         <div className="mb-5 flex flex-col justify-between gap-4 border-b border-slate-100 pb-5 md:flex-row md:items-center">
           <div>
             <h2 id={`${searchId}-title`} className="font-heading text-lg font-extrabold text-slate-900 sm:text-2xl">
-              Daftar Tarif Cargo Udara dari Jakarta (CGK)
+              {t("title")}
             </h2>
-            <p className="mt-1 text-xs text-slate-500 sm:text-sm">Menampilkan {totalItems} destinasi bandara dan kota di seluruh Indonesia.</p>
+            <p className="mt-1 text-xs text-slate-500 sm:text-sm">{t("subtitle", { count: totalItems })}</p>
           </div>
 
           <div className="relative w-full md:w-72">
             <label htmlFor={searchId} className="sr-only">
-              Cari kota atau bandara
+              {t("searchLabel")}
             </label>
             <input
               id={searchId}
               type="search"
-              placeholder="Cari kota / bandara..."
+              placeholder={t("searchPlaceholder")}
               value={query}
               onChange={(event) => updateQuery(event.target.value)}
               className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-xs font-medium transition-all focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-600"
@@ -56,10 +59,18 @@ export function DestinationTable({ destinations, onSelect }: DestinationTablePro
           <table className="w-full text-left text-xs">
             <thead>
               <tr className="border-b border-slate-200 bg-slate-50 font-mono font-bold uppercase tracking-wider text-slate-700">
-                <th scope="col" className="rounded-l-xl px-4 py-3.5">Kota Tujuan</th>
-                <th scope="col" className="px-4 py-3.5">Kode Bandara</th>
-                <th scope="col" className="px-4 py-3.5 text-right">Tarif per Kg</th>
-                <th scope="col" className="rounded-r-xl px-4 py-3.5 text-right">Aksi</th>
+                <th scope="col" className="rounded-l-xl px-4 py-3.5">
+                  {t("colCity")}
+                </th>
+                <th scope="col" className="px-4 py-3.5">
+                  {t("colCode")}
+                </th>
+                <th scope="col" className="px-4 py-3.5 text-right">
+                  {t("colPrice")}
+                </th>
+                <th scope="col" className="rounded-r-xl px-4 py-3.5 text-right">
+                  {t("colAction")}
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -68,22 +79,26 @@ export function DestinationTable({ destinations, onSelect }: DestinationTablePro
                   <tr key={destination.slug} className="transition-colors hover:bg-slate-50/80">
                     <td className="px-4 py-3.5 font-bold text-slate-900">{destination.name}</td>
                     <td className="px-4 py-3.5 font-mono font-extrabold text-red-600">{destination.code || "-"}</td>
-                    <td className="px-4 py-3.5 text-right font-mono text-sm font-black text-slate-900"><PricePerKg destination={destination} /></td>
+                    <td className="px-4 py-3.5 text-right font-mono text-sm font-black text-slate-900">
+                      <PricePerKg destination={destination} />
+                    </td>
                     <td className="px-4 py-3.5 text-right">
                       <button
                         type="button"
-                        aria-label={`Pilih ${destination.name}`}
+                        aria-label={t("selectAria", { name: destination.name })}
                         onClick={() => onSelect(destination.slug)}
                         className="inline-flex cursor-pointer items-center gap-1 rounded-lg bg-red-50 px-3 py-1.5 text-[11px] font-bold text-red-600 transition-all hover:bg-red-600 hover:text-white"
                       >
-                        Pilih Kota
+                        {t("selectCity")}
                       </button>
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan={4} className="py-8 text-center font-medium text-slate-400">{NOT_FOUND_MESSAGE}</td>
+                  <td colSpan={4} className="py-8 text-center font-medium text-slate-400">
+                    {t("notFound")}
+                  </td>
                 </tr>
               )}
             </tbody>
@@ -98,28 +113,26 @@ export function DestinationTable({ destinations, onSelect }: DestinationTablePro
                 <div className="space-y-0.5">
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-extrabold text-slate-900">{destination.name}</span>
-                    {destination.code && (
-                      <span className="rounded border border-red-100 bg-red-50 px-1.5 py-0.5 font-mono text-[10px] font-extrabold text-red-600">{destination.code}</span>
-                    )}
+                    {destination.code && <span className="rounded border border-red-100 bg-red-50 px-1.5 py-0.5 font-mono text-[10px] font-extrabold text-red-600">{destination.code}</span>}
                   </div>
                   <div className="font-mono text-xs font-black text-red-600">
                     <PricePerKg destination={destination} />
-                    {hasTariff(destination) && <span className="text-[10px] font-normal text-slate-500"> / Kg</span>}
+                    {hasTariff(destination) && <span className="text-[10px] font-normal text-slate-500">{t("perKg")}</span>}
                   </div>
                 </div>
 
                 <button
                   type="button"
-                  aria-label={`Pilih ${destination.name}`}
+                  aria-label={t("selectAria", { name: destination.name })}
                   onClick={() => onSelect(destination.slug)}
                   className="shrink-0 cursor-pointer rounded-lg bg-red-600 px-3 py-1.5 text-[11px] font-bold text-white shadow-xs transition-all"
                 >
-                  Pilih
+                  {t("select")}
                 </button>
               </div>
             ))
           ) : (
-            <div className="py-6 text-center text-xs font-medium text-slate-400">{NOT_FOUND_MESSAGE}</div>
+            <div className="py-6 text-center text-xs font-medium text-slate-400">{t("notFound")}</div>
           )}
         </div>
 

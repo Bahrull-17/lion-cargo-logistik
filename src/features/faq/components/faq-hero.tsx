@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Search, ChevronRight } from "lucide-react";
 
 interface FaqHeroProps {
@@ -9,25 +10,29 @@ interface FaqHeroProps {
 }
 
 export function FaqHero({ searchQuery, setSearchQuery }: FaqHeroProps) {
+  const t = useTranslations("pages.faq.hero");
+
   return (
     <section className="w-full bg-white border-b border-slate-200/60 pt-6 pb-10 sm:pb-14">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 mb-4 sm:mb-6">
           <Link href="/" className="hover:text-red-600 transition-colors flex items-center gap-1 text-slate-600">
-            Beranda
+            {t("breadcrumb.home")}
           </Link>
           <ChevronRight className="size-3.5 text-slate-400" />
-          <span className="text-red-600 font-bold">FAQ &amp; Bantuan</span>
+          <span className="text-red-600 font-bold">{t("breadcrumb.current")}</span>
         </nav>
 
         <div className="text-center max-w-3xl mx-auto space-y-3.5">
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-            Pusat Bantuan &amp; <br className="hidden sm:inline" />
-            <span className="inline-block mt-1 px-4 py-1 bg-red-600 text-white rounded-2xl shadow-lg shadow-red-600/20 transform -rotate-1">Pertanyaan Umum</span>
+            {t("title.line1")} <br className="hidden sm:inline" />
+            <span className="inline-block mt-1 px-4 py-1 bg-red-600 text-white rounded-2xl shadow-lg shadow-red-600/20 transform -rotate-1">{t("title.highlight")}</span>
           </h1>
 
           <p className="text-xs sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto pt-1">
-            Temukan jawaban cepat seputar prosedur pengiriman kargo udara, syarat dokumen, ketentuan hewan peliharaan, dan perhitungan tarif bersama <strong className="text-slate-900">Lion Cargo Logistik CGK</strong>.
+            {t.rich("description", {
+              strong: (chunks) => <strong className="text-slate-900">{chunks}</strong>,
+            })}
           </p>
 
           {/* SEARCH BAR FAQ */}
@@ -38,12 +43,12 @@ export function FaqHero({ searchQuery, setSearchQuery }: FaqHeroProps) {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Cari pertanyaan, misal: syarat hewan, cara kirim, dll..."
+                placeholder={t("searchPlaceholder")}
                 className="w-full pl-12 pr-4 py-3.5 sm:py-4 bg-white rounded-2xl border-2 border-slate-200 text-xs sm:text-sm text-slate-900 font-semibold shadow-xs focus:border-red-600 focus:outline-hidden transition-all placeholder:text-slate-400"
               />
               {searchQuery && (
                 <button onClick={() => setSearchQuery("")} className="absolute right-4 text-xs font-bold text-slate-500 hover:text-slate-700 bg-slate-100 px-2.5 py-1 rounded-lg transition-colors cursor-pointer">
-                  Hapus
+                  {t("clear")}
                 </button>
               )}
             </div>

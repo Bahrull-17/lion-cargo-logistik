@@ -1,0 +1,20 @@
+{
+  "checkRate": "Cek Ongkir",
+  "contactUs": "Hubungi Kami",
+  "whatsapp": "Chat WhatsApp",
+  "readMore": "Selengkapnya",
+  "submit": "Kirim",
+  "back": "Kembali",
+
+  "cta": {
+    "title": {
+      "before": "Kirim barang",
+      "highlight": "sekarang!"
+    },
+    "button": "HUBUNGI KAMI",
+    "ariaLabel": "Hubungi kami melalui WhatsApp",
+    "brand": "Lion Cargo Logistik",
+    "tagline": "#KirimAmanSampaiTujuan",
+    "description": "Solusi logistik kargo udara lengkap & terpercaya dari Bandara Soekarno-Hatta!"
+  }
+}

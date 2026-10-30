@@ -1,0 +1,20 @@
+{
+  "checkRate": "Check Rate",
+  "contactUs": "Contact Us",
+  "whatsapp": "Chat WhatsApp",
+  "readMore": "Read More",
+  "submit": "Submit",
+  "back": "Back",
+
+  "cta": {
+    "title": {
+      "before": "Ship your cargo",
+      "highlight": "today!"
+    },
+    "button": "CONTACT US",
+    "ariaLabel": "Contact us via WhatsApp",
+    "brand": "Lion Cargo Logistik",
+    "tagline": "#SafeDeliveryToDestination",
+    "description": "Complete and trusted air cargo logistics solutions from Soekarno-Hatta Airport."
+  }
+}

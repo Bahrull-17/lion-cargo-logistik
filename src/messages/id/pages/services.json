@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "title": "Layanan Kargo Udara & Ekspedisi Antarpulau",
+    "description": "Pilih layanan pengiriman kargo udara terbaik dari Bandara Soekarno-Hatta (CGK) ke seluruh Indonesia. Tersedia Cargo Reguler, Express Prioritas, dan Same Day."
+  },
+  "hero": {
+    "bannerAlt": "Banner Utama Layanan Kargo Udara Lion Cargo Logistik",
+    "breadcrumb": {
+      "home": "Beranda",
+      "current": "Layanan"
+    },
+    "title": {
+      "line1": "Layanan Kargo Udara",
+      "line2": "Terpercaya",
+      "highlight": "Seluruh Indonesia"
+    },
+    "offer": {
+      "prefix": "Kirim dari CGK ke ",
+      "suffix": ", setiap hari."
+    },
+    "description": {
+      "brand": "Lion Cargo Logistik",
+      "text1": " menyediakan jaringan pengiriman kargo udara terpadu yang memprioritaskan kepastian slot penerbangan harian, kecepatan distribusi antarpulau, serta transparansi tarif per kilogram langsung dari ",
+      "location": "Terminal Kargo Bandara Internasional Soekarno-Hatta (CGK)"
+    },
+    "cta": {
+      "checkRate": "Cek Ongkir Sekarang",
+      "whatsapp": "Tanya via WhatsApp"
+    },
+    "liveHub": {
+      "badge": "LIVE STATUS",
+      "title": "Pemberangkatan Harian Terjadwal",
+      "subtitle": "Prioritas muat langsung dari Terminal Kargo Soekarno-Hatta ke seluruh bandara Nusantara.",
+      "slotLabel": "Slot Terbang",
+      "slotValue": "Flight Pertama",
+      "securityLabel": "Keamanan",
+      "securityValue": "Standar IATA",
+      "location": "Soekarno-Hatta (CGK)",
+      "tag": "Fast Track"
+    }
+  },
+  "special": {
+    "title": "Penanganan <highlight>Special Cargo</highlight>",
+    "description": "Pengalaman profesional menangani jenis muatan khusus yang membutuhkan sertifikasi karantina, standar kemasan ekstra, maupun izin penerbangan berjadwal.",
+    "termsLabel": "Ketentuan",
+    "items": [
+      {
+        "category": "Perishable Goods (Barang Mudah Rusak)",
+        "desc": "Pengiriman makanan segar, buah-buahan, sayur, hasil laut (seafood), & daging beku.",
+        "note": "Wajib menggunakan paking styrofoam kedap air & es kering/cool pack standar IATA."
+      },
+      {
+        "category": "Dangerous Goods / DG (Barang Berbahaya)",
+        "desc": "Baterai lithium, cairan kimia, aerosol, parfum, & bahan mudah terbakar.",
+        "note": "Melalui proses pemeriksaan tim BTT, dokumen MSDS, & paking berlabel DG resmi."
+      },
+      {
+        "category": "Valuable Cargo (Barang Berharga Tinggi)",
+        "desc": "Perangkat elektronik premium, perhiasan, dokumen resmi negara, & aset bernilai tinggi.",
+        "note": "Disertai skema asuransi pengiriman penuh & pengawalan ekstra dari agen."
+      }
+    ]
+  },
+  "serviceList": {
+    "title": "Opsi Ekspedisi Udara <highlight>Sesuai Kebutuhan</highlight>",
+    "intro": "Tingkatkan efisiensi rantai pasok bisnis Anda dengan memilih fleksibilitas kecepatan dan kepastian estimasi waktu penerbangan terbaik. Baik untuk pengiriman <strong>kargo reguler</strong> yang ekonomis, prioritas kilat harian, hingga layanan darurat yang tiba hari ini juga, kami siap memastikan setiap paket muatan Anda mendarat tepat waktu dengan jaminan keamanan profesional langsung dari <strong>Bandara Soekarno-Hatta</strong> ke seluruh penjuru Nusantara.",
+    "items": {
+      "reguler": {
+        "name": "Cargo Reguler",
+        "badge": "PALING HEMAT",
+        "estimate": "Estimasi: 2 - 3 Hari",
+        "tagline": "Pengiriman Rutin Antarpulau Hemat & Terjadwal",
+        "description": [
+          "Pengiriman barang umum via penerbangan berjadwal dari Terminal Kargo Bandara Soekarno-Hatta (CGK) ke berbagai bandara tujuan di seluruh Indonesia.",
+          "Layanan eksekusi ekspedisi kargo udara hemat ini sangat cocok untuk pengiriman paket toko online, suku cadang, komoditas daerah, hingga kirim barang pindahan antarpulau dengan perhitungan tarif per kilogram yang transparan.",
+          "Mendukung opsi layanan Port to Port maupun Port to Door dengan jaminan penanganan muatan yang aman, teratur, dan mudah dipantau."
+        ],
+        "imageAlt": "Foto Cargo Reguler Lion Cargo Logistik Bandara Soekarno Hatta",
+        "ctaText": "Cek Tarif Reguler",
+        "features": ["⚖️ Tarif per Kg Transparan", "📦 Port to Port / Door", "✈️ Jadwal Terbang Rutin"],
+        "recommendation": "Rekomendasi: Toko Online, Distributor, Sparepart, Garmen, & Pindahan."
+      },
+      "express": {
+        "name": "Cargo Express",
+        "badge": "PRIORITAS SLOT",
+        "estimate": "Estimasi: 1 - 2 Hari",
+        "tagline": "Prioritas Muat Penerbangan Pertama dari CGK",
+        "description": [
+          "Layanan kargo udara berkecepatan tinggi yang mendapatkan kepastian slot prioritas muatan pada jadwal penerbangan paling awal dari Bandara Internasional Soekarno-Hatta.",
+          "Sangat direkomendasikan untuk pengiriman barang berharga, sampel industri mendesak, hingga produk makanan segar (perishable goods) yang membutuhkan waktu penanganan minim di perjalanan.",
+          "Proses clearance kargo dilakukan secara cepat di terminal pengiriman sehingga paket Anda tiba di kota tujuan dengan estimasi waktu yang efisien dan aman."
+        ],
+        "imageAlt": "Foto Cargo Express Prioritas Pesawat Bandara Soetta",
+        "ctaText": "Tanyakan Express via WA",
+        "waMessage": "Halo Lion Cargo Logistik, saya ingin bertanya pengiriman cepat via Cargo Express.",
+        "features": ["⚡ Flight Slot Pertama", "🍎 Produk Segar & Berharga", "🚀 Fast Track Clearance"],
+        "recommendation": "Rekomendasi: Seafood, Makanan Segar, Sampel Pabrik, & Barang Mahal."
+      },
+      "sameday": {
+        "name": "Same Day Service",
+        "badge": "TERBANG HARI INI",
+        "estimate": "Estimasi: Tiba Hari Ini",
+        "tagline": "Kirim Pagi, Tiba di Kota Tujuan Hari Ini Juga",
+        "description": [
+          "Layanan kilat khusus untuk pengiriman dokumen penting dan paket super mendesak dari Jakarta langsung terbang ke kota tujuan di hari yang sama.",
+          "Paket diantar pada pagi hari ke agen kargo Bandara Soekarno-Hatta dan diproses langsung pada jadwal penerbangan komersial harian paling pagi.",
+          "Solusi terbaik bagi Anda yang membutuhkan kecepatan waktu pengiriman ekstrem antarpulau tanpa penundaan transit."
+        ],
+        "imageAlt": "Foto Same Day Service Kargo Udara Kilat",
+        "ctaText": "Konsultasi Same Day",
+        "waMessage": "Halo Lion Cargo Logistik, saya butuh layanan kilat Same Day Service hari ini.",
+        "features": ["⏱️ Tiba Dalam 24 Jam", "📄 Dokumen & Paket Urgent", "🎯 Direct Flight Priority"],
+        "recommendation": "Rekomendasi: Dokumen Tender, Medis/Obat Urgent, & Paspor/Surat Vital."
+      }
+    }
+  },
+  "whatsappMessage": "Halo Lion Cargo Logistik, saya ingin berkonsultasi mengenai pengiriman kargo udara."
+}

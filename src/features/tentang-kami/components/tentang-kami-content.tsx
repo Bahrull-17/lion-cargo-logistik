@@ -1,18 +1,29 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { TentangHeroSlider } from "./tentang-hero-slider";
 import { TentangFeatureList } from "./tentang-feature-list";
 import FlightMap from "./flight-map";
 import { CtaSection } from "@/components/shared/cta-section";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { Plane, FileCheck, ChevronRight } from "lucide-react";
 import { waLink } from "@/lib/wa-link";
 
+// Penanda tag di about.json -> elemen dengan class yang sama seperti desain awal
+const richTags = {
+  strong: (chunks: ReactNode) => <strong className="text-slate-900">{chunks}</strong>,
+  strongSoft: (chunks: ReactNode) => <strong className="text-slate-800">{chunks}</strong>,
+  em: (chunks: ReactNode) => <em>{chunks}</em>,
+  red: (chunks: ReactNode) => <span className="text-red-600">{chunks}</span>,
+};
+
 export function TentangKamiContent() {
+  const t = useTranslations("pages.about.content");
   const shouldReduceMotion = useReducedMotion() ?? false;
-  const whatsappUrl = waLink("Halo Lion Cargo Logistik, saya ingin berkonsultasi mengenai pengiriman kargo udara.");
+  const whatsappUrl = waLink(t("whatsappMessage"));
 
   return (
     <div className="bg-[#f8fafc] text-slate-800 min-h-screen pb-12 sm:pb-16 overflow-hidden relative">
@@ -32,10 +43,10 @@ export function TentangKamiContent() {
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <Link href="/" className="hover:text-red-600 transition-colors flex items-center gap-1 text-slate-600">
-              Beranda
+              {t("breadcrumb.home")}
             </Link>
             <ChevronRight className="size-3.5 text-slate-400" />
-            <span className="text-red-600 font-bold">Tentang Kami</span>
+            <span className="text-red-600 font-bold">{t("breadcrumb.current")}</span>
           </motion.nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -49,9 +60,9 @@ export function TentangKamiContent() {
                 transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.12]">
-                  Solusi Ekspedisi <br />
-                  <span className="font-light italic text-slate-600">Kargo Udara Cepat</span> <br />
-                  <span className="inline-block mt-1.5 sm:mt-2 px-3.5 sm:px-4 py-1 sm:py-1.5 bg-red-600 text-white rounded-xl sm:rounded-2xl shadow-lg shadow-red-600/20 font-extrabold transform -rotate-1">Langsung dari CGK</span>
+                  {t("intro.titleLine1")} <br />
+                  <span className="font-light italic text-slate-600">{t("intro.titleItalic")}</span> <br />
+                  <span className="inline-block mt-1.5 sm:mt-2 px-3.5 sm:px-4 py-1 sm:py-1.5 bg-red-600 text-white rounded-xl sm:rounded-2xl shadow-lg shadow-red-600/20 font-extrabold transform -rotate-1">{t("intro.titleBadge")}</span>
                 </h1>
               </motion.div>
 
@@ -62,14 +73,8 @@ export function TentangKamiContent() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
               >
-                <p className="text-xs sm:text-base text-slate-700 font-medium leading-relaxed">
-                  Setiap pengiriman memiliki cerita dan tujuan yang berbeda. Bagi kami, <strong className="text-slate-900">Cargo</strong> bukan hanya tentang memindahkan barang dari satu tempat ke tempat lain, tetapi tentang menjaga
-                  kepercayaan yang diberikan oleh setiap pelanggan.
-                </p>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  <strong className="text-slate-900">Lion Cargo Logistik</strong> hadir sebagai penyedia jasa ekspedisi kargo udara resmi kargo udara <em>port-to-port</em> dengan operasional yang terhubung langsung melalui{" "}
-                  <strong className="text-slate-800">Terminal Kargo Bandara Internasional Soekarno-Hatta (CGK)</strong> untuk mendukung kebutuhan pengiriman ke berbagai kota tujuan di Indonesia.
-                </p>
+                <p className="text-xs sm:text-base text-slate-700 font-medium leading-relaxed">{t.rich("intro.paragraph1", richTags)}</p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{t.rich("intro.paragraph2", richTags)}</p>
               </motion.div>
 
               <motion.div
@@ -81,11 +86,11 @@ export function TentangKamiContent() {
               >
                 <div className="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-slate-200/80 shadow-xs">
                   <Plane className="size-4 text-red-600 shrink-0" />
-                  <span>Penerbangan Langsung (Direct Flight)</span>
+                  <span>{t("intro.badgeDirectFlight")}</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-slate-200/80 shadow-xs">
                   <FileCheck className="size-4 text-red-600 shrink-0" />
-                  <span>Dokumen SMU Resmi</span>
+                  <span>{t("intro.badgeSmu")}</span>
                 </div>
               </motion.div>
             </div>
@@ -103,13 +108,8 @@ export function TentangKamiContent() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <motion.div className="lg:col-span-6 space-y-3.5" initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -35 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
-                Melayani dan Membangun Ikatan yang <span className="text-red-600">Tulus Layaknya Sahabat</span>
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium pt-0.5">
-                Di industri <strong className="text-slate-900">ekspedisi</strong> yang serba cepat, kami menyadari bahwa <strong className="text-slate-900">Terminal kargo</strong> Anda bukan sekadar paket berbobot kilogram, tetapi merupakan
-                komitmen bisnis, reputasi usaha, dan harapan yang harus tiba tepat waktu.
-              </p>
+              <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">{t.rich("friendship.title", richTags)}</h2>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium pt-0.5">{t.rich("friendship.paragraph1", richTags)}</p>
             </motion.div>
 
             <motion.div
@@ -119,14 +119,8 @@ export function TentangKamiContent() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                Karena itulah, <strong className="text-slate-900">Lion Cargo Logistik</strong> tidak pernah memosisikan diri hanya sebagai vendor ekspedisi biasa. Kami hadir sebagai mitra strategis yang mendengarkan, memahami dinamika
-                kebutuhan pengiriman Anda, serta memberikan solusi terbaik dengan pendekatan transparan dan kekeluargaan.
-              </p>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Dari koordinasi di pintu penerimaan <strong className="text-slate-900">Terminal Kargo Soekarno-Hatta (CGK)</strong>, pengurusan dokumen Surat Muatan Udara (SMU), hingga konfirmasi kargo tiba di bandara tujuan, tim kami siap
-                mendampingi setiap langkah pengiriman Anda secara responsif layaknya seorang sahabat yang selalu dapat diandalkan.
-              </p>
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{t.rich("friendship.paragraph2", richTags)}</p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{t.rich("friendship.paragraph3", richTags)}</p>
             </motion.div>
           </div>
         </div>
@@ -143,18 +137,10 @@ export function TentangKamiContent() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight">
-                Memahami Setiap <span className="text-red-600">Karakter Pengiriman Anda</span>
-              </h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight">{t.rich("showcase.title", richTags)}</h2>
               <div className="pl-4 sm:pl-5 border-l-2 border-red-500 space-y-3">
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Di balik setiap muatan <strong className="text-slate-900">Kargo</strong> mulai dari dus produksi usaha kecil, pasokan garmen antarpulau, suku cadang vital, hingga dokumen berharga terdapat cerita perjuangan dan
-                  kepercayaaan yang Anda titipkan.
-                </p>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Tim operasional kami di <strong className="text-slate-900">Kargo Bandara Soekarno-Hatta Tangerang</strong> hadir untuk memastikan bahwa apapun bentuk dan kebutuhan muatan Anda, perlakuan yang kami berikan tetap sama: penuh
-                  rasa tanggung jawab, cermat, dan berdedikasi tinggi.
-                </p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{t.rich("showcase.paragraph1", richTags)}</p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{t.rich("showcase.paragraph2", richTags)}</p>
               </div>
             </motion.div>
 
@@ -170,7 +156,7 @@ export function TentangKamiContent() {
                 <div className="absolute -inset-1 bg-linear-to-r from-red-600/20 to-amber-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
                 <Image
                   src="/images/tentang-kami/amanah.png"
-                  alt="Ragam Amanah Pengiriman - Lion Cargo Logistik"
+                  alt={t("showcase.imageAlt")}
                   width={800}
                   height={500}
                   className="w-full h-auto max-h-112.5 object-cover object-center transform group-hover:scale-103 transition-transform duration-700 ease-out"
@@ -185,13 +171,8 @@ export function TentangKamiContent() {
       <div className="pt-8 sm:pt-12 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto space-y-8 sm:space-y-10">
           <div className="text-center space-y-4">
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-              Siap Mengirim Kargo Anda <span className="text-red-600">Tanpa Ragu</span>
-            </h2>
-            <p className="text-xs sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              Setiap tahapan pengiriman kargo udara dari Terminal <strong className="text-slate-900">Kargo Bandara Soekarno-Hatta Tangerang</strong> dikelola secara transparan, aman, dan profesional untuk memastikan paket serta barang Anda
-              tiba tepat waktu di kota tujuan.
-            </p>
+            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">{t.rich("closing.title", richTags)}</h2>
+            <p className="text-xs sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">{t.rich("closing.description", richTags)}</p>
           </div>
 
           <TentangFeatureList shouldReduceMotion={shouldReduceMotion} />

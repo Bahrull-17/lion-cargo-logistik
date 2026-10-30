@@ -31,12 +31,13 @@ export async function getDestinations(): Promise<Destination[]> {
   });
 }
 
+/** Hanya layanan Reguler (sama dengan getDestinations); dedup per nama kota tetap jadi pengaman. */
 export async function getAllDestinations(): Promise<Destination[]> {
   "use cache";
   cacheLife("hours");
   cacheTag("tarifs-all");
 
-  const { data, error } = await createPublicClient().from("tarifs").select("route_slug, destination, dest_code, price, min_weight").order("destination");
+  const { data, error } = await createPublicClient().from("tarifs").select("route_slug, destination, dest_code, price, min_weight").eq("service", SERVICE_REGULER).order("destination");
 
   if (error) throw new Error(`Gagal memuat semua destinasi: ${error.message}`);
 

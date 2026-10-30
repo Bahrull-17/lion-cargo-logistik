@@ -1,22 +1,20 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { ChevronDown, HelpCircle } from "lucide-react";
+
+export type FaqKategori = "umum" | "dokumen" | "barang" | "tarif";
 
 export interface FaqItem {
   id: string;
   pertanyaan: string;
   jawaban: string;
-  kategori: "Umum & Prosedur" | "Tarif & Pembayaran" | "Dokumen & Syarat" | "Jenis Barang";
+  kategori: FaqKategori;
 }
 
-const daftarKategori = [
-  { key: "semua", label: "Semua Pertanyaan" },
-  { key: "Umum & Prosedur", label: "Umum & Prosedur" },
-  { key: "Dokumen & Syarat", label: "Dokumen & Syarat" },
-  { key: "Jenis Barang", label: "Jenis Barang" },
-  { key: "Tarif & Pembayaran", label: "Tarif & Pembayaran" },
-];
+// Hanya key; label diambil dari JSON (list.filters.*)
+const daftarKategori = ["semua", "umum", "dokumen", "barang", "tarif"] as const;
 
 interface FaqAccordionListProps {
   selectedKategori: string;
@@ -29,29 +27,31 @@ interface FaqAccordionListProps {
 }
 
 export function FaqAccordionList({ selectedKategori, onSelectKategori, filteredFaq, searchQuery, openIndex, onToggleAccordion, onResetFilter }: FaqAccordionListProps) {
+  const t = useTranslations("pages.faq.list");
+
   return (
     <section className="py-8 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
       {/* KATEGORI FILTER */}
       <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-4 mb-6 sm:mb-8 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
-        {daftarKategori.map((kat) => {
-          const isActive = selectedKategori === kat.key;
+        {daftarKategori.map((key) => {
+          const isActive = selectedKategori === key;
           return (
             <button
-              key={kat.key}
-              onClick={() => onSelectKategori(kat.key)}
+              key={key}
+              onClick={() => onSelectKategori(key)}
               className={`shrink-0 px-4 py-2.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
                 isActive ? "bg-red-600 text-white shadow-md shadow-red-600/25 scale-[1.02]" : "bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200/80"
               }`}
             >
-              {kat.label}
+              {t(`filters.${key}`)}
             </button>
           );
         })}
       </div>
 
       <div className="flex items-center justify-between mb-4 text-xs font-mono font-bold text-slate-500">
-        <span>MENAMPILKAN {filteredFaq.length} PERTANYAAN</span>
-        {searchQuery && <span className="text-red-600">Pencarian: &quot;{searchQuery}&quot;</span>}
+        <span>{t("showing", { count: filteredFaq.length })}</span>
+        {searchQuery && <span className="text-red-600">{t("search", { query: searchQuery })}</span>}
       </div>
 
       {/* ACCORDION LIST */}
@@ -63,7 +63,7 @@ export function FaqAccordionList({ selectedKategori, onSelectKategori, filteredF
               <div key={item.id} className={`bg-white rounded-2xl border transition-all duration-200 overflow-hidden ${isOpen ? "border-red-500 shadow-md ring-1 ring-red-500/20" : "border-slate-200/80 hover:border-slate-300 shadow-xs"}`}>
                 <button onClick={() => onToggleAccordion(item.id)} className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-hidden">
                   <div className="space-y-1">
-                    <span className="inline-block text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-md bg-red-50 text-red-600 border border-red-100">{item.kategori}</span>
+                    <span className="inline-block text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-md bg-red-50 text-red-600 border border-red-100">{t(`filters.${item.kategori}`)}</span>
                     <h3 className="text-sm sm:text-base font-black text-slate-900 leading-snug">{item.pertanyaan}</h3>
                   </div>
                   <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 ${isOpen ? "bg-red-600 text-white rotate-180" : "bg-slate-100 text-slate-600"}`}>
@@ -85,10 +85,10 @@ export function FaqAccordionList({ selectedKategori, onSelectKategori, filteredF
       ) : (
         <div className="text-center py-12 bg-white rounded-3xl border border-slate-200 p-6">
           <HelpCircle className="size-12 text-slate-300 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-slate-900">Pertanyaan Tidak Ditemukan</h3>
-          <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Maaf, kata kunci yang Anda cari tidak tersedia di daftar bantuan kami. Silakan tanyakan langsung melalui WhatsApp.</p>
+          <h3 className="text-base font-bold text-slate-900">{t("empty.title")}</h3>
+          <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">{t("empty.description")}</p>
           <button onClick={onResetFilter} className="mt-4 inline-flex items-center gap-2 bg-red-600 text-white font-bold text-xs px-4 py-2 rounded-xl shadow-md hover:bg-red-700 transition-all cursor-pointer">
-            Reset Pencarian
+            {t("empty.reset")}
           </button>
         </div>
       )}

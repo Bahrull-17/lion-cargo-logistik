@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "title": "Cek Ongkir Cargo Udara",
+    "description": "Cek ongkir cargo udara dari Bandara Soekarno-Hatta (CGK) ke 113 kota tujuan di Indonesia. Hitung tarif per kg dan berat volume dengan mudah."
+  },
+  "hero": {
+    "bannerAlt": "Tarif Pengiriman Cargo Udara Bandara Soekarno Hatta - Lion Cargo Logistik",
+    "badgeTitle": "Layanan Cargo Udara",
+    "badgeSubtitle": "Terminal Cargo CGK Soekarno-Hatta"
+  },
+  "header": {
+    "badge": "Direct Flight Hub Soekarno-Hatta (CGK)",
+    "title": {
+      "line1": "Cek Ongkir Cargo Udara",
+      "line2": "Pengiriman Cepat Port to Port"
+    },
+    "description": "Hitung estimasi ongkos kirim kargo udara secara akurat dan transparan bersama Lion Cargo. Dapatkan simulasi biaya pengiriman general cargo cepat via pesawat udara langsung dari Terminal Cargo Bandara Soekarno-Hatta (CGK) ke seluruh kota dan bandara destinasi di Indonesia, lengkap dengan rincian biaya penanganan admin bandara secara terperinci.",
+    "highlights": {
+      "flight": "Prioritas Flight Langsung",
+      "minWeight": "Berat Minimum Sesuai Tujuan",
+      "handling": "Penanganan Admin Rp {fee}"
+    }
+  },
+  "calculator": {
+    "ariaLabel": "Kalkulator tarif"
+  },
+  "form": {
+    "title": "Kalkulator Tarif Cargo Udara",
+    "subtitle": "Pilih kota tujuan & masukkan berat kargo",
+    "handlingBadge": "Penanganan Admin {fee}",
+    "destinationLabel": "Kota / Bandara Tujuan",
+    "weightLabel": "Berat Total Barang (Kg)",
+    "minBadge": "Min. {min} Kg",
+    "weightPlaceholder": "Contoh: 15",
+    "formulaTitle": "Rumus Perhitungan Tarif Resmi Lion Cargo:",
+    "formula": "Total Biaya = (Tarif per Kg × Berat Tagihan) + Biaya Penanganan Admin ({fee})",
+    "rule": "Ketentuan: berat minimal pengiriman adalah <strong>{min} Kg</strong>",
+    "submit": "Cek Ongkir Sekarang",
+    "errors": {
+      "empty": "Masukkan berat barang terlebih dahulu.",
+      "invalid": "Berat harus berupa angka yang valid.",
+      "belowMin": "Berat di bawah {min} Kg tidak dapat diproses. Masukkan minimal {min} Kg.",
+      "aboveMax": "Berat melebihi batas kalkulator. Hubungi tim kami untuk pengiriman partai besar."
+    }
+  },
+  "quote": {
+    "badge": "Estimasi tarif cargo reguler",
+    "arrival": "ESTIMASI TIBA",
+    "directFlight": "DIRECT FLIGHT",
+    "pricePerKg": "Tarif per Kg",
+    "itemWeight": "Berat Barang",
+    "chargeableWeight": "Berat Tagihan (Chargeable Weight)",
+    "subtotal": "Subtotal Tarif Barang",
+    "adminFee": "Biaya Penanganan Admin",
+    "totalLabel": "Total estimasi all-in",
+    "totalNote": "Termasuk penanganan admin CGK",
+    "unpriced": "Tarif untuk tujuan ini belum tersedia di kalkulator. Hubungi tim kami via WhatsApp untuk mendapatkan harga terbaru.",
+    "bookButton": "Pesan Cargo via WhatsApp",
+    "askButton": "Tanya Tarif via WhatsApp"
+  },
+  "table": {
+    "title": "Daftar Tarif Cargo Udara dari Jakarta (CGK)",
+    "subtitle": "Menampilkan {count} destinasi bandara dan kota di seluruh Indonesia.",
+    "searchLabel": "Cari kota atau bandara",
+    "searchPlaceholder": "Cari kota / bandara...",
+    "colCity": "Kota Tujuan",
+    "colCode": "Kode Bandara",
+    "colPrice": "Tarif per Kg",
+    "colAction": "Aksi",
+    "selectCity": "Pilih Kota",
+    "select": "Pilih",
+    "selectAria": "Pilih {name}",
+    "contactAdmin": "Hubungi admin",
+    "perKg": " / Kg",
+    "notFound": "Kota atau bandara tidak ditemukan."
+  },
+  "pagination": {
+    "showing": "Menampilkan <strong>{start}</strong> - <strong>{end}</strong> dari <strong>{total}</strong> kota",
+    "nav": "Halaman tabel tarif",
+    "prev": "Halaman sebelumnya",
+    "next": "Halaman berikutnya",
+    "page": "Halaman {page}"
+  },
+  "skeleton": {
+    "loading": "Memuat kalkulator tarif"
+  },
+  "unavailable": {
+    "title": "Tarif sedang diperbarui",
+    "description": "Data tarif belum tersedia saat ini. Hubungi tim kami untuk mendapatkan tarif terbaru.",
+    "button": "Tanya via WhatsApp"
+  },
+  "error": {
+    "title": "Tarif belum bisa dimuat",
+    "description": "Terjadi gangguan saat mengambil data tarif. Silakan coba lagi sebentar lagi.",
+    "retry": "Coba lagi"
+  },
+  "whatsapp": {
+    "general": "Halo {company}, saya ingin menanyakan tarif cargo udara.",
+    "pricing": {
+      "intro": "Halo {company}, saya ingin menanyakan tarif Cargo Reguler Udara:",
+      "route": "- Rute: Jakarta (CGK) ke {destination}",
+      "weight": "- Berat Tagihan: {weight} Kg"
+    },
+    "booking": {
+      "intro": "Halo {company}, saya berminat memesan Cargo Reguler Udara:",
+      "route": "- Rute: Jakarta (CGK) ke {destination}",
+      "weight": "- Berat Tagihan: {weight} Kg",
+      "subtotal": "- Subtotal Tarif: Rp {amount}",
+      "handling": "- Biaya Penanganan Admin Bandara: Rp {amount}",
+      "total": "- Total Estimasi All-In: Rp {amount}",
+      "closing": "Mohon info ketersediaan slot penerbangan."
+    }
+  }
+}

@@ -3,29 +3,25 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-
-const heroImages = [
-  {
-    src: "/images/tentang-kami/terminal.jpg",
-    alt: "Terminal Cargo Bandara Soekarno Hatta - Lion Cargo Logistik",
-  },
-  {
-    src: "/images/tentang-kami/armada.jpg",
-    alt: "Armada dan Pesawat Kargo Udara - Lion Cargo Logistik",
-  },
-  {
-    src: "/images/tentang-kami/penanganan.jpg",
-    alt: "Penanganan Kargo Profesional - Lion Cargo Logistik",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function TentangHeroSlider() {
+  const t = useTranslations("pages.about.hero");
+
+  const heroImages = t.raw("images") as {
+    src: string;
+    alt: string;
+  }[];
+
   const shouldReduceMotion = useReducedMotion();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Otomatis scroll ke paling atas saat halaman dimuat
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, []);
 
   // Timer slider otomatis berganti setiap 4 detik
@@ -35,10 +31,12 @@ export function TentangHeroSlider() {
     }, 4000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [heroImages.length]);
 
-  // Mengatasi error 'currentImage' is possibly 'undefined' secara aman
-  const currentImage = heroImages[currentIndex] ?? heroImages[0]!;
+  // Mengatasi kemungkinan data kosong
+  const currentImage = heroImages[currentIndex] ?? heroImages[0];
+
+  if (!currentImage) return null;
 
   return (
     <section className="w-full pt-0 pb-2">

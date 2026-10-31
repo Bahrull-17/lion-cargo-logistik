@@ -22,8 +22,7 @@ const bannerSlideFromRight: Variants = {
 };
 
 /* ================= JUDUL HERO ================= */
-function JudulHero({ reduceMotion }: { reduceMotion: boolean | null }) {
-  const t = awaitUseTranslations("pages.services.hero.title");
+function JudulHero({ reduceMotion, t }: { reduceMotion: boolean | null; t: ReturnType<typeof useTranslations> }) {
   const ukuranNormal = "text-2xl sm:text-4xl lg:text-5xl font-black";
   const easeMasuk = [0.16, 1, 0.3, 1] as const;
   const easeTerbang = [0.65, 0, 0.35, 1] as const;
@@ -82,9 +81,6 @@ function JudulHero({ reduceMotion }: { reduceMotion: boolean | null }) {
 }
 
 // Helper sinkron untuk komponen komponen kecil di dalam
-function awaitUseTranslations(namespace: string) {
-  return useTranslations(namespace);
-}
 
 /* ================= NAMA KOTA YANG BERGULIR ================= */
 function KotaBergulir({ reduceMotion }: { reduceMotion: boolean | null }) {
@@ -144,7 +140,7 @@ export function LayananHero() {
             <span className="font-bold text-red-600">{t("breadcrumb.current")}</span>
           </nav>
 
-          <JudulHero reduceMotion={reduceMotion} />
+          <JudulHero reduceMotion={reduceMotion} t={t} />
 
           {/* Grid Layout Hero */}
           <motion.div

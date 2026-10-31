@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Air Cargo Articles & Tips",
+    "description": "Guides to shipping goods by air cargo: procedures, packing tips, airport regulations, and logistics strategies from the Lion Cargo Logistik team at Soekarno-Hatta Airport."
+  },
+  "hero": {
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Articles & Guides"
+    },
+    "title": {
+      "line1": "Information Center &",
+      "highlight": "Air Cargo Insights"
+    },
+    "description": "Discover complete guides on shipping procedures, safe packing tips, airport regulations, and trusted logistics strategies straight from the experts at <strong>Lion Cargo Logistik Soekarno-Hatta Airport (CGK)</strong>.",
+    "searchPlaceholder": "Search articles, shipping tips, or cargo regulations...",
+    "clear": "Clear"
+  },
+  "list": {
+    "filters": {
+      "semua": "All Articles",
+      "tips": "Shipping Tips",
+      "regulasi": "Cargo Regulations",
+      "bandara": "Airport Info",
+      "bisnis": "Business & Logistics"
+    },
+    "featuredLabel": "FEATURED ARTICLE",
+    "readMore": "Read More",
+    "readArticle": "Read Article",
+    "readingTime": "{minutes} min read",
+    "showing": "SHOWING {count} ARTICLES",
+    "search": "Search: \"{query}\"",
+    "empty": {
+      "title": "No Articles Found",
+      "description": "Sorry, the topic or keyword you are looking for is not available. Please try a different keyword.",
+      "reset": "Reset Filter"
+    },
+    "noArticles": {
+      "title": "No Articles Yet",
+      "description": "We are preparing articles and guides. Please check back soon."
+    }
+  },
+  "cta": {
+    "title": "Have questions about <highlight>cargo shipping?</highlight>",
+    "button": "CONSULT VIA WHATSAPP",
+    "ariaLabel": "Consult via WhatsApp",
+    "tagline": "<brand>Lion Cargo Logistik</brand>, <tag>#KirimAmanSampaiTujuan</tag> – A complete and trusted air cargo logistics solution from Soekarno-Hatta Airport!",
+    "whatsappMessage": "Hello Lion Cargo Logistik, I would like to consult about cargo shipping."
+  },
+  "detail": {
+    "notFoundTitle": "Article Not Found",
+    "breadcrumb": {
+      "home": "Home",
+      "articles": "Articles"
+    },
+    "back": "Back to Article List",
+    "ctaTitle": "Need Help Shipping Air Cargo?",
+    "ctaDescription": "The Lion Cargo specialist team is ready to give you a free consultation on routes & rates.",
+    "ctaButton": "Ask via WhatsApp",
+    "whatsappMessage": "Hello Lion Cargo, I read the article \"{title}\" and would like to ask about shipping."
+  }
+}

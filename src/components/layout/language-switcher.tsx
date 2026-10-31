@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 import { useLocale } from "next-intl";
+import { resolveArticleAlternatePath } from "@/features/artikel/actions/alternate-path";
 import { usePathname, useRouter } from "@/i18n/navigation";
 
 const languages = [
@@ -21,6 +22,9 @@ const languages = [
   },
 ] as const;
 
+// Halaman detail artikel: /artikel/<slug> (pathname dari next-intl sudah tanpa prefix bahasa)
+const ARTICLE_DETAIL_PATH = /^\/artikel\/([a-z0-9-]+)$/;
+
 export function LanguageSwitcher() {
   const locale = useLocale();
 
@@ -29,7 +33,20 @@ export function LanguageSwitcher() {
 
   const current = languages.find((language) => language.code === locale) ?? languages[0];
 
-  function changeLanguage(nextLocale: "id" | "en") {
+  async function changeLanguage(nextLocale: "id" | "en") {
+    const articleSlug = pathname.match(ARTICLE_DETAIL_PATH)?.[1];
+
+    // Artikel punya slug berbeda per bahasa, jadi cari halaman pasangannya.
+    if (articleSlug) {
+      try {
+        const target = await resolveArticleAlternatePath(locale, articleSlug, nextLocale);
+        router.replace(target, { locale: nextLocale });
+      } catch {
+        router.replace("/artikel", { locale: nextLocale });
+      }
+      return;
+    }
+
     router.replace(pathname, {
       locale: nextLocale,
     });

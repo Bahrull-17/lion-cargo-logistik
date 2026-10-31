@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { siteConfig } from "@/config/site";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -26,6 +27,7 @@ export async function generateMetadata({ params }: Pick<LocaleLayoutProps, "para
   const t = await getTranslations({ locale, namespace: "metadata" });
 
   return {
+    metadataBase: new URL(siteConfig.url),
     title: {
       default: t("title"),
       template: `%s | ${t("siteName")}`,

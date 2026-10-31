@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import "../globals.css";
 
 export const metadata: Metadata = {
-  title: "Admin Tarif | Lion Cargo Logistik",
+  title: "Panel Admin | Lion Cargo Logistik",
   robots: { index: false, follow: false },
 };
 

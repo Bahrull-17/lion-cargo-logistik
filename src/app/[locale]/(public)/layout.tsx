@@ -10,7 +10,9 @@ export default async function PublicLayout({ children, params }: { children: Rea
   return (
     <>
       <Suspense fallback={<header className="sticky top-0 z-50 h-16 border-b bg-white/90" />}>
+        <Suspense fallback={<header className="sticky top-0 z-50 h-16 border-b bg-white/90" />}>
         <Navbar />
+      </Suspense>
       </Suspense>
       <main>{children}</main>
       <Footer />

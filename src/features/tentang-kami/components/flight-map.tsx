@@ -21,7 +21,7 @@ interface FlightMapProps {
 
 export default function FlightMap({ whatsappUrl }: FlightMapProps) {
   const shouldReduceMotion = useReducedMotion();
-  const t = useTranslations("pages.services.flightMap");
+  const t = useTranslations("pages.about.flightMap");
 
   return (
     <motion.div

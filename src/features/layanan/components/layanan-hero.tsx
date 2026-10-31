@@ -31,14 +31,14 @@ function JudulHero({ reduceMotion, t }: { reduceMotion: boolean | null; t: Retur
     <div className="tracking-tight text-slate-700 space-y-0.5 sm:space-y-1">
       <span className="block overflow-hidden">
         <motion.span className={`block leading-tight ${ukuranNormal}`} initial={reduceMotion ? false : { y: "108%" }} animate={{ y: 0 }} transition={{ duration: 1.1, delay: 0.1, ease: easeMasuk }}>
-          {t("line1")}
+          {t("title.line1")}
         </motion.span>
       </span>
 
       <span className="block overflow-hidden py-0.5">
         <motion.span className="block w-fit" initial={reduceMotion ? false : { y: "108%" }} animate={{ y: 0 }} transition={{ duration: 1.1, delay: 0.25, ease: easeMasuk }}>
           <span className="relative block w-fit">
-            <span className={`block leading-tight text-slate-200 ${ukuranNormal}`}>{t("line2")}</span>
+            <span className={`block leading-tight text-slate-200 ${ukuranNormal}`}>{t("title.line2")}</span>
 
             <motion.span
               aria-hidden="true"
@@ -47,7 +47,7 @@ function JudulHero({ reduceMotion, t }: { reduceMotion: boolean | null; t: Retur
               animate={{ clipPath: "inset(0 0% 0 0)" }}
               transition={{ duration: 1.6, delay: 0.9, ease: easeTerbang }}
             >
-              {t("line2")}
+              {t("title.line2")}
             </motion.span>
 
             {!reduceMotion && (
@@ -72,7 +72,7 @@ function JudulHero({ reduceMotion, t }: { reduceMotion: boolean | null; t: Retur
       <div className="pt-1">
         <motion.div initial={reduceMotion ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.45, ease: easeMasuk }} className="inline-block">
           <span className="inline-block px-3.5 sm:px-5 py-1 sm:py-1.5 bg-red-600 text-white text-xl sm:text-3xl lg:text-4xl rounded-xl sm:rounded-2xl shadow-lg shadow-red-600/25 font-black tracking-tight transform -rotate-1">
-            {t("highlight")}
+            {t("title.highlight")}
           </span>
         </motion.div>
       </div>

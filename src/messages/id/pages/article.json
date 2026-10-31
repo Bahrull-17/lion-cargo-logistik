@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Artikel & Tips Cargo Udara",
+    "description": "Panduan kirim barang lewat cargo udara: prosedur, tips packing, regulasi bandara, dan strategi logistik dari tim Lion Cargo Logistik di Bandara Soekarno-Hatta."
+  },
+  "hero": {
+    "breadcrumb": {
+      "home": "Beranda",
+      "current": "Artikel & Panduan"
+    },
+    "title": {
+      "line1": "Pusat Informasi &",
+      "highlight": "Wawasan Kargo Udara"
+    },
+    "description": "Temukan berbagai panduan lengkap seputar prosedur pengiriman barang, tips keamanan packing, regulasi bandara, serta strategi logistik terpercaya langsung dari para ahli <strong>Lion Cargo Logistik Bandara Soekarno-Hatta (CGK)</strong>.",
+    "searchPlaceholder": "Cari artikel, tips pengiriman, atau regulasi kargo...",
+    "clear": "Hapus"
+  },
+  "list": {
+    "filters": {
+      "semua": "Semua Artikel",
+      "tips": "Tips Pengiriman",
+      "regulasi": "Regulasi Kargo",
+      "bandara": "Info Bandara",
+      "bisnis": "Bisnis & Logistik"
+    },
+    "featuredLabel": "ARTIKEL UNGGULAN PILIHAN",
+    "readMore": "Baca Selengkapnya",
+    "readArticle": "Baca Artikel",
+    "readingTime": "{minutes} Menit Baca",
+    "showing": "MENAMPILKAN {count} ARTIKEL",
+    "search": "Pencarian: \"{query}\"",
+    "empty": {
+      "title": "Artikel Tidak Ditemukan",
+      "description": "Maaf, topik atau kata kunci artikel yang Anda cari tidak tersedia. Silakan gunakan kata kunci lain.",
+      "reset": "Reset Filter"
+    },
+    "noArticles": {
+      "title": "Belum Ada Artikel",
+      "description": "Artikel dan panduan sedang kami siapkan. Silakan kembali lagi sebentar lagi."
+    }
+  },
+  "cta": {
+    "title": "Punya pertanyaan seputar <highlight>pengiriman kargo ?</highlight>",
+    "button": "KONSULTASI VIA WHATSAPP",
+    "ariaLabel": "Konsultasi melalui WhatsApp",
+    "tagline": "<brand>Lion Cargo Logistik</brand>, <tag>#KirimAmanSampaiTujuan</tag> – Solusi logistik kargo udara lengkap & terpercaya dari Bandara Soekarno-Hatta!",
+    "whatsappMessage": "Halo Lion Cargo Logistik, saya ingin berkonsultasi mengenai pengiriman kargo."
+  },
+  "detail": {
+    "notFoundTitle": "Artikel Tidak Ditemukan",
+    "breadcrumb": {
+      "home": "Beranda",
+      "articles": "Artikel"
+    },
+    "back": "Kembali ke Daftar Artikel",
+    "ctaTitle": "Butuh Bantuan Pengiriman Kargo Udara?",
+    "ctaDescription": "Tim spesialis Lion Cargo siap melayani konsultasi rute & tarif secara gratis.",
+    "ctaButton": "Tanya via WhatsApp",
+    "whatsappMessage": "Halo Lion Cargo, saya membaca artikel \"{title}\" dan ingin bertanya mengenai pengiriman."
+  }
+}

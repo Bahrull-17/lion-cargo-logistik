@@ -49,7 +49,7 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
       const kode = item.code || namaTujuan.substring(0, 3).toUpperCase();
 
       if (!uniqueMap.has(key)) {
-        const pulau = deteksiPulauDinamis(namaTujuan);
+        const pulau = item.region ?? deteksiPulauDinamis(namaTujuan);
         uniqueMap.set(key, {
           id: key.replace(/\s+/g, "-"),
           nama: namaTujuan,

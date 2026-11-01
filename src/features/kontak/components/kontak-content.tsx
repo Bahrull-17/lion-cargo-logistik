@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { waLink } from "@/lib/wa-link";
 import { KontakHero } from "./kontak-hero";
 import { KontakInfoCard } from "./kontak-info-card";
@@ -9,12 +7,9 @@ import { KontakMap } from "./kontak-map";
 import { CtaSection } from "@/components/shared/cta-section";
 
 export function KontakContent() {
-  // Auto Scroll ke Atas saat halaman dimuat
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  const t = useTranslations("pages.contact");
 
-  const whatsappUrl = waLink("Halo Lion Cargo Logistik, saya ingin bertanya mengenai informasi pengiriman kargo.");
+  const whatsappUrl = waLink(t("cta.whatsappMessage"));
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen pb-12 sm:pb-16 overflow-hidden relative">

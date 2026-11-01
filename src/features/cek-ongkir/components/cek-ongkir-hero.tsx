@@ -12,7 +12,7 @@ export function CekOngkirHero() {
   return (
     <div className="w-full border-b border-slate-200/80 bg-white px-3 pb-4 pt-2 sm:px-6 sm:pb-8 lg:px-8">
       <div className="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-50 shadow-lg sm:rounded-3xl">
-        <Image src="/images/cek-ongkir/banner-tarif.png" alt={t("bannerAlt")} width={1400} height={650} sizes="(min-width: 1152px) 1152px, 100vw" priority className="h-auto w-full object-contain" />
+        <Image src="/images/cek-ongkir/banner-tarif.webp" alt={t("bannerAlt")} width={1400} height={650} sizes="(min-width: 1152px) 1152px, 100vw" priority className="h-auto w-full object-contain" />
 
         <div className="absolute bottom-4 left-4 hidden items-center gap-2.5 rounded-2xl border border-white/60 bg-white/95 px-3.5 py-2 shadow-md backdrop-blur-md sm:flex">
           <Plane className="size-4 shrink-0 text-red-600" aria-hidden="true" />

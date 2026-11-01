@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { ArtikelContent } from "@/features/artikel/components/artikel-content";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { createPageMetadata } from "@/lib/seo/metadata";
 import { getPublishedArticles } from "@/services/artikel.service";
 import { toArticleLocale, type ArticleSummary } from "@/types/artikel";
 
@@ -10,20 +12,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pages.article.meta" });
-
-  return {
-    title: t("title"),
-    description: t("description"),
-    alternates: {
-      canonical: `/${locale}/artikel`,
-      languages: {
-        id: "/id/artikel",
-        en: "/en/artikel",
-        "x-default": "/id/artikel",
-      },
-    },
-  };
+  return createPageMetadata(locale, "artikel");
 }
 
 export default async function ArtikelPage({ params }: Props) {
@@ -37,5 +26,10 @@ export default async function ArtikelPage({ params }: Props) {
     console.warn("Gagal mengambil artikel dari Supabase:", err);
   }
 
-  return <ArtikelContent articles={articles} />;
+  return (
+    <>
+      <BreadcrumbJsonLd locale={locale} page="article" />
+      <ArtikelContent articles={articles} />
+    </>
+  );
 }

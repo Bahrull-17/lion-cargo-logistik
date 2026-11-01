@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Air Cargo Shipping Rate Check",
-    "description": "Check air cargo rates from Soekarno-Hatta Airport (CGK) to 113 destination cities across Indonesia. Calculate the rate per kg and volumetric weight easily."
+    "title": "Air Cargo Rate Check per Kg from CGK",
+    "description": "Check air cargo rates from Soekarno-Hatta Airport (CGK) to more than 100 destination cities across Indonesia. Calculate the rate per kg and volumetric weight easily."
   },
   "hero": {
     "bannerAlt": "Air Cargo Shipping Rates at Soekarno Hatta Airport - Lion Cargo Logistik",

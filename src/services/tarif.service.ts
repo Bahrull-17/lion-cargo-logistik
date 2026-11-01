@@ -16,54 +16,44 @@ const TarifRowSchema = z.object({
 
 const TARIF_COLUMNS = "route_slug, destination, dest_code, price, min_weight, region";
 
+type TarifRow = z.infer<typeof TarifRowSchema>;
+
+function toDestination(row: TarifRow): Destination {
+  return { slug: row.route_slug, name: row.destination, code: row.dest_code, pricePerKg: row.price, minWeight: row.min_weight, region: row.region };
+}
+
+/** Query tunggal tarif layanan Reguler; baris yang tidak lolos validasi dilewati. */
+async function fetchRegulerRows(errorLabel: string): Promise<TarifRow[]> {
+  const { data, error } = await createPublicClient().from("tarifs").select(TARIF_COLUMNS).eq("service", SERVICE_REGULER).order("destination");
+
+  if (error) throw new Error(`${errorLabel}: ${error.message}`);
+
+  return (data ?? []).flatMap((raw) => {
+    const row = TarifRowSchema.safeParse(raw);
+    return row.success ? [row.data] : [];
+  });
+}
+
 export async function getDestinations(): Promise<Destination[]> {
   "use cache";
   cacheLife("hours");
   cacheTag("tarifs");
 
-  const { data, error } = await createPublicClient().from("tarifs").select(TARIF_COLUMNS).eq("service", SERVICE_REGULER).order("destination");
-
-  if (error) throw new Error(`Gagal memuat tarif: ${error.message}`);
-
-  return (data ?? []).flatMap((raw) => {
-    const row = TarifRowSchema.safeParse(raw);
-    if (!row.success) return [];
-
-    const { route_slug, destination, dest_code, price, min_weight, region } = row.data;
-    return [{ slug: route_slug, name: destination, code: dest_code, pricePerKg: price, minWeight: min_weight, region }];
-  });
+  return (await fetchRegulerRows("Gagal memuat tarif")).map(toDestination);
 }
 
-/** Hanya layanan Reguler (sama dengan getDestinations); dedup per nama kota tetap jadi pengaman. */
+/** Layanan Reguler, satu entri per nama kota (dedup sebagai pengaman). */
 export async function getAllDestinations(): Promise<Destination[]> {
   "use cache";
   cacheLife("hours");
   cacheTag("tarifs-all");
 
-  const { data, error } = await createPublicClient().from("tarifs").select(TARIF_COLUMNS).eq("service", SERVICE_REGULER).order("destination");
-
-  if (error) throw new Error(`Gagal memuat semua destinasi: ${error.message}`);
-
   const uniqueMap = new Map<string, Destination>();
 
-  (data ?? []).forEach((raw) => {
-    const row = TarifRowSchema.safeParse(raw);
-    if (!row.success) return;
-
-    const { route_slug, destination, dest_code, price, min_weight, region } = row.data;
-    const key = destination.trim().toLowerCase();
-
-    if (!uniqueMap.has(key)) {
-      uniqueMap.set(key, {
-        slug: route_slug,
-        name: destination,
-        code: dest_code,
-        pricePerKg: price,
-        minWeight: min_weight,
-        region,
-      });
-    }
-  });
+  for (const row of await fetchRegulerRows("Gagal memuat semua destinasi")) {
+    const key = row.destination.trim().toLowerCase();
+    if (!uniqueMap.has(key)) uniqueMap.set(key, toDestination(row));
+  }
 
   return Array.from(uniqueMap.values());
 }

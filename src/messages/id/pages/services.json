@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Layanan Kargo Udara & Ekspedisi Antarpulau",
+    "title": "Layanan Cargo Udara Reguler, Express & Same Day",
     "description": "Pilih layanan pengiriman kargo udara terbaik dari Bandara Soekarno-Hatta (CGK) ke seluruh Indonesia. Tersedia Cargo Reguler, Express Prioritas, dan Same Day."
   },
   "hero": {
@@ -25,7 +25,8 @@
     },
     "cta": {
       "checkRate": "Cek Ongkir Sekarang",
-      "whatsapp": "Tanya via WhatsApp"
+      "whatsapp": "Tanya via WhatsApp",
+      "whatsappMessage": "Halo Lion Cargo Logistik, saya mau konsultasi tarif pengiriman kargo udara."
     },
     "liveHub": {
       "badge": "LIVE STATUS",
@@ -114,5 +115,19 @@
       }
     }
   },
-  "whatsappMessage": "Halo Lion Cargo Logistik, saya ingin berkonsultasi mengenai pengiriman kargo udara."
+  "whatsappMessage": "Halo Lion Cargo Logistik, saya ingin berkonsultasi mengenai pengiriman kargo udara.",
+  "process": {
+    "title": {
+      "before": "Bagaimana Paket",
+      "highlight": "Anda Diproses?"
+    },
+    "description": {
+      "a": "Pahami setiap tahapan operasional ekspedisi ",
+      "strongA": "kargo",
+      "b": " udara kami yang dirancang secara terstruktur, sistematis, dan aman. Mulai dari proses penimbangan muatan di ",
+      "strongB": "terminal kargo Bandara Soekarno-Hatta (CGK)",
+      "c": ", pemeriksaan keamanan X-Ray, penerbitan Surat Muatan Udara (SMU), hingga pengelolaan slot penerbangan harian antar pulau untuk menjamin paket Anda mendarat tepat waktu di kota tujuan."
+    },
+    "steps": ["Konsultasi & Cek Tarif", "Penyerahan & Penimbangan", "Clearance & Flight Slot", "Tiba & Handover"]
+  }
 }

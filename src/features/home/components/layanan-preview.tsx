@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight, MessageCircle, CheckCircle2 } from "lucide-react";
 import { motion, useReducedMotion, Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -10,8 +10,7 @@ import { waLink } from "@/lib/wa-link";
 interface ItemLayanan {
   id: "reguler" | "express" | "sameday";
   imageSrc: string;
-  imageAlt: string;
-  ctaHref: string;
+  ctaHref?: string;
   isExternal?: boolean;
 }
 
@@ -26,21 +25,16 @@ const daftarLayanan: ItemLayanan[] = [
   {
     id: "reguler",
     imageSrc: "/images/layanan/reguler.jpg",
-    imageAlt: "Foto Cargo Reguler Lion Cargo Logistik Bandara Soekarno Hatta",
     ctaHref: "/cek-ongkir",
   },
   {
     id: "express",
-    imageSrc: "/images/layanan/express.png",
-    imageAlt: "Foto Cargo Express Prioritas Pesawat Bandara Soetta",
-    ctaHref: waLink("Halo Lion Cargo Logistik, saya ingin bertanya pengiriman cepat via Cargo Express."),
+    imageSrc: "/images/layanan/express.webp",
     isExternal: true,
   },
   {
     id: "sameday",
     imageSrc: "/images/layanan/same-day.jpg",
-    imageAlt: "Foto Same Day Service Kargo Udara Kilat",
-    ctaHref: waLink("Halo Lion Cargo Logistik, saya butuh layanan kilat Same Day Service hari ini."),
     isExternal: true,
   },
 ];
@@ -161,7 +155,7 @@ export function Layanan() {
                     variants={isEven ? slideFromRight : slideFromLeft}
                   >
                     <div className="relative aspect-16/10 w-full overflow-hidden rounded-xl bg-slate-100 border border-slate-200">
-                      <Image src={item.imageSrc} alt={item.imageAlt} fill sizes="(min-width: 1024px) 35vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <Image src={item.imageSrc} alt={t(`services.${item.id}.imageAlt`)} fill sizes="(min-width: 1024px) 35vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     </div>
 
                     <div className="grid grid-cols-1 gap-1.5">
@@ -214,7 +208,7 @@ export function Layanan() {
                     <div className="pt-1">
                       {item.isExternal ? (
                         <a
-                          href={item.ctaHref}
+                          href={waLink(t(`services.${item.id}.waMessage`))}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]"
@@ -224,7 +218,7 @@ export function Layanan() {
                         </a>
                       ) : (
                         <Link
-                          href={item.ctaHref}
+                          href={item.ctaHref ?? "/cek-ongkir"}
                           className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]"
                         >
                           <span>{t(`services.${item.id}.cta`)}</span>

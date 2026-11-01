@@ -32,10 +32,12 @@ const bodyStyle: CSSProperties = {
 export default async function Hero() {
   const t = await getTranslations("pages.home.hero");
   const c = await getTranslations("common");
+  const tA = await getTranslations("common.a11y");
+  const tW = await getTranslations("common.waMessages");
 
   return (
     <section className="relative isolate flex min-h-152 items-end justify-center overflow-hidden bg-charcoal lg:min-h-176">
-      <Image src="/images/home/hero.jpg" alt="Pengiriman cargo udara Lion Cargo Logistik melalui pesawat" aria-hidden="true" fill priority quality={90} sizes="100vw" className="object-cover object-top" />
+      <Image src="/images/home/hero.jpg" alt={tA("heroImageAlt")} aria-hidden="true" fill priority quality={90} sizes="100vw" className="object-cover object-top" />
 
       <div className="relative mx-auto max-w-3xl px-4 pb-10 pt-56 text-center text-white sm:px-6 lg:pb-14 lg:pt-72">
         <h1 style={headlineStyle} className="text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
@@ -70,7 +72,7 @@ export default async function Hero() {
               variant="outline"
               className="h-14 w-full rounded-lg border-white/70 bg-[#0b1f3a]/50 px-8 text-base font-semibold tracking-wide text-white backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-charcoal active:scale-[0.98] sm:w-auto"
             >
-              <a href={waLink("Halo Lion Cargo Logistik, saya ingin bertanya tentang pengiriman cargo.")} target="_blank" rel="noopener noreferrer">
+              <a href={waLink(tW("cargoInquiry"))} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="size-5" />
                 {c("contactUs")}
               </a>

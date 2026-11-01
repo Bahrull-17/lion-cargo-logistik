@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Pertanyaan Umum (FAQ)",
-    "description": "Temukan jawaban lengkap seputar prosedur pengiriman kargo udara, syarat dokumen, cara cek resi, ketentuan barang dilarang, dan tarif dari Bandara Soekarno-Hatta (CGK)."
+    "title": "FAQ Pengiriman Cargo Udara",
+    "description": "Temukan jawaban lengkap seputar prosedur pengiriman kargo udara, syarat dokumen, ketentuan barang dilarang, dan tarif dari Bandara Soekarno-Hatta (CGK)."
   },
   "hero": {
     "breadcrumb": {
@@ -77,12 +77,6 @@
       "category": "tarif",
       "question": "Kapan pembayaran biaya pengiriman kargo harus dilakukan?",
       "answer": "Pembayaran dilakukan di awal saat proses penimbangan dan penerbitan Surat Muatan Udara (SMU) di terminal kargo, atau melalui transfer bank resmi bagi pelanggan korporat yang telah bekerja sama."
-    },
-    {
-      "id": "8",
-      "category": "umum",
-      "question": "Bagaimana cara melacak posisi kiriman paket saya?",
-      "answer": "Anda dapat menggunakan nomor resi atau Nomor Surat Muatan Udara (SMU) yang tertera pada lembar bukti kirim, lalu masukkan ke dalam sistem pelacakan (tracking) resmi maskapai atau tanyakan langsung melalui WhatsApp customer service kami."
     },
     {
       "id": "9",

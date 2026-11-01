@@ -1,11 +1,12 @@
 import { siteConfig } from "@/config/site";
 
-interface BreadcrumbItem {
+export interface BreadcrumbItem {
   name: string;
+  /** Path dengan prefix bahasa, mis. "/id/layanan". */
   path: string;
 }
 
-export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
+export function createBreadcrumbSchema(items: BreadcrumbItem[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

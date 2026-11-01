@@ -32,10 +32,13 @@ function GoogleIcon() {
 
 export function Testimoni() {
   const t = useTranslations("pages.home.testimoni");
+  const tCta = useTranslations("common.cta");
+  const tA = useTranslations("common.a11y");
+  const tW = useTranslations("common.waMessages");
   const scrollRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const testimonialsData = t.raw("items") as TestimonialItem[];
-  const whatsappUrl = waLink("Halo Lion Cargo Logistik, saya ingin kirim barang sekarang.");
+  const whatsappUrl = waLink(tW("shipNow"));
 
   // AUTO SLIDE
   useEffect(() => {
@@ -69,7 +72,7 @@ export function Testimoni() {
 
   return (
     <>
-      <section aria-label="Ulasan Pelanggan" className="bg-white py-12 sm:py-16 overflow-hidden">
+      <section aria-label={tA("reviewsSection")} className="bg-white py-12 sm:py-16 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
           {/* HEADER TESTIMONI */}
           <motion.div
@@ -89,14 +92,14 @@ export function Testimoni() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => handleScroll("left")}
-                aria-label="Ulasan Sebelumnya"
+                aria-label={tA("reviewsPrev")}
                 className="p-3 rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300 shadow-xs active:scale-95 cursor-pointer"
               >
                 <ChevronLeft className="size-5" />
               </button>
               <button
                 onClick={() => handleScroll("right")}
-                aria-label="Ulasan Selanjutnya"
+                aria-label={tA("reviewsNext")}
                 className="p-3 rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300 shadow-xs active:scale-95 cursor-pointer"
               >
                 <ChevronRight className="size-5" />
@@ -174,7 +177,7 @@ export function Testimoni() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Hubungi kami melalui WhatsApp"
+                aria-label={tCta("ariaLabel")}
                 className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-600 text-white shadow-md shadow-red-600/20 hover:bg-red-700 hover:shadow-red-600/40 hover:scale-110 hover:rotate-12 active:scale-95 transition-all duration-300"
               >
                 <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6" />

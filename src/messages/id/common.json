@@ -1,11 +1,15 @@
 {
+  "waMessages": {
+    "general": "Halo Lion Cargo Logistik, saya ingin bertanya seputar pengiriman kargo.",
+    "shipNow": "Halo Lion Cargo Logistik, saya ingin kirim barang sekarang.",
+    "cargoInquiry": "Halo Lion Cargo Logistik, saya ingin bertanya tentang pengiriman cargo."
+  },
   "checkRate": "Cek Ongkir",
   "contactUs": "Hubungi Kami",
   "whatsapp": "Chat WhatsApp",
   "readMore": "Selengkapnya",
   "submit": "Kirim",
   "back": "Kembali",
-
   "cta": {
     "title": {
       "before": "Kirim barang",
@@ -16,5 +20,31 @@
     "brand": "Lion Cargo Logistik",
     "tagline": "#KirimAmanSampaiTujuan",
     "description": "Solusi logistik kargo udara lengkap & terpercaya dari Bandara Soekarno-Hatta!"
+  },
+  "notFound": {
+    "title": "Halaman tidak ditemukan",
+    "description": "Maaf, halaman yang Anda cari tidak ada atau sudah dipindahkan.",
+    "backHome": "Kembali ke Beranda"
+  },
+  "error": {
+    "title": "Terjadi kendala",
+    "description": "Halaman tidak dapat dimuat saat ini. Silakan coba lagi.",
+    "retry": "Coba lagi"
+  },
+  "a11y": {
+    "reviewsSection": "Ulasan Pelanggan",
+    "reviewsPrev": "Ulasan Sebelumnya",
+    "reviewsNext": "Ulasan Selanjutnya",
+    "partnersSection": "Mitra Maskapai Penerbangan dan Kargo Udara",
+    "advantagesSection": "Keunggulan dan Operasional Lion Cargo Logistik",
+    "advantagesImageAlt": "Armada dan Fasilitas Logistik Kargo Udara Bandara Soekarno-Hatta",
+    "statsSection": "Statistik Lion Cargo Logistik",
+    "quickInfoSection": "Informasi Cepat Lion Cargo Logistik",
+    "quickInfoImageAlt": "Paket kargo dalam penanda lokasi, ilustrasi layanan antar ke seluruh Indonesia",
+    "fleetImageAlt": "Armada pesawat kargo udara Lion Cargo Logistik di apron bandara",
+    "heroImageAlt": "Pengiriman cargo udara Lion Cargo Logistik melalui pesawat",
+    "logoHome": "Lion Cargo Logistik, ke beranda",
+    "mainMenu": "Menu utama",
+    "openMenu": "Buka Menu Navigasi"
   }
 }

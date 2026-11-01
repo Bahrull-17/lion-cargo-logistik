@@ -32,7 +32,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
       cekOngkir: (await import(`../messages/${locale}/pages/cek-ongkir.json`)).default,
 
-      //contact: (await import(`../messages/${locale}/pages/contact.json`)).default,
+      contact: (await import(`../messages/${locale}/pages/contact.json`)).default,
     },
   };
 

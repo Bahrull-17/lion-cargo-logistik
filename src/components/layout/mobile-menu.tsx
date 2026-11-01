@@ -14,11 +14,13 @@ export function MobileMenu() {
   const pathname = usePathname();
 
   const t = useTranslations("navigation");
+  const tA = useTranslations("common.a11y");
+  const tW = useTranslations("common.waMessages");
 
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button aria-label="Buka Menu Navigasi" className="p-2 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 active:scale-95 transition-all">
+        <button aria-label={tA("openMenu")} className="p-2 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 active:scale-95 transition-all">
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -99,7 +101,7 @@ export function MobileMenu() {
           "
         >
           <a
-            href={waLink("Halo Lion Cargo Logistik, saya ingin bertanya seputar pengiriman kargo.")}
+            href={waLink(tW("general"))}
             target="_blank"
             rel="noopener noreferrer"
             className="

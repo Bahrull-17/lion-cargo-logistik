@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Lion Cargo Logistik | Air Cargo from Jakarta Soekarno-Hatta",
+    "description": "Air cargo service from Soekarno-Hatta Airport (CGK) to all of Indonesia. Ship goods by plane: Regular, Express & Same Day. Check rates per kg and chat on WhatsApp."
+  },
   "hero": {
     "title": "Send Air Cargo Across Indonesia",
     "highlight": "Fast, Safe, Clear Rates",
@@ -73,8 +77,8 @@
         "sublabel": "Active business & corporate partners"
       },
       "tracking": {
-        "label": "Tracking Service",
-        "sublabel": "Real-time status monitoring"
+        "label": "24-Hour Operations",
+        "sublabel": "Cargo terminal serving non-stop"
       }
     }
   },
@@ -89,6 +93,7 @@
     "services": {
       "reguler": {
         "name": "Regular Cargo",
+        "imageAlt": "Photo of Regular Cargo by Lion Cargo Logistik at Soekarno Hatta Airport",
         "badge": "MOST ECONOMICAL",
         "estimate": "Estimated: 2 - 3 Days",
         "tagline": "Affordable & Scheduled Inter-Island Regular Shipping",
@@ -103,6 +108,8 @@
       },
       "express": {
         "name": "Express Cargo",
+        "imageAlt": "Photo of Cargo Express priority aircraft at Soetta Airport",
+        "waMessage": "Hello Lion Cargo Logistik, I would like to ask about fast shipping via Cargo Express.",
         "badge": "PRIORITY SLOT",
         "estimate": "Estimated: 1 - 2 Days",
         "tagline": "Priority Loading on the First Flight from CGK",
@@ -117,6 +124,8 @@
       },
       "sameday": {
         "name": "Same Day Service",
+        "imageAlt": "Photo of Same Day Service express air cargo",
+        "waMessage": "Hello Lion Cargo Logistik, I need the Same Day Service express service today.",
         "badge": "FLIGHT TODAY",
         "estimate": "Estimated: Arrive Today",
         "tagline": "Ship in the Morning, Arrive at Destination the Same Day",

@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Contact & Location – Air Cargo at Soekarno-Hatta Airport",
+    "description": "Contact the customer service and operations team of Lion Cargo Logistik at the Soekarno-Hatta Airport (CGK) Cargo Terminal. Shipping consultation, route checks, and air cargo services."
+  },
+  "hero": {
+    "home": "Home",
+    "current": "Contact Us",
+    "titleLine1": "Ready to Support Your",
+    "titleHighlight": "Air Cargo Needs",
+    "description": {
+      "before": "Questions about rates, flight routes, or pickup schedules? The ",
+      "strong": "Lion Cargo Logistik team at Soekarno-Hatta Airport (CGK)",
+      "after": " is ready to help you 24/7."
+    }
+  },
+  "info": {
+    "title": "Office & Cargo Terminal",
+    "subtitle": "Freight service and air cargo operations center.",
+    "address": {
+      "label": "Operational Address",
+      "value": "Domestic Cargo Terminal Area, Soekarno-Hatta International Airport (CGK), Pajang, Benda District, Tangerang City, Banten 15126."
+    },
+    "phone": {
+      "label": "Customer Service / WA",
+      "message": "Hello Lion Cargo Logistik customer service, I would like to ask about your cargo shipping services."
+    },
+    "email": {
+      "label": "Official Email"
+    },
+    "hours": {
+      "label": "Terminal Operating Hours",
+      "days": "Monday – Sunday:",
+      "strong": "24 Hours Non-stop",
+      "note": "(Weighing & Express Flight Services)"
+    }
+  },
+  "map": {
+    "title": "Lion Cargo Logistik Location Map (CGK)",
+    "subtitle": "Use the interactive map below to reach our cargo weighing point. RA Gatrans Building, Soekarno–Hatta International Airport",
+    "open": "Open Google Maps",
+    "iframeTitle": "Map of Lion Cargo Logistik at Soekarno-Hatta Airport"
+  },
+  "form": {
+    "title": "Send a Message or Question",
+    "subtitle": "Fill in the form below to connect directly with our marketing team.",
+    "name": {
+      "label": "Full Name *",
+      "placeholder": "Example: John Smith"
+    },
+    "phone": {
+      "label": "WhatsApp Number *",
+      "placeholder": "Example: 081234567890",
+      "invalid": "Enter a valid phone number (8–15 digits)."
+    },
+    "email": {
+      "label": "Email (Optional)",
+      "placeholder": "john@email.com"
+    },
+    "subject": {
+      "label": "Topic",
+      "options": {
+        "consult": "Cargo Shipping Consultation",
+        "rates": "Special Rates & Routes",
+        "animal": "Live Animal Shipping",
+        "b2b": "Corporate / B2B Partnership",
+        "other": "Other"
+      }
+    },
+    "message": {
+      "label": "Message Details *",
+      "placeholder": "Tell us the destination city, estimated weight, or your question..."
+    },
+    "submit": "Send Message via WhatsApp",
+    "note": "Your message will be sent directly to our official WhatsApp customer service.",
+    "success": {
+      "title": "Message Sent!",
+      "description": "Thank you for contacting us. You are being connected to our WhatsApp customer service.",
+      "again": "Send Another Message"
+    },
+    "whatsapp": {
+      "intro": "Hello Lion Cargo Logistik, I am {name} ({phone}).",
+      "email": "Email: {email}",
+      "subject": "Subject: {subject}",
+      "message": "Message: {message}"
+    }
+  },
+  "cta": {
+    "whatsappMessage": "Hello Lion Cargo Logistik, I would like to ask about cargo shipping information."
+  }
+}

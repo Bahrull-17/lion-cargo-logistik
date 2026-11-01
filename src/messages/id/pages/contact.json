@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Kontak & Lokasi – Cargo Udara Bandara Soekarno-Hatta",
+    "description": "Hubungi tim customer service & operasional Lion Cargo Logistik di Terminal Kargo Bandara Soekarno-Hatta (CGK). Konsultasi pengiriman, cek rute, dan layanan kargo udara."
+  },
+  "hero": {
+    "home": "Beranda",
+    "current": "Hubungi Kami",
+    "titleLine1": "Siap Membantu Kebutuhan",
+    "titleHighlight": "Kargo Udara Anda",
+    "description": {
+      "before": "Punya pertanyaan seputar tarif, rute penerbangan, atau jadwal penjemputan barang? Tim ",
+      "strong": "Lion Cargo Logistik Bandara Soekarno-Hatta (CGK)",
+      "after": " siap melayani Anda 24/7."
+    }
+  },
+  "info": {
+    "title": "Kantor & Terminal Kargo",
+    "subtitle": "Pusat layanan ekspedisi & operasional kargo udara.",
+    "address": {
+      "label": "Alamat Operasional",
+      "value": "Area Terminal Kargo Domestik, Bandara Internasional Soekarno-Hatta (CGK), Pajang, Kec. Benda, Kota Tangerang, Banten 15126."
+    },
+    "phone": {
+      "label": "Customer Service / WA",
+      "message": "Halo CS Lion Cargo Logistik, saya ingin bertanya mengenai layanan pengiriman kargo."
+    },
+    "email": {
+      "label": "Email Resmi"
+    },
+    "hours": {
+      "label": "Jam Operasional Terminal",
+      "days": "Senin – Minggu:",
+      "strong": "24 Jam Nonstop",
+      "note": "(Layanan Penimbangan & Flight Express)"
+    }
+  },
+  "map": {
+    "title": "Peta Lokasi Lion Cargo Logistik (CGK)",
+    "subtitle": "Gunakan navigasi peta interaktif di bawah untuk menuju titik lokasi penimbangan kargo kami. Gedung RA Gatrans Bandar Udara Internasional Soekarno–Hatta",
+    "open": "Buka Aplikasi Google Maps",
+    "iframeTitle": "Peta Lokasi Lion Cargo Logistik Bandara Soekarno-Hatta"
+  },
+  "form": {
+    "title": "Kirim Pesan atau Pertanyaan",
+    "subtitle": "Isi formulir di bawah ini untuk terhubung langsung dengan tim marketing kami.",
+    "name": {
+      "label": "Nama Lengkap *",
+      "placeholder": "Contoh: Budi Santoso"
+    },
+    "phone": {
+      "label": "Nomor WhatsApp *",
+      "placeholder": "Contoh: 081234567890",
+      "invalid": "Masukkan nomor telepon yang valid (8–15 digit)."
+    },
+    "email": {
+      "label": "Email (Opsional)",
+      "placeholder": "budi@email.com"
+    },
+    "subject": {
+      "label": "Subjek Topik",
+      "options": {
+        "consult": "Konsultasi Pengiriman Kargo",
+        "rates": "Cek Tarif & Rute Spesial",
+        "animal": "Pengiriman Hewan (Live Animal)",
+        "b2b": "Kerjasama Korporat / B2B",
+        "other": "Lainnya"
+      }
+    },
+    "message": {
+      "label": "Pesan Detail *",
+      "placeholder": "Tuliskan kota tujuan, perkiraan berat barang, atau pertanyaan Anda..."
+    },
+    "submit": "Kirim Pesan via WhatsApp",
+    "note": "Pesan Anda akan langsung dikirimkan ke WhatsApp Customer Service resmi kami.",
+    "success": {
+      "title": "Pesan Terkirim!",
+      "description": "Terima kasih telah menghubungi kami. Anda sedang dihubungkan ke WhatsApp Customer Service kami.",
+      "again": "Kirim Pesan Lain"
+    },
+    "whatsapp": {
+      "intro": "Halo Lion Cargo Logistik, saya {name} ({phone}).",
+      "email": "Email: {email}",
+      "subject": "Subjek: {subject}",
+      "message": "Pesan: {message}"
+    }
+  },
+  "cta": {
+    "whatsappMessage": "Halo Lion Cargo Logistik, saya ingin bertanya mengenai informasi pengiriman kargo."
+  }
+}

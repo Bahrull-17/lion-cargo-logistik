@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Lion Cargo Logistik | Jasa Cargo Udara Jakarta & Soekarno-Hatta",
+    "description": "Jasa cargo udara dari Bandara Soekarno-Hatta (CGK) ke seluruh Indonesia. Kirim barang via pesawat Reguler, Express & Same Day. Cek ongkir per kg, konsultasi via WhatsApp."
+  },
   "hero": {
     "title": "Kirim Cargo Udara ke Seluruh Indonesia",
     "highlight": "Cepat, Aman, Tarif Jelas",
@@ -73,8 +77,8 @@
         "sublabel": "Mitra bisnis & korporasi aktif"
       },
       "tracking": {
-        "label": "Layanan Tracking",
-        "sublabel": "Pemantauan status waktu nyata"
+        "label": "Operasional 24 Jam",
+        "sublabel": "Terminal kargo melayani nonstop"
       }
     }
   },
@@ -89,6 +93,7 @@
     "services": {
       "reguler": {
         "name": "Cargo Reguler",
+        "imageAlt": "Foto Cargo Reguler Lion Cargo Logistik Bandara Soekarno Hatta",
         "badge": "PALING HEMAT",
         "estimate": "Estimasi: 2 - 3 Hari",
         "tagline": "Pengiriman Rutin Antarpulau Hemat & Terjadwal",
@@ -103,6 +108,8 @@
       },
       "express": {
         "name": "Cargo Express",
+        "imageAlt": "Foto Cargo Express Prioritas Pesawat Bandara Soetta",
+        "waMessage": "Halo Lion Cargo Logistik, saya ingin bertanya pengiriman cepat via Cargo Express.",
         "badge": "PRIORITAS SLOT",
         "estimate": "Estimasi: 1 - 2 Hari",
         "tagline": "Prioritas Muat Penerbangan Pertama dari CGK",
@@ -117,6 +124,8 @@
       },
       "sameday": {
         "name": "Same Day Service",
+        "imageAlt": "Foto Same Day Service Kargo Udara Kilat",
+        "waMessage": "Halo Lion Cargo Logistik, saya butuh layanan kilat Same Day Service hari ini.",
         "badge": "TERBANG HARI INI",
         "estimate": "Estimasi: Tiba Hari Ini",
         "tagline": "Kirim Pagi, Tiba di Kota Tujuan Hari Ini Juga",

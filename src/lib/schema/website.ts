@@ -1,23 +1,18 @@
 import { siteConfig } from "@/config/site";
+import { ORGANIZATION_ID } from "./organization";
 
 export function createWebsiteSchema() {
   return {
     "@context": "https://schema.org",
-
     "@type": "WebSite",
-
-    "@id": `${siteConfig.url}#website`,
+    "@id": `${siteConfig.url}/#website`,
 
     name: siteConfig.name,
-
-    url: siteConfig.url,
-
+    alternateName: "Lion Cargo",
+    url: `${siteConfig.url}/`,
     description: siteConfig.description,
-
     inLanguage: ["id-ID", "en-US"],
 
-    publisher: {
-      "@id": `${siteConfig.url}#organization`,
-    },
+    publisher: { "@id": ORGANIZATION_ID },
   };
 }

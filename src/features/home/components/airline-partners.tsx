@@ -18,12 +18,13 @@ const airlineLogos = [
 export function AirlinePartners() {
   const reduceMotion = useReducedMotion();
   const t = useTranslations("pages.home.airlinePartners");
+  const tA = useTranslations("common.a11y");
 
   // Duplikasi array agar pergerakan infinite marquee mulus tanpa patah
   const duplicatedLogos = [...airlineLogos, ...airlineLogos, ...airlineLogos];
 
   return (
-    <section aria-label="Mitra Maskapai Penerbangan dan Kargo Udara" className="bg-white py-12 sm:py-16 border-b border-slate-100 overflow-hidden">
+    <section aria-label={tA("partnersSection")} className="bg-white py-12 sm:py-16 border-b border-slate-100 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
         {/* HEADER & SEO KEYWORDS */}
         <motion.div

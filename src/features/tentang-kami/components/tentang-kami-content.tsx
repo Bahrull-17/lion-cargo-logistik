@@ -155,7 +155,7 @@ export function TentangKamiContent() {
               >
                 <div className="absolute -inset-1 bg-linear-to-r from-red-600/20 to-amber-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
                 <Image
-                  src="/images/tentang-kami/amanah.png"
+                  src="/images/tentang-kami/amanah.webp"
                   alt={t("showcase.imageAlt")}
                   width={800}
                   height={500}

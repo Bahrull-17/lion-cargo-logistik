@@ -1,11 +1,15 @@
 {
+  "waMessages": {
+    "general": "Hello Lion Cargo Logistik, I would like to ask about cargo shipping.",
+    "shipNow": "Hello Lion Cargo Logistik, I would like to ship goods now.",
+    "cargoInquiry": "Hello Lion Cargo Logistik, I would like to ask about cargo shipping."
+  },
   "checkRate": "Check Rate",
   "contactUs": "Contact Us",
   "whatsapp": "Chat WhatsApp",
   "readMore": "Read More",
   "submit": "Submit",
   "back": "Back",
-
   "cta": {
     "title": {
       "before": "Ship your cargo",
@@ -16,5 +20,31 @@
     "brand": "Lion Cargo Logistik",
     "tagline": "#SafeDeliveryToDestination",
     "description": "Complete and trusted air cargo logistics solutions from Soekarno-Hatta Airport."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "backHome": "Back to Home"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "This page could not be loaded right now. Please try again.",
+    "retry": "Try again"
+  },
+  "a11y": {
+    "reviewsSection": "Customer Reviews",
+    "reviewsPrev": "Previous review",
+    "reviewsNext": "Next review",
+    "partnersSection": "Airline and Air Cargo Partners",
+    "advantagesSection": "Strengths and Operations of Lion Cargo Logistik",
+    "advantagesImageAlt": "Air cargo logistics fleet and facilities at Soekarno-Hatta Airport",
+    "statsSection": "Lion Cargo Logistik Statistics",
+    "quickInfoSection": "Lion Cargo Logistik Quick Info",
+    "quickInfoImageAlt": "Cargo package inside a location pin, illustrating delivery across Indonesia",
+    "fleetImageAlt": "Lion Cargo Logistik air cargo aircraft fleet on the airport apron",
+    "heroImageAlt": "Lion Cargo Logistik air cargo shipping by aircraft",
+    "logoHome": "Lion Cargo Logistik, go to home",
+    "mainMenu": "Main menu",
+    "openMenu": "Open navigation menu"
   }
 }

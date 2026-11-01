@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import { NextIntlClientProvider } from "next-intl";
 
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 
 import { notFound } from "next/navigation";
 
@@ -13,6 +13,10 @@ import { siteConfig } from "@/config/site";
 import { seoConfig } from "@/config/seo";
 
 import SchemaMarkup from "@/components/seo/schema-markup";
+
+import { OG_LOCALE } from "@/lib/seo/metadata";
+
+import { GOOGLE_FONTS_URL } from "@/config/fonts";
 
 import { routing } from "@/i18n/routing";
 
@@ -42,19 +46,24 @@ interface LocaleLayoutProps {
 
 export async function generateMetadata({ params }: Pick<LocaleLayoutProps, "params">): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
 
+  // Catatan: canonical & hreflang sengaja TIDAK diset di layout, karena akan diwarisi halaman yang lupa mengaturnya.
+  // Tiap halaman mengaturnya sendiri lewat createPageMetadata().
   return {
     metadataBase: new URL(siteConfig.url),
 
     title: {
-      default: siteConfig.name,
+      default: t("title"),
 
       template: `%s | ${siteConfig.name}`,
     },
 
-    description: siteConfig.description,
+    description: t("description"),
 
-    keywords: [...siteConfig.keywords],
+    keywords: t("keywords")
+      .split(",")
+      .map((keyword) => keyword.trim()),
 
     robots: {
       index: true,
@@ -74,22 +83,10 @@ export async function generateMetadata({ params }: Pick<LocaleLayoutProps, "para
       },
     },
 
-    alternates: {
-      canonical: `${siteConfig.url}/${locale}`,
-
-      languages: {
-        id: `${siteConfig.url}/id`,
-
-        en: `${siteConfig.url}/en`,
-      },
-    },
-
     openGraph: {
       type: seoConfig.openGraph.type,
 
-      locale: seoConfig.openGraph.locale,
-
-      alternateLocale: [...seoConfig.openGraph.alternateLocale],
+      locale: OG_LOCALE[locale] ?? OG_LOCALE.id,
 
       siteName: siteConfig.name,
 
@@ -123,6 +120,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <html lang={locale}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        <link rel="stylesheet" href={GOOGLE_FONTS_URL} />
+      </head>
+
       <body className="min-h-screen">
         <SchemaMarkup />
 

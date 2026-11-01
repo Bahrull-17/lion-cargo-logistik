@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight, MessageCircle, CheckCircle2 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -24,7 +24,7 @@ const layananConfig: LayananConfig[] = [
   },
   {
     id: "express",
-    imageSrc: "/images/layanan/express.png",
+    imageSrc: "/images/layanan/express.webp",
     isExternal: true,
   },
   {

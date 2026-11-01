@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { CekOngkirContent } from "@/features/cek-ongkir/components/cek-ongkir-content";
 import { CekOngkirSkeleton } from "@/features/cek-ongkir/components/cek-ongkir-skeleton";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { createPageMetadata } from "@/lib/seo/metadata";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -10,20 +12,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pages.cekOngkir.meta" });
-
-  return {
-    title: t("title"),
-    description: t("description"),
-    alternates: {
-      canonical: `/${locale}/cek-ongkir`,
-      languages: {
-        id: "/id/cek-ongkir",
-        en: "/en/cek-ongkir",
-        "x-default": "/id/cek-ongkir",
-      },
-    },
-  };
+  return createPageMetadata(locale, "cekOngkir");
 }
 
 export default async function CekOngkirPage({ params }: Props) {
@@ -31,8 +20,11 @@ export default async function CekOngkirPage({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <Suspense fallback={<CekOngkirSkeleton />}>
-      <CekOngkirContent />
-    </Suspense>
+    <>
+      <BreadcrumbJsonLd locale={locale} page="cekOngkir" />
+      <Suspense fallback={<CekOngkirSkeleton />}>
+        <CekOngkirContent />
+      </Suspense>
+    </>
   );
 }

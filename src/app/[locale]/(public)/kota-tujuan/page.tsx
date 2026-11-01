@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { KotaTujuanContent } from "@/features/kota-tujuan/components/kota-tujuan-content";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { createPageMetadata } from "@/lib/seo/metadata";
 import { getAllDestinations } from "@/services/tarif.service";
 import type { Destination } from "@/types/tarif";
 
@@ -11,20 +13,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pages.destination.meta" });
-
-  return {
-    title: t("title"),
-    description: t("description"),
-    alternates: {
-      canonical: `/${locale}/kota-tujuan`,
-      languages: {
-        id: "/id/kota-tujuan",
-        en: "/en/kota-tujuan",
-        "x-default": "/id/kota-tujuan",
-      },
-    },
-  };
+  return createPageMetadata(locale, "kotaTujuan");
 }
 
 async function KotaTujuanData() {
@@ -43,8 +32,11 @@ export default async function KotaTujuanPage({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <Suspense fallback={<KotaTujuanContent initialTarifData={[]} />}>
-      <KotaTujuanData />
-    </Suspense>
+    <>
+      <BreadcrumbJsonLd locale={locale} page="destination" />
+      <Suspense fallback={<KotaTujuanContent initialTarifData={[]} />}>
+        <KotaTujuanData />
+      </Suspense>
+    </>
   );
 }

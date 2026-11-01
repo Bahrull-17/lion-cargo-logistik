@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lion-cargo-logistik",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      // Harus sama persis dengan "name" di atas.
+      "service": "lion-cargo-logistik"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+
+  // Aktifkan SETELAH domain lioncargologistik.com dipindahkan ke Cloudflare (nameserver) dan
+  // semua DNS record email Hostinger (MX, SPF, DKIM) sudah disalin dengan status "DNS only":
+  // "routes": [
+  //   { "pattern": "lioncargologistik.com", "custom_domain": true },
+  //   { "pattern": "www.lioncargologistik.com", "custom_domain": true }
+  // ],
+
+  // Optimasi gambar next/image lewat Cloudflare Images (berbayar sesuai pemakaian). Gambar di proyek ini
+  // sudah dikompres, jadi belum diperlukan:
+  // "images": { "binding": "IMAGES" }
+}

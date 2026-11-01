@@ -1,70 +1,46 @@
-import { siteConfig } from "@/config/site";
+import { ORGANIZATION_ID } from "./organization";
 
-export function createServiceSchema() {
+type ServiceInput = { name: string; description: string };
+
+type ServiceSchemaInput = {
+  /** URL halaman layanan (absolut). */
+  url: string;
+  name: string;
+  description: string;
+  catalogName: string;
+  language: string;
+  services: ServiceInput[];
+};
+
+/** Schema layanan, dipasang hanya di halaman /layanan dengan teks sesuai bahasa halaman. */
+export function createServiceSchema({ url, name, description, catalogName, language, services }: ServiceSchemaInput) {
   return {
     "@context": "https://schema.org",
-
     "@type": "Service",
+    "@id": `${url}#service`,
 
-    "@id": `${siteConfig.url}#cargo-service`,
-
-    name: "Jasa Cargo Udara",
-
+    name,
     serviceType: "Air Cargo Shipping Service",
+    description,
+    url,
+    inLanguage: language,
 
-    provider: {
-      "@id": `${siteConfig.url}#organization`,
-    },
-
-    areaServed: {
-      "@type": "Country",
-      name: "Indonesia",
-    },
-
-    description: "Lion Cargo Logistik menyediakan layanan cargo udara dari Bandara Internasional Soekarno-Hatta ke berbagai kota di Indonesia dengan pilihan layanan reguler, express, dan same day.",
+    provider: { "@id": ORGANIZATION_ID },
+    areaServed: { "@type": "Country", name: "Indonesia" },
 
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-
-      name: "Layanan Cargo Udara",
-
-      itemListElement: [
-        {
-          "@type": "Offer",
-
-          itemOffered: {
-            "@type": "Service",
-
-            name: "Cargo Udara Reguler",
-
-            description: "Layanan pengiriman cargo udara reguler dengan tarif ekonomis melalui jalur penerbangan.",
-          },
+      name: catalogName,
+      itemListElement: services.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.name,
+          description: service.description,
+          provider: { "@id": ORGANIZATION_ID },
+          areaServed: { "@type": "Country", name: "Indonesia" },
         },
-
-        {
-          "@type": "Offer",
-
-          itemOffered: {
-            "@type": "Service",
-
-            name: "Cargo Udara Express",
-
-            description: "Layanan cargo udara express untuk kebutuhan pengiriman lebih cepat.",
-          },
-        },
-
-        {
-          "@type": "Offer",
-
-          itemOffered: {
-            "@type": "Service",
-
-            name: "Cargo Same Day",
-
-            description: "Layanan pengiriman cargo udara dengan estimasi tiba di hari yang sama untuk rute tertentu.",
-          },
-        },
-      ],
+      })),
     },
   };
 }

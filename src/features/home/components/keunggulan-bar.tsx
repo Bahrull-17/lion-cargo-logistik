@@ -69,9 +69,10 @@ const dataKeunggulan = [
 
 export function KeunggulanBar() {
   const t = useTranslations("pages.home.advantages");
+  const tA = useTranslations("common.a11y");
 
   return (
-    <section aria-label="Keunggulan dan Operasional Lion Cargo Logistik" className="bg-[#f8f9fa] py-10 sm:py-16 overflow-hidden">
+    <section aria-label={tA("advantagesSection")} className="bg-[#f8f9fa] py-10 sm:py-16 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* BAGIAN 1: 3 KEUNGGULAN UTAMA */}
         <motion.div
@@ -113,7 +114,7 @@ export function KeunggulanBar() {
           >
             <Image
               src="/images/home/keunggulan-logistik.jpg"
-              alt="Armada dan Fasilitas Logistik Kargo Udara Bandara Soekarno-Hatta"
+              alt={tA("advantagesImageAlt")}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"

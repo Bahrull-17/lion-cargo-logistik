@@ -76,9 +76,10 @@ export function StatsBar() {
   const reduceMotion = useReducedMotion();
 
   const t = useTranslations("pages.home.statsBar");
+  const tA = useTranslations("common.a11y");
 
   return (
-    <section aria-label="Statistik Lion Cargo Logistik" className="bg-white pt-2 pb-10 sm:pt-4 sm:pb-14 border-b border-slate-100 overflow-hidden">
+    <section aria-label={tA("statsSection")} className="bg-white pt-2 pb-10 sm:pt-4 sm:pb-14 border-b border-slate-100 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
         {/* HEADER SECTION METRICS */}
         <motion.div

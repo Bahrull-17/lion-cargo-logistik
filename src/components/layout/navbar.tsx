@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const pathname = usePathname();
   const t = useTranslations("navigation");
+  const tA = useTranslations("common.a11y");
 
   return (
     <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
@@ -20,7 +21,7 @@ export function Navbar() {
         <Logo />
 
         <div className="flex items-center gap-1 lg:gap-2">
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Menu utama">
+          <nav className="hidden items-center gap-1 lg:flex" aria-label={tA("mainMenu")}>
             {navigation.map((item) => (
               <Link key={item.href} href={item.href} className={cn("rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-brand", pathname === item.href ? "text-brand" : "text-charcoal")}>
                 {t(item.key)}

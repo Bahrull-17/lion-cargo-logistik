@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Air Cargo & Inter-Island Shipping Services | Lion Cargo Logistik",
+    "title": "Air Cargo Services: Regular, Express & Same Day",
     "description": "Choose the best air cargo service from Soekarno-Hatta Airport (CGK) to all of Indonesia. Regular Cargo, Priority Express, and Same Day available."
   },
   "hero": {
@@ -25,7 +25,8 @@
     },
     "cta": {
       "checkRate": "Check Shipping Rates Now",
-      "whatsapp": "Ask via WhatsApp"
+      "whatsapp": "Ask via WhatsApp",
+      "whatsappMessage": "Hello Lion Cargo Logistik, I would like to consult about air cargo shipping rates."
     },
     "liveHub": {
       "badge": "LIVE STATUS",
@@ -114,5 +115,19 @@
       }
     }
   },
-  "whatsappMessage": "Hello Lion Cargo Logistik, I would like to consult about air cargo shipping."
+  "whatsappMessage": "Hello Lion Cargo Logistik, I would like to consult about air cargo shipping.",
+  "process": {
+    "title": {
+      "before": "How Is Your",
+      "highlight": "Package Processed?"
+    },
+    "description": {
+      "a": "Understand each operational stage of our air ",
+      "strongA": "cargo",
+      "b": " service, designed to be structured, systematic, and safe. From weighing your shipment at the ",
+      "strongB": "Soekarno-Hatta Airport (CGK) cargo terminal",
+      "c": ", X-Ray security screening, issuance of the Air Waybill (SMU), to managing daily inter-island flight slots so your package lands on time at the destination city."
+    },
+    "steps": ["Consultation & Rate Check", "Handover & Weighing", "Clearance & Flight Slot", "Arrival & Handover"]
+  }
 }

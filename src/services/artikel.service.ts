@@ -132,3 +132,43 @@ export async function getAlternateArticlePath(fromLocale: ArticleLocale, slug: s
   const targetSlug = article?.alternates[toLocale];
   return targetSlug ? `/artikel/${targetSlug}` : "/artikel";
 }
+
+const SitemapRowSchema = z.object({
+  article_id: z.string().min(1),
+  locale: z.enum(ARTICLE_LOCALES),
+  slug: z.string().min(1),
+  updated_at: z.string().min(1),
+});
+
+export interface ArticleSitemapEntry {
+  articleId: string;
+  /** Slug per bahasa yang sudah terbit. */
+  slugs: Partial<Record<ArticleLocale, string>>;
+  /** ISO timestamp pembaruan terakhir dari semua terjemahan. */
+  updatedAt: string;
+}
+
+/** Semua artikel terbit (semua bahasa), dikelompokkan per artikel, untuk sitemap. Di-cache; dibersihkan lewat tag "articles". */
+export async function getArticleSitemapEntries(): Promise<ArticleSitemapEntry[]> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("articles");
+
+  const { data, error } = await createPublicClient().from("article_translations").select("article_id, locale, slug, updated_at").eq("status", "published");
+
+  if (error) throw new Error(`Gagal memuat sitemap artikel: ${error.message}`);
+
+  const grouped = new Map<string, ArticleSitemapEntry>();
+
+  for (const raw of data ?? []) {
+    const row = SitemapRowSchema.safeParse(raw);
+    if (!row.success || !isValidArticleSlug(row.data.slug)) continue;
+
+    const entry = grouped.get(row.data.article_id) ?? { articleId: row.data.article_id, slugs: {}, updatedAt: row.data.updated_at };
+    entry.slugs[row.data.locale] = row.data.slug;
+    if (row.data.updated_at > entry.updatedAt) entry.updatedAt = row.data.updated_at;
+    grouped.set(row.data.article_id, entry);
+  }
+
+  return Array.from(grouped.values());
+}

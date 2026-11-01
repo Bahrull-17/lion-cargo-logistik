@@ -33,6 +33,7 @@ export default async function Hero() {
   const t = await getTranslations("pages.home.hero");
   const c = await getTranslations("common");
   const tA = await getTranslations("common.a11y");
+  const tW = await getTranslations("common.waMessages");
 
   return (
     <section className="relative isolate flex min-h-152 items-end justify-center overflow-hidden bg-charcoal lg:min-h-176">
@@ -71,7 +72,7 @@ export default async function Hero() {
               variant="outline"
               className="h-14 w-full rounded-lg border-white/70 bg-[#0b1f3a]/50 px-8 text-base font-semibold tracking-wide text-white backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-charcoal active:scale-[0.98] sm:w-auto"
             >
-              <a href={waLink("Halo Lion Cargo Logistik, saya ingin bertanya tentang pengiriman cargo.")} target="_blank" rel="noopener noreferrer">
+              <a href={waLink(tW("cargoInquiry"))} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="size-5" />
                 {c("contactUs")}
               </a>

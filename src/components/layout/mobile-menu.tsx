@@ -15,6 +15,7 @@ export function MobileMenu() {
 
   const t = useTranslations("navigation");
   const tA = useTranslations("common.a11y");
+  const tW = useTranslations("common.waMessages");
 
   return (
     <Sheet>
@@ -100,7 +101,7 @@ export function MobileMenu() {
           "
         >
           <a
-            href={waLink("Halo Lion Cargo Logistik, saya ingin bertanya seputar pengiriman kargo.")}
+            href={waLink(tW("general"))}
             target="_blank"
             rel="noopener noreferrer"
             className="

@@ -8,8 +8,7 @@ export function createWebsiteSchema() {
     "@id": `${siteConfig.url}/#website`,
 
     name: siteConfig.name,
-    alternateName: "Lion Cargo",
-    url: `${siteConfig.url}/`,
+    url: siteConfig.url,
     description: siteConfig.description,
     inLanguage: ["id-ID", "en-US"],
 

@@ -25,8 +25,7 @@
     },
     "cta": {
       "checkRate": "Cek Ongkir Sekarang",
-      "whatsapp": "Tanya via WhatsApp",
-      "whatsappMessage": "Halo Lion Cargo Logistik, saya mau konsultasi tarif pengiriman kargo udara."
+      "whatsapp": "Tanya via WhatsApp"
     },
     "liveHub": {
       "badge": "LIVE STATUS",
@@ -78,7 +77,11 @@
         ],
         "imageAlt": "Foto Cargo Reguler Lion Cargo Logistik Bandara Soekarno Hatta",
         "ctaText": "Cek Tarif Reguler",
-        "features": ["⚖️ Tarif per Kg Transparan", "📦 Port to Port / Door", "✈️ Jadwal Terbang Rutin"],
+        "features": [
+          "⚖️ Tarif per Kg Transparan",
+          "📦 Port to Port / Door",
+          "✈️ Jadwal Terbang Rutin"
+        ],
         "recommendation": "Rekomendasi: Toko Online, Distributor, Sparepart, Garmen, & Pindahan."
       },
       "express": {
@@ -94,7 +97,11 @@
         "imageAlt": "Foto Cargo Express Prioritas Pesawat Bandara Soetta",
         "ctaText": "Tanyakan Express via WA",
         "waMessage": "Halo Lion Cargo Logistik, saya ingin bertanya pengiriman cepat via Cargo Express.",
-        "features": ["⚡ Flight Slot Pertama", "🍎 Produk Segar & Berharga", "🚀 Fast Track Clearance"],
+        "features": [
+          "⚡ Flight Slot Pertama",
+          "🍎 Produk Segar & Berharga",
+          "🚀 Fast Track Clearance"
+        ],
         "recommendation": "Rekomendasi: Seafood, Makanan Segar, Sampel Pabrik, & Barang Mahal."
       },
       "sameday": {
@@ -110,7 +117,11 @@
         "imageAlt": "Foto Same Day Service Kargo Udara Kilat",
         "ctaText": "Konsultasi Same Day",
         "waMessage": "Halo Lion Cargo Logistik, saya butuh layanan kilat Same Day Service hari ini.",
-        "features": ["⏱️ Tiba Dalam 24 Jam", "📄 Dokumen & Paket Urgent", "🎯 Direct Flight Priority"],
+        "features": [
+          "⏱️ Tiba Dalam 24 Jam",
+          "📄 Dokumen & Paket Urgent",
+          "🎯 Direct Flight Priority"
+        ],
         "recommendation": "Rekomendasi: Dokumen Tender, Medis/Obat Urgent, & Paspor/Surat Vital."
       }
     }
@@ -128,6 +139,11 @@
       "strongB": "terminal kargo Bandara Soekarno-Hatta (CGK)",
       "c": ", pemeriksaan keamanan X-Ray, penerbitan Surat Muatan Udara (SMU), hingga pengelolaan slot penerbangan harian antar pulau untuk menjamin paket Anda mendarat tepat waktu di kota tujuan."
     },
-    "steps": ["Konsultasi & Cek Tarif", "Penyerahan & Penimbangan", "Clearance & Flight Slot", "Tiba & Handover"]
+    "steps": [
+      "Konsultasi & Cek Tarif",
+      "Penyerahan & Penimbangan",
+      "Clearance & Flight Slot",
+      "Tiba & Handover"
+    ]
   }
 }

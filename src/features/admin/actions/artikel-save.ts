@@ -1,6 +1,5 @@
 "use server";
 
-import { updateTag } from "next/cache";
 import { z } from "zod";
 import { estimateReadingMinutes, htmlToPlainText, sanitizeArticleHtml } from "@/features/admin/lib/article-content";
 import { getAdmin } from "@/features/admin/lib/get-admin";
@@ -180,7 +179,6 @@ export async function saveArticle(input: SaveArticleInput): Promise<SaveArticleR
   }
 
   // Daftar & detail artikel di website langsung terbarui.
-  updateTag("articles");
 
   return { ok: true, articleId };
 }

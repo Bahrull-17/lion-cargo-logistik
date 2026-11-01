@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { ArrowRight, MessageCircle, Plane, ChevronRight, Calculator, ShieldCheck, Clock, Navigation } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion, Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -28,7 +28,7 @@ function JudulHero({ reduceMotion, t }: { reduceMotion: boolean | null; t: Retur
   const easeTerbang = [0.65, 0, 0.35, 1] as const;
 
   return (
-    <h1 className="block tracking-tight text-slate-700 space-y-0.5 sm:space-y-1">
+    <div className="tracking-tight text-slate-700 space-y-0.5 sm:space-y-1">
       <span className="block overflow-hidden">
         <motion.span className={`block leading-tight ${ukuranNormal}`} initial={reduceMotion ? false : { y: "108%" }} animate={{ y: 0 }} transition={{ duration: 1.1, delay: 0.1, ease: easeMasuk }}>
           {t("title.line1")}
@@ -68,14 +68,15 @@ function JudulHero({ reduceMotion, t }: { reduceMotion: boolean | null; t: Retur
           </span>
         </motion.span>
       </span>
-      <span className="block pt-1">
-        <motion.span initial={reduceMotion ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.45, ease: easeMasuk }} className="inline-block">
+
+      <div className="pt-1">
+        <motion.div initial={reduceMotion ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.45, ease: easeMasuk }} className="inline-block">
           <span className="inline-block px-3.5 sm:px-5 py-1 sm:py-1.5 bg-red-600 text-white text-xl sm:text-3xl lg:text-4xl rounded-xl sm:rounded-2xl shadow-lg shadow-red-600/25 font-black tracking-tight transform -rotate-1">
             {t("title.highlight")}
           </span>
-        </motion.span>
-      </span>
-    </h1>
+        </motion.div>
+      </div>
+    </div>
   );
 }
 
@@ -182,7 +183,7 @@ export function LayananHero() {
                 </Link>
 
                 <a
-                  href={waLink(t("cta.whatsappMessage"))}
+                  href={waLink("Halo Lion Cargo Logistik, saya mau konsultasi tarif pengiriman kargo udara.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 px-7 py-3.5 text-xs font-bold text-slate-800 transition-all hover:scale-[1.02] active:scale-[0.98] sm:text-sm"

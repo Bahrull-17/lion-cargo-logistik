@@ -6,6 +6,9 @@ import { CekOngkirSkeleton } from "@/features/cek-ongkir/components/cek-ongkir-s
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 import { createPageMetadata } from "@/lib/seo/metadata";
 
+// Data (tarif/artikel) selalu segar: perubahan dari panel admin langsung tampil tanpa deploy ulang.
+export const dynamic = "force-dynamic";
+
 type Props = {
   params: Promise<{ locale: string }>;
 };

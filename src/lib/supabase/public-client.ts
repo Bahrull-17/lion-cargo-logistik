@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 
 /**
  * Klien Supabase untuk data publik (read-only, dilindungi RLS).
- * Tanpa cookie/sesi, sehingga aman dipakai di dalam scope "use cache".
+ * Tanpa cookie/sesi: khusus untuk membaca data publik (artikel terbit, tarif aktif).
  */
 export function createPublicClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;

@@ -1,4 +1,9 @@
 {
+  "waMessages": {
+    "general": "Hello Lion Cargo Logistik, I would like to ask about cargo shipping.",
+    "shipNow": "Hello Lion Cargo Logistik, I would like to ship goods now.",
+    "cargoInquiry": "Hello Lion Cargo Logistik, I would like to ask about cargo shipping."
+  },
   "checkRate": "Check Rate",
   "contactUs": "Contact Us",
   "whatsapp": "Chat WhatsApp",

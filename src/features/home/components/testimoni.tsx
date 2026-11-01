@@ -34,10 +34,11 @@ export function Testimoni() {
   const t = useTranslations("pages.home.testimoni");
   const tCta = useTranslations("common.cta");
   const tA = useTranslations("common.a11y");
+  const tW = useTranslations("common.waMessages");
   const scrollRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const testimonialsData = t.raw("items") as TestimonialItem[];
-  const whatsappUrl = waLink("Halo Lion Cargo Logistik, saya ingin kirim barang sekarang.");
+  const whatsappUrl = waLink(tW("shipNow"));
 
   // AUTO SLIDE
   useEffect(() => {

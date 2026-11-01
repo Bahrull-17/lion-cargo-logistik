@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Air Cargo Shipping FAQ",
-    "description": "Find complete answers about air cargo shipping procedures, document requirements, how to track your shipment, prohibited goods rules, and rates from Soekarno-Hatta Airport (CGK)."
+    "description": "Find complete answers about air cargo shipping procedures, document requirements, prohibited goods rules, and rates from Soekarno-Hatta Airport (CGK)."
   },
   "hero": {
     "breadcrumb": {
@@ -77,12 +77,6 @@
       "category": "tarif",
       "question": "When must cargo shipping fees be paid?",
       "answer": "Payment is made upfront during the weighing process and the issuance of the Air Waybill (SMU) at the cargo terminal, or via official bank transfer for corporate customers with an existing partnership."
-    },
-    {
-      "id": "8",
-      "category": "umum",
-      "question": "How do I track my package?",
-      "answer": "Use the Air Waybill (SMU) number printed on your proof of shipment and enter it into the airline's official tracking system, or ask our WhatsApp customer service directly for your shipment status."
     },
     {
       "id": "9",

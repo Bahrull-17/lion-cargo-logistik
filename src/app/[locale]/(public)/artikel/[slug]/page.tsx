@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArtikelDetailView } from "@/features/artikel/components/artikel-detail";
@@ -10,6 +9,9 @@ import { createArticleSchema } from "@/lib/schema/article";
 import { seoConfig } from "@/config/seo";
 import { getArticleBySlug } from "@/services/artikel.service";
 import { toArticleLocale } from "@/types/artikel";
+
+// Data artikel selalu segar: perubahan dari panel admin langsung tampil tanpa deploy ulang.
+export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -59,11 +61,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-async function ArtikelDetailData({ params }: Props) {
+export default async function ArtikelDetailPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
   const article = await getArticleBySlug(toArticleLocale(locale), slug);
+  // Artikel tidak ada / belum terbit -> status HTTP 404 sungguhan.
   if (!article) notFound();
 
   const url = localizedPath(locale, `/artikel/${article.slug}`);
@@ -85,13 +88,5 @@ async function ArtikelDetailData({ params }: Props) {
       <BreadcrumbJsonLd locale={locale} page="article" leaf={{ name: article.title, path: url }} />
       <ArtikelDetailView article={article} locale={locale} />
     </>
-  );
-}
-
-export default function ArtikelDetailPage({ params }: Props) {
-  return (
-    <Suspense fallback={null}>
-      <ArtikelDetailData params={params} />
-    </Suspense>
   );
 }

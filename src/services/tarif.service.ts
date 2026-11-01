@@ -1,4 +1,3 @@
-import { cacheLife, cacheTag } from "next/cache";
 import { z } from "zod";
 import { createPublicClient } from "@/lib/supabase/public-client";
 import { DESTINATION_REGIONS, type Destination } from "@/types/tarif";
@@ -35,19 +34,11 @@ async function fetchRegulerRows(errorLabel: string): Promise<TarifRow[]> {
 }
 
 export async function getDestinations(): Promise<Destination[]> {
-  "use cache";
-  cacheLife("hours");
-  cacheTag("tarifs");
-
   return (await fetchRegulerRows("Gagal memuat tarif")).map(toDestination);
 }
 
 /** Layanan Reguler, satu entri per nama kota (dedup sebagai pengaman). */
 export async function getAllDestinations(): Promise<Destination[]> {
-  "use cache";
-  cacheLife("hours");
-  cacheTag("tarifs-all");
-
   const uniqueMap = new Map<string, Destination>();
 
   for (const row of await fetchRegulerRows("Gagal memuat semua destinasi")) {

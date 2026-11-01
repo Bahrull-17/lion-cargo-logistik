@@ -93,7 +93,6 @@
     "services": {
       "reguler": {
         "name": "Regular Cargo",
-        "imageAlt": "Photo of Regular Cargo by Lion Cargo Logistik at Soekarno Hatta Airport",
         "badge": "MOST ECONOMICAL",
         "estimate": "Estimated: 2 - 3 Days",
         "tagline": "Affordable & Scheduled Inter-Island Regular Shipping",
@@ -103,13 +102,15 @@
           "Supporting Port to Port and Port to Door services with safe, organized, and easy-to-monitor cargo handling."
         ],
         "cta": "Check Regular Rate",
-        "features": ["⚖️ Transparent Per Kg Rates", "📦 Port to Port / Door", "✈️ Regular Flight Schedule"],
+        "features": [
+          "⚖️ Transparent Per Kg Rates",
+          "📦 Port to Port / Door",
+          "✈️ Regular Flight Schedule"
+        ],
         "purpose": "Recommended for: Online Stores, Distributors, Spare Parts, Garments, & Moving Goods."
       },
       "express": {
         "name": "Express Cargo",
-        "imageAlt": "Photo of Cargo Express priority aircraft at Soetta Airport",
-        "waMessage": "Hello Lion Cargo Logistik, I would like to ask about fast shipping via Cargo Express.",
         "badge": "PRIORITY SLOT",
         "estimate": "Estimated: 1 - 2 Days",
         "tagline": "Priority Loading on the First Flight from CGK",
@@ -119,13 +120,15 @@
           "Cargo clearance is processed quickly at the terminal to ensure your shipment arrives safely with efficient delivery estimates."
         ],
         "cta": "Ask Express via WhatsApp",
-        "features": ["⚡ First Flight Slot", "🍎 Fresh & Valuable Products", "🚀 Fast Track Clearance"],
+        "features": [
+          "⚡ First Flight Slot",
+          "🍎 Fresh & Valuable Products",
+          "🚀 Fast Track Clearance"
+        ],
         "purpose": "Recommended for: Seafood, Fresh Food, Factory Samples, & Valuable Goods."
       },
       "sameday": {
         "name": "Same Day Service",
-        "imageAlt": "Photo of Same Day Service express air cargo",
-        "waMessage": "Hello Lion Cargo Logistik, I need the Same Day Service express service today.",
         "badge": "FLIGHT TODAY",
         "estimate": "Estimated: Arrive Today",
         "tagline": "Ship in the Morning, Arrive at Destination the Same Day",
@@ -135,7 +138,11 @@
           "The best solution for customers who need extreme delivery speed between islands without transit delays."
         ],
         "cta": "Consult Same Day Service",
-        "features": ["⏱️ Arrive Within 24 Hours", "📄 Urgent Documents & Packages", "🎯 Direct Flight Priority"],
+        "features": [
+          "⏱️ Arrive Within 24 Hours",
+          "📄 Urgent Documents & Packages",
+          "🎯 Direct Flight Priority"
+        ],
         "purpose": "Recommended for: Tender Documents, Medical/Urgent Items, & Vital Letters/Passports."
       }
     },

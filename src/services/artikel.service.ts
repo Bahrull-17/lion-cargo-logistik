@@ -1,4 +1,4 @@
-import { cacheLife, cacheTag } from "next/cache";
+import { cache } from "react";
 import { z } from "zod";
 import { createPublicClient } from "@/lib/supabase/public-client";
 import { ARTICLE_CATEGORIES, ARTICLE_LOCALES, type ArticleDetail, type ArticleLocale, type ArticleSummary } from "@/types/artikel";
@@ -57,12 +57,8 @@ function toSummary(item: z.infer<typeof ListRowSchema>): ArticleSummary {
   };
 }
 
-/** Artikel yang sudah terbit di satu bahasa, terbaru dulu. Di-cache; dibersihkan lewat tag "articles". */
-export async function getPublishedArticles(locale: ArticleLocale): Promise<ArticleSummary[]> {
-  "use cache";
-  cacheLife("hours");
-  cacheTag("articles");
-
+/** Artikel yang sudah terbit di satu bahasa, terbaru dulu. */
+async function fetchPublishedArticles(locale: ArticleLocale): Promise<ArticleSummary[]> {
   const { data, error } = await createPublicClient().from("article_translations").select(LIST_COLUMNS).eq("locale", locale).eq("status", "published").order("published_at", { ascending: false });
 
   if (error) throw new Error(`Gagal memuat artikel: ${error.message}`);
@@ -78,10 +74,6 @@ export async function getPublishedArticles(locale: ArticleLocale): Promise<Artic
 }
 
 async function fetchArticleBySlug(locale: ArticleLocale, slug: string): Promise<ArticleDetail | null> {
-  "use cache";
-  cacheLife("hours");
-  cacheTag("articles");
-
   const client = createPublicClient();
 
   const { data, error } = await client.from("article_translations").select(DETAIL_COLUMNS).eq("locale", locale).eq("slug", slug).eq("status", "published").maybeSingle();
@@ -120,10 +112,16 @@ async function fetchArticleBySlug(locale: ArticleLocale, slug: string): Promise<
   };
 }
 
+const getArticleBySlugCached = cache(fetchArticleBySlug);
+
+// Data diambil segar tiap permintaan (perubahan dari panel admin langsung tampil). `cache()` dari React hanya
+// menghindari query ganda di dalam SATU permintaan (mis. generateMetadata + halaman).
+export const getPublishedArticles = cache(fetchPublishedArticles);
+
 /** Satu artikel terbit berdasarkan bahasa + slug. Mengembalikan null bila tidak ada / belum terbit. */
 export async function getArticleBySlug(locale: ArticleLocale, slug: string): Promise<ArticleDetail | null> {
   if (!isValidArticleSlug(slug)) return null;
-  return fetchArticleBySlug(locale, slug);
+  return getArticleBySlugCached(locale, slug);
 }
 
 /** Path (tanpa prefix bahasa) tujuan saat pengunjung mengganti bahasa di halaman artikel. */
@@ -148,12 +146,8 @@ export interface ArticleSitemapEntry {
   updatedAt: string;
 }
 
-/** Semua artikel terbit (semua bahasa), dikelompokkan per artikel, untuk sitemap. Di-cache; dibersihkan lewat tag "articles". */
-export async function getArticleSitemapEntries(): Promise<ArticleSitemapEntry[]> {
-  "use cache";
-  cacheLife("hours");
-  cacheTag("articles");
-
+/** Semua artikel terbit (semua bahasa), dikelompokkan per artikel, untuk sitemap. */
+async function fetchArticleSitemapEntries(): Promise<ArticleSitemapEntry[]> {
   const { data, error } = await createPublicClient().from("article_translations").select("article_id, locale, slug, updated_at").eq("status", "published");
 
   if (error) throw new Error(`Gagal memuat sitemap artikel: ${error.message}`);
@@ -172,3 +166,5 @@ export async function getArticleSitemapEntries(): Promise<ArticleSitemapEntry[]>
 
   return Array.from(grouped.values());
 }
+
+export const getArticleSitemapEntries = cache(fetchArticleSitemapEntries);

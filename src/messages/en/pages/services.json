@@ -25,8 +25,7 @@
     },
     "cta": {
       "checkRate": "Check Shipping Rates Now",
-      "whatsapp": "Ask via WhatsApp",
-      "whatsappMessage": "Hello Lion Cargo Logistik, I would like to consult about air cargo shipping rates."
+      "whatsapp": "Ask via WhatsApp"
     },
     "liveHub": {
       "badge": "LIVE STATUS",
@@ -78,7 +77,11 @@
         ],
         "imageAlt": "Photo of Regular Cargo by Lion Cargo Logistik at Soekarno Hatta Airport",
         "ctaText": "Check Regular Rates",
-        "features": ["⚖️ Transparent Rate per Kg", "📦 Port to Port / Door", "✈️ Regular Flight Schedule"],
+        "features": [
+          "⚖️ Transparent Rate per Kg",
+          "📦 Port to Port / Door",
+          "✈️ Regular Flight Schedule"
+        ],
         "recommendation": "Recommended for: Online Stores, Distributors, Spare Parts, Garments, & Relocation."
       },
       "express": {
@@ -94,7 +97,11 @@
         "imageAlt": "Photo of Cargo Express priority aircraft at Soetta Airport",
         "ctaText": "Ask About Express via WA",
         "waMessage": "Hello Lion Cargo Logistik, I would like to ask about fast shipping via Cargo Express.",
-        "features": ["⚡ First Flight Slot", "🍎 Fresh & Valuable Goods", "🚀 Fast Track Clearance"],
+        "features": [
+          "⚡ First Flight Slot",
+          "🍎 Fresh & Valuable Goods",
+          "🚀 Fast Track Clearance"
+        ],
         "recommendation": "Recommended for: Seafood, Fresh Food, Factory Samples, & Expensive Goods."
       },
       "sameday": {
@@ -110,7 +117,11 @@
         "imageAlt": "Photo of Same Day Service express air cargo",
         "ctaText": "Consult Same Day",
         "waMessage": "Hello Lion Cargo Logistik, I need the Same Day Service express service today.",
-        "features": ["⏱️ Arrives Within 24 Hours", "📄 Urgent Documents & Parcels", "🎯 Direct Flight Priority"],
+        "features": [
+          "⏱️ Arrives Within 24 Hours",
+          "📄 Urgent Documents & Parcels",
+          "🎯 Direct Flight Priority"
+        ],
         "recommendation": "Recommended for: Tender Documents, Urgent Medical/Medicine, & Passports/Vital Letters."
       }
     }
@@ -128,6 +139,11 @@
       "strongB": "Soekarno-Hatta Airport (CGK) cargo terminal",
       "c": ", X-Ray security screening, issuance of the Air Waybill (SMU), to managing daily inter-island flight slots so your package lands on time at the destination city."
     },
-    "steps": ["Consultation & Rate Check", "Handover & Weighing", "Clearance & Flight Slot", "Arrival & Handover"]
+    "steps": [
+      "Consultation & Rate Check",
+      "Handover & Weighing",
+      "Clearance & Flight Slot",
+      "Arrival & Handover"
+    ]
   }
 }

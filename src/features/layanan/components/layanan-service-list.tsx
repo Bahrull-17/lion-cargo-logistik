@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { ArrowRight, MessageCircle, CheckCircle2 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { useTranslations } from "next-intl";

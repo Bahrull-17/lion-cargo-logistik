@@ -1,6 +1,5 @@
 "use server";
 
-import { updateTag } from "next/cache";
 import { z } from "zod";
 import { MAX_PRICE_PER_KG } from "@/features/admin/constants";
 import { getAdmin } from "@/features/admin/lib/get-admin";
@@ -32,12 +31,6 @@ function saveFailed(error?: DbError): string {
   return SAVE_FAILED;
 }
 
-/** Harga di website publik langsung terbarui (cache di tarif.service.ts memakai kedua tag ini). */
-function invalidateTarifs() {
-  updateTag("tarifs");
-  updateTag("tarifs-all");
-}
-
 // ---------------------------------------------------------------- ubah harga
 
 const UpdatePriceSchema = z.object({
@@ -66,8 +59,6 @@ export async function updatePrice(input: { id: string; price: number }): Promise
     return { ok: false, error: saveFailed(error) };
   }
   if (!data || data.length === 0) return { ok: false, error: NOT_FOUND };
-
-  invalidateTarifs();
 
   return { ok: true, price: parsed.data.price, updatedAt };
 }
@@ -170,8 +161,6 @@ export async function createTarif(input: { destination: string; code: string; re
     }
   }
 
-  invalidateTarifs();
-
   return {
     ok: true,
     item: {
@@ -213,8 +202,6 @@ export async function setTarifStatus(input: { id: string; status: "active" | "in
   }
   if (!data || data.length === 0) return { ok: false, error: NOT_FOUND };
 
-  invalidateTarifs();
-
   return { ok: true, status: parsed.data.status, updatedAt };
 }
 
@@ -239,8 +226,6 @@ export async function deleteTarif(input: { id: string }): Promise<DeleteTarifRes
     return { ok: false, error: saveFailed(error) };
   }
   if (!data || data.length === 0) return { ok: false, error: NOT_FOUND };
-
-  invalidateTarifs();
 
   return { ok: true };
 }

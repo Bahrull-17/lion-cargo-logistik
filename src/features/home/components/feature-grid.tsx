@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -57,7 +57,12 @@ export function FeatureGrid() {
 
           {/* KOTAK 2: GAMBAR (MAPS / PESAWAT) */}
           <div className="relative aspect-4/3 sm:aspect-auto sm:min-h-105 bg-slate-900 overflow-hidden group">
-            <Image src="/images/home/lokasi-paket.jpg" alt={tA("quickInfoImageAlt")} fill className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+            <Image
+              src="/images/home/lokasi-paket.jpg"
+              alt={tA("quickInfoImageAlt")}
+              fill
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
           </div>
           {/* KOTAK 3: WARNA CUSTOM UNTUK LOKASI & MAPS */}

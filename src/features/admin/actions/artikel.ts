@@ -1,6 +1,5 @@
 "use server";
 
-import { updateTag } from "next/cache";
 import { z } from "zod";
 import { getAdmin } from "@/features/admin/lib/get-admin";
 import { STORAGE_BUCKET, storagePathFromUrl } from "@/features/admin/lib/storage";
@@ -43,8 +42,6 @@ export async function setTranslationStatus(input: { translationId: string; statu
   if (error) return { ok: false, error: SAVE_FAILED };
   if (!data || data.length === 0) return { ok: false, error: NOT_FOUND };
 
-  // Daftar & detail artikel di website langsung terbarui.
-  updateTag("articles");
   return { ok: true };
 }
 
@@ -66,7 +63,6 @@ export async function setArticleFeatured(input: { articleId: string; featured: b
   if (error) return { ok: false, error: SAVE_FAILED };
   if (!data || data.length === 0) return { ok: false, error: NOT_FOUND };
 
-  updateTag("articles");
   return { ok: true };
 }
 
@@ -98,6 +94,5 @@ export async function deleteArticle(input: { articleId: string }): Promise<Artik
     if (removeError) console.warn("[admin/artikel] Gagal menghapus gambar sampul:", removeError.message);
   }
 
-  updateTag("articles");
   return { ok: true };
 }

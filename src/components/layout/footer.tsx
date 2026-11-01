@@ -163,7 +163,7 @@ export async function Footer() {
             <li className="flex items-center gap-3">
               <Clock className="size-4 shrink-0" />
 
-              <span className="font-semibold">{t("openingHours")}</span>
+              <span className="font-semibold">{contact.openingHours}</span>
             </li>
           </ul>
         </div>

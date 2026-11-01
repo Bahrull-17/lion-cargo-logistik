@@ -93,7 +93,6 @@
     "services": {
       "reguler": {
         "name": "Cargo Reguler",
-        "imageAlt": "Foto Cargo Reguler Lion Cargo Logistik Bandara Soekarno Hatta",
         "badge": "PALING HEMAT",
         "estimate": "Estimasi: 2 - 3 Hari",
         "tagline": "Pengiriman Rutin Antarpulau Hemat & Terjadwal",
@@ -103,13 +102,15 @@
           "Mendukung opsi layanan Port to Port maupun Port to Door dengan jaminan penanganan muatan yang aman, teratur, dan mudah dipantau."
         ],
         "cta": "Cek Tarif Reguler",
-        "features": ["⚖️ Tarif per Kg Transparan", "📦 Port to Port / Door", "✈️ Jadwal Terbang Rutin"],
+        "features": [
+          "⚖️ Tarif per Kg Transparan",
+          "📦 Port to Port / Door",
+          "✈️ Jadwal Terbang Rutin"
+        ],
         "purpose": "Rekomendasi: Toko Online, Distributor, Sparepart, Garmen, & Pindahan."
       },
       "express": {
         "name": "Cargo Express",
-        "imageAlt": "Foto Cargo Express Prioritas Pesawat Bandara Soetta",
-        "waMessage": "Halo Lion Cargo Logistik, saya ingin bertanya pengiriman cepat via Cargo Express.",
         "badge": "PRIORITAS SLOT",
         "estimate": "Estimasi: 1 - 2 Hari",
         "tagline": "Prioritas Muat Penerbangan Pertama dari CGK",
@@ -119,13 +120,15 @@
           "Proses clearance kargo dilakukan secara cepat di terminal pengiriman sehingga paket Anda tiba di kota tujuan dengan estimasi waktu yang efisien dan aman."
         ],
         "cta": "Tanyakan Express via WA",
-        "features": ["⚡ Flight Slot Pertama", "🍎 Produk Segar & Berharga", "🚀 Fast Track Clearance"],
+        "features": [
+          "⚡ Flight Slot Pertama",
+          "🍎 Produk Segar & Berharga",
+          "🚀 Fast Track Clearance"
+        ],
         "purpose": "Rekomendasi: Seafood, Makanan Segar, Sampel Pabrik, & Barang Mahal."
       },
       "sameday": {
         "name": "Same Day Service",
-        "imageAlt": "Foto Same Day Service Kargo Udara Kilat",
-        "waMessage": "Halo Lion Cargo Logistik, saya butuh layanan kilat Same Day Service hari ini.",
         "badge": "TERBANG HARI INI",
         "estimate": "Estimasi: Tiba Hari Ini",
         "tagline": "Kirim Pagi, Tiba di Kota Tujuan Hari Ini Juga",
@@ -135,7 +138,11 @@
           "Solusi terbaik bagi Anda yang membutuhkan kecepatan waktu pengiriman ekstrem antarpulau tanpa penundaan transit."
         ],
         "cta": "Konsultasi Same Day",
-        "features": ["⏱️ Tiba Dalam 24 Jam", "📄 Dokumen & Paket Urgent", "🎯 Direct Flight Priority"],
+        "features": [
+          "⏱️ Tiba Dalam 24 Jam",
+          "📄 Dokumen & Paket Urgent",
+          "🎯 Direct Flight Priority"
+        ],
         "purpose": "Rekomendasi: Dokumen Tender, Medis/Obat Urgent, & Paspor/Surat Vital."
       }
     },

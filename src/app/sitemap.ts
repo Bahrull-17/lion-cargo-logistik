@@ -6,6 +6,9 @@ import { routing } from "@/i18n/routing";
 import { getArticleSitemapEntries, type ArticleSitemapEntry } from "@/services/artikel.service";
 import { localizedPath } from "@/lib/seo/metadata";
 
+// Data (tarif/artikel) selalu segar: perubahan dari panel admin langsung tampil tanpa deploy ulang.
+export const dynamic = "force-dynamic";
+
 const abs = (path: string) => `${siteConfig.url}${path}`;
 
 function staticEntries(): MetadataRoute.Sitemap {

@@ -1,16 +1,11 @@
 import createNextIntlPlugin from "next-intl/plugin";
 import type { NextConfig } from "next";
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-
-initOpenNextCloudflareForDev();
 
 const withNextIntl = createNextIntlPlugin();
 
 const supabaseHostname = process.env.NEXT_PUBLIC_SUPABASE_URL ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname : null;
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-
   images: {
     remotePatterns: [
       {

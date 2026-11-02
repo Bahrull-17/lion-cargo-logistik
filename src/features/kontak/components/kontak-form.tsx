@@ -1,5 +1,6 @@
 "use client";
 
+import { sendGAEvent } from "@next/third-parties/google";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Send, CheckCircle2 } from "lucide-react";
@@ -43,10 +44,20 @@ export function KontakForm() {
     const email = formData.email.trim();
 
     // Format pesan WhatsApp otomatis dari isi formulir
-    const lines = [t("whatsapp.intro", { name: nama, phone: formData.noHp.trim() }), "", ...(email ? [t("whatsapp.email", { email })] : []), t("whatsapp.subject", { subject: t(`subject.options.${formData.subjek}`) }), t("whatsapp.message", { message: formData.pesan.trim() })];
+    const lines = [
+      t("whatsapp.intro", { name: nama, phone: formData.noHp.trim() }),
+      "",
+      ...(email ? [t("whatsapp.email", { email })] : []),
+      t("whatsapp.subject", { subject: t(`subject.options.${formData.subjek}`) }),
+      t("whatsapp.message", { message: formData.pesan.trim() }),
+    ];
 
-    // Buka WhatsApp; bila popup diblokir browser, formulir tetap tampil agar bisa dicoba lagi.
-    // (window.open dengan "noopener" selalu mengembalikan null, jadi opener dilepas manual.)
+    sendGAEvent("event", "whatsapp_click", {
+      page_path: window.location.pathname,
+      link_text: "form_kontak",
+      link_url: "wa.me",
+    });
+
     const opened = window.open(waLink(lines.join("\n")), "_blank");
     if (opened) {
       opened.opener = null;
@@ -80,7 +91,18 @@ export function KontakForm() {
               <label htmlFor="kontak-nama" className="text-xs font-bold text-slate-700">
                 {t("name.label")}
               </label>
-              <input id="kontak-nama" name="name" type="text" required maxLength={100} autoComplete="name" value={formData.nama} onChange={(e) => setFormData({ ...formData, nama: e.target.value })} placeholder={t("name.placeholder")} className={INPUT_CLASS} />
+              <input
+                id="kontak-nama"
+                name="name"
+                type="text"
+                required
+                maxLength={100}
+                autoComplete="name"
+                value={formData.nama}
+                onChange={(e) => setFormData({ ...formData, nama: e.target.value })}
+                placeholder={t("name.placeholder")}
+                className={INPUT_CLASS}
+              />
             </div>
 
             {/* NOMOR HP / WHATSAPP */}
@@ -120,7 +142,17 @@ export function KontakForm() {
               <label htmlFor="kontak-email" className="text-xs font-bold text-slate-700">
                 {t("email.label")}
               </label>
-              <input id="kontak-email" name="email" type="email" maxLength={120} autoComplete="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder={t("email.placeholder")} className={INPUT_CLASS} />
+              <input
+                id="kontak-email"
+                name="email"
+                type="email"
+                maxLength={120}
+                autoComplete="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder={t("email.placeholder")}
+                className={INPUT_CLASS}
+              />
             </div>
 
             {/* SUBJEK PERTANYAAN */}

@@ -20,6 +20,10 @@ import { GOOGLE_FONTS_URL } from "@/config/fonts";
 
 import { routing } from "@/i18n/routing";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
+
+import { WhatsappClickTracker } from "@/components/analytics/whatsapp-click-tracker";
+
 import "../globals.css";
 
 export const viewport: Viewport = {
@@ -134,6 +138,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
+
+        {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
+
+        <WhatsappClickTracker />
       </body>
     </html>
   );

@@ -18,7 +18,7 @@ export const siteConfig = {
 
     phoneDisplay: "+62 821-2121-3025",
 
-    email: "admin@lioncargologitik.com",
+    email: "admin@lioncargologsitik.com",
 
     address: "Gedung RA Gatrans, Bandar Udara Internasional Soekarno-Hatta, Komplek Terminal Kargo, RT 001/RW 010, Tangerang 15126",
 

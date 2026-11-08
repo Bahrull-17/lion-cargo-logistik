@@ -1,6 +1,7 @@
 import { defineCloudflareConfig } from "@opennextjs/cloudflare";
+import staticAssetsIncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/static-assets-incremental-cache";
 
-// Konfigurasi dasar. Tanpa incremental cache, hasil "use cache" tidak disimpan antar request
-// (data tetap selalu segar, tetapi Supabase dipanggil lebih sering). Untuk cache persisten,
-// tambahkan R2/KV sesuai https://opennext.js.org/cloudflare/caching
-export default defineCloudflareConfig();
+export default defineCloudflareConfig({
+  incrementalCache: staticAssetsIncrementalCache,
+  enableCacheInterception: true,
+});

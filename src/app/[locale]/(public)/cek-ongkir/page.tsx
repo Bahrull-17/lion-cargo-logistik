@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { CekOngkirContent } from "@/features/cek-ongkir/components/cek-ongkir-content";
-import { CekOngkirSkeleton } from "@/features/cek-ongkir/components/cek-ongkir-skeleton";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 import { createPageMetadata } from "@/lib/seo/metadata";
-
-// Data (tarif/artikel) selalu segar: perubahan dari panel admin langsung tampil tanpa deploy ulang.
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -25,9 +20,7 @@ export default async function CekOngkirPage({ params }: Props) {
   return (
     <>
       <BreadcrumbJsonLd locale={locale} page="cekOngkir" />
-      <Suspense fallback={<CekOngkirSkeleton />}>
-        <CekOngkirContent />
-      </Suspense>
+      <CekOngkirContent />
     </>
   );
 }

@@ -34,6 +34,10 @@ export const viewport: Viewport = {
   themeColor: "#C8102E",
 };
 
+// Locale selain id/en (mis. /careers, /jobs dari bot) langsung 404 tanpa dirender,
+// sehingga tidak memicu penulisan ke cache read-only.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({
     locale,

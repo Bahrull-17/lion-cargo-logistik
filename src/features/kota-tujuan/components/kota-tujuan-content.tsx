@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { waLink } from "@/lib/wa-link";
+import { getAllDestinations } from "@/services/tarif.service";
 import type { Destination } from "@/types/tarif";
 import { KotaTujuanHero } from "./kota-tujuan-hero";
 import { KotaTujuanGrid, KotaTujuanItem } from "./kota-tujuan-grid";
@@ -29,19 +30,39 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPulau, setSelectedPulau] = useState("semua");
   const [displayLimit, setDisplayLimit] = useState(ITEMS_PER_PAGE);
+  // Awalnya memakai data dari saat build (sama dengan HTML awal), lalu diganti data terbaru dari Supabase.
+  const [tarifData, setTarifData] = useState<Destination[]>(initialTarifData);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    getAllDestinations()
+      .then((fresh) => {
+        // Hasil kosong diabaikan agar gangguan sesaat tidak mengosongkan daftar yang sudah tampil.
+        if (cancelled || fresh.length === 0) return;
+        setTarifData((current) => (JSON.stringify(current) === JSON.stringify(fresh) ? current : fresh));
+      })
+      .catch((error: unknown) => {
+        console.warn("[kota-tujuan] Gagal memperbarui data tarif:", error);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Auto Scroll ke Atas saat filter pulau berubah atau halaman dimuat
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [selectedPulau]);
 
-  // Mengolah data kota tujuan 100% murni dari Database (initialTarifData)
+  // Mengolah data kota tujuan 100% murni dari Database (tarifData)
   const kotaList = useMemo<KotaTujuanItem[]>(() => {
-    if (!initialTarifData || initialTarifData.length === 0) return [];
+    if (!tarifData || tarifData.length === 0) return [];
 
     const uniqueMap = new Map<string, KotaTujuanItem>();
 
-    initialTarifData.forEach((item) => {
+    tarifData.forEach((item) => {
       const namaTujuan = item.name;
       if (!namaTujuan) return;
 
@@ -64,7 +85,7 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
     });
 
     return Array.from(uniqueMap.values());
-  }, [initialTarifData, t]);
+  }, [tarifData, t]);
 
   const filteredKotaTotal = useMemo(() => {
     return kotaList.filter((item) => {

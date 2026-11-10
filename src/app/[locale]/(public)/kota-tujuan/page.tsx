@@ -4,10 +4,6 @@ import { KotaTujuanContent } from "@/features/kota-tujuan/components/kota-tujuan
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { getAllDestinations } from "@/services/tarif.service";
-import type { Destination } from "@/types/tarif";
-
-// Data tarif selalu segar: perubahan dari panel admin langsung tampil tanpa deploy ulang.
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -22,12 +18,11 @@ export default async function KotaTujuanPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  let tarifData: Destination[] = [];
-  try {
-    tarifData = await getAllDestinations();
-  } catch (err) {
-    console.warn("Gagal mengambil data tujuan dari Supabase:", err);
-  }
+  // Halaman ini dibuat SAAT BUILD, jadi daftar kota sudah ada di HTML awal (baik untuk SEO).
+  // Bila Supabase gagal saat build, error sengaja dibiarkan agar build gagal dan situs tetap
+  // memakai versi sebelumnya, bukan menayangkan halaman dengan daftar kosong.
+  // Browser lalu mengambil data terbaru (lihat KotaTujuanContent), jadi perubahan admin tetap tampil.
+  const tarifData = await getAllDestinations();
 
   return (
     <>

@@ -7,6 +7,8 @@ const supabaseHostname = process.env.NEXT_PUBLIC_SUPABASE_URL ? new URL(process.
 
 const nextConfig: NextConfig = {
   images: {
+    // Gambar dilayani apa adanya (tanpa /_next/image), karena binding Cloudflare IMAGES tidak dipakai.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

@@ -10,18 +10,18 @@ https://lioncargologistik.com
 
 Lion Cargo Logistik is a professional cargo service website built to provide information about air freight services, destination coverage, and shipping solutions.
 
-This project focuses on building a modern, fast, and SEO-friendly website with a scalable architecture to support business growth and improve customer accessibility.
+This project focuses on developing a modern, fast, and SEO-friendly website with a scalable architecture to support business growth and improve customer accessibility.
 
-The website is designed with responsive UI, internationalization support, structured SEO implementation, and production-ready deployment.
+The website implements responsive UI, internationalization support, structured SEO optimization, and production-ready deployment workflow.
 
 
 ## ✨ Features
 
 ### 🌐 Company Profile
 
-- Professional business website
+- Professional company profile website
 - Company information pages
-- Service information
+- Cargo service information
 - Destination city pages
 - Contact and customer inquiry integration
 
@@ -60,7 +60,7 @@ The website is designed with responsive UI, internationalization support, struct
 
 ### 📱 Responsive Design
 
-- Mobile friendly interface
+- Mobile-friendly interface
 - Optimized layout for desktop, tablet, and mobile devices
 
 
@@ -79,19 +79,22 @@ The website is designed with responsive UI, internationalization support, struct
 ### Backend & Database
 
 - Supabase
+- PostgreSQL
 
 
 ### Deployment & Infrastructure
 
-- Cloudflare Workers
-- OpenNext
-- GitHub
+- Domain: lioncargologistik.com
+- Hosting Platform: Cloudflare Workers
+- Framework Adapter: OpenNext
+- Version Control: GitHub
 
 
 ## 📂 Project Architecture
 
 The project uses a modular structure designed for scalability and maintainability.
 
+```text
 src
 ├── app          # Application routes and pages
 ├── components   # Reusable UI components
@@ -101,26 +104,29 @@ src
 ├── services     # External services
 ├── types        # Type definitions
 └── utils        # Helper functions
-
+```
 
 
 ## 📸 Screenshots
 
 ### Homepage
 
-
-(Add homepage screenshot here)
-
-
-### Services Page
-
-(Add services screenshot here)
+![Lion Cargo Logistik Homepage](public/screenshots/homepage.png)
 
 
-### Mobile View
+### About Us
 
-(Add mobile screenshot here)
+![Lion Cargo Logistik About](public/screenshots/aboutme.png)
 
+
+### Services
+
+![Lion Cargo Logistik Services](public/screenshots/services.webp)
+
+
+### Destination Cities
+
+![Lion Cargo Logistik Destination](public/screenshots/destination.webp)
 
 
 ## 🚀 Getting Started
@@ -129,3 +135,64 @@ src
 
 ```bash
 git clone https://github.com/Bahrull-17/lion-cargo-logistik.git
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+Open in browser:
+
+```
+http://localhost:3000
+```
+
+
+## 📦 Production Build
+
+Create production build:
+
+```bash
+npm run build
+```
+
+Run production server:
+
+```bash
+npm start
+```
+
+
+## 🎯 Project Goals
+
+This project was built to implement modern software development practices including:
+
+- Full-stack web development workflow
+- SEO implementation strategy
+- Internationalized website architecture
+- Responsive web design
+- Production deployment workflow
+- Scalable frontend architecture
+
+
+## 👨‍💻 Developer
+
+**Bahrul Ulum**
+
+Full Stack Developer
+
+
+🌐 Portfolio  
+https://bahrull-17.github.io/Portfolio/
+
+
+💼 LinkedIn  
+https://www.linkedin.com/in/bahrul-ulum17

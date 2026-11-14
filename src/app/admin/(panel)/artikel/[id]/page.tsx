@@ -25,7 +25,6 @@ const RowSchema = z.object({
 });
 
 export default async function AdminArtikelEditPage({ params }: { params: Promise<{ id: string }> }) {
-  // Layout tidak cukup sebagai pengaman (page bisa dirender terpisah), jadi dicek lagi di sini.
   const admin = await getAdmin();
   if (!admin) redirect("/admin/login");
 

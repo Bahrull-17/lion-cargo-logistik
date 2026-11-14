@@ -15,8 +15,6 @@ export interface KotaTujuanItem {
   estimasi: string;
   isPopular?: boolean;
 }
-
-// Hanya key; label diambil dari JSON (grid.filters.*)
 const daftarPulauFilter = ["semua", "sumatera", "jawa", "kalimantan", "sulawesi", "bali-nusa", "papua-maluku"] as const;
 
 interface KotaTujuanGridProps {
@@ -36,7 +34,6 @@ export function KotaTujuanGrid({ selectedPulau, onSelectPulau, displayedKota, fi
 
   return (
     <section className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-      {/* Filter Tab Pulau */}
       <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-4 mb-6 sm:mb-8 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
         {daftarPulauFilter.map((key) => {
           const isActive = selectedPulau === key;

@@ -32,12 +32,10 @@ export function ArtikelContent({ articles }: ArtikelContentProps) {
     });
   }, [articles, searchQuery, selectedKategori]);
 
-  // Unggulan = yang ditandai admin di bahasa ini; bila tidak ada, artikel terbaru.
   const featuredArtikel = articles.find((item) => item.isFeatured) ?? articles[0];
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen pb-12 sm:pb-16 overflow-hidden relative">
-      {/* 1. HEADER & HERO SECTION */}
       <section className="w-full bg-white border-b border-slate-200/60 pt-6 pb-10 sm:pb-14">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 mb-4 sm:mb-6">
@@ -82,7 +80,6 @@ export function ArtikelContent({ articles }: ArtikelContentProps) {
       </section>
 
       {articles.length === 0 ? (
-        /* BELUM ADA ARTIKEL */
         <section className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
           <div className="text-center py-12 bg-white rounded-3xl border border-slate-200 p-6">
             <BookOpen className="size-12 text-slate-300 mx-auto mb-3" />
@@ -92,7 +89,6 @@ export function ArtikelContent({ articles }: ArtikelContentProps) {
         </section>
       ) : (
         <>
-          {/* 2. FEATURED ARTICLE BANNER */}
           {!searchQuery && selectedKategori === "semua" && featuredArtikel && (
             <section className="py-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
               <div className="mb-3 flex items-center gap-2 text-xs font-extrabold text-slate-900 uppercase font-mono">
@@ -143,7 +139,6 @@ export function ArtikelContent({ articles }: ArtikelContentProps) {
             </section>
           )}
 
-          {/* 3. FILTER KATEGORI & GRID ARTIKEL */}
           <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
             <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-4 mb-6 sm:mb-8 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
               {daftarKategori.map((key) => {
@@ -242,8 +237,6 @@ export function ArtikelContent({ articles }: ArtikelContentProps) {
           </section>
         </>
       )}
-
-      {/* 4. CALL TO ACTION */}
       <section className="mt-8 pb-4 pt-6 bg-white relative overflow-hidden border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center">

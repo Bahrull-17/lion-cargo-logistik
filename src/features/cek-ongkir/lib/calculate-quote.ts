@@ -4,7 +4,6 @@ import { hasTariff } from "@/features/cek-ongkir/lib/destination";
 
 export type WeightErrorCode = "empty" | "invalid" | "belowMin" | "aboveMax";
 
-/** Kode error + data pendukung; teks pesannya diterjemahkan di komponen. */
 export interface WeightError {
   code: WeightErrorCode;
   minWeightKg: number;
@@ -14,22 +13,15 @@ export type WeightParseResult = { ok: true; weightKg: number } | { ok: false; er
 
 export interface Quote {
   destination: Destination;
-  /** Berat yang diketik pengguna. */
   inputWeightKg: number;
-  /** Berat yang ditagihkan: dibulatkan ke atas ke kilogram penuh. */
   chargeableWeightKg: number;
   pricePerKg: number;
   subtotal: number;
   handlingFee: number;
   total: number;
-  /** false bila tarif tujuan belum tersedia (<= 0) sehingga harus tanya admin. */
   isPriced: boolean;
 }
 
-/**
- * Validasi input berat dari form. Mengembalikan kode error (diterjemahkan di UI).
- * Berat di bawah minimum DITOLAK (tidak otomatis dinaikkan): pengguna harus mengetik minimum itu sendiri.
- */
 export function parseWeight(input: string, minWeightKg: number): WeightParseResult {
   const trimmed = input.trim();
   if (trimmed === "") return { ok: false, error: { code: "empty", minWeightKg } };
@@ -47,7 +39,6 @@ export function parseWeight(input: string, minWeightKg: number): WeightParseResu
   return { ok: true, weightKg };
 }
 
-/** Fungsi murni: tanpa state/DOM sehingga mudah diuji. Berat sudah divalidasi lewat parseWeight. */
 export function calculateQuote(destination: Destination, weightKg: number): Quote {
   const chargeableWeightKg = Math.max(Math.ceil(weightKg), CARGO_RULES.minimumWeightKg);
   const pricePerKg = destination.pricePerKg;

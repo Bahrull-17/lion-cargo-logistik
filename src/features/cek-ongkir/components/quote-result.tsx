@@ -110,7 +110,6 @@ function WhatsAppButton({ quote }: { quote: Quote }) {
   );
 }
 
-/** Hasil perhitungan. Wrapper aria-live selalu ada agar pembaca layar mengumumkan hasil yang muncul. */
 export function QuoteResult({ quote }: { quote: Quote | null }) {
   const t = useTranslations("pages.cekOngkir.quote");
   const reduceMotion = useReducedMotion();

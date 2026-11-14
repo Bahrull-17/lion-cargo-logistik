@@ -5,7 +5,6 @@ import { logout } from "@/features/admin/actions/auth";
 import { AdminNav } from "@/features/admin/components/admin-nav";
 import { getAdmin } from "@/features/admin/lib/get-admin";
 
-/** Header + pengecekan admin. Dirender di dalam <Suspense> karena membaca cookie. */
 export async function AdminShell({ children }: { children: ReactNode }) {
   const admin = await getAdmin();
   if (!admin) redirect("/admin/login");

@@ -15,12 +15,10 @@ export function CtaSection({ whatsappUrl }: CtaSectionProps) {
     <div className="-mt-4 sm:-mt-6 pb-2 pt-2 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center">
-          {/* Title */}
           <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight mb-4">
             {t("title.before")} <span className="text-red-600">{t("title.highlight")}</span>
           </motion.h2>
 
-          {/* Button */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +49,6 @@ export function CtaSection({ whatsappUrl }: CtaSectionProps) {
             </a>
           </motion.div>
 
-          {/* Description */}
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

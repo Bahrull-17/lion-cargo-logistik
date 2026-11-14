@@ -25,7 +25,6 @@ interface TentangFeatureListProps {
 export function TentangFeatureList({ shouldReduceMotion }: TentangFeatureListProps) {
   return (
     <>
-      {/* 1. TAMPILAN MOBILE (Vertical Timeline) */}
       <div className="block md:hidden relative pl-6 space-y-4">
         <div className="absolute top-4 bottom-8 left-4.75 w-0.5 bg-linear-to-b from-red-600 via-red-400 to-rose-200" />
         {fiturUnggulan.map((item, idx) => (
@@ -40,7 +39,6 @@ export function TentangFeatureList({ shouldReduceMotion }: TentangFeatureListPro
         ))}
       </div>
 
-      {/* 2. TAMPILAN DESKTOP (Grid 3 Kolom Berjajar) */}
       <div className="hidden md:grid md:grid-cols-3 gap-6 sm:gap-8 pt-2">
         {fiturUnggulan.map((item, idx) => (
           <motion.div

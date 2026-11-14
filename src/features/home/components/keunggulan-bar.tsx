@@ -4,7 +4,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
-// Ikon 1: Kardus Ditumpuk & Diikat Tali (Harga Termurah)
 function IconBoxes({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -21,7 +20,6 @@ function IconBoxes({ className }: { className?: string }) {
   );
 }
 
-// Ikon 2: Crane / Derek Kontainer Kargo (Bergaransi)
 function IconCrane({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -38,7 +36,6 @@ function IconCrane({ className }: { className?: string }) {
   );
 }
 
-// Ikon 3: Tangan Menopang Paket Kargo (Tepat Waktu)
 function IconHandBox({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -74,7 +71,6 @@ export function KeunggulanBar() {
   return (
     <section aria-label={tA("advantagesSection")} className="bg-[#f8f9fa] py-10 sm:py-16 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
-        {/* BAGIAN 1: 3 KEUNGGULAN UTAMA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -99,9 +95,7 @@ export function KeunggulanBar() {
             </div>
           ))}
         </motion.div>
-        {/* BAGIAN 2: FOTO & TEKS BERGERAK DUA ARAH SAAT SCROLL (TANPA KOTAK) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2">
-          {/* Sisi Kiri: Foto Meluncur dari Kiri */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -112,16 +106,9 @@ export function KeunggulanBar() {
             }}
             className="lg:col-span-6 relative aspect-16/10 w-full overflow-hidden rounded-2xl group shadow-sm"
           >
-            <Image
-              src="/images/home/keunggulan-logistik.jpg"
-              alt={tA("advantagesImageAlt")}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
+            <Image src="/images/home/keunggulan-logistik.jpg" alt={tA("advantagesImageAlt")} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
           </motion.div>
 
-          {/* Sisi Kanan: Teks Meluncur dari Kanan */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}

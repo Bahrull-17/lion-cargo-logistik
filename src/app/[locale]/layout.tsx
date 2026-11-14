@@ -34,8 +34,6 @@ export const viewport: Viewport = {
   themeColor: "#C8102E",
 };
 
-// Locale selain id/en (mis. /careers, /jobs dari bot) langsung 404 tanpa dirender,
-// sehingga tidak memicu penulisan ke cache read-only.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -56,8 +54,6 @@ export async function generateMetadata({ params }: Pick<LocaleLayoutProps, "para
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
 
-  // Catatan: canonical & hreflang sengaja TIDAK diset di layout, karena akan diwarisi halaman yang lupa mengaturnya.
-  // Tiap halaman mengaturnya sendiri lewat createPageMetadata().
   return {
     metadataBase: new URL(siteConfig.url),
 

@@ -2,10 +2,6 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Plane } from "lucide-react";
 
-/**
- * Banner atas halaman. Sengaja tanpa animasi masuk: gambar ini adalah LCP,
- * jadi harus langsung terlihat tanpa menunggu hidrasi JavaScript.
- */
 export function CekOngkirHero() {
   const t = useTranslations("pages.cekOngkir.hero");
 

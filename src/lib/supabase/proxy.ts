@@ -1,10 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-/**
- * Menyegarkan token sesi Supabase untuk rute /admin.
- * Tanpa ini, sesi admin akan "habis" tiap ±1 jam karena Server Component tidak bisa menulis cookie.
- */
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
 
@@ -21,7 +17,6 @@ export async function updateSession(request: NextRequest) {
     },
   });
 
-  // Jangan menaruh kode apa pun di antara createServerClient dan getUser().
   await supabase.auth.getUser();
 
   response.headers.set("Cache-Control", "private, no-store");

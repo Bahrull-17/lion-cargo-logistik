@@ -15,14 +15,12 @@ export function KotaTujuanHero({ searchQuery, setSearchQuery }: KotaTujuanHeroPr
 
   return (
     <>
-      {/* 1. BANNER HERO */}
       <section className="w-full bg-white border-b border-slate-200/80 overflow-hidden">
         <div className="w-full relative">
           <Image src="/images/kota-tujuan/peta-rute.jpg" alt={t("bannerAlt")} width={1920} height={600} priority className="w-full h-auto object-cover block" />
         </div>
       </section>
 
-      {/* 2. BREADCRUMB & HEADER */}
       <section className="w-full bg-white border-b border-slate-200/60 pt-4 pb-8 sm:pb-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 mb-4 sm:mb-6">

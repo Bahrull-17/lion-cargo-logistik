@@ -20,7 +20,6 @@ export function FaqContent() {
   const [selectedKategori, setSelectedKategori] = useState("semua");
   const [openIndex, setOpenIndex] = useState<string | null>("1"); // Buka pertanyaan pertama secara default
 
-  // Data FAQ dibaca dari JSON sesuai bahasa aktif
   const dataFaq = useMemo<FaqItem[]>(() => {
     const raw = t.raw("items") as FaqRaw[];
     return raw.map((item) => ({
@@ -31,7 +30,6 @@ export function FaqContent() {
     }));
   }, [t]);
 
-  // Auto Scroll ke Atas saat kategori filter diganti
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [selectedKategori]);
@@ -57,10 +55,8 @@ export function FaqContent() {
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen pb-12 sm:pb-16 overflow-hidden relative">
-      {/* 1. HERO & SEARCH SECTION */}
       <FaqHero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-      {/* 2. FILTER & ACCORDION LIST */}
       <FaqAccordionList
         selectedKategori={selectedKategori}
         onSelectKategori={setSelectedKategori}
@@ -71,7 +67,6 @@ export function FaqContent() {
         onResetFilter={handleResetFilter}
       />
 
-      {/* 3. CALL TO ACTION SECTION (SHARED COMPONENT) */}
       <div className="mt-8 border-t border-slate-100">
         <CtaSection whatsappUrl={whatsappUrl} />
       </div>

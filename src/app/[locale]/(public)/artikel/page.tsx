@@ -6,7 +6,6 @@ import { createPageMetadata } from "@/lib/seo/metadata";
 import { getPublishedArticles } from "@/services/artikel.service";
 import { toArticleLocale, type ArticleSummary } from "@/types/artikel";
 
-// Data (tarif/artikel) selalu segar: perubahan dari panel admin langsung tampil tanpa deploy ulang.
 export const dynamic = "force-dynamic";
 
 type Props = {

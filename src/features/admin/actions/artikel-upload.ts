@@ -7,7 +7,6 @@ export type UploadCoverResult = { ok: true; url: string } | { ok: false; error: 
 
 const MAX_BYTES = 5 * 1024 * 1024;
 
-/** Jenis gambar ditentukan dari isi file (bukan dari nama/tipe kiriman browser) agar file palsu ditolak. */
 function detectImageType(bytes: Uint8Array): { mime: string; ext: string } | null {
   if (bytes.length < 12) return null;
 
@@ -21,7 +20,6 @@ function detectImageType(bytes: Uint8Array): { mime: string; ext: string } | nul
   return null;
 }
 
-/** Mengunggah gambar sampul ke Supabase Storage dan mengembalikan URL publiknya. */
 export async function uploadCoverImage(formData: FormData): Promise<UploadCoverResult> {
   const admin = await getAdmin();
   if (!admin) return { ok: false, error: "Sesi berakhir atau tidak punya akses. Silakan masuk kembali." };

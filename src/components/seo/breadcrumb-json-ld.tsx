@@ -9,13 +9,10 @@ type NavKey = Exclude<(typeof navigation)[number]["key"], "home">;
 
 type Props = {
   locale: string;
-  /** Halaman induk: key menu navigasi, atau "cekOngkir" (tidak ada di menu). */
   page: NavKey | "cekOngkir";
-  /** Halaman anak (mis. detail artikel). */
   leaf?: BreadcrumbItem;
 };
 
-/** BreadcrumbList: Beranda > Halaman [> Halaman anak]. Nama diambil dari terjemahan. */
 export async function BreadcrumbJsonLd({ locale, page, leaf }: Props) {
   const nav = await getTranslations({ locale, namespace: "navigation" });
 

@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { login, type LoginState } from "@/features/admin/actions/auth";
 
-/** Gaya input untuk latar gelap (kartu kaca di halaman login). */
 const INPUT_CLASS =
   "h-12 border-white/15 bg-white/10 text-base text-white placeholder:text-white/40 focus-visible:border-white/40 focus-visible:ring-[#e11d2a]/40 dark:bg-white/10 md:text-base [&:-webkit-autofill]:[-webkit-text-fill-color:#fff] [&:-webkit-autofill]:shadow-[inset_0_0_0_1000px_rgba(40,12,18,0.95)]";
 

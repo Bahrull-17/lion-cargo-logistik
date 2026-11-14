@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-/** Pemberitahuan singkat setelah artikel tersimpan. Parameter ?saved=1 dibersihkan dari alamat agar tidak muncul lagi saat dimuat ulang. */
 export function SavedNotice({ message }: { message: string }) {
   const [visible, setVisible] = useState(true);
 

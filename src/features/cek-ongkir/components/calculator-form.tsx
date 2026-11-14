@@ -9,7 +9,6 @@ import type { Destination } from "@/types/tarif";
 interface CalculatorFormProps {
   destinations: Destination[];
   selectedSlug: string;
-  /** Berat minimum kota yang sedang dipilih. */
   minWeightKg: number;
   weightInput: string;
   weightError: string | null;
@@ -53,7 +52,6 @@ export function CalculatorForm({ destinations, selectedSlug, minWeightKg, weight
         </span>
       </div>
 
-      {/* noValidate: validasi ditangani sendiri agar pesan error konsisten & mengikuti bahasa aktif */}
       <form onSubmit={handleSubmit} noValidate className="space-y-5">
         <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
           <div>

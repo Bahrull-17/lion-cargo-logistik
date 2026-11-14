@@ -12,7 +12,6 @@ export function FeatureGrid() {
 
   return (
     <section aria-label={tA("quickInfoSection")} className="bg-white py-4 sm:py-6">
-      {/* Container Full Width Rata Kanan Kiri */}
       <div className="w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -24,7 +23,6 @@ export function FeatureGrid() {
           }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 shadow-sm"
         >
-          {/* KOTAK 1: MERAH BRAND (PENGIRIMAN CEPAT) */}
           <div className="bg-brand text-white p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6 min-h-80 sm:min-h-105">
             <div className="space-y-4">
               <span className="inline-block px-3 py-1 bg-white/15 text-[11px] font-bold tracking-wider uppercase border border-white/20">{t("priority.badge")}</span>
@@ -38,7 +36,6 @@ export function FeatureGrid() {
               <p className="text-xs sm:text-sm text-white/90 leading-relaxed font-medium max-w-xs">{t("priority.description")}</p>
             </div>
 
-            {/* Tombol dengan Animasi Masuk saat Scroll */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -55,12 +52,10 @@ export function FeatureGrid() {
             </motion.div>
           </div>
 
-          {/* KOTAK 2: GAMBAR (MAPS / PESAWAT) */}
           <div className="relative aspect-4/3 sm:aspect-auto sm:min-h-105 bg-slate-900 overflow-hidden group">
             <Image src="/images/home/lokasi-paket.jpg" alt={tA("quickInfoImageAlt")} fill className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
           </div>
-          {/* KOTAK 3: WARNA CUSTOM UNTUK LOKASI & MAPS */}
           <div className="bg-[#424E4D] text-white p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6 min-h-80 sm:min-h-105">
             <div className="space-y-4">
               <div className="w-12 h-12 bg-white/15 flex items-center justify-center border border-white/20 shadow-2xs">
@@ -76,7 +71,6 @@ export function FeatureGrid() {
               <p className="text-xs sm:text-sm text-white/90 leading-relaxed font-medium max-w-xs">{t("location.description")}</p>
             </div>
 
-            {/* Tombol dengan Animasi Masuk saat Scroll */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -98,7 +92,6 @@ export function FeatureGrid() {
             </motion.div>
           </div>
 
-          {/* KOTAK 4: GAMBAR (PESAWAT / MAPS) */}
           <div className="relative aspect-4/3 sm:aspect-auto sm:min-h-105 bg-slate-900 overflow-hidden group">
             <Image src="/images/home/armada-pesawat.jpg" alt={tA("fleetImageAlt")} fill className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />

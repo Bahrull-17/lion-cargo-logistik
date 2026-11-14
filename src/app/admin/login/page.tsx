@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-/** [kiri %, atas %, ukuran px, durasi detik, jeda detik] - hanya di langit atas, menghindari badan pesawat. */
 const STARS: [number, number, number, number, number][] = [
   [5, 18, 3, 4.2, 0],
   [10, 60, 2, 3.4, 1.1],
@@ -47,12 +46,9 @@ export default function AdminLoginPage() {
     <main className="relative isolate min-h-dvh overflow-x-clip bg-[#0d0508] text-white">
       <style>{CSS}</style>
 
-      {/* Adegan: setinggi layar dan menempel di atas (HP), memenuhi seluruh halaman (laptop) */}
       <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-dvh overflow-hidden lg:inset-0 lg:h-auto">
-        {/* Ilustrasi yang pelan-pelan mendekat ke pesawat */}
-        <div className="adm-scene absolute inset-0 bg-[url('/images/admin/login-cargo.svg')] bg-cover bg-[position:62%_center] lg:bg-[position:center_35%]" />
+        <div className="adm-scene absolute inset-0 bg-[url('/images/admin/login-cargo.svg')] bg-cover bg-position-[62%_center] lg:bg-position-[center_35%]" />
 
-        {/* Gelapkan sisi tempat form berada (bawah di HP, kiri di laptop) agar mudah dibaca */}
         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(13,5,8,0.6),transparent_55%)] lg:bg-[linear-gradient(to_right,rgba(13,5,8,0.55),transparent_55%)]" />
 
         {/* Bintang berkedip */}
@@ -63,10 +59,8 @@ export default function AdminLoginPage() {
         </div>
       </div>
 
-      {/* HP: ruang atas (42% layar) disisakan untuk pesawat, kartu mengalir di bawahnya dan halaman bisa di-scroll.
-          Laptop: kartu melayang di kiri. */}
-      <div className="relative mx-auto flex min-h-dvh w-full max-w-[1400px] flex-col items-center justify-end pt-[42dvh] lg:flex-row lg:items-center lg:justify-start lg:px-16 lg:pt-0">
-        <section className="adm-rise w-full rounded-t-[28px] border border-b-0 border-white/15 bg-[#12060a]/85 px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] [color-scheme:dark] supports-[backdrop-filter]:bg-black/45 supports-[backdrop-filter]:backdrop-blur-2xl sm:max-w-md sm:px-8 sm:pt-8 lg:w-[26rem] lg:rounded-3xl lg:border-b lg:px-9 lg:pb-10 lg:pt-10 lg:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_40px_90px_-30px_rgba(225,29,42,0.5)]">
+      <div className="relative mx-auto flex min-h-dvh w-full max-w-350 flex-col items-center justify-end pt-[42dvh] lg:flex-row lg:items-center lg:justify-start lg:px-16 lg:pt-0">
+        <section className="adm-rise w-full rounded-t-[28px] border border-b-0 border-white/15 bg-[#12060a]/85 px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] scheme-dark supports-backdrop-filter:backdrop-blur-2xl sm:max-w-md sm:px-8 sm:pt-8 lg:w-104 lg:rounded-3xl lg:border-b lg:px-9 lg:pb-10 lg:pt-10 lg:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_40px_90px_-30px_rgba(225,29,42,0.5)]">
           <h1 className="text-balance text-[1.4rem] font-semibold leading-tight tracking-tight sm:text-[1.7rem]">Masuk ke panel admin</h1>
           <p className="mb-5 mt-1.5 text-sm leading-relaxed text-white/65 sm:mb-7 sm:mt-2">Gunakan akun admin untuk mengubah tarif ongkir.</p>
 
@@ -79,7 +73,6 @@ export default function AdminLoginPage() {
         </section>
       </div>
 
-      {/* Kalimat inti, hanya di layar lebar */}
       <div className="adm-rise absolute bottom-12 right-16 hidden max-w-xs text-right lg:block" style={{ animationDelay: "0.25s" }}>
         <p className="text-balance text-2xl font-semibold leading-snug">Atur tarif ongkir dari satu tempat.</p>
         <p className="mt-2 text-sm leading-relaxed text-white/65">Harga Cargo Reguler yang Anda simpan langsung tampil di website.</p>

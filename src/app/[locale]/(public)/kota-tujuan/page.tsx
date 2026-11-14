@@ -18,10 +18,6 @@ export default async function KotaTujuanPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  // Halaman ini dibuat SAAT BUILD, jadi daftar kota sudah ada di HTML awal (baik untuk SEO).
-  // Bila Supabase gagal saat build, error sengaja dibiarkan agar build gagal dan situs tetap
-  // memakai versi sebelumnya, bukan menayangkan halaman dengan daftar kosong.
-  // Browser lalu mengambil data terbaru (lihat KotaTujuanContent), jadi perubahan admin tetap tampil.
   const tarifData = await getAllDestinations();
 
   return (

@@ -8,21 +8,18 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/reveal";
 import { waLink } from "@/lib/wa-link";
 
-/* Teks putih */
 const headlineStyle: CSSProperties = {
   WebkitTextStroke: "2px rgba(11, 31, 58, 0.45)",
   paintOrder: "stroke fill",
   textShadow: "0 2px 12px rgba(11, 31, 58, 0.55), 0 6px 32px rgba(11, 31, 58, 0.45)",
 };
 
-/* Teks merah */
 const accentStyle: CSSProperties = {
   WebkitTextStroke: "0.6px rgba(11, 31, 58, 0.18)",
   paintOrder: "stroke fill",
   textShadow: "0 2px 10px rgba(11, 31, 58, 0.4), 0 6px 26px rgba(11, 31, 58, 0.3)",
 };
 
-/* Body */
 const bodyStyle: CSSProperties = {
   WebkitTextStroke: "1.5px rgba(11, 31, 58, 0.4)",
   paintOrder: "stroke fill",

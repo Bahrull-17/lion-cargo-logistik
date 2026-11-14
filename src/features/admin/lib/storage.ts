@@ -12,7 +12,6 @@ function supabaseHost(): string | null {
   }
 }
 
-/** URL publik gambar di bucket kita -> path file di Storage; null bila gambar dari sumber lain. */
 export function storagePathFromUrl(url: string | null): string | null {
   if (!url) return null;
   const host = supabaseHost();
@@ -28,7 +27,6 @@ export function storagePathFromUrl(url: string | null): string | null {
   }
 }
 
-/** Gambar sampul hanya boleh dari bucket kita atau Unsplash (sesuai remotePatterns di next.config). */
 export function isAllowedCoverUrl(url: string): boolean {
   if (storagePathFromUrl(url)) return true;
   try {

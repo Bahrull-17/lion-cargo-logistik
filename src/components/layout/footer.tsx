@@ -48,7 +48,6 @@ export async function Footer() {
         lg:px-8
         "
       >
-        {/* BRAND */}
         <div className="space-y-4">
           <div className="inline-block origin-left scale-[1.8]">
             <Logo light />
@@ -57,7 +56,6 @@ export async function Footer() {
           <p className="max-w-sm pt-1 text-xs leading-relaxed text-white/90">{t("description")}</p>
         </div>
 
-        {/* NAVIGATION */}
         <nav aria-label="Footer Navigation">
           <h2
             className="
@@ -111,7 +109,6 @@ export async function Footer() {
           </ul>
         </nav>
 
-        {/* CONTACT */}
         <div>
           <h2
             className="
@@ -169,7 +166,6 @@ export async function Footer() {
         </div>
       </div>
 
-      {/* AIRPORT ILLUSTRATION */}
       <div
         aria-hidden="true"
         className="
@@ -184,7 +180,6 @@ export async function Footer() {
         <AirportIllustration />
       </div>
 
-      {/* COPYRIGHT */}
       <div
         className="
         relative

@@ -10,7 +10,6 @@ interface ContentEditorProps {
   onChange: (html: string) => void;
 }
 
-// Fitur editor dibatasi pada yang didukung sanitizer di server (lihat article-content.ts).
 const extensions = [
   StarterKit.configure({
     heading: { levels: [2, 3] },
@@ -45,7 +44,6 @@ function ToolbarButton({ label, title, active = false, disabled = false, onClick
       aria-label={title}
       aria-pressed={active}
       disabled={disabled}
-      // Mencegah editor kehilangan fokus/seleksi saat tombol diklik.
       onMouseDown={(event) => event.preventDefault()}
       onClick={onClick}
       className={`h-8 min-w-8 rounded-md px-2 text-xs font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${active ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}
@@ -59,9 +57,7 @@ export function ContentEditor({ id, label, value, onChange }: ContentEditorProps
   const editor = useEditor({
     extensions,
     content: value,
-    // Wajib false di Next.js (SSR) agar tidak terjadi hydration mismatch.
     immediatelyRender: false,
-    // Agar tombol toolbar ikut menyala/mati mengikuti posisi kursor.
     shouldRerenderOnTransaction: true,
     editorProps: {
       attributes: {
@@ -92,7 +88,6 @@ export function ContentEditor({ id, label, value, onChange }: ContentEditorProps
     editor.chain().focus().extendMarkRange("link").setLink({ href }).run();
   };
 
-  // Untuk melanjutkan nomor setelah daftar terputus paragraf/poin (mis. mulai dari 2, 3, dst).
   const setListStart = () => {
     if (!editor) return;
 
@@ -111,7 +106,6 @@ export function ContentEditor({ id, label, value, onChange }: ContentEditorProps
 
   return (
     <div className="overflow-hidden rounded-md border border-input bg-background focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50">
-      {/* Toolbar berada di luar area gulir, jadi selalu terlihat di atas kotak editor. */}
       <div className="flex flex-wrap items-center gap-1 border-b bg-muted p-1.5" role="toolbar" aria-label="Format teks">
         <ToolbarButton label="B" title="Tebal" active={editor?.isActive("bold")} disabled={!editor} onClick={() => editor?.chain().focus().toggleBold().run()} />
         <ToolbarButton label="I" title="Miring" active={editor?.isActive("italic")} disabled={!editor} onClick={() => editor?.chain().focus().toggleItalic().run()} />
@@ -128,8 +122,6 @@ export function ContentEditor({ id, label, value, onChange }: ContentEditorProps
         <ToolbarButton label="Urungkan" title="Urungkan" disabled={!editor?.can().undo()} onClick={() => editor?.chain().focus().undo().run()} />
         <ToolbarButton label="Ulangi" title="Ulangi" disabled={!editor?.can().redo()} onClick={() => editor?.chain().focus().redo().run()} />
       </div>
-
-      {/* Area tulis dengan tinggi terbatas: artikel panjang menggulir di sini, bukan memanjangkan halaman. */}
       <div className="max-h-[65dvh] overflow-y-auto">{editor ? <EditorContent editor={editor} /> : <div className="min-h-72 px-4 py-3 text-sm text-muted-foreground">Memuat editor…</div>}</div>
     </div>
   );

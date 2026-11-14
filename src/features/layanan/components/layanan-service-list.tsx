@@ -14,7 +14,6 @@ interface LayananConfig {
   isExternal: boolean;
 }
 
-// Data non-teks (tidak perlu diterjemahkan)
 const layananConfig: LayananConfig[] = [
   {
     id: "reguler",
@@ -100,7 +99,6 @@ export function LayananServiceList({ reduceMotion }: LayananServiceListProps) {
               <div key={item.id} className="bg-white rounded-2xl border border-slate-200/80 p-5 sm:p-8 shadow-xs hover:shadow-xl hover:border-red-200 transition-all duration-300 relative group overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-red-600 to-rose-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* Header Khusus Mobile */}
                 <div className="lg:hidden space-y-2 mb-4">
                   <div className="flex flex-wrap items-center gap-1.5">
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-red-600 bg-red-50 px-2.5 py-0.5 rounded-md border border-red-100">{t(`${base}.badge`)}</span>

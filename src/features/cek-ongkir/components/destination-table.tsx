@@ -54,7 +54,6 @@ export function DestinationTable({ destinations, onSelect }: DestinationTablePro
           </div>
         </div>
 
-        {/* Desktop */}
         <div className="hidden overflow-x-auto md:block">
           <table className="w-full text-left text-xs">
             <thead>

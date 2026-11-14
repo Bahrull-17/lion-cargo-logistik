@@ -10,7 +10,6 @@ import { seoConfig } from "@/config/seo";
 import { getArticleBySlug } from "@/services/artikel.service";
 import { toArticleLocale } from "@/types/artikel";
 
-// Data artikel selalu segar: perubahan dari panel admin langsung tampil tanpa deploy ulang.
 export const dynamic = "force-dynamic";
 
 type Props = {
@@ -26,7 +25,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: t("notFoundTitle"), robots: { index: false, follow: false } };
   }
 
-  // hreflang hanya untuk bahasa yang benar-benar sudah terbit
   const languages: Record<string, string> = {};
   for (const [altLocale, altSlug] of Object.entries(article.alternates)) {
     if (altSlug) languages[altLocale] = `/${altLocale}/artikel/${altSlug}`;

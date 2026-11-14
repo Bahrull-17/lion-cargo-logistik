@@ -6,7 +6,6 @@ import { updateSession } from "./lib/supabase/proxy";
 const handleI18n = createIntlMiddleware(routing);
 
 export default async function middleware(request: NextRequest) {
-  // Area admin: tanpa locale, hanya penyegaran sesi login.
   if (request.nextUrl.pathname.startsWith("/admin")) {
     return updateSession(request);
   }

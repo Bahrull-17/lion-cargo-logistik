@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createServerSupabase } from "@/lib/supabase/server";
 
-/** email dikembalikan agar kolom email tidak kosong lagi setelah gagal masuk. */
 export type LoginState = { error?: string; email?: string };
 
 const LoginSchema = z.object({

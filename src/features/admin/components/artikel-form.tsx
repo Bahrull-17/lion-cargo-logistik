@@ -23,7 +23,6 @@ const FIELD_CLASS =
   "w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs outline-none transition-colors placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50";
 
 interface ArtikelFormProps {
-  /** null = artikel baru. */
   articleId: string | null;
   initial: ArticleFormValues;
 }
@@ -39,7 +38,6 @@ export function ArtikelForm({ articleId, initial }: ArtikelFormProps) {
   const [values, setValues] = useState(initial.translations);
   const [activeTab, setActiveTab] = useState<ArticleLocale>("id");
 
-  // Slug otomatis mengikuti judul, kecuali sudah pernah diubah manual / artikel sudah ada (URL tidak boleh berubah diam-diam).
   const [slugTouched, setSlugTouched] = useState<Record<ArticleLocale, boolean>>({
     id: initial.translations.id.slug !== "",
     en: initial.translations.en.slug !== "",
@@ -108,7 +106,6 @@ export function ArtikelForm({ articleId, initial }: ArtikelFormProps) {
         return;
       }
 
-      // Berhasil (artikel baru maupun hasil edit): kembali ke daftar artikel.
       router.push("/admin/artikel?saved=1");
     });
   };
@@ -124,7 +121,6 @@ export function ArtikelForm({ articleId, initial }: ArtikelFormProps) {
         </Link>
       </div>
 
-      {/* Data umum */}
       <section className="rounded-xl border bg-background p-4 shadow-sm">
         <h2 className="mb-3 text-sm font-semibold">Pengaturan umum</h2>
         <div className="grid gap-4 sm:grid-cols-2">
@@ -167,7 +163,6 @@ export function ArtikelForm({ articleId, initial }: ArtikelFormProps) {
         ) : null}
       </section>
 
-      {/* Tab bahasa */}
       <div className="mt-4" role="tablist" aria-label="Bahasa artikel">
         <div className="flex gap-1 border-b">
           {ARTICLE_LOCALES.map((locale) => {
@@ -198,7 +193,6 @@ export function ArtikelForm({ articleId, initial }: ArtikelFormProps) {
         </div>
       ))}
 
-      {/* Bilah aksi */}
       <div className="sticky bottom-0 z-10 -mx-4 mt-6 border-t bg-background/95 px-4 py-3 backdrop-blur">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="min-w-0 flex-1">

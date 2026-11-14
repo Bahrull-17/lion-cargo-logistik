@@ -4,9 +4,7 @@ import { ORGANIZATION_ID } from "./organization";
 type ArticleSchemaProps = {
   title: string;
   description: string;
-  /** URL halaman artikel (absolut). */
   url: string;
-  /** URL gambar (absolut). */
   image: string;
   datePublished: string;
   dateModified?: string;

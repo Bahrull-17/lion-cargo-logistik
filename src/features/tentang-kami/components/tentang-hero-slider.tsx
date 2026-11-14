@@ -16,7 +16,6 @@ export function TentangHeroSlider() {
   const shouldReduceMotion = useReducedMotion();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Otomatis scroll ke paling atas saat halaman dimuat
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -24,7 +23,6 @@ export function TentangHeroSlider() {
     });
   }, []);
 
-  // Timer slider otomatis berganti setiap 4 detik
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % heroImages.length);
@@ -33,7 +31,6 @@ export function TentangHeroSlider() {
     return () => clearInterval(timer);
   }, [heroImages.length]);
 
-  // Mengatasi kemungkinan data kosong
   const currentImage = heroImages[currentIndex] ?? heroImages[0];
 
   if (!currentImage) return null;
@@ -58,10 +55,8 @@ export function TentangHeroSlider() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Overlay gradien */}
           <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
 
-          {/* Indikator Titik Slider */}
           <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 z-10 flex items-center gap-1.5 bg-slate-900/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
             {heroImages.map((_, idx) => (
               <button key={idx} onClick={() => setCurrentIndex(idx)} className={`h-2 rounded-full transition-all cursor-pointer ${currentIndex === idx ? "bg-red-500 w-6 sm:w-8" : "bg-white/70 w-2"}`} aria-label={`Slide ${idx + 1}`} />

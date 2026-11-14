@@ -20,7 +20,6 @@ export interface SaveTranslationInput {
 }
 
 export interface SaveArticleInput {
-  /** null = artikel baru. */
   articleId: string | null;
   category: ArticleCategory;
   coverImageUrl: string | null;
@@ -67,7 +66,6 @@ interface TranslationRow {
   status: "draft" | "published";
 }
 
-/** Menyimpan artikel baru / perubahan artikel, lengkap dengan terjemahannya. */
 export async function saveArticle(input: SaveArticleInput): Promise<SaveArticleResult> {
   const parsed = SaveSchema.safeParse(input);
   if (!parsed.success) return { ok: false, error: "Data tidak valid. Periksa panjang isian (judul maks. 200, ringkasan maks. 400 karakter)." };
@@ -82,7 +80,6 @@ export async function saveArticle(input: SaveArticleInput): Promise<SaveArticleR
     return { ok: false, error: "Gambar sampul tidak valid. Unggah ulang gambarnya." };
   }
 
-  // 1) Validasi & bersihkan tiap bahasa. Bahasa yang judulnya kosong dianggap tidak ditulis dan dilewati.
   const rows: TranslationRow[] = [];
   const seen = new Set<ArticleLocale>();
 
@@ -124,7 +121,6 @@ export async function saveArticle(input: SaveArticleInput): Promise<SaveArticleR
 
   if (rows.length === 0) return { ok: false, error: "Isi judul minimal di salah satu bahasa." };
 
-  // 2) Cek slug bentrok sebelum menulis apa pun (database tetap menjaga lewat constraint unik).
   for (const row of rows) {
     let query = admin.supabase.from("article_translations").select("article_id").eq("locale", row.locale).eq("slug", row.slug).limit(1);
     if (data.articleId) query = query.neq("article_id", data.articleId);
@@ -136,7 +132,6 @@ export async function saveArticle(input: SaveArticleInput): Promise<SaveArticleR
     }
   }
 
-  // 3) Simpan data artikel (umum untuk semua bahasa).
   let articleId = data.articleId;
   let previousCover: string | null = null;
   let isNew = false;
@@ -158,18 +153,15 @@ export async function saveArticle(input: SaveArticleInput): Promise<SaveArticleR
     isNew = true;
   }
 
-  // 4) Simpan terjemahan (baru atau pembaruan, berdasarkan pasangan article_id + locale).
   const payload = rows.map((row) => ({ ...row, article_id: articleId }));
   const { error: upsertError } = await admin.supabase.from("article_translations").upsert(payload, { onConflict: "article_id,locale" });
 
   if (upsertError) {
-    // Artikel baru yang gagal menyimpan terjemahannya dibatalkan agar tidak tersisa artikel kosong.
     if (isNew) await admin.supabase.from("articles").delete().eq("id", articleId);
     const isSlugConflict = upsertError.code === "23505";
     return { ok: false, error: isSlugConflict ? "Slug sudah dipakai artikel lain. Ubah slugnya." : SAVE_FAILED };
   }
 
-  // 5) Hapus file gambar lama bila sampul diganti (kegagalan di sini tidak membatalkan penyimpanan).
   if (previousCover && previousCover !== cover) {
     const oldPath = storagePathFromUrl(previousCover);
     if (oldPath) {
@@ -177,8 +169,6 @@ export async function saveArticle(input: SaveArticleInput): Promise<SaveArticleR
       if (removeError) console.warn("[admin/artikel] Gagal menghapus gambar lama:", removeError.message);
     }
   }
-
-  // Daftar & detail artikel di website langsung terbarui.
 
   return { ok: true, articleId };
 }

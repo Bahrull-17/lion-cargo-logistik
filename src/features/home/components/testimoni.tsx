@@ -40,7 +40,6 @@ export function Testimoni() {
   const testimonialsData = t.raw("items") as TestimonialItem[];
   const whatsappUrl = waLink(tW("shipNow"));
 
-  // AUTO SLIDE
   useEffect(() => {
     if (reduceMotion) return;
 
@@ -74,7 +73,6 @@ export function Testimoni() {
     <>
       <section aria-label={tA("reviewsSection")} className="bg-white py-12 sm:py-16 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
-          {/* HEADER TESTIMONI */}
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +105,6 @@ export function Testimoni() {
             </div>
           </motion.div>
 
-          {/* CAROUSEL */}
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -138,14 +135,12 @@ export function Testimoni() {
                     </div>
                   </div>
 
-                  {/* RATING */}
                   <div className="flex items-center gap-1 text-amber-400">
                     {Array.from({ length: item.rating }).map((_, i) => (
                       <Star key={i} className="size-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
 
-                  {/* REVIEW */}
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium line-clamp-4">&ldquo;{item.review}&rdquo;</p>
                 </div>
               </div>
@@ -154,7 +149,6 @@ export function Testimoni() {
         </div>
       </section>
 
-      {/* CTA SECTION */}
       <section className="-mt-4 sm:-mt-6 pb-6 pt-2 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center">

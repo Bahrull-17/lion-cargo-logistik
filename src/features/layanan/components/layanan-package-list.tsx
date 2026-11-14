@@ -4,7 +4,6 @@ import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 
-// Teks alt tiap langkah diambil dari terjemahan (pages.services.process.steps, urutan sama).
 const alurPengiriman = ["/images/layanan/tarif.webp", "/images/layanan/penyerahan.webp", "/images/layanan/otorisasi.jpg", "/images/layanan/tiba.jpg"];
 
 const slideUpSmooth: Variants = {
@@ -44,7 +43,6 @@ export function LayananPackageList({ reduceMotion = false }: LayananPackageListP
           </p>
         </motion.div>
 
-        {/* 1. TAMPILAN MOBILE (Vertical Connected Timeline) */}
         <div className="block lg:hidden relative pl-6 sm:pl-8 space-y-4">
           <div className="absolute top-4 bottom-8 left-4.75 sm:-left-6.75 w-0.5 bg-linear-to-b from-red-600 via-red-400 to-rose-200" />
 
@@ -63,7 +61,6 @@ export function LayananPackageList({ reduceMotion = false }: LayananPackageListP
           ))}
         </div>
 
-        {/* 2. TAMPILAN DESKTOP (4 Kolom Berjejer Rapi) */}
         <div className="hidden lg:grid lg:grid-cols-4 gap-6">
           {alurPengiriman.map((image, idx) => (
             <motion.div

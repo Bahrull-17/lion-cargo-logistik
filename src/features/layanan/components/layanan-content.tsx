@@ -37,7 +37,6 @@ const slideFromLeft: Variants = {
 };
 
 export function LayananContent() {
-  // Sesuaikan namespace dengan cara kamu menggabungkan file pages/services.json
   const t = useTranslations("pages.services");
   const reduceMotion = useReducedMotion() ?? false;
   const whatsappUrl = waLink(t("whatsappMessage"));
@@ -45,16 +44,12 @@ export function LayananContent() {
 
   return (
     <div className="bg-white text-slate-800 selection:bg-red-600 selection:text-white overflow-x-hidden">
-      {/* 1. HERO SECTION */}
       <LayananHero />
 
-      {/* 2. ZIG-ZAG SERVICE LIST SECTION */}
       <LayananServiceList reduceMotion={reduceMotion} />
 
-      {/* 3. ALUR PENGIRIMAN (4 FOTO PAKET DIPROSES) */}
       <LayananPackageList reduceMotion={reduceMotion} />
 
-      {/* 4. SPECIAL CARGO (Digabung Langsung di Sini) */}
       <section className="py-10 sm:py-16 bg-slate-50 border-t border-slate-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -90,7 +85,6 @@ export function LayananContent() {
         </div>
       </section>
 
-      {/* 5. CTA SECTION DENGAN JARAK KHUSUS */}
       <div className="pb-8 sm:pb-12">
         <CtaSection whatsappUrl={whatsappUrl} />
       </div>

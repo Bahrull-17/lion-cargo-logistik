@@ -9,8 +9,6 @@ interface LogoProps {
 export function Logo({ light = false }: LogoProps) {
   const t = useTranslations("common.a11y");
 
-  // light = true  -> varian untuk footer (latar merah)
-  // light = false -> varian standar untuk navbar dan menu mobile (latar terang)
   const logoSrc = light ? "/images/brand/logo-footer.png" : "/images/brand/logo.png";
 
   return (

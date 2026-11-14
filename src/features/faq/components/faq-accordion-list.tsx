@@ -13,7 +13,6 @@ export interface FaqItem {
   kategori: FaqKategori;
 }
 
-// Hanya key; label diambil dari JSON (list.filters.*)
 const daftarKategori = ["semua", "umum", "dokumen", "barang", "tarif"] as const;
 
 interface FaqAccordionListProps {

@@ -22,7 +22,6 @@ export function KontakMap() {
           </a>
         </div>
 
-        {/* KOTAK PETA BESAR (FULL CONTAINER) */}
         <div className="w-full h-100 sm:h-125 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 relative shadow-inner">
           <iframe title={t("iframeTitle")} src={siteConfig.contact.mapsEmbed} width="100%" height="100%" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full h-full" />
         </div>

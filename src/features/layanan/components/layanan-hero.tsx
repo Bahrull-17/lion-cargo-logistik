@@ -8,7 +8,6 @@ import { motion, AnimatePresence, useReducedMotion, Variants } from "framer-moti
 import { useTranslations } from "next-intl";
 import { waLink } from "@/lib/wa-link";
 
-/* Kota tujuan yang bergulir di kalimat penawaran hero. */
 const KOTA_TUJUAN = ["Denpasar", "Makassar", "Medan", "Balikpapan", "Surabaya", "Manado", "Jayapura"];
 const KOTA_TERPANJANG = "Balikpapan";
 
@@ -21,7 +20,6 @@ const bannerSlideFromRight: Variants = {
   },
 };
 
-/* ================= JUDUL HERO ================= */
 function JudulHero({ reduceMotion, t }: { reduceMotion: boolean | null; t: ReturnType<typeof useTranslations> }) {
   const ukuranNormal = "text-2xl sm:text-4xl lg:text-5xl font-black";
   const easeMasuk = [0.16, 1, 0.3, 1] as const;
@@ -80,9 +78,6 @@ function JudulHero({ reduceMotion, t }: { reduceMotion: boolean | null; t: Retur
   );
 }
 
-// Helper sinkron untuk komponen komponen kecil di dalam
-
-/* ================= NAMA KOTA YANG BERGULIR ================= */
 function KotaBergulir({ reduceMotion }: { reduceMotion: boolean | null }) {
   const [indeks, setIndeks] = useState(0);
 
@@ -119,19 +114,16 @@ export function LayananHero() {
 
   return (
     <>
-      {/* ================= BANNER HERO ================= */}
       <section className="w-full bg-white border-b border-slate-100 overflow-hidden">
         <motion.div initial={reduceMotion ? false : "hidden"} animate="visible" variants={bannerSlideFromRight} className="w-full relative">
           <Image src="/images/layanan/layanan.jpg" alt={t("bannerAlt")} width={1920} height={800} priority className="w-full h-auto object-cover block" />
         </motion.div>
       </section>
 
-      {/* ================= HERO SECTION ================= */}
       <section className="relative overflow-hidden border-b border-slate-100 bg-white pt-2 pb-12 sm:pt-4 sm:pb-20">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] bg-size-[28px_28px] opacity-40 mask-[linear-gradient(to_bottom,black,transparent_85%)]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
-          {/* Breadcrumb */}
           <nav className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-slate-500 sm:mb-4 sm:text-sm">
             <Link href="/" className="transition-colors hover:text-red-600">
               {t("breadcrumb.home")}
@@ -142,14 +134,12 @@ export function LayananHero() {
 
           <JudulHero reduceMotion={reduceMotion} t={t} />
 
-          {/* Grid Layout Hero */}
           <motion.div
             className="relative z-10 mt-4 sm:mt-6 grid gap-6 lg:grid-cols-12 lg:items-start lg:gap-10"
             initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Sisi Kiri: Deskripsi & CTA */}
             <div className="space-y-5 lg:col-span-7">
               <div className="space-y-3">
                 <p className="text-lg font-bold leading-snug tracking-tight text-slate-700 sm:text-xl">
@@ -165,7 +155,6 @@ export function LayananHero() {
                 </p>
               </div>
 
-              {/* Tombol CTA dengan Animasi Muncul dari Bawah ke Atas Saat D-scroll (whileInView) */}
               <motion.div
                 className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1"
                 initial={reduceMotion ? false : { opacity: 0, y: 50 }}
@@ -194,7 +183,6 @@ export function LayananHero() {
               </motion.div>
             </div>
 
-            {/* Sisi Kanan: Live Flight Hub Sangat Mentok ke Atas */}
             <motion.div
               className="lg:col-span-5 lg:-mt-32 xl:-mt-44 self-start w-full"
               initial={reduceMotion ? false : { opacity: 0, x: -60 }}

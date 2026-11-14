@@ -11,12 +11,10 @@ import type { Destination } from "@/types/tarif";
 
 const BLOCK = "animate-pulse rounded-2xl bg-slate-200/70 sm:rounded-3xl";
 
-// Disimpan di memori browser agar pindah halaman lalu kembali tidak memanggil Supabase lagi.
 let cachedDestinations: Destination[] | null = null;
 
 type LoadState = { status: "loading" } | { status: "ready"; destinations: Destination[] } | { status: "unavailable" };
 
-/** Placeholder untuk bagian yang bergantung pada data tarif (kalkulator dan tabel). */
 function TariffSkeleton() {
   const t = useTranslations("pages.cekOngkir.skeleton");
 
@@ -47,11 +45,6 @@ function TariffUnavailable() {
   );
 }
 
-/**
- * Mengambil data tarif di browser (klien Supabase publik, read-only, dilindungi RLS).
- * Dengan begitu halaman cek-ongkir bisa statis dan Worker Cloudflare tidak ikut bekerja.
- * Kegagalan ambil data diperlakukan sebagai "belum tersedia" agar halaman tidak error total.
- */
 export function CekOngkirTariffLoader() {
   const [state, setState] = useState<LoadState>(() => (cachedDestinations ? { status: "ready", destinations: cachedDestinations } : { status: "loading" }));
 

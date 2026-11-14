@@ -14,18 +14,14 @@ interface CekOngkirCalculatorProps {
   destinations: Destination[];
 }
 
-/** Pemilik state kalkulator: kota terpilih, berat (string), dan hasil hitungan. */
 export function CekOngkirCalculator({ destinations }: CekOngkirCalculatorProps) {
   const t = useTranslations("pages.cekOngkir");
   const reduceMotion = useReducedMotion();
   const calculatorRef = useRef<HTMLElement>(null);
 
   const [selectedSlug, setSelectedSlug] = useState(destinations[0]?.slug ?? "");
-  // String agar kolom bisa dikosongkan & diketik ulang (terutama di HP).
   const [weightInput, setWeightInput] = useState(String(CARGO_RULES.minimumWeightKg));
-  // Disimpan sebagai kode error, diterjemahkan saat render sehingga ikut berganti bahasa.
   const [weightError, setWeightError] = useState<WeightError | null>(null);
-  // Hasil disimpan sebagai snapshot saat submit, sehingga tidak bisa "basi" atau berubah diam-diam.
   const [quote, setQuote] = useState<Quote | null>(null);
 
   const selectedDestination = destinations.find((item) => item.slug === selectedSlug) ?? destinations[0];

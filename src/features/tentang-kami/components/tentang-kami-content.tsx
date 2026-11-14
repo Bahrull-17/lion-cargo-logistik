@@ -12,7 +12,6 @@ import Image from "next/image";
 import { Plane, FileCheck, ChevronRight } from "lucide-react";
 import { waLink } from "@/lib/wa-link";
 
-// Penanda tag di about.json -> elemen dengan class yang sama seperti desain awal
 const richTags = {
   strong: (chunks: ReactNode) => <strong className="text-slate-900">{chunks}</strong>,
   strongSoft: (chunks: ReactNode) => <strong className="text-slate-800">{chunks}</strong>,
@@ -29,7 +28,6 @@ export function TentangKamiContent() {
     <div className="bg-[#f8fafc] text-slate-800 min-h-screen pb-12 sm:pb-16 overflow-hidden relative">
       <TentangHeroSlider />
 
-      {/* 2. SEKSI PENGENALAN BRAND & KINETIC NODE MAP */}
       <div className="relative pt-2 sm:pt-4 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-linear-to-b from-red-50/40 via-slate-50/10 to-transparent pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-size-[3rem_3rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30 pointer-events-none" />
@@ -50,7 +48,6 @@ export function TentangKamiContent() {
           </motion.nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* KIRI: HEADING & PARAGRAF PENJELASAN */}
             <div className="lg:col-span-7 space-y-4 sm:space-y-5">
               <motion.div
                 className="space-y-2 sm:space-y-3"
@@ -95,7 +92,6 @@ export function TentangKamiContent() {
               </motion.div>
             </div>
 
-            {/* KANAN: FLIGHT MAP */}
             <motion.div className="lg:col-span-5" initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: "easeOut" }}>
               <FlightMap />
             </motion.div>
@@ -103,7 +99,6 @@ export function TentangKamiContent() {
         </div>
       </div>
 
-      {/* 4. SEKSI IKATAN TULUS LAYAKNYA SAHABAT */}
       <div className="pt-4 sm:pt-6 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200/60 relative z-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -126,7 +121,6 @@ export function TentangKamiContent() {
         </div>
       </div>
 
-      {/* 5. SEKSI SHOWCASE AMANAH */}
       <div className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200/60 bg-white relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -167,7 +161,6 @@ export function TentangKamiContent() {
         </div>
       </div>
 
-      {/* 6. SEKSI PENUTUP & CTA */}
       <div className="pt-8 sm:pt-12 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto space-y-8 sm:space-y-10">
           <div className="text-center space-y-4">

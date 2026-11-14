@@ -45,12 +45,10 @@ export function MobileMenu() {
           [&>button]:right-4
         "
       >
-        {/* HEADER */}
         <div className="flex items-center justify-between p-4 border-b border-slate-100 pr-12">
           <Logo />
         </div>
 
-        {/* MENU */}
         <div className="p-4 space-y-1">
           {navigation.map((item) => {
             const Icon = item.icon;
@@ -89,7 +87,6 @@ export function MobileMenu() {
           })}
         </div>
 
-        {/* WHATSAPP */}
         <div
           className="
             p-4

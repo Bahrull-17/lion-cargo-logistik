@@ -20,13 +20,11 @@ export function AirlinePartners() {
   const t = useTranslations("pages.home.airlinePartners");
   const tA = useTranslations("common.a11y");
 
-  // Duplikasi array agar pergerakan infinite marquee mulus tanpa patah
   const duplicatedLogos = [...airlineLogos, ...airlineLogos, ...airlineLogos];
 
   return (
     <section aria-label={tA("partnersSection")} className="bg-white py-12 sm:py-16 border-b border-slate-100 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* HEADER & SEO KEYWORDS */}
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 15 }}
           whileInView={{
@@ -54,9 +52,7 @@ export function AirlinePartners() {
           </p>
         </motion.div>
 
-        {/* INFINITE MARQUEE CONTAINER */}
         <div className="relative w-full overflow-hidden mask-gradient py-4">
-          {/* Efek gradasi pudar di sisi kiri dan kanan */}
           <div className="absolute left-0 inset-y-0 w-16 sm:w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
 
           <div className="absolute right-0 inset-y-0 w-16 sm:w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />

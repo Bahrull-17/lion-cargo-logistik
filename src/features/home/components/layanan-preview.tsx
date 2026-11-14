@@ -14,13 +14,6 @@ interface ItemLayanan {
   isExternal?: boolean;
 }
 
-/**
- * Data layanan
- *
- * Text dipindahkan ke:
- * src/messages/id/layanan-preview.json
- * src/messages/en/layanan-preview.json
- */
 const daftarLayanan: ItemLayanan[] = [
   {
     id: "reguler",
@@ -39,9 +32,6 @@ const daftarLayanan: ItemLayanan[] = [
   },
 ];
 
-/**
- * Varian Animasi Elegan untuk Scroll
- */
 const slideUpSmooth: Variants = {
   hidden: {
     opacity: 0,
@@ -94,7 +84,6 @@ export function Layanan() {
   return (
     <section aria-labelledby="layanan-heading" className="py-10 sm:py-16 bg-slate-50/60 relative z-20 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header Section Layanan */}
         <motion.div
           className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
           initial="hidden"
@@ -116,7 +105,6 @@ export function Layanan() {
           </p>
         </motion.div>
 
-        {/* Daftar 3 Layanan Mode Zig-Zag */}
         <div className="space-y-8 sm:space-y-12">
           {daftarLayanan.map((item, index) => {
             const isEven = index % 2 === 1;
@@ -129,7 +117,6 @@ export function Layanan() {
               <div key={item.id} className="bg-white rounded-2xl border border-slate-200/80 p-5 sm:p-8 shadow-xs hover:shadow-xl hover:border-red-200 transition-all duration-300 relative group overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-red-600 to-rose-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* Header Khusus Mobile */}
                 <div className="lg:hidden space-y-2 mb-4">
                   <div className="flex flex-wrap items-center gap-1.5">
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-red-600 bg-red-50 px-2.5 py-0.5 rounded-md border border-red-100">{t(`services.${item.id}.badge`)}</span>
@@ -143,7 +130,6 @@ export function Layanan() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-                  {/* IMAGE */}
                   <motion.div
                     className={`lg:col-span-5 space-y-3 ${isEven ? "lg:order-2" : "lg:order-1"}`}
                     initial={reduceMotion ? false : "hidden"}
@@ -168,7 +154,6 @@ export function Layanan() {
                     </div>
                   </motion.div>
 
-                  {/* CONTENT */}
                   <motion.div
                     className={`lg:col-span-7 space-y-3.5 ${isEven ? "lg:order-1" : "lg:order-2"}`}
                     initial={reduceMotion ? false : "hidden"}
@@ -179,7 +164,6 @@ export function Layanan() {
                     }}
                     variants={isEven ? slideFromLeft : slideFromRight}
                   >
-                    {/* Desktop Header */}
                     <div className="hidden lg:block space-y-1.5">
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-extrabold uppercase tracking-wider text-red-600 bg-red-50 px-2.5 py-0.5 rounded-md border border-red-100">{t(`services.${item.id}.badge`)}</span>
@@ -192,19 +176,15 @@ export function Layanan() {
                       <p className="text-sm font-bold text-red-600">{t(`services.${item.id}.tagline`)}</p>
                     </div>
 
-                    {/* Description */}
                     <div className="space-y-2 text-xs sm:text-sm leading-relaxed text-slate-600">
                       {description.map((paragraph, idx) => (
                         <p key={idx}>{paragraph}</p>
                       ))}
                     </div>
-
-                    {/* Purpose */}
                     <div>
                       <p className="text-xs font-semibold text-red-800 bg-red-50/80 border border-red-100 px-3 py-2 rounded-lg inline-block">📌 {t(`services.${item.id}.purpose`)}</p>
                     </div>
 
-                    {/* CTA */}
                     <div className="pt-1">
                       {item.isExternal ? (
                         <a
@@ -233,7 +213,6 @@ export function Layanan() {
           })}
         </div>
 
-        {/* Tombol Link Meluncur Dari Kiri Ke Kanan */}
         <motion.div
           initial={reduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
           whileInView={{

@@ -13,7 +13,7 @@ export interface AdminTarif {
   id: string;
   name: string;
   code: string | null;
-  /** Hanya terisi untuk kota yang ditambah lewat panel; kota lama null (wilayah dideteksi otomatis). */
+
   region: DestinationRegion | null;
   price: number;
   status: string;

@@ -11,7 +11,6 @@ type SubjectKey = (typeof SUBJECT_KEYS)[number];
 
 const INPUT_CLASS = "w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-900 focus:border-red-600 focus:bg-white focus:outline-hidden transition-all";
 
-/** 8–15 digit setelah spasi, tanda hubung, dan tanda kurung dibuang; "+" hanya boleh di awal. */
 function isValidPhone(value: string): boolean {
   const compact = value.replace(/[\s\-()]/g, "");
   return /^\+?\d{8,15}$/.test(compact);
@@ -43,7 +42,6 @@ export function KontakForm() {
     const nama = formData.nama.trim();
     const email = formData.email.trim();
 
-    // Format pesan WhatsApp otomatis dari isi formulir
     const lines = [
       t("whatsapp.intro", { name: nama, phone: formData.noHp.trim() }),
       "",
@@ -86,7 +84,6 @@ export function KontakForm() {
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* NAMA LENGKAP */}
             <div className="space-y-1.5">
               <label htmlFor="kontak-nama" className="text-xs font-bold text-slate-700">
                 {t("name.label")}
@@ -105,7 +102,6 @@ export function KontakForm() {
               />
             </div>
 
-            {/* NOMOR HP / WHATSAPP */}
             <div className="space-y-1.5">
               <label htmlFor="kontak-hp" className="text-xs font-bold text-slate-700">
                 {t("phone.label")}
@@ -137,7 +133,6 @@ export function KontakForm() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* EMAIL */}
             <div className="space-y-1.5">
               <label htmlFor="kontak-email" className="text-xs font-bold text-slate-700">
                 {t("email.label")}
@@ -155,7 +150,6 @@ export function KontakForm() {
               />
             </div>
 
-            {/* SUBJEK PERTANYAAN */}
             <div className="space-y-1.5">
               <label htmlFor="kontak-subjek" className="text-xs font-bold text-slate-700">
                 {t("subject.label")}
@@ -170,7 +164,6 @@ export function KontakForm() {
             </div>
           </div>
 
-          {/* ISI PESAN */}
           <div className="space-y-1.5">
             <label htmlFor="kontak-pesan" className="text-xs font-bold text-slate-700">
               {t("message.label")}
@@ -188,7 +181,6 @@ export function KontakForm() {
             />
           </div>
 
-          {/* SUBMIT BUTTON */}
           <button
             type="submit"
             className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-red-600 hover:bg-red-700 text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md shadow-red-600/20 hover:shadow-red-600/40 active:scale-98 transition-all cursor-pointer"

@@ -1,9 +1,5 @@
 import sanitizeHtml from "sanitize-html";
 
-/**
- * Daftar putih isi artikel. Harus selaras dengan fitur editor (Tiptap):
- * judul 2-3, paragraf, tebal, miring, daftar (termasuk nomor awal), kutipan, dan tautan.
- */
 const SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
   allowedTags: ["h2", "h3", "p", "br", "strong", "em", "ul", "ol", "li", "blockquote", "a"],
   allowedAttributes: { a: ["href", "target", "rel"], ol: ["start"] },
@@ -11,7 +7,6 @@ const SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
   allowProtocolRelative: false,
   transformTags: {
     a: (tagName, attribs) => ({ tagName: "a", attribs: { ...attribs, rel: "noopener noreferrer" } }),
-    // "start" menjaga urutan nomor saat daftar bernomor terputus paragraf/poin; hanya angka 1-999 yang diterima.
     ol: (tagName, attribs) => {
       const attributes: Record<string, string> = {};
       const start = attribs.start;
@@ -21,12 +16,10 @@ const SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
   },
 };
 
-/** Membersihkan HTML dari editor sebelum disimpan (membuang script, event handler, tautan javascript:, dll). */
 export function sanitizeArticleHtml(html: string): string {
   return sanitizeHtml(html, SANITIZE_OPTIONS).trim();
 }
 
-/** Teks polos dari HTML, untuk cek "isi kosong" dan hitung waktu baca. */
 export function htmlToPlainText(html: string): string {
   const spaced = html.replace(/<\/(p|h2|h3|li|blockquote|ul|ol)>|<br\s*\/?>/gi, " ");
   return sanitizeHtml(spaced, { allowedTags: [], allowedAttributes: {} }).replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();

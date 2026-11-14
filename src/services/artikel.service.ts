@@ -37,7 +37,6 @@ const DETAIL_COLUMNS = `${LIST_COLUMNS}, content_html, meta_title, meta_descript
 
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-/** Slug dari URL tidak dipercaya: format dicek dulu agar tidak membuat entri cache/query sembarangan. */
 export function isValidArticleSlug(slug: string): boolean {
   return slug.length <= 120 && SLUG_PATTERN.test(slug);
 }
@@ -57,7 +56,6 @@ function toSummary(item: z.infer<typeof ListRowSchema>): ArticleSummary {
   };
 }
 
-/** Artikel yang sudah terbit di satu bahasa, terbaru dulu. */
 async function fetchPublishedArticles(locale: ArticleLocale): Promise<ArticleSummary[]> {
   const { data, error } = await createPublicClient().from("article_translations").select(LIST_COLUMNS).eq("locale", locale).eq("status", "published").order("published_at", { ascending: false });
 
@@ -89,7 +87,6 @@ async function fetchArticleBySlug(locale: ArticleLocale, slug: string): Promise<
 
   const item = row.data;
 
-  // Slug pasangan di semua bahasa yang sudah terbit (termasuk bahasa ini).
   const alternates: ArticleDetail["alternates"] = {};
   const { data: altData, error: altError } = await client.from("article_translations").select("locale, slug").eq("article_id", item.article_id).eq("status", "published");
 
@@ -114,17 +111,13 @@ async function fetchArticleBySlug(locale: ArticleLocale, slug: string): Promise<
 
 const getArticleBySlugCached = cache(fetchArticleBySlug);
 
-// Data diambil segar tiap permintaan (perubahan dari panel admin langsung tampil). `cache()` dari React hanya
-// menghindari query ganda di dalam SATU permintaan (mis. generateMetadata + halaman).
 export const getPublishedArticles = cache(fetchPublishedArticles);
 
-/** Satu artikel terbit berdasarkan bahasa + slug. Mengembalikan null bila tidak ada / belum terbit. */
 export async function getArticleBySlug(locale: ArticleLocale, slug: string): Promise<ArticleDetail | null> {
   if (!isValidArticleSlug(slug)) return null;
   return getArticleBySlugCached(locale, slug);
 }
 
-/** Path (tanpa prefix bahasa) tujuan saat pengunjung mengganti bahasa di halaman artikel. */
 export async function getAlternateArticlePath(fromLocale: ArticleLocale, slug: string, toLocale: ArticleLocale): Promise<string> {
   const article = await getArticleBySlug(fromLocale, slug);
   const targetSlug = article?.alternates[toLocale];
@@ -140,13 +133,10 @@ const SitemapRowSchema = z.object({
 
 export interface ArticleSitemapEntry {
   articleId: string;
-  /** Slug per bahasa yang sudah terbit. */
   slugs: Partial<Record<ArticleLocale, string>>;
-  /** ISO timestamp pembaruan terakhir dari semua terjemahan. */
   updatedAt: string;
 }
 
-/** Semua artikel terbit (semua bahasa), dikelompokkan per artikel, untuk sitemap. */
 async function fetchArticleSitemapEntries(): Promise<ArticleSitemapEntry[]> {
   const { data, error } = await createPublicClient().from("article_translations").select("article_id, locale, slug, updated_at").eq("status", "published");
 

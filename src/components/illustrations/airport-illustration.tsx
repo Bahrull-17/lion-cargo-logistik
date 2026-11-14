@@ -41,27 +41,22 @@ export function AirportIllustration() {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        {/* CLOUD */}
         <Cloud x={650} y={24} s={1.1} />
 
         <Cloud x={880} y={50} s={0.9} />
 
-        {/* CLOUD TAMBAHAN HANYA DESKTOP */}
         <g className="hidden lg:block">
           <Cloud x={30} y={50} />
 
           <Cloud x={1320} y={64} />
         </g>
 
-        {/* PESAWAT UTAMA */}
         <JetFlying transform="translate(430 40) rotate(-10) scale(0.95)" />
 
-        {/* PESAWAT TAMBAHAN DESKTOP */}
         <g className="hidden lg:block">
           <JetFlying transform="translate(1190 28) rotate(-10) scale(0.7)" />
         </g>
 
-        {/* TERMINAL BANDARA */}
         <g>
           <path d="M 320 190 L 320 150 Q 560 90 800 150 L 800 190" fill={BG} />
 
@@ -78,14 +73,12 @@ export function AirportIllustration() {
           <path d="M 540 190 L 540 174 L 580 174 L 580 190 M 560 174 L 560 190" fill={BG} />
         </g>
 
-        {/* JALUR PESAWAT */}
         <g>
           <path d="M 800 152 L 960 150 L 960 166 L 800 168 Z" fill={BG} />
 
           <path d="M 870 167 L 870 190" />
         </g>
 
-        {/* PESAWAT DARAT */}
         <g>
           <path d="M 1020 162 L 1075 186 L 1100 186 L 1090 162 Z" fill={BG} />
 
@@ -96,7 +89,6 @@ export function AirportIllustration() {
           <path d="M 1000 138 Q 945 140 932 156 Q 945 172 1000 172 L 1140 172 Q 1170 160 1185 138 Z" fill={BG} />
         </g>
 
-        {/* GEDUNG TAMBAHAN DESKTOP */}
         <g className="hidden lg:block">
           <path d="M 1250 190 L 1250 150 Q 1250 118 1325 118 Q 1400 118 1400 150 L 1400 190" fill={BG} />
 
@@ -112,8 +104,6 @@ export function AirportIllustration() {
             "
           />
         </g>
-
-        {/* LANDASAN */}
 
         <path d="M -50 190 L 1500 190" />
 

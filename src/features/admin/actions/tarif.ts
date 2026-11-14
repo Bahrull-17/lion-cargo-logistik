@@ -9,7 +9,7 @@ import { DESTINATION_REGIONS, type DestinationRegion } from "@/types/tarif";
 const SERVICE_REGULER = "Reguler";
 const ORIGIN = "Jakarta";
 const ORIGIN_CODE = "CGK";
-// Dipakai hanya bila belum ada satu pun tarif untuk disalin nilai estimate-nya.
+
 const DEFAULT_ESTIMATE = "Hubungi kami";
 
 const NO_ACCESS = "Sesi berakhir atau tidak punya akses. Silakan masuk kembali.";
@@ -18,20 +18,16 @@ const NOT_FOUND = "Tarif tidak ditemukan atau tidak punya izin.";
 
 type DbError = { code?: string; message?: string; details?: string | null; hint?: string | null };
 
-/** Detail error database dicatat di log server (terminal / log Cloudflare). */
 function logDbError(action: string, error: DbError) {
   console.error(`[tarif] ${action} gagal:`, { code: error.code, message: error.message, details: error.details, hint: error.hint });
 }
 
-/** Pesan untuk browser. Detail teknis HANYA disertakan saat `npm run dev`, tidak pernah di produksi. */
 function saveFailed(error?: DbError): string {
   if (process.env.NODE_ENV === "development" && error) {
     return `${SAVE_FAILED} [dev] kode=${error.code ?? "-"} pesan=${error.message ?? "-"}${error.details ? ` detail=${error.details}` : ""}${error.hint ? ` petunjuk=${error.hint}` : ""}`;
   }
   return SAVE_FAILED;
 }
-
-// ---------------------------------------------------------------- ubah harga
 
 const UpdatePriceSchema = z.object({
   id: z.uuid(),
@@ -51,7 +47,6 @@ export async function updatePrice(input: { id: string; price: number }): Promise
 
   const updatedAt = new Date().toISOString();
 
-  // Hanya kolom price, hanya baris layanan Reguler. RLS di database tetap jadi pengaman terakhir.
   const { data, error } = await admin.supabase.from("tarifs").update({ price: parsed.data.price, updated_at: updatedAt }).eq("id", parsed.data.id).eq("service", SERVICE_REGULER).select("id");
 
   if (error) {
@@ -63,9 +58,6 @@ export async function updatePrice(input: { id: string; price: number }): Promise
   return { ok: true, price: parsed.data.price, updatedAt };
 }
 
-// ---------------------------------------------------------------- tambah kota
-
-// Huruf/angka di awal; lalu huruf, angka, spasi, titik, apostrof, kurung, atau tanda hubung.
 const CITY_PATTERN = /^[\p{L}\p{N}][\p{L}\p{N} .'()-]*$/u;
 
 const CreateTarifSchema = z.object({
@@ -100,7 +92,6 @@ const CREATE_ERRORS: Record<string, string> = {
   price: `Harga harus bilangan bulat 1 - ${MAX_PRICE_PER_KG.toLocaleString("id-ID")}.`,
 };
 
-/** Menambah kota tujuan baru (layanan Reguler dari Jakarta) dan langsung menampilkannya di website. */
 export async function createTarif(input: { destination: string; code: string; region: DestinationRegion; price: number }): Promise<CreateTarifResult> {
   const parsed = CreateTarifSchema.safeParse(input);
   if (!parsed.success) {
@@ -113,10 +104,8 @@ export async function createTarif(input: { destination: string; code: string; re
 
   const { destination, code, region, price } = parsed.data;
 
-  // Nama harus memuat huruf/angka (route_slug dibuat otomatis oleh database dari nama kota).
   if (slugify(destination) === "") return { ok: false, error: CREATE_ERRORS.destination ?? "Nama kota tidak valid." };
 
-  // Kota yang sama (huruf besar/kecil diabaikan) tidak boleh ada dua kali.
   const { data: sameName, error: nameError } = await admin.supabase.from("tarifs").select("id").eq("service", SERVICE_REGULER).eq("origin", ORIGIN).ilike("destination", destination).limit(1);
   if (nameError) {
     logDbError("createTarif (cek nama kota)", nameError);
@@ -124,7 +113,6 @@ export async function createTarif(input: { destination: string; code: string; re
   }
   if (sameName && sameName.length > 0) return { ok: false, error: `Kota "${destination}" sudah ada di daftar tarif.` };
 
-  // Kolom estimate wajib diisi: salin dari tarif yang sudah ada agar seragam.
   const { data: reference } = await admin.supabase.from("tarifs").select("estimate").eq("service", SERVICE_REGULER).eq("origin", ORIGIN).limit(1).maybeSingle();
   const estimate = typeof reference?.estimate === "string" && reference.estimate.trim() !== "" ? reference.estimate : DEFAULT_ESTIMATE;
 
@@ -140,7 +128,6 @@ export async function createTarif(input: { destination: string; code: string; re
       estimate,
       status: "active",
       region,
-      // route_slug TIDAK dikirim: kolom itu dihitung otomatis (generated column) oleh database.
     })
     .select("id, destination, dest_code, price, status, updated_at, route_slug")
     .single();
@@ -151,8 +138,6 @@ export async function createTarif(input: { destination: string; code: string; re
     return { ok: false, error: error?.code === "23505" ? `Kota "${destination}" sudah ada di daftar tarif.` : saveFailed(error ?? undefined) };
   }
 
-  // route_slug dipakai sebagai kunci di website; tidak boleh bentrok (mis. "Bau-Bau" vs "Bau Bau").
-  // Karena dibuat database, bentrokan baru bisa diketahui setelah baris tersimpan: bila ada, batalkan.
   if (data.route_slug) {
     const { data: sameSlug } = await admin.supabase.from("tarifs").select("id").eq("route_slug", String(data.route_slug)).neq("id", data.id).limit(1);
     if (sameSlug && sameSlug.length > 0) {
@@ -175,8 +160,6 @@ export async function createTarif(input: { destination: string; code: string; re
   };
 }
 
-// ---------------------------------------------------------------- aktif / nonaktif
-
 const SetStatusSchema = z.object({
   id: z.uuid(),
   status: z.enum(["active", "inactive"]),
@@ -184,7 +167,6 @@ const SetStatusSchema = z.object({
 
 export type SetTarifStatusResult = { ok: true; status: "active" | "inactive"; updatedAt: string } | { ok: false; error: string };
 
-/** Nonaktif = kota hilang dari website tetapi datanya tetap ada dan bisa diaktifkan lagi. */
 export async function setTarifStatus(input: { id: string; status: "active" | "inactive" }): Promise<SetTarifStatusResult> {
   const parsed = SetStatusSchema.safeParse(input);
   if (!parsed.success) return { ok: false, error: "Data tidak valid." };
@@ -205,13 +187,10 @@ export async function setTarifStatus(input: { id: string; status: "active" | "in
   return { ok: true, status: parsed.data.status, updatedAt };
 }
 
-// ---------------------------------------------------------------- hapus
-
 const DeleteSchema = z.object({ id: z.uuid() });
 
 export type DeleteTarifResult = { ok: true } | { ok: false; error: string };
 
-/** Menghapus kota tujuan secara permanen. */
 export async function deleteTarif(input: { id: string }): Promise<DeleteTarifResult> {
   const parsed = DeleteSchema.safeParse(input);
   if (!parsed.success) return { ok: false, error: "Data tidak valid." };

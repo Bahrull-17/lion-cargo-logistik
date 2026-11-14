@@ -81,7 +81,6 @@ export function StatsBar() {
   return (
     <section aria-label={tA("statsSection")} className="bg-white pt-2 pb-10 sm:pt-4 sm:pb-14 border-b border-slate-100 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
-        {/* HEADER SECTION METRICS */}
         <motion.div
           initial={
             reduceMotion
@@ -113,7 +112,6 @@ export function StatsBar() {
 
           <p className="text-xs sm:text-sm text-slate-600 font-medium max-w-md leading-relaxed">{t("description")}</p>
         </motion.div>
-        {/* STATISTIK GRID 4 KOLOM */}
         <motion.div
           initial={
             reduceMotion

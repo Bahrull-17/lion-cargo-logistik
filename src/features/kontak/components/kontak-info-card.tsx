@@ -18,7 +18,6 @@ export function KontakInfoCard() {
       </div>
 
       <div className="space-y-5 text-xs sm:text-sm">
-        {/* ALAMAT */}
         <div className="flex items-start gap-3.5">
           <div className="p-2.5 rounded-2xl bg-red-50 text-red-600 shrink-0 mt-0.5">
             <MapPin className="size-5" />
@@ -29,7 +28,6 @@ export function KontakInfoCard() {
           </div>
         </div>
 
-        {/* TELEPON & WHATSAPP */}
         <div className="flex items-start gap-3.5">
           <div className="p-2.5 rounded-2xl bg-red-50 text-red-600 shrink-0 mt-0.5">
             <Phone className="size-5" />
@@ -44,7 +42,6 @@ export function KontakInfoCard() {
           </div>
         </div>
 
-        {/* EMAIL */}
         <div className="flex items-start gap-3.5">
           <div className="p-2.5 rounded-2xl bg-red-50 text-red-600 shrink-0 mt-0.5">
             <Mail className="size-5" />
@@ -59,7 +56,6 @@ export function KontakInfoCard() {
           </div>
         </div>
 
-        {/* JAM OPERASIONAL */}
         <div className="flex items-start gap-3.5">
           <div className="p-2.5 rounded-2xl bg-red-50 text-red-600 shrink-0 mt-0.5">
             <Clock className="size-5" />

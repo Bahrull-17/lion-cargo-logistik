@@ -31,14 +31,11 @@ export default function FlightMap({ whatsappUrl }: FlightMapProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Background CGK */}
       <span className="absolute text-[28vw] sm:text-[22vw] lg:text-[180px] font-black text-slate-200/60 font-mono tracking-tighter pointer-events-none leading-none select-none">CGK</span>
 
-      {/* Circle Radar */}
       <div className="absolute size-56 sm:size-72 lg:size-88 rounded-full border border-dashed border-red-300/40 pointer-events-none animate-spin-slow" />
       <div className="absolute size-64 sm:size-96 lg:size-105 rounded-full border border-slate-200/60 pointer-events-none" />
 
-      {/* Flight Route SVG */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-red-500/50" viewBox="0 0 400 300" fill="none" strokeWidth="1.8" strokeDasharray="4 4" preserveAspectRatio="xMidYMid meet">
         <path d="M130 150 Q70 60 30 40" />
         <path d="M130 150 Q70 120 35 110" />
@@ -50,19 +47,16 @@ export default function FlightMap({ whatsappUrl }: FlightMapProps) {
         <path d="M130 150 Q260 170 310 170" />
       </svg>
 
-      {/* Live Dispatch */}
       <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-2 py-1 sm:px-2.5 rounded-full border border-slate-200 shadow-sm text-[9px] sm:text-[10px] font-mono font-bold text-slate-800 z-20">
         <Radio className="size-2.5 sm:size-3 text-red-600 animate-pulse" />
         {t("liveDispatch")}
       </div>
 
-      {/* Speed Badge */}
       <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-red-600 text-white px-2 py-1 sm:px-2.5 rounded-xl shadow-md text-[9px] sm:text-[10px] font-bold flex items-center gap-1 z-20">
         <Plane className="size-2.5 sm:size-3 text-yellow-300" />
         {t("speedBadge")}
       </div>
 
-      {/* Central CGK */}
       <div className="absolute left-[32%] top-[50%] -translate-x-1/2 -translate-y-1/2 z-20">
         <span className="absolute inset-0 m-auto size-12 sm:size-14 rounded-full bg-red-500/20 animate-ping" />
         <div className="relative size-10 sm:size-12 rounded-2xl bg-red-600 text-white flex items-center justify-center shadow-xl">
@@ -74,7 +68,6 @@ export default function FlightMap({ whatsappUrl }: FlightMapProps) {
         </div>
       </div>
 
-      {/* Route Nodes */}
       {routeNodes.map((node) => (
         <motion.div key={node.code} className="absolute z-10" style={{ left: node.left, top: node.top }} animate={{ y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity, delay: node.delay, ease: "easeInOut" }}>
           <div className="flex items-center gap-1 sm:gap-1.5 bg-white/95 backdrop-blur-md px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-xl border border-slate-200 shadow-sm whitespace-nowrap scale-[0.85] sm:scale-100 origin-top-left">
@@ -86,13 +79,11 @@ export default function FlightMap({ whatsappUrl }: FlightMapProps) {
         </motion.div>
       ))}
 
-      {/* Minimum Weight */}
       <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 bg-white/90 backdrop-blur-sm px-2 py-1 sm:px-2.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[10px] font-bold z-20">
         <Box className="size-3 sm:size-3.5 text-red-600" />
         {t("minWeight")}
       </div>
 
-      {/* CTA */}
       {whatsappUrl && (
         <a
           href={whatsappUrl}

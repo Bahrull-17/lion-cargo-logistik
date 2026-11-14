@@ -3,10 +3,6 @@ import { seoConfig } from "@/config/seo";
 
 export const ORGANIZATION_ID = `${siteConfig.url}/#organization`;
 
-/**
- * Satu entitas bisnis (Organization + LocalBusiness) agar Google tidak membaca dua bisnis yang sama.
- * Dipasang sekali di layout; entitas lain merujuk lewat @id.
- */
 export function createOrganizationSchema() {
   return {
     "@context": "https://schema.org",

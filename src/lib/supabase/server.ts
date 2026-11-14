@@ -1,10 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
-/**
- * Klien Supabase berbasis cookie/sesi login. Dipakai HANYA untuk area admin.
- * Untuk data publik tetap pakai createPublicClient().
- */
 export async function createServerSupabase() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
@@ -23,10 +19,7 @@ export async function createServerSupabase() {
       setAll(cookiesToSet) {
         try {
           cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options));
-        } catch {
-          // Dipanggil dari Server Component (tidak boleh set cookie). Aman diabaikan:
-          // penyegaran sesi dilakukan di middleware.
-        }
+        } catch {}
       },
     },
   });

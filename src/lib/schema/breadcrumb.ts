@@ -2,7 +2,6 @@ import { siteConfig } from "@/config/site";
 
 export interface BreadcrumbItem {
   name: string;
-  /** Path dengan prefix bahasa, mis. "/id/layanan". */
   path: string;
 }
 

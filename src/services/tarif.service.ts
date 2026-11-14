@@ -21,7 +21,6 @@ function toDestination(row: TarifRow): Destination {
   return { slug: row.route_slug, name: row.destination, code: row.dest_code, pricePerKg: row.price, minWeight: row.min_weight, region: row.region };
 }
 
-/** Query tunggal tarif layanan Reguler; baris yang tidak lolos validasi dilewati. */
 async function fetchRegulerRows(errorLabel: string): Promise<TarifRow[]> {
   const { data, error } = await createPublicClient().from("tarifs").select(TARIF_COLUMNS).eq("service", SERVICE_REGULER).order("destination");
 
@@ -37,7 +36,6 @@ export async function getDestinations(): Promise<Destination[]> {
   return (await fetchRegulerRows("Gagal memuat tarif")).map(toDestination);
 }
 
-/** Layanan Reguler, satu entri per nama kota (dedup sebagai pengaman). */
 export async function getAllDestinations(): Promise<Destination[]> {
   const uniqueMap = new Map<string, Destination>();
 

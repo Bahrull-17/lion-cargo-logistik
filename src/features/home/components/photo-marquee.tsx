@@ -43,10 +43,6 @@ const fadeUp: Variants = {
   },
 };
 
-/**
- * Tag rich-text untuk t.rich().
- * Tag didefinisikan di JSON, misalnya <highlight>...</highlight>.
- */
 const richTags = {
   highlight: (chunks: React.ReactNode) => <span className="text-red-600">{chunks}</span>,
   brand: (chunks: React.ReactNode) => <strong className="font-semibold text-slate-900">{chunks}</strong>,
@@ -88,7 +84,6 @@ export function PhotoMarquee() {
   return (
     <section aria-labelledby="photo-marquee-heading" className="overflow-hidden bg-white py-12 sm:py-16">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-2 md:gap-10 lg:px-8">
-        {/* BLOK 1 */}
         <Reveal variants={fadeUp} className="order-1 flex h-full flex-col justify-center text-left md:pr-4">
           <h2 id="photo-marquee-heading" className="text-balance text-2xl font-extrabold leading-tight text-charcoal sm:text-3xl lg:text-4xl">
             {t.rich("intro.heading", richTags)}
@@ -108,12 +103,10 @@ export function PhotoMarquee() {
           </div>
         </Reveal>
 
-        {/* FOTO 1 */}
         <div className="order-2">
           <Foto {...fotoKanan} alt={t("images.right")} from="60px" />
         </div>
 
-        {/* BLOK 2 */}
         <Reveal variants={fadeUp} className="order-3 flex h-full flex-col justify-center text-left md:order-4 md:pl-4">
           <h3 className="mt-2 text-balance text-2xl font-extrabold leading-tight text-charcoal sm:text-3xl lg:text-4xl">{t.rich("guide.heading", richTags)}</h3>
 
@@ -131,7 +124,6 @@ export function PhotoMarquee() {
           </div>
         </Reveal>
 
-        {/* FOTO 2 */}
         <div className="order-4 md:order-3">
           <Foto {...fotoKiri} alt={t("images.left")} from="-60px" />
         </div>

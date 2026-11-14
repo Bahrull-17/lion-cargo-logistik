@@ -6,10 +6,6 @@ export type PageSeo = {
   priority: number;
 };
 
-/**
- * Judul & deskripsi halaman ada di messages/<locale>/pages/*.json (key "meta").
- * File ini hanya menyimpan path + pengaturan sitemap.
- */
 export const pageSeo = {
   home: { path: "/", changeFrequency: "weekly", priority: 1 },
 
@@ -33,10 +29,8 @@ export type PageKey = keyof typeof pageSeo;
 export const seoConfig = {
   ogImage: "/images/brand/og-image.jpg",
 
-  /** Isi dengan kode verifikasi Google Search Console (meta tag), bila memakai metode ini. */
   googleVerification: "",
 
-  /** Profil resmi (Google Business Profile, Instagram, dll.). Isi setelah tersedia. */
   sameAs: [] as string[],
 
   openGraph: {

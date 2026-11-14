@@ -35,7 +35,6 @@ export function FaqHero({ searchQuery, setSearchQuery }: FaqHeroProps) {
             })}
           </p>
 
-          {/* SEARCH BAR FAQ */}
           <div className="pt-3 max-w-xl mx-auto">
             <div className="relative flex items-center">
               <Search className="absolute left-4 size-5 text-slate-400 pointer-events-none" />

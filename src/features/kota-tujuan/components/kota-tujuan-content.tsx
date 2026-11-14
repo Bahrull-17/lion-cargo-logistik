@@ -30,7 +30,6 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPulau, setSelectedPulau] = useState("semua");
   const [displayLimit, setDisplayLimit] = useState(ITEMS_PER_PAGE);
-  // Awalnya memakai data dari saat build (sama dengan HTML awal), lalu diganti data terbaru dari Supabase.
   const [tarifData, setTarifData] = useState<Destination[]>(initialTarifData);
 
   useEffect(() => {
@@ -38,7 +37,6 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
 
     getAllDestinations()
       .then((fresh) => {
-        // Hasil kosong diabaikan agar gangguan sesaat tidak mengosongkan daftar yang sudah tampil.
         if (cancelled || fresh.length === 0) return;
         setTarifData((current) => (JSON.stringify(current) === JSON.stringify(fresh) ? current : fresh));
       })
@@ -51,12 +49,9 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
     };
   }, []);
 
-  // Auto Scroll ke Atas saat filter pulau berubah atau halaman dimuat
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [selectedPulau]);
-
-  // Mengolah data kota tujuan 100% murni dari Database (tarifData)
   const kotaList = useMemo<KotaTujuanItem[]>(() => {
     if (!tarifData || tarifData.length === 0) return [];
 
@@ -120,10 +115,8 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen pb-12 sm:pb-16 overflow-hidden relative">
-      {/* 1. HERO & SEARCH SECTION */}
       <KotaTujuanHero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-      {/* 2. FILTER & GRID KOTA TUJUAN (DATABASE DRIVEN) */}
       <KotaTujuanGrid
         selectedPulau={selectedPulau}
         onSelectPulau={handleSelectPulau}
@@ -135,7 +128,6 @@ export function KotaTujuanContent({ initialTarifData = [] }: KotaTujuanContentPr
         onResetFilter={handleResetFilter}
       />
 
-      {/* 3. CALL TO ACTION SECTION (SHARED COMPONENT) */}
       <div className="border-t border-slate-100">
         <CtaSection whatsappUrl={whatsappUrl} />
       </div>

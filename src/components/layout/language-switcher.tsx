@@ -22,7 +22,6 @@ const languages = [
   },
 ] as const;
 
-// Halaman detail artikel: /artikel/<slug> (pathname dari next-intl sudah tanpa prefix bahasa)
 const ARTICLE_DETAIL_PATH = /^\/artikel\/([a-z0-9-]+)$/;
 
 export function LanguageSwitcher() {
@@ -36,7 +35,6 @@ export function LanguageSwitcher() {
   async function changeLanguage(nextLocale: "id" | "en") {
     const articleSlug = pathname.match(ARTICLE_DETAIL_PATH)?.[1];
 
-    // Artikel punya slug berbeda per bahasa, jadi cari halaman pasangannya.
     if (articleSlug) {
       try {
         const target = await resolveArticleAlternatePath(locale, articleSlug, nextLocale);

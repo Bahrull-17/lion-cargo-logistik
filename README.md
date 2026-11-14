@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚚 Lion Cargo Logistik
 
-## Getting Started
+A modern company profile website for air cargo services in Indonesia.
 
-First, run the development server:
+🌐 **Live Website**  
+https://lioncargologistik.com
+
+
+## 📌 Overview
+
+Lion Cargo Logistik is a professional cargo service website built to provide information about air freight services, destination coverage, and shipping solutions.
+
+This project focuses on building a modern, fast, and SEO-friendly website with a scalable architecture to support business growth and improve customer accessibility.
+
+The website is designed with responsive UI, internationalization support, structured SEO implementation, and production-ready deployment.
+
+
+## ✨ Features
+
+### 🌐 Company Profile
+
+- Professional business website
+- Company information pages
+- Service information
+- Destination city pages
+- Contact and customer inquiry integration
+
+
+### 🚚 Cargo Services Information
+
+- Air cargo service details
+- Regular, Express, and Same Day service information
+- Shipping requirements and policies
+- Transparent service information
+
+
+### 🌍 Internationalization (i18n)
+
+- Indonesian language support
+- English language support
+- SEO-friendly localized pages
+
+
+### 🔍 SEO Optimization
+
+- Dynamic metadata
+- Structured data (Schema.org)
+- Open Graph optimization
+- Sitemap generation
+- Robots configuration
+- Search engine friendly URL structure
+
+
+### 📝 Article System
+
+- Article listing page
+- Article detail page
+- SEO-focused content structure
+
+
+### 📱 Responsive Design
+
+- Mobile friendly interface
+- Optimized layout for desktop, tablet, and mobile devices
+
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide Icons
+
+
+### Backend & Database
+
+- Supabase
+
+
+### Deployment & Infrastructure
+
+- Cloudflare Workers
+- OpenNext
+- GitHub
+
+
+## 📂 Project Architecture
+
+The project uses a modular structure designed for scalability and maintainability.
+
+src
+├── app          # Application routes and pages
+├── components   # Reusable UI components
+├── config       # Website configuration
+├── features     # Feature-based modules
+├── lib          # Shared utilities
+├── services     # External services
+├── types        # Type definitions
+└── utils        # Helper functions
+
+
+
+## 📸 Screenshots
+
+### Homepage
+
+
+(Add homepage screenshot here)
+
+
+### Services Page
+
+(Add services screenshot here)
+
+
+### Mobile View
+
+(Add mobile screenshot here)
+
+
+
+## 🚀 Getting Started
+
+### Clone Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/Bahrull-17/lion-cargo-logistik.git

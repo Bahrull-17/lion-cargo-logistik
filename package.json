@@ -46,5 +46,8 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "^4.156.0"
+  },
+  "overrides": {
+    "@swc/core": "1.15.33"
   }
 }

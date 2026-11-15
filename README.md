@@ -1,111 +1,80 @@
 # 🚚 Lion Cargo Logistik
 
-A modern company profile website for air cargo services in Indonesia.
+A bilingual (Indonesian / English) company profile website for an air cargo service in Indonesia, with a shipping rate calculator and a content admin panel.
 
-🌐 **Live Website**  
-https://lioncargologistik.com
+🌐 **Live website:** https://lioncargologistik.com
 
+> The destination and rate pages read their data from Supabase, so running the project locally needs your own Supabase project (see [Getting Started](#-getting-started)). The live website is the quickest way to see everything working.
 
 ## 📌 Overview
 
-Lion Cargo Logistik is a professional cargo service website built to provide information about air freight services, destination coverage, and shipping solutions.
+Lion Cargo Logistik provides information about air freight services, destination coverage, and shipping rates. The project focuses on a fast, SEO-friendly website with a modular architecture, built and deployed end to end as a solo project.
 
-This project focuses on developing a modern, fast, and SEO-friendly website with a scalable architecture to support business growth and improve customer accessibility.
-
-The website implements responsive UI, internationalization support, structured SEO optimization, and production-ready deployment workflow.
-
+- Responsive UI for mobile, tablet, and desktop
+- Indonesian and English versions of every page
+- Structured SEO setup (metadata, Schema.org, sitemap)
+- Production deployment on Cloudflare Workers
 
 ## ✨ Features
 
-### 🌐 Company Profile
+### Public website
 
-- Professional company profile website
-- Company information pages
-- Cargo service information
-- Destination city pages
-- Contact and customer inquiry integration
-
-
-### 🚚 Cargo Services Information
-
-- Air cargo service details
+- Company profile, services, and FAQ pages
+- Destination city pages with tariff data from Supabase
+- Contact page with customer inquiry integration
+- Article listing and article detail pages
 - Regular, Express, and Same Day service information
-- Shipping requirements and policies
-- Transparent service information
 
+### Shipping rate calculator
 
-### 🌍 Internationalization (i18n)
+- Calculates a shipping quote from destination and weight (`cek-ongkir`)
+- Searchable, paginated destination table
+- Prepares a ready-to-send WhatsApp message from the quote
 
-- Indonesian language support
-- English language support
-- SEO-friendly localized pages
+### Admin panel
 
+- Login-protected area for managing content
+- Article editor with rich text and image upload
+- Tariff manager for updating shipping rates
 
-### 🔍 SEO Optimization
+### Internationalization
 
-- Dynamic metadata
-- Structured data (Schema.org)
-- Open Graph optimization
-- Sitemap generation
-- Robots configuration
+- Indonesian (`id`) and English (`en`) with `next-intl`
+- Localized routes and metadata
+- Unsupported locales return a 404
+
+### SEO
+
+- Dynamic metadata and Open Graph tags
+- Structured data (Schema.org): organization, service, article, breadcrumb
+- Generated sitemap and robots configuration
 - Search engine friendly URL structure
-
-
-### 📝 Article System
-
-- Article listing page
-- Article detail page
-- SEO-focused content structure
-
-
-### 📱 Responsive Design
-
-- Mobile-friendly interface
-- Optimized layout for desktop, tablet, and mobile devices
-
 
 ## 🛠 Tech Stack
 
-### Frontend
-
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Lucide Icons
-
-
-### Backend & Database
-
-- Supabase
-- PostgreSQL
-
-
-### Deployment & Infrastructure
-
-- Domain: lioncargologistik.com
-- Hosting Platform: Cloudflare Workers
-- Framework Adapter: OpenNext
-- Version Control: GitHub
-
+| Area            | Technologies                                                                     |
+| --------------- | -------------------------------------------------------------------------------- |
+| Frontend        | Next.js, React, TypeScript, Tailwind CSS, Framer Motion, Lucide Icons, shadcn/ui |
+| Content editing | Tiptap, sanitize-html                                                            |
+| Backend & data  | Supabase (PostgreSQL, Auth, Storage), Zod for validating data                    |
+| Deployment      | Cloudflare Workers via OpenNext                                                  |
+| Analytics       | Google Analytics (optional)                                                      |
 
 ## 📂 Project Architecture
 
-The project uses a modular structure designed for scalability and maintainability.
+The project uses a feature-based structure designed for maintainability.
 
 ```text
 src
-├── app          # Application routes and pages
+├── app          # Routes and pages (public site and admin)
 ├── components   # Reusable UI components
-├── config       # Website configuration
-├── features     # Feature-based modules
-├── lib          # Shared utilities
-├── services     # External services
-├── types        # Type definitions
-└── utils        # Helper functions
+├── config       # Website configuration (SEO, shipping)
+├── features     # Feature modules (home, cek-ongkir, admin, ...)
+├── i18n         # Locale routing
+├── lib          # Shared utilities (SEO, schema, Supabase clients)
+├── services     # Data access (articles, tariffs)
+└── types        # Type definitions
 ```
-
 
 ## 📸 Screenshots
 
@@ -113,86 +82,89 @@ src
 
 ![Lion Cargo Logistik Homepage](public/screenshots/homepage.png)
 
-
 ### About Us
 
 ![Lion Cargo Logistik About](public/screenshots/aboutme.png)
-
 
 ### Services
 
 ![Lion Cargo Logistik Services](public/screenshots/services.webp)
 
-
 ### Destination Cities
 
 ![Lion Cargo Logistik Destination](public/screenshots/destination.webp)
 
-
 ## 🚀 Getting Started
 
-### Clone Repository
+### Prerequisites
+
+- Node.js 22
+- npm
+- A Supabase project (the tariff and article data live there)
+
+### Installation
 
 ```bash
 git clone https://github.com/Bahrull-17/lion-cargo-logistik.git
-```
-
-### Install Dependencies
-
-```bash
+cd lion-cargo-logistik
 npm install
 ```
 
-### Run Development Server
+### Environment variables
+
+Copy the example file and fill in your own values:
+
+```bash
+# macOS / Linux
+cp .env.example .env.local
+
+# Windows (PowerShell)
+Copy-Item .env.example .env.local
+```
+
+| Variable                               | Description                    |
+| -------------------------------------- | ------------------------------ |
+| `NEXT_PUBLIC_SUPABASE_URL`             | Your Supabase project URL      |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Your Supabase publishable key  |
+| `NEXT_PUBLIC_GA_ID`                    | Google Analytics ID (optional) |
+
+`.env.local` is ignored by Git. Never commit real keys.
+
+### Run the development server
 
 ```bash
 npm run dev
 ```
 
-Open in browser:
+Open http://localhost:3000 in your browser.
 
-```
-http://localhost:3000
-```
+## 📜 Available Scripts
 
+| Command             | Description                                        |
+| ------------------- | -------------------------------------------------- |
+| `npm run dev`       | Start the development server                       |
+| `npm run build`     | Create a production build                          |
+| `npm start`         | Run the production server                          |
+| `npm run lint`      | Run ESLint                                         |
+| `npm run typecheck` | Run the TypeScript compiler without emitting files |
+| `npm run preview`   | Build and preview on the Cloudflare runtime        |
+| `npm run deploy`    | Build and deploy to Cloudflare Workers             |
 
-## 📦 Production Build
+## ⚙️ Deployment Notes
 
-Create production build:
+The site is deployed on Cloudflare Workers using OpenNext, with automatic builds on every push to `main`.
 
-```bash
-npm run build
-```
+- **Lockfile:** Cloudflare builds with npm 10.9.2 and `npm ci`, which rejects a lockfile written by a different npm version. After changing dependencies, regenerate it with:
 
-Run production server:
+  ```bash
+  npx --yes npm@10.9.2 install --package-lock-only
+  ```
 
-```bash
-npm start
-```
-
-
-## 🎯 Project Goals
-
-This project was built to implement modern software development practices including:
-
-- Full-stack web development workflow
-- SEO implementation strategy
-- Internationalized website architecture
-- Responsive web design
-- Production deployment workflow
-- Scalable frontend architecture
-
+- **SWC version pin:** `@swc/core` is pinned to `1.15.33` through `overrides` in `package.json`. As of November 2026, version 1.16.x fails to load its native addon in Cloudflare's build environment because of its cache directory checks. The pin can be removed once that is resolved upstream.
 
 ## 👨‍💻 Developer
 
-**Bahrul Ulum**
+**Bahrul Ulum** · Full Stack Developer
 
-Full Stack Developer
-
-
-🌐 Portfolio  
-https://bahrull-17.github.io/Portfolio/
-
-
-💼 LinkedIn  
-https://www.linkedin.com/in/bahrul-ulum17
+🌐 Portfolio: https://bahrull-17.github.io/Portfolio/
+💼 LinkedIn: https://www.linkedin.com/in/bahrul-ulum17

@@ -16,7 +16,7 @@ import SchemaMarkup from "@/components/seo/schema-markup";
 
 import { OG_LOCALE } from "@/lib/seo/metadata";
 
-import { GOOGLE_FONTS_URL } from "@/config/fonts";
+import { fontVariables } from "@/config/fonts";
 
 import { routing } from "@/i18n/routing";
 
@@ -65,9 +65,6 @@ export async function generateMetadata({ params }: Pick<LocaleLayoutProps, "para
 
     description: t("description"),
 
-    keywords: t("keywords")
-      .split(",")
-      .map((keyword) => keyword.trim()),
 
     robots: {
       index: true,
@@ -123,15 +120,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   });
 
   return (
-    <html lang={locale}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
-        <link rel="stylesheet" href={GOOGLE_FONTS_URL} />
-      </head>
-
+    <html lang={locale} className={fontVariables}>
       <body className="min-h-screen">
         <SchemaMarkup />
 

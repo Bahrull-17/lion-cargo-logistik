@@ -49,6 +49,14 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 
   const motionValue = useMotionValue(0);
 
+  // HTML dari server memuat nilai akhir (untuk crawler & AI). Setelah hydrate,
+  // tampilan diset ke 0 agar animasi hitung naik tetap sama seperti sebelumnya.
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.textContent = `0${suffix}`;
+    }
+  }, [suffix]);
+
   const springValue = useSpring(motionValue, {
     stiffness: 100,
     damping: 15,
@@ -69,7 +77,12 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
     });
   }, [springValue, suffix]);
 
-  return <span ref={ref}>0{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {value}
+      {suffix}
+    </span>
+  );
 }
 
 export function StatsBar() {

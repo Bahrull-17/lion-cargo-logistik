@@ -77,6 +77,13 @@ export function FaqAccordionList({ selectedKategori, onSelectKategori, filteredF
                     </motion.div>
                   )}
                 </AnimatePresence>
+
+                {/* Jawaban tetap ada di HTML (disembunyikan) agar terbaca mesin pencari */}
+                {!isOpen && (
+                  <div hidden>
+                    <p>{item.jawaban}</p>
+                  </div>
+                )}
               </div>
             );
           })}

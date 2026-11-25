@@ -4,8 +4,8 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-  --font-inter: "Inter", sans-serif;
-  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+  --font-inter: var(--font-inter-nf), "Inter", sans-serif;
+  --font-jakarta: var(--font-jakarta-nf), "Plus Jakarta Sans", sans-serif;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;

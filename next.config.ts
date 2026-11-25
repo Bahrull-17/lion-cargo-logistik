@@ -33,6 +33,16 @@ const nextConfig: NextConfig = {
     },
   },
 
+  async redirects() {
+    const publicPaths = ["layanan", "kota-tujuan", "cek-ongkir", "tentang-kami", "faq", "kontak", "artikel"];
+
+    return [
+      { source: "/", destination: "/id", permanent: true },
+      ...publicPaths.map((path) => ({ source: `/${path}`, destination: `/id/${path}`, permanent: true })),
+      { source: "/artikel/:slug", destination: "/id/artikel/:slug", permanent: true },
+    ];
+  },
+
   async headers() {
     return [
       {

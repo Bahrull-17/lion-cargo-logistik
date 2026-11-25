@@ -16,7 +16,7 @@ export const viewport: Viewport = {
 
 export default function AdminRootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="id" className={fontVariables}>
+    <html lang="id" className={fontVariables} data-scroll-behavior="smooth">
       <body className="min-h-screen">{children}</body>
     </html>
   );

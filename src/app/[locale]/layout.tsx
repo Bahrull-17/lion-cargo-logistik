@@ -65,7 +65,6 @@ export async function generateMetadata({ params }: Pick<LocaleLayoutProps, "para
 
     description: t("description"),
 
-
     robots: {
       index: true,
 
@@ -120,7 +119,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   });
 
   return (
-    <html lang={locale} className={fontVariables}>
+    <html lang={locale} className={fontVariables} data-scroll-behavior="smooth">
       <body className="min-h-screen">
         <SchemaMarkup />
 

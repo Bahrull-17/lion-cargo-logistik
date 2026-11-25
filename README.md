@@ -84,15 +84,15 @@ src
 
 ### About Us
 
-![Lion Cargo Logistik About](public/screenshots/aboutme.png)
+![Lion Cargo Logistik About](docs/screenshots/aboutme.png)
 
 ### Services
 
-![Lion Cargo Logistik Services](public/screenshots/services.webp)
+![Lion Cargo Logistik Services](docs/screenshots/services.webp)
 
 ### Destination Cities
 
-![Lion Cargo Logistik Destination](public/screenshots/destination.webp)
+![Lion Cargo Logistik Destination](docs/screenshots/destination.webp)
 
 ## 🚀 Getting Started
 

@@ -22,6 +22,8 @@ export const siteConfig = {
 
     address: "Gedung RA Gatrans, Bandar Udara Internasional Soekarno-Hatta, Komplek Terminal Kargo, RT 001/RW 010, Tangerang 15126",
 
+    streetAddress: "Gedung RA Gatrans, Bandar Udara Internasional Soekarno-Hatta, Komplek Terminal Kargo, RT 001/RW 010",
+
     maps: "https://maps.app.goo.gl/TgZ4SZVXi367Ht2e6",
 
     mapsEmbed:

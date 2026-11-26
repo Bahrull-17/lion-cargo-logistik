@@ -22,7 +22,7 @@ export function createOrganizationSchema() {
 
     address: {
       "@type": "PostalAddress",
-      streetAddress: siteConfig.contact.address,
+      streetAddress: siteConfig.contact.streetAddress,
       addressLocality: "Tangerang",
       addressRegion: "Banten",
       postalCode: "15126",
